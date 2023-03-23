@@ -192,9 +192,9 @@ loading.dismiss()
         console.log(result),
           this.item = result.load
           for(let i=0;i<this.item.length;i++){
-            this.inarray = this.item[i].TruckMarketVehicle
+            this.inarray = this.item[i].TruckMarketVehicle.length
           }
-          console.log(this.inarray)
+          console.log(this.inarray.length)
           for(let i=0;i<this.inarray.length;i++){
             this.intruckdata = this.inarray[i].trukOwnerNumber
           }

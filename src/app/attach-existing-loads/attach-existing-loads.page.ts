@@ -23,7 +23,7 @@ export class AttachExistingLoadsPage implements OnInit {
   trukdate:any;
   trukvehiclenumber:any;
   router: any;
-  trukmobileNo:any;
+  trukOwnerNumber:any;
 
   // OriginLocation:any;
   // DestinationLocation:any;
@@ -36,13 +36,13 @@ export class AttachExistingLoadsPage implements OnInit {
     //The localStorage object allows you to save key/value pairs in the browser.
     this.real = JSON.parse(this.objects)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
 
-    console.log(this.objects)
+    console.log(this.real)
 
     this.truk = localStorage.getItem("attachload");  //use the localstorage we getdata from savedData
     //The localStorage object allows you to save key/value pairs in the browser.
     this.TrukPost = JSON.parse(this.truk)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
 
-    console.log(this.truk)
+    console.log(this.TrukPost)
   }
 
   async SendExistingload() {
@@ -58,7 +58,7 @@ export class AttachExistingLoadsPage implements OnInit {
       trukcapacity:this.real.trukcapacity,
       trukdate:this.real.trukdate,
       trukoperatingRoutes:this.real.trukoperatingRoutes,
-      trukmobileNo:this.real.trukmobileNo,
+      trukOwnerNumber:this.real.trukOwnerNumber,
       //this is addTruckMarketVehicleToLoad ID we have to make this dynamic
       _id:this.TrukPost._id
     }
@@ -66,6 +66,66 @@ export class AttachExistingLoadsPage implements OnInit {
     localStorage.setItem("newpostAdd", JSON.stringify(data));
 
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addTruckMarketVehicleToLoad", {
+      method: 'post',
+      headers: {
+        "access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),
+
+    })
+      .then(response => response.json())
+      .then(async result => {
+        console.log(result),
+          this.Items = result
+          this.Sendloadtovehicle()
+          loading.dismiss()
+          const alert = await this.alertController.create({
+            header: 'Successfull',
+            // subHeader: 'Important message',
+           // message: 'truk  Successfully',
+            buttons: [
+              {
+                text: 'Okay',
+                handler: () => {
+                  console.log('Confirm Okay');
+                  //you can write your code or redirection 
+                  // sample redirection code 
+                   window.location.href = '/tab/tab4';
+                }
+              }
+            ],
+          });
+  
+          await alert.present();
+       
+
+      }
+
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)
+      })
+  }
+  
+
+  //add load to vehicle
+  async Sendloadtovehicle() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    var data = {
+      _id:this.real._id,
+       
+    loadids:this.truk._id
+     
+    }
+    console.log(data)
+    //localStorage.setItem("newpostAdd", JSON.stringify(data));
+
+   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
       method: 'post',
       headers: {
         "access-Control-Allow-Origin": "*",

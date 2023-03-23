@@ -160,14 +160,15 @@
                     <div style="display:inline-flex;" *ngIf="text.isActive === 'Active'" >
                     
                         <button type="button" class="viewbidbtn" (click)="bidById(text)" >
+                        
                           <span> view Bids</span>
                           <span class="badge">{{text.bids.length}}</span>
                           </button>
 
-                          <button type="button" class="viewbidbtn" (click)="placebidById(text)" >
+                          <!--<button type="button" class="viewbidbtn" (click)="placebidById(text)" *ngIf="text.TruckMarketVehicle.length > 0">
                             <span> place Bids</span>
                             
-                            </button>
+                            </button>-->
                          
                     </div>
                 </div>

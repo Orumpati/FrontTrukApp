@@ -105,7 +105,7 @@
       <h3 style=" margin-left:20px; padding-top:20px;" >Verify Aadhar</h3>
       <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;"  id="open-aadhar" >Verify </button>
 
-      <ion-modal #modal trigger="open-aadhar" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]" >
+      <ion-modal #modal trigger="open-aadhar" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]"  style="--border-radius:13px;">
         <ng-template>
           <ion-content>
           
@@ -140,7 +140,7 @@
     </div>
 </ion-card>
 
-<ion-card  [hidden]="boss">
+<ion-card  >
   <div class="main">
     <div class="adharimage">
   <img src="https://th.bing.com/th?id=OIP.X4oVrLFlzrIGElXusF8p1wHaEV&w=326&h=191&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2">
@@ -149,7 +149,7 @@
       <div class="verifybutton" *ngIf="routes.gstVerify == 'notVerified'">
       <h3 style=" margin-left:20px; padding-top:20px;" >Verify GSTIN</h3>
       <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;" id="open-gst">Verify </button>
-      <ion-modal #modal trigger="open-gst" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]" >
+      <ion-modal #modal trigger="open-gst" [initialBreakpoint]="0.67" [breakpoints]="[0, 0.25, 0.5, 0.75]" style="--border-radius:13px;" >
         <ng-template>
           <ion-content>
           

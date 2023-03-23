@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 @Component({
   selector: 'app-referral',
   templateUrl: './referral.page.html',
@@ -11,20 +13,26 @@ export class ReferralPage implements OnInit {
   text: string='SmartSwag'
   imgurl:string= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReFjO6rbNAKcZtfgpqkhnqWGPwcH5hAArN1A&usqp=CAU'
   link: string='https://youtu.be/5BQQM4uvRkw'
-  url:string='https://youtu.be/5BQQM4uvRkw'
-  constructor(private socialSharing:SocialSharing) { }
+  url:string='http://trukapp.com/'
+
+  CopyInputText:string = "http://trukapp.com/";
+
+  constructor(private socialSharing:SocialSharing,private clipboard: Clipboard) { }
 
   ngOnInit() {
   }
   sShare(){
     var options = {
       message: 'smartSwag',
-      url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReFjO6rbNAKcZtfgpqkhnqWGPwcH5hAArN1A&usqp=CAU',
+      url: 'http://trukapp.com/',
      
     };
     this.socialSharing.shareWithOptions(options)
   }
-
+  //copy
+  copyString(){
+    this.clipboard.copy(this.CopyInputText);
+  }
 
 
 

@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 //import { HasRoleDirective } from './directives/has-role.directive';
 //import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
+// Import plugin
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
@@ -28,7 +31,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
    // HasRoleDirective
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FormsModule,CommonModule,ReactiveFormsModule,HttpClient,SocialSharing,
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FormsModule,CommonModule,ReactiveFormsModule,HttpClient,SocialSharing,Clipboard,
     
   File,
   Camera,

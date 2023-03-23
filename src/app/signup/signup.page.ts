@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {  FormGroup, Validators,FormControl } from '@angular/forms';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { LoadingController ,NavController} from '@ionic/angular';
 import { CommonServiceService } from '../common-service.service';
+declare var google :any
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -19,7 +20,31 @@ export class SignupPage implements OnInit {
   location: any;
 
 
-  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService) { }
+  @ViewChild('map', { static: false }) mapElement: any;
+  
+
+
+  map: any;
+  address: any;
+  lat: any;
+  long: any;
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
+ // location: any;
+  placeid: any;
+  GoogleAutocomplete: any;
+
+
+
+  OriginLocation: any;
+  DestinationLocation: any;
+  IsOrigin=false;
+
+  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService,public zone:NgZone) {
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
+   }
 
   ngOnInit() {
     
@@ -43,8 +68,56 @@ console.log(this.allDetails)
   console.log(this.signupForm.value.mobileNo)
   }
 
-  
+  GetOriginLocation(data: any) {
+    this.IsOrigin = true;
+    //this.IsDestination = false;
+    console.log(data)
+    this.UpdateSearchResults(data);
 
+    // console.log(this.DestinationLocation)
+
+  }
+  UpdateSearchResults(data: any) {
+    console.log(data)
+    this.autocomplete.input = data;
+    console.log("UpdateSearchResults")
+    if (this.autocomplete.input == '') {
+
+      this.autocompleteItems = [];
+      return;
+    }
+    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+      (predictions: any[], status: any) => {
+        this.autocompleteItems = [];
+        this.zone.run(() => {
+          predictions.forEach((prediction) => {
+            console.log('places' + prediction)
+            this.autocompleteItems.push(prediction);
+          });
+        });
+      });
+  }
+
+  //wE CALL THIS FROM EACH ITEM.
+  SelectSearchResult(item: { place_id: any; description: any }) {
+    ///WE CAN CONFIGURE MORE COMPLEX FUNCTIONS SUCH AS UPLOAD DATA TO FIRESTORE OR LINK IT TO SOMETHING
+    //alert(JSON.stringify(item))   
+    console.log(item.description)
+    this.placeid = item.description;
+
+
+    if (this.IsOrigin) {
+      this.OriginLocation = item.description;
+      this.autocompleteItems = [];
+    }
+  
+  }
+
+   //lET'S BE CLEAN! THIS WILL JUST CLEAN THE LIST WHEN WE CLOSE THE SEARCH BAR.
+   ClearAutocomplete() {
+    this.autocompleteItems = []
+    this.autocomplete.input = ''
+  }
   getUniqueDeviceID() {
     this.uniqueDeviceID.get()
       .then((uuid: any) => {

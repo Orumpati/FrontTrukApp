@@ -139,20 +139,20 @@ You Accepted the bid for {{item.tentativefinalPrice}}
 
 </ion-card>
 
-<!--<ion-card style="background-color:orange;">
+<ion-card style="background-color:orange;" *ngIf="ispaymentcomplete === true || isShipperAccepted === true">
   <ion-card-header>
-    <ion-card-title style="color: white;">Add New Truck</ion-card-title>
+    <ion-card-title style="color: white;">Share Contact Details</ion-card-title>
 
   </ion-card-header>
 
   <ion-card-content style="color:white;">
-    Bid is accepted, please add your truck
+    Bid is accepted, please share contact details
   </ion-card-content>
-  <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;" >Add New Truck</ion-button><br>
+  <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;" (click)="posttruck()">Share Contact</ion-button><br>
   
   
 
-</ion-card>-->
+</ion-card>
 
 
 <ion-button id="open-modal" shape="round" class="next">Negotiate</ion-button>

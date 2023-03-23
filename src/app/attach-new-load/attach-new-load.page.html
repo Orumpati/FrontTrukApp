@@ -22,66 +22,73 @@
         </div>
         
         <!--select origin Location-->
-
-
+<ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
+  <ion-icon align="center" name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
+  <div style="display: flex;">
         <div class="form-group">
-          <ion-input type="text" class="form-control" placeholder="  Enter Pick Up Location"
+          <ion-input type="text" class="form-control" placeholder="Pick Up Location"
             [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
             (ionClear)="ClearAutocomplete()"></ion-input>
-        </div>
+        </div>&nbsp;&nbsp;
         
-         <!--select destination Location-->
 
+        <!--Pickup pincode-->
+
+        <div class="form-group">
+          <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+        </div>
+        </div>
+      </ion-card>
+         <!--select destination Location-->
+         <ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
+          <ion-icon align="center" name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
+          <div style="display: flex;">
          <div class="form-group">
-          <ion-input type="text" class="form-control" placeholder="  Enter Drop Location"
+          <ion-input type="text" class="form-control" placeholder="Drop Location"
             [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
             (ionClear)="ClearAutocomplete()"></ion-input>
-        </div>
+        </div>&nbsp;&nbsp;
 
-  
+        <!--Dropup pincode-->
+        
+        <div class="form-group">
+          <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()"></ion-input>
+        </div>
+</div>
+  </ion-card>
          <!--showing the list of address-->
-         <ion-list [hidden]="autocompleteItems.length == 0">
+         <ion-list [hidden]="autocompleteItems.length == 0" >
+          <ion-icon (click)="ClearAutocomplete()" name="close-outline"  style="float:right;font-size:20px;"></ion-icon>
           <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
             {{ item.description }}
           </ion-item>
         </ion-list>
 
         
-        <!--Pickup pincode-->
-
-        <div class="form-group">
-          <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
-        </div>
-
         
-
        
         <!--Pickup State-->
 
-        <div class="form-group">
-          <ion-input class="form-control" placeholder="Pickup State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
-        </div>
+        
+          <ion-input  type="hidden" placeholder="Pickup State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
+      
 
         
 
        
-        <!--Dropup pincode-->
         
-        <div class="form-group">
-          <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()"></ion-input>
-        </div>
 
         <!--Dropup State-->
 
-        <div class="form-group">
-          <ion-input class="form-control"  placeholder="Dropup State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
-        </div>
+        
+          <ion-input  type="hidden"  placeholder="Dropup State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
+        
 
         
 
-        <div class="form-group">
-          <ion-input class="form-control"  placeholder="Mobile Number" disabled="disabled" [(ngModel)]="regdata.mobileNo" readonly></ion-input>
-        </div>
+    
+          <ion-input type="hidden"   placeholder="Mobile Number" disabled="disabled" [(ngModel)]="regdata.mobileNo" readonly></ion-input>
+        
 
         
 
@@ -110,9 +117,10 @@
         <!--select Date and Time-->
 
         <div class="form-group">
-          <div class="form-control">
+          <div class="form-control" >
+            <ion-label position="floating">PickUp Date & Time</ion-label>
             <ion-input type="datetime-local" placeholder="Pickup Date" style="border: none; "
-              [(ngModel)]="date">Date & Time</ion-input>
+              [(ngModel)]="date"></ion-input>
           </div>
         </div>
 
@@ -120,14 +128,14 @@
         
         <!--Quantity-->
 
-        <div class="form-group" style="display: flex;">
+        <div class="form-group" style="display: flex; margin-bottom:40px;" >
           <div>
           <ion-input type="  text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
           
           </ion-input>
 </div>
           <div>
-            <span>
+            <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
              <ion-select-option value="Tonns">Tonns</ion-select-option>
              <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
@@ -140,7 +148,9 @@
 
 
       </div>
+      
     </ion-slide>
+  
     <ion-slide>
 
       <!--SLIDE 2-->
@@ -385,9 +395,9 @@
           <div class="form-group">
             <div class="form-control">
               <ion-label></ion-label>
-              <ion-select placeholder="Type of Payment to Lorry Owner" [(ngModel)]="typeOfPay">
+              <ion-select placeholder="Type of Payment to Lorry Owner" [(ngModel)]="typeOfPay" (click)="gf()">
                 <ion-select-option value="Offline">Offline/Cash</ion-select-option>
-                <ion-select-option value="Online">Online</ion-select-option>
+                <ion-select-option value="Online" >Online</ion-select-option>
 
               </ion-select>
             </div>
@@ -466,20 +476,20 @@
 
   </div> -->
 
-  <div #map='' style="height: 50%;"></div>
+  <!--<div #map='' style="height: 50%;"></div>-->
 </ion-content>
-<ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" (click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
+<ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" *ngIf="typeOfPay == 'Online'|| paymentTypeForOffline == null || advance == null" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null "
-  shape="round">Submit</ion-button>
+  shape="round">Submit1</ion-button>
 
 
-  <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" (click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
+  <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" [hidden]=" paymentTypeForOffline == 'Advance'" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
-  shape="round">Submit</ion-button>
+  shape="round">Submit2</ion-button>
 
-  <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Offline'"(click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
+  <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Online'"(click)="sendData()"  expand="full" class="next"
   [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
-    shape="round">Submit</ion-button>
+    shape="round">Submit3</ion-button>
 <!--Expansion panel-->
 
 <!-- 

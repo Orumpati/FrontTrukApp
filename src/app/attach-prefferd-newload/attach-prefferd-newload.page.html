@@ -68,20 +68,40 @@
           
           <!--select origin Location-->
   
-  
-          <div class="form-group">
-            <ion-input type="text" class="form-control" placeholder="  Enter Pick Up Location"
-              [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
-              (ionClear)="ClearAutocomplete()"></ion-input>
-          </div>
+          <ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
+            <ion-icon align="center" name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
+            <div style="display: flex;">
+                  <div class="form-group">
+                    <ion-input type="text" class="form-control" placeholder="Pick Up Location"
+                      [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
+                      (ionClear)="ClearAutocomplete()"></ion-input>
+                  </div>&nbsp;&nbsp;
+                  
           
-           <!--select destination Location-->
-  
-           <div class="form-group">
-            <ion-input type="text" class="form-control" placeholder="  Enter Drop Location"
-              [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
-              (ionClear)="ClearAutocomplete()"></ion-input>
+                  <!--Pickup pincode-->
+          
+                  <div class="form-group">
+                    <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+                  </div>
+                  </div>
+                </ion-card>
+                   <!--select destination Location-->
+                   <ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
+                    <ion-icon align="center" name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
+                    <div style="display: flex;">
+                   <div class="form-group">
+                    <ion-input type="text" class="form-control" placeholder="Drop Location"
+                      [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
+                      (ionClear)="ClearAutocomplete()"></ion-input>
+                  </div>&nbsp;&nbsp;
+          
+                  <!--Dropup pincode-->
+                  
+                  <div class="form-group">
+                    <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()"></ion-input>
+                  </div>
           </div>
+            </ion-card>
   
     
            <!--showing the list of address-->
@@ -94,39 +114,29 @@
           
           <!--Pickup pincode-->
   
-          <div class="form-group">
-            <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
-          </div>
   
           
   
          
           <!--Pickup State-->
   
-          <div class="form-group">
-            <ion-input class="form-control" placeholder="Pickup State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
-          </div>
+    
+            <ion-input type="hidden"  placeholder="Pickup State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
+    
   
-          
-  
-         
-          <!--Dropup pincode-->
-          
-          <div class="form-group">
-            <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()"></ion-input>
-          </div>
+     
   
           <!--Dropup State-->
   
-          <div class="form-group">
-            <ion-input class="form-control"  placeholder="Dropup State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
-          </div>
+        
+            <ion-input type="hidden" placeholder="Dropup State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
+        
   
           
   
-          <div class="form-group">
-            <ion-input class="form-control"  placeholder="Mobile Number" disabled="disabled" [(ngModel)]="regdata.mobileNo" readonly></ion-input>
-          </div>
+    
+            <ion-input type="hidden"  placeholder="Mobile Number" disabled="disabled" [(ngModel)]="regdata.mobileNo" readonly></ion-input>
+    
   
           
   
@@ -156,8 +166,9 @@
   
           <div class="form-group">
             <div class="form-control">
+              <ion-label>PickUp Date&Time</ion-label>
               <ion-input type="datetime-local" placeholder="Pickup Date" style="border: none; "
-                [(ngModel)]="date">Date & Time</ion-input>
+                [(ngModel)]="date"></ion-input>
             </div>
           </div>
   
@@ -191,104 +202,10 @@
         <!--SLIDE 2-->
   
         <!-- <div class="ion-padding" slot="content"> -->
-          <div class="container">
+          <div class="container" style="margin-bottom: 18px;">
           <h1>Select vehicle</h1>
   
-          <!--select vehicle Type-->
-  
-          <!-- <div class="row">
-            <div>
-              <div class="column">
-                <input type="radio" name="payment" id="card" (change)="out('Tanker')">
-                <label for="card">
-                  <ion-card-header>
-                    <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" style="height: 94px;
-                width: 131px;
-                margin-top: -50px;;">
-                    <ion-card-title>Tanker</ion-card-title>
-                    <ion-card-subtitle>1 to 35 KL</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <div class="column">
-                <input type="radio" name="payment" id="car" (change)="out('Hyva')">
-                <label for="car">
-                  <ion-card-header>
-                    <img
-                      src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
-                      style="height: 94px;
-                width: 131px;
-                margin-top: -50px;;">
-                    <ion-card-title> Hyva</ion-card-title>
-                    <ion-card-subtitle>1 to 35 Tonnes</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <div class="column">
-                <input type="radio" name="payment" id="ca" (change)="out('LCV')">
-                <label for="ca">
-                  <ion-card-header>
-                    <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
-                      style="height: 94px;
-                width: 131px;
-                margin-top: -50px;;">
-                    <ion-card-title>LCV</ion-card-title>
-                    <ion-card-subtitle>1 to 6 Tonnes</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <div class="column">
-                <input type="radio" name="payment" id="cad" (change)="out('Open Truck')">
-                <label for="cad">
-                  <ion-card-header>
-                    <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-                    <ion-card-title>Open Truck</ion-card-title>
-                    <ion-card-subtitle>1 to 14 tonnes</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <div class="column">
-                <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
-                <label for="Trailer">
-                  <ion-card-header>
-                    <img
-                      src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
-                      style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-                    <ion-card-title>Trailer</ion-card-title>
-                    <ion-card-subtitle>1 to 100 Tonnes</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <div class="column">
-                <input type="radio" name="payment" id="container" (change)="out('Container')">
-                <label for="container">
-                  <ion-card-header>
-                    <img
-                      src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
-                      style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-                    <ion-card-title>Container</ion-card-title>
-                    <ion-card-subtitle>1 to 18 Tonnes</ion-card-subtitle>
-                  </ion-card-header>
-                </label>
-              </div>
-  
-              <br>
-  
-             
-            </div>
-          </div> -->
-          <div>
+          <div >
             <input type="radio" name="payment" id="card" (change)="out('Tanker')">
             <label for="card">
         

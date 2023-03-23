@@ -1,11 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>AddNewTrukDetails</ion-title>
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" (click)="routeto()" style="font-size: 30px;"></ion-icon>
+      <ion-title>Add new truck Details</ion-title>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <br>
+ <!--<br>
   <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk</h2>
   <div class="container">
     <div class="form-group">
@@ -16,7 +20,7 @@
     <div class="form-group">
       <ion-label position="floating">Current Location</ion-label>
       <input placeholder="Current vechile Location" [(ngModel)]="vehicleCurrentLocation" class="form-control">
-      <!-- <ion-icon name="location-outline" slot="end"></ion-icon> -->
+  
     </div>
     <br>
     <div>
@@ -170,8 +174,34 @@
       <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Driver Number"
         [(ngModel)]="DriverNumber">
     </div>
+  </div>-->
+  <div class="container">
+    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Transporter Details
+    </h2>
+
+    <p style="background-color:#e5e5e5 ;">Please share your contact details with the shipper for further communication outside the platform </p>
+    <div class="mb-3">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
+    [(ngModel)]="transporterName">
   </div>
 
+    <div class="mb-3">
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
+      [(ngModel)]="companyName">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
+      [(ngModel)]="mobileNumber">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City"
+    [(ngModel)]="city">
+    </div>
+    
+
+  </div>
 
 </ion-content>
 

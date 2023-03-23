@@ -9,7 +9,8 @@
 
 
  <ion-content>
-  <h1 style="text-align: center;">Your Perferred Vehicle</h1>
+  
+  <h4 style="text-align: center;">Your Perferred Vehicle</h4>
   <!--<ion-card>
     <div style="float: left; margin-left: 1rem;">
       <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" width="20%"
@@ -104,10 +105,10 @@
    
     </div>
   </div>
-  <br>
+  
 
 
- <h1 style="text-align: center;">Your Perferred Load Information</h1>
+ <h4 style="text-align: center;">Your Perferred Load Information</h4>
  <!--<ion-card>
     <div style="float: left; margin-left: 1rem;">
       <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg" width="10%" height="10%">
@@ -153,8 +154,8 @@
               
 
             </div>
-            <div class="flex-1 ms-3">
-                <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark">{{TrukPost.OriginLocation}} --{{TrukPost.DestinationLocation}}</a></h5>
+            <div class="flex-1 ms-3" style="margin-top: -25px;">
+                <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{TrukPost.OriginLocation}} --{{TrukPost.DestinationLocation}}</a></h5>
                 <span class="badge badge-soft-success mb-0"> Posted On {{TrukPost.date}}</span>
             </div>
         </div>
@@ -168,8 +169,8 @@
 </div>
  </ion-content>  
 
- <ion-button shape="round" class="sendData" (click)="SendExistingload()">Post</ion-button>
-
+ <ion-button shape="round" class="sendData" (click)="SendExistingload()" Sendloadtovehicle>Post</ion-button>
+ <!--<ion-button shape="round" class="sendData" (click)="Sendloadtovehicle()">Post</ion-button>-->
  <!-- <ion-header>
   <ion-toolbar>
     <div style="display: flex;">

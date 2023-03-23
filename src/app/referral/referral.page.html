@@ -22,12 +22,12 @@
       <div class="container">
         <ion-item fill="outline">
           <ion-input> {{url}}</ion-input>
-          <ion-icon name="copy-outline" slot="end" color="primary"></ion-icon>
+          <ion-icon name="copy-outline" style="float: right;" color="primary"  (click)="copyString()"></ion-icon>
         </ion-item>
       </div>
-      <ion-row>
+      <!--<ion-row>
         <ion-card-content>
-          <!-- <ion-col size="4">
+         <ion-col size="4">
             <ion-button color="success" (click)="ShareWhatsapp()"><ion-icon
                 name="logo-whatsapp"></ion-icon></ion-button>
           </ion-col>
@@ -41,25 +41,29 @@
           </ion-col>
           <ion-col size="4">
             <ion-button color="secondary" (click)="SendTwitter()"><ion-icon name="logo-twitter"></ion-icon></ion-button>
-          </ion-col> -->
-          <ion-col size="4" style="text-align: center;">
-            <ion-button  (click)="sShare()" shape="round" class="share">Share Now</ion-button>
-          </ion-col>
+          </ion-col> 
+       
         </ion-card-content>
-      </ion-row>
+      </ion-row>-->
+
+      <div style="text-align: center; margin:5px;">
+        
+          <ion-button (click)="sShare()" shape="round" class="share">Share Now</ion-button>
+       
+      </div>
 
     </ion-card>
   </div>
   <br>
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-title style="text-align: center;">Invite from your contacts</ion-card-title><br>
     <div style="text-align: center;">
       <ion-button shape="round" style="text-align: center;" class="view" expand="full">View Contacts</ion-button>
     </div>
-  </ion-card>
+  </ion-card> -->
   <br><br>
   <div style="text-align: center;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKsRtKVWLzIs6tk-PdpNT2FwihpCyuYCCRcQ&usqp=CAU">
+    <img src="assets/image 28.png">
     <br><br><br>
     <ion-button class="earn" routerLink="/your-earnings"> Go To your Earnings</ion-button>
   </div>

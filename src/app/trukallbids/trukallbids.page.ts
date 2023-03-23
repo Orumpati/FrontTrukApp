@@ -20,6 +20,9 @@ export class TrukallbidsPage implements OnInit {
   usNo: any;
   bidactlen: any;
   truckallbids: any;
+  details: any;
+  showallbids: any;
+  loadwithvehicle: any;
 
   constructor(private router:Router,public navController : NavController,) { }
   ionViewDidEnter(){
@@ -30,70 +33,48 @@ export class TrukallbidsPage implements OnInit {
     this.onlybids =this.singlearray.bids*/
    this.truckallbids =JSON.parse(localStorage.getItem('truckallBids')|| '{}')
     console.log(this.truckallbids)
-this.all()
+    for(let i=0; i<this.truckallbids.length;i++){
+      this.showallbids =this.truckallbids[i].bids
+      //this.allbidslen =result.message[i].bids.length
+      
+    }
+//this.all()
    
 
 
    
   }
 all(){
+
   var data ={
-    "_id":this.truckallbids._id
+    trukvehiclenumber:this.truckallbids
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/getsingleloadbids", {
-    method: 'POST',
-    headers: {
-      "access-Control-Allow-Origin": "*",
-      "Content-Type": 'application/json'
-    },
-    body: JSON.stringify(data),      
-
-  })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result)
-
-      for(let i=0; i<result.message.length;i++){
-        this.allbids =result.message[i].bids
-        this.allbidslen =result.message[i].bids.length
-        
-      }
-
-      for(let i=0; i<this.allbids.length;i++){
-        this.bidact = this.allbids[i].BidActivity
-        this.bidactlen = this.allbids[i].BidActivity.length
-        this.mo = this.allbids[i].mobileNo
-      }
-      console.log(this.bidactlen)
-      this.tranNum= this.bidact.filter((data:any)=>{
-        return  data.userNo == this.mo
-        })  
-        console.log(this.tranNum)
-
-        for(let i=0; i<this.tranNum.length;i++){
-          this.usNo =this.tranNum[i].userType
-        }
-        console.log(this.usNo)
-      this.filterShipperAccpt = this.allbids.filter((data:any)=>{
-      return  data.isShipperAccepted == true
-      })
-      console.log(this.filterShipperAccpt)
-
-   for(let i=0; i<this.filterShipperAccpt.length;i++){
-    this.sai =this.filterShipperAccpt[i].isShipperAccepted
-   }
+   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadsForSpecificTruck", {
+        method: 'POST',
+        headers: {
+          "access-Control-Allow-Origin": "*",
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(data), 
     
-
-    }
-
-    ).catch(err =>
-      console.log(err))
+      })
+        .then(res => res.json())
+        .then(result => {
+          console.log(result)
+          this.loadwithvehicle = result.data
+          console.log(this.loadwithvehicle)
+    
+        }
+    
+        ).catch(err =>{
+          console.log(err)
+        })
 }
   openbid(data:any){
 
 localStorage.setItem('openedBid',JSON.stringify(data))
 //this.router.navigate(['view-bid'])
-this.navController.navigateForward('/view-bid')
+this.navController.navigateForward('/truckviewbids')
   }
   autorefresh(event:any){
     

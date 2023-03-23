@@ -156,11 +156,15 @@
     
 
 </ion-content>
-<div *ngIf="agentconditions == true || initialaccepted === 'Accepted'" align="center" style="margin-top:5px;"  [hidden]="paymentdone == true">
+<div *ngIf="agentconditions == true || initialaccepted === 'Accepted'" align="center" style="margin-top:5px;"  [hidden]="paymentdone == true || typepay == 'Online'">
   <ion-button  shape="round" class="next" (click)="makepayment()">PAY NOW</ion-button>
   </div>
 
-  <ion-card style="background-color:orange;" >
+  <div *ngIf="typepay == 'Online'" align="center" style="margin-top:5px;" >
+    <ion-button  shape="round" class="next" (click)="makepayment()">View Contact</ion-button>
+    </div>
+
+  <!--<ion-card style="background-color:orange;" >
   
       <ion-card-header>
         <ion-card-title  style="color:white; font-weight:bolder;">
@@ -178,7 +182,7 @@
     
     
   
-  </ion-card>
+  </ion-card>-->
 
 <div [hidden]="agentconditions == true || initialaccepted === 'Accepted'">
 <ion-button fill="clear" style="float: right; color: green;" (click)="acceptBid()" [hidden]="">Accept</ion-button>

@@ -4,6 +4,11 @@
     <ion-buttons slot="start" >
       <ion-menu-button  menu="main-menu"></ion-menu-button>
     </ion-buttons>
+    <div align="center">
+      <div style=" display:flex; justify-content:center;align-items:center;text-align:center; width:150px; height:60px;">
+        <ion-img src="assets/trucklogo.jpeg"></ion-img>
+       </div>
+       </div>
   </ion-toolbar>
 </ion-header>
 <ion-card style="height:60px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner'">
@@ -167,7 +172,7 @@
 <ion-slides pager="true" [options]="slideOpts" style="border-radius: 15px;" >
   <ion-slide *ngFor="let image of adsarray.AdsArray index as i">  
     <img class="banner-image" [src]="image"/>
-    <button style="position:absolute; margin-top:100px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button>
+    <!--<button style="position:absolute; margin-top:100px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button>-->
   </ion-slide>
 </ion-slides>
 

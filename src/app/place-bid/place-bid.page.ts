@@ -49,6 +49,8 @@ id:any
   gettenprice: any;
   finalAcceptforBid: any;
   regdata: any;
+  ispaymentcomplete: any;
+  isShipperAccepted: any;
 
   constructor(private router:Router,public loadingController: LoadingController,public navController:NavController,
     private location:Location) { }
@@ -111,6 +113,8 @@ ionViewDidEnter(){
         
           this.item = this.final.quoteBid //go inside bids array
           console.log(this.item)
+          this.ispaymentcomplete = this.item.isPaymentCompleted
+          this. isShipperAccepted =this.item.isShipperAccepted
           for(let i=0; i<this.item.BidActivity.length;i++){ //
             this.gettenprice =this.item.BidActivity[i]
             console.log(this.gettenprice)
@@ -350,5 +354,12 @@ window.location.reload()
 routeto(){
 window.location.href="/tab/tab2"
 this.router.navigate(['/tab/tab2'])
+}
+
+posttruck(){
+  this.router.navigate(['add-new-truck-details'])
+  localStorage.setItem("loadItem",JSON.stringify(this.objects._id))
+  window.location.href="/add-new-truck-details"
+  
 }
 }

@@ -21,16 +21,21 @@ export class MytrucksPage implements OnInit {
   logindata: any;
   isTruckActive: any;
   itemlen: any;
+  trukveh: any;
+  filterbytrukname: any;
+  loadwithvehicle: any;
 
 
-  constructor(public loadingController: LoadingController,private router:Router) { }
+  constructor(public loadingController: LoadingController,private router:Router) {
+    //this.gettruckbidata()
+   }
 
 
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.get()
   this.active()
-    
+   // this.viewTruckSpecificLoads()
   }
 ionViewDidEnter(){
   this.get()
@@ -167,6 +172,9 @@ async toggles() {
         this.itemlen =result.TotalVehicles
         //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
 console.log(this.item)
+for(let i=0;i<this.item.length;i++){
+  this.trukveh =this.item[i]
+}
 loading.dismiss()
       //window.location.reload()  // reloading window
 
@@ -344,7 +352,7 @@ loading.dismiss()
 
 viewTruckSpecificLoads(){
 var data ={
-  trukvehiclenumber:"1234"
+  trukOwnerNumber:"8897820507"
 }
  fetch("http://localhost:3000/quotes/LoadsForSpecificTruck", {
       method: 'POST',
@@ -358,7 +366,17 @@ var data ={
       .then(res => res.json())
       .then(result => {
         console.log(result)
-  
+        this.loadwithvehicle =result.data
+        console.log(this.loadwithvehicle)
+      //  this.gettruckbidata()
+       /* for(let i=0;i<result.data.length;i++){
+          var gg =result.data[i].TruckMarketVehicle
+        }
+        console.log(gg)
+  this. filterbytrukname = gg.filter((data: any) =>{
+    return data.trukvehiclenumber == this.trukveh.trukvehiclenumber
+  })
+  console.log(this.filterbytrukname)*/
             //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
   
   
@@ -372,8 +390,28 @@ var data ={
       })
 }
 
+/*gettruckbidata(){
+  console.log("working")
+ // var truckno = trukvehNumber;
+ //this.active()
+ this.toggles()
+  var totaltruks =this.item
+  console.log(totaltruks)
+  for(let j=0;j<this.item.length;j++){
+  for(let i=0;i<this.loadwithvehicle.length;i++){
+ 
+         if(this.item.vehicle[0].trukvehiclenumber == this.loadwithvehicle[i].TruckMarketVehicle[0].trukvehiclenumber){
+          console.log(this.loadwithvehicle[i])
+         }
+  }
+  }
+}*/
+
 bidbyId(text:any){
-  localStorage.setItem("truckallBids",JSON.stringify(text))
+  console.log(text.trukvehiclenumber)
+
+ 
+  localStorage.setItem("truckallBids",JSON.stringify(text.trukvehiclenumber))
   this.router.navigate(['trukallbids'])
 }
 

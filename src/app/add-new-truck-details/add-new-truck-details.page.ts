@@ -3,6 +3,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { NavController, NavParams } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-new-truck-details',
   templateUrl: './add-new-truck-details.page.html',
@@ -26,8 +27,11 @@ export class AddNewTruckDetailsPage implements OnInit {
   vehicleType:any;
  _id: any;
   sub: any;
-
-  constructor(public loadingController: LoadingController,private route: ActivatedRoute) { }
+  transporterName:any;
+  companyName:any;
+  mobileNumber:any;
+  city:any;
+  constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
@@ -87,7 +91,15 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       isTrukOpenOrClose:this.isTrukOpenOrClose,
       DriverName: this.DriverName,
       DriverNumber: this.DriverNumber,
+
+
+      transporterName:this.transporterName,
+      companyName:this.companyName,
+      mobileNumber:this.mobileNumber,
+      city:this.city,
       _id:this.sub
+
+
     }
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));
@@ -115,5 +127,7 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
         loading.dismiss()
       })
   }
-
+  routeto(){
+    this.router.navigate(['placebid'])
+  }
 }

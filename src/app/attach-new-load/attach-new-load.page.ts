@@ -94,11 +94,13 @@ export class AttachNewLoadPage implements OnInit {
     this.post = JSON.parse(this.objects)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
 
     console.log(this.objects)
+console.log(this.typeOfPay)
+  
   }
 
-  ngAfterViewInit(): void {
+ /* ngAfterViewInit(): void {
     this.loadMapWithDirection();
-  }
+  }*/
 
 
 
@@ -239,8 +241,19 @@ export class AttachNewLoadPage implements OnInit {
       this.dropup = 'Invalid Pincode';
     }
   }
+gf(){
+  if(this.typeOfPay == "Online"){
+    this.paymentTypeForOffline =''
+    this.advance =''
 
+  }
+}
   async sendData() {
+    if(this.typeOfPay == "Online"){
+      this.paymentTypeForOffline =''
+      this.advance =''
+
+    }
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
@@ -271,6 +284,9 @@ export class AttachNewLoadPage implements OnInit {
       mess:"Posted a Load"
     }
     console.log(body)
+    if(body.pickupState == 'Invalid Pincode'|| body.dropupState == 'Invalid Pincode'){
+  alert("Pincode is Invalid")
+    }
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {
       method: 'post',

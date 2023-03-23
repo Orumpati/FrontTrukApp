@@ -18,61 +18,81 @@
       </div>-->
 
       <ion-list class="menu-items">
+        <ion-menu-toggle>
         <ion-item routerLink="/profile">
-          <ion-menu-toggle>
           <ion-icon  name="person-circle-outline"></ion-icon>My Profile
-          </ion-menu-toggle>
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item>
-          <ion-menu-toggle>
+          
           <ion-icon name="hammer-outline"></ion-icon>My Bids
-          </ion-menu-toggle>
+         
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item routerLink="/referral">
-          <ion-menu-toggle>
+          
           <ion-icon name="wallet-outline"></ion-icon>Refer & Earn
-          </ion-menu-toggle>
+         
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item routerLink="/help-and-guide">
-          <ion-menu-toggle>
+          
           <ion-icon name="help-circle-outline"></ion-icon>Help $ Guid
-          </ion-menu-toggle>
+          
         </ion-item>
-        <ion-item class="active" routerLink="/star-rating">
-          <ion-menu-toggle>
+      </ion-menu-toggle>
+
+     
+        <ion-item class="active" id="open-modal">
+         
           <ion-icon name="star-outline"></ion-icon>Rate-Us
-          </ion-menu-toggle>
+          
         </ion-item>
+    
+
+      <ion-menu-toggle>
         <ion-item routerLink="/contact-us">
-          <ion-menu-toggle>
+         
           <ion-icon name="call-outline"></ion-icon>Contact-us
-          </ion-menu-toggle>
+        
         </ion-item>
+      </ion-menu-toggle>
         <!--<ion-item >
           <ion-menu-toggle>
           <ion-icon name="settings-outline"></ion-icon>Setting
           </ion-menu-toggle>
         </ion-item>-->
+        <ion-menu-toggle>
         <ion-item routerLink="/terms-conditions">
-          <ion-menu-toggle>
+          
           <ion-icon name="document-text-outline"></ion-icon>Terms & Conditions
-          </ion-menu-toggle>
+        
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item routerLink="/privacy-policy">
-          <ion-menu-toggle>
+         
           <ion-icon name="lock-closed-outline"></ion-icon>Privacy Policy
-          </ion-menu-toggle>
+          
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item routerLink="/about-us">
-          <ion-menu-toggle>
+          
           <ion-icon name="information-circle-outline"></ion-icon>About Us
-          </ion-menu-toggle>
+          
         </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
         <ion-item (click)="signout()">
-          <ion-menu-toggle>
+          
           <ion-icon name="exit-outline"></ion-icon>Log-out
-          </ion-menu-toggle>
+        
         </ion-item>
+      </ion-menu-toggle>
       </ion-list>
 
       <div class="action-button">
@@ -85,6 +105,33 @@
   <ion-router-outlet id="main"></ion-router-outlet>
 
 </ion-app>
+
+
+<ion-modal #modal trigger="open-modal">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title>Staring</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-list>
+        <!-- <div class="rating"><br><br><br>
+          <ng-container *ngFor="let i of star">
+            <i class="fa fa-star fa-2x " aria-hidden="true" id="rate" (click)="updateRating(i)"
+              [ngClass]="{'active':i<=rating }"></i>
+          </ng-container>
+        </div><br> -->
+
+        <img src="assets/undraw_for_review_eqxk 1.png">
+        <h4>You can submit the rating on play store</h4>
+        <ion-button href="https://play.google.com/store/apps/details?id=com.trukapp">Rate us play Store</ion-button>
+
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
    
   

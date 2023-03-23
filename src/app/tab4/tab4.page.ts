@@ -210,7 +210,7 @@ ionViewDidEnter(){
       ).catch(err =>{
 
       loading.dismiss()
-      alert('Something went wrong')
+      //alert('Something went wrong')
         console.log(err)})
   }
   async getOperatingroutes(data: any) {
@@ -245,7 +245,7 @@ ionViewDidEnter(){
 
         ).catch(err =>{
 loading.dismiss()
-        alert("Something went wrong")
+       // alert("Something went wrong")
           console.log(err)})
     }
     else {

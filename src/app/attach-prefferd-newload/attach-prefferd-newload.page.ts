@@ -71,6 +71,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
   paymentTypeForOffline: any;
   advance: any;
   isTrukOpenOrClose: any;
+  objId: any;
 
 
   constructor(
@@ -286,6 +287,9 @@ export class AttachPrefferdNewloadPage implements OnInit {
         console.log(result)
         this.Items = result
         loading.dismiss()
+        for(let i=0;i<result.length;i++){
+          this.objId =result[i]._id
+        }
         if(result.status == 'success'){
           loading.dismiss()
           const alert = await this.alertController.create({
@@ -325,6 +329,63 @@ export class AttachPrefferdNewloadPage implements OnInit {
      // }
 
 
+  }
+
+  async Sendloadtovehicle() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    var data = {
+      _id:this.post._id,
+       
+    loadids:this.objId._id
+     
+    }
+    console.log(data)
+    //localStorage.setItem("newpostAdd", JSON.stringify(data));
+
+   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
+      method: 'post',
+      headers: {
+        "access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),
+
+    })
+      .then(response => response.json())
+      .then(async result => {
+        console.log(result),
+          this.Items = result
+          loading.dismiss()
+          const alert = await this.alertController.create({
+            header: 'Successfull',
+            // subHeader: 'Important message',
+           // message: 'truk  Successfully',
+            buttons: [
+              {
+                text: 'Okay',
+                handler: () => {
+                  console.log('Confirm Okay');
+                  //you can write your code or redirection 
+                  // sample redirection code 
+                   window.location.href = '/tab/tab4';
+                }
+              }
+            ],
+          });
+  
+          await alert.present();
+       
+
+      }
+
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)
+      })
   }
 
   slidePrev() {

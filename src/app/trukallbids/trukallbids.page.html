@@ -8,7 +8,7 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab1" (click)="route" style="font-size: 30px;"></ion-icon>
+      <ion-icon name="arrow-back-sharp" routerLink="/mytrucks" (click)="route" style="font-size: 30px;"></ion-icon>
       <ion-title>Truck all bids</ion-title>
     </div>
   </ion-toolbar>
@@ -30,15 +30,15 @@
     </ion-refresher-content>
   </ion-refresher>
   <div *ngIf="allbidslen != 0" >
-  <ion-card class="allBids" *ngFor="let data of allbids ">
+  <ion-card class="allBids" *ngFor="let data of loadwithvehicle ">
     <ion-card-header>
       <ion-card-title>Their new price</ion-card-title>
-      <ion-card-title>₹{{data.tentativefinalPrice}}/- Fixed</ion-card-title>
+      <ion-card-title>₹{{data.expectedPrice}}/- Fixed</ion-card-title>
       <ion-chip style="float:right; margin-top: -59px;">
         <ion-avatar>
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
         </ion-avatar>
-        <ion-label>{{usNo}}</ion-label>    <!--Here it should be the user name of who place the bid-->
+        <ion-label>static</ion-label>    <!--Here it should be the user name of who place the bid-->
         
       </ion-chip>
       
@@ -49,8 +49,8 @@
     
     </ion-card-content>
   
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" [hidden]="bidactlen > 2" >Open</ion-button>
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen > 2" >InProgress</ion-button>
+    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)"  >Open</ion-button>
+    <!--<ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen > 2" >InProgress</ion-button>-->
   </ion-card>
 </div>
 

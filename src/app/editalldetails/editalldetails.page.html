@@ -21,9 +21,19 @@
       <ion-item class="ion-margin">
         <ion-input placeholder="Enter Last Name" type="text"   clearInput="true" formControlName="lastName" ></ion-input>
       </ion-item>
-      <ion-item class="ion-margin">
+      <!--<ion-item class="ion-margin">
         <ion-input placeholder="Enter role" type="text"   clearInput="true" formControlName="role"></ion-input>
-      </ion-item>
+      </ion-item>-->
+      <ion-list class="ion-margin" >
+        <ion-item>
+          <ion-select interface="popover" placeholder="Select Role" formControlName="role">
+            <ion-select-option value="Shipper">Shipper</ion-select-option>
+            <ion-select-option value="Transporter">Transporter</ion-select-option>
+            <ion-select-option value="Agent/Broker">Agent/Broker</ion-select-option>
+            <ion-select-option value="Fleet Owner">Fleet Owner</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
       <ion-item class="ion-margin">
         <ion-input placeholder="Enter mobileNo" type="text"  clearInput="true" formControlName="mobileNo"></ion-input>
       </ion-item>
@@ -34,7 +44,7 @@
       
 
     <ion-label>Edit Your Address Deatails</ion-label>
-      <ion-radio-group value="strawberries"   style="display: flex; margin-left:27px;"   formControlName="addressType">
+      <ion-radio-group value="strawberries"   style="display: flex; margin-left:27px;" [allowEmptySelection]="true"  formControlName="addressType">
         <ion-item style="margin-right: 5px;">
           <ion-label>Home</ion-label>
           <ion-radio slot="end" value="home" ></ion-radio>
@@ -65,7 +75,7 @@
     </ion-item>
 
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter Pincode" type="text"   clearInput="true" formControlName="routes"></ion-input>
+      <ion-input placeholder="Enter routes" type="text"   clearInput="true" formControlName="routes"></ion-input>
     </ion-item>
     
   

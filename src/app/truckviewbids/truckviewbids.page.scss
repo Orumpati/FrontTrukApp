@@ -1,0 +1,110 @@
+.bid{
+    --background: #F58E26;
+}.next{
+    --background: #F58E26;
+}
+
+
+.message{
+    padding: 6px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    font-size: 20px;
+    margin-left: 10px;
+    
+ }
+ 
+ .other-message{
+    background: #FBDAB9;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+         color: black;
+     font-size: 20px;
+     
+     white-space: pre-wrap;
+ }
+ 
+ .my-message{
+   
+    background: #E6F3DF;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+     color: black;
+     font-size: 20px;
+     padding: 6px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+ }
+ 
+ .time{
+     color:black;
+     float: right;
+     font-size: small;
+ }
+ 
+ .msg-btn{
+ --padding-start:0.5rem;
+ --padding-end:1rem;
+ }
+ 
+ .input{
+     width: 100%;
+     border: 1px solid beige;
+     border-radius: 10px;
+     background: #fff;
+     resize: none;
+     padding-left: 10px;
+     padding-right: 10px;
+ 
+ }
+
+ .agentAccept{
+    height: 60px;
+   width: auto;
+    border-radius: 10px;
+    background: #fff;
+    border: 3px solid #218D2B;
+    border-radius: 30px;
+
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 58px;
+/* identical to box height */
+
+text-align: center;
+
+color: #218D2B;
+
+ }
+
+ .shipperAccept{
+
+    height: 60px;
+    width: auto;
+    border-radius: 10px;
+    background: #fff;
+    border: 3px solid #218D2B;
+    border-radius: 30px;
+
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 58px;
+/* identical to box height */
+
+text-align: center;
+
+color: #218D2B;
+ }
+
+ .expecPrice{
+    background: #FFFFFF;
+border: 1px solid rgba(0, 0, 0, 0.25);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+ }

@@ -33,6 +33,7 @@ export class ViewBidPage implements OnInit {
   products: any;
   tenprice: any;
   paymentdone: any;
+  typepay: any;
   
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
@@ -69,6 +70,7 @@ return this.refresh
     .then(response => response.json())
     .then(result => {
       console.log(result)
+      this.typepay =result.typeOfPay
       this.paymentdone =result.isPaymentCompleted
       for(let i=0; i<result.length; i++){
     var final= result[i].bids

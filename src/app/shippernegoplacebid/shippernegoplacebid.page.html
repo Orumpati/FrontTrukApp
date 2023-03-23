@@ -35,10 +35,10 @@
 <ion-grid>
   <ion-row *ngFor="let text of finalss">
 
-     <ion-col size="9" *ngIf="text.userType!== currentUserType" class="message other-message">
+     <ion-col size="8" *ngIf="text.userType == regdata.role" class="message other-message">
 
       <b text-left>{{text.userType}}</b><br>
-      <b text-left>{{text.price}}</b><br>
+      <b text-left>₹{{text.price}}</b><br>
 
 
 
@@ -48,7 +48,7 @@
 
     </ion-col> 
    
-     <ion-col size="8" offset="3" *ngIf="text.userType == regdata.role">
+     <ion-col size="8" offset="3" *ngIf="text.userType != regdata.role">
 
       <div align="center"  class="shipperAccept" *ngIf="text.initialAccept === 'Accepted'">
         Bid accepted for :₹{{text.price}} /-
@@ -155,7 +155,7 @@
 </ion-card>-->
 
 
-<ion-button id="open-modal" shape="round" class="next">Negotiate</ion-button>
+<!--<ion-button id="open-modal" shape="round" class="next">Negotiate</ion-button>-->
 </div>
   <ion-modal trigger="open-modall" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
     <ng-template>

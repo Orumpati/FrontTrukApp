@@ -279,10 +279,7 @@ const routes: Routes = [
     path: 'truckviewbids',
     loadChildren: () => import('./truckviewbids/truckviewbids.module').then( m => m.TruckviewbidsPageModule)
   },
-  {
-    path: 'shipperplacebid',
-    loadChildren: () => import('./shipperplacebid/shipperplacebid.module').then( m => m.ShipperplacebidPageModule)
-  },
+
   {
     path: 'shippernegoplacebid',
     loadChildren: () => import('./shippernegoplacebid/shippernegoplacebid.module').then( m => m.ShippernegoplacebidPageModule)
