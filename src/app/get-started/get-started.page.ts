@@ -9,10 +9,10 @@ export class GetStartedPage implements OnInit {
   // set app banner slides
   slideOpts = {
    initialSlide: 0,
-   speed: 6400,
+   speed: 1400,
    loop: true,
    autoplay: {
-     delay: 7500,
+     delay: 2500,
      disableOnInteraction: false,
    }
  };

@@ -3,12 +3,16 @@ import {  Router } from '@angular/router';
 import { IonContent, LoadingController,NavController } from '@ionic/angular';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
+
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
   selector: 'app-place-bid',
   templateUrl: './place-bid.page.html',
   styleUrls: ['./place-bid.page.scss'],
 })
 export class PlaceBidPage implements OnInit {
+  @ViewChild(IonModal) modal!: IonModal ;
   private refresh = new Subject<void>();
   item: any = []; 
   bids:any=[];
@@ -26,7 +30,8 @@ id:any
   bidPrice:any;
   finalss:any;
   placebidID:any
-
+  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  name!: string;
   newMsg: any;
   created!: number;
   date: any
@@ -51,7 +56,12 @@ id:any
   regdata: any;
   ispaymentcomplete: any;
   isShipperAccepted: any;
-
+  typeofpay: any;
+  sharecontact: any;
+  driverdetails: any;
+  driver: any;
+  isagentAccept: any;
+  
   constructor(private router:Router,public loadingController: LoadingController,public navController:NavController,
     private location:Location) { }
 
@@ -68,6 +78,7 @@ console.log(this.regdata)
     
    this.objects = JSON.parse(localStorage.getItem("loadBy") || '{}');
    console.log(this.objects)
+   this.typeofpay = this.objects.typeOfPay
 this.getfullarray()
   
 this.autorefreshdata.subscribe(res =>{
@@ -75,6 +86,7 @@ this.autorefreshdata.subscribe(res =>{
 })
 //this.finalAcceptforBid =JSON.parse(localStorage.getItem("finalAcceptforBid") ||'{}')
    // console.log(this.finalAcceptforBid)
+
   }
 
   get autorefreshdata(){
@@ -99,7 +111,11 @@ ionViewDidEnter(){
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result) //getting full array
+        console.log(result) 
+     
+      
+       
+        //getting full array
         if(result.bids.length === 0){
           this.show=true
           this.hide=false
@@ -108,13 +124,14 @@ ionViewDidEnter(){
        
         for(let i=0; i<result.bids.length;i++){
       this.final= result.bids[i]
+      this.sharecontact = result.bids[i].shareContact
+      this.driverdetails =result.bids[i].vehicleInformation 
       console.log(this.final) //inside an array
         }
-        
+        console.log(this.driverdetails)
           this.item = this.final.quoteBid //go inside bids array
           console.log(this.item)
-          this.ispaymentcomplete = this.item.isPaymentCompleted
-          this. isShipperAccepted =this.item.isShipperAccepted
+         
           for(let i=0; i<this.item.BidActivity.length;i++){ //
             this.gettenprice =this.item.BidActivity[i]
             console.log(this.gettenprice)
@@ -124,6 +141,9 @@ ionViewDidEnter(){
             console.log(this.finalss)
             this.num =this.item.BidActivity[i].userNo
               }
+              this.ispaymentcomplete = this.item.isPaymentCompleted
+              this. isShipperAccepted =this.item.isShipperAccepted
+              this.isagentAccept =this.item.isAgentAccepted
         console.log(this.finalss.length)
         
         if(this.finalss.length > 0){
@@ -135,7 +155,7 @@ ionViewDidEnter(){
           this.insidebidarray= this.finalss[i].initialAccept
           console.log(this.insidebidarray)
             }
-       
+
       }
 
       ).catch(err =>
@@ -312,6 +332,7 @@ console.log(body)
     "_id":this.objects._id,
     "mobileNo":this.regdata.mobileNo,
     "isAgentAccepted":true,
+    "TohideAcceptBtn":true,
     "Number":parseInt(this.objects.Number), // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.item.tentativefinalPrice, // for send notifi
@@ -361,5 +382,19 @@ posttruck(){
   localStorage.setItem("loadItem",JSON.stringify(this.objects._id))
   window.location.href="/add-new-truck-details"
   
+}
+
+cancel() {
+  //this.modal.dismiss(null, 'cancel');
+  window.location.href='/place-bid'
+}
+
+
+
+onWillDismiss(event: Event) {
+  const ev = event as CustomEvent<OverlayEventDetail<string>>;
+  if (ev.detail.role === 'confirm') {
+    this.message = `Hello, ${ev.detail.data}!`;
+  }
 }
 }

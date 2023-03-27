@@ -56,7 +56,7 @@ all(){
         this.allbidslen =result.message[i].bids.length
         
       }
-
+console.log(this.allbids)
       for(let i=0; i<this.allbids.length;i++){
         this.bidact = this.allbids[i].BidActivity
         this.bidactlen = this.allbids[i].BidActivity.length

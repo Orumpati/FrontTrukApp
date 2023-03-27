@@ -34,7 +34,8 @@ export class MytrucksPage implements OnInit {
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.get()
-  this.active()
+  //this.active()
+  this.toggles()
    // this.viewTruckSpecificLoads()
   }
 ionViewDidEnter(){

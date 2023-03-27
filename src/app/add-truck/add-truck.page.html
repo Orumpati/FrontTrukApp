@@ -14,7 +14,7 @@
     <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk</h2>
     <div class="form-group">
       <ion-label position="floating">Enter Vechile number</ion-label>
-      <input placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control">
+      <input  placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control">
     </div>
   
     <div class="form-group">
@@ -34,101 +34,11 @@
         <ion-input type="datetime-local" style="border: none; " [(ngModel)]="trukdate"></ion-input>
       </div>
     </div>
-    <!-- <div class="form-group">
-      <ion-label position="floating">Enter Vechile number</ion-label>
-      <input placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control">
-    </div> -->
+ 
   </div>
 
   <div class="container">
-    <!-- <h2 style="text-align: center; color: #f58e26;">choose one TrukVehicle</h2> -->
-    <!-- <div class="row" style="margin-top: -2rem;">
-      <div>
-        <div class="column">
-          <input type="radio" name="payment" id="card" (change)="out('Tanker')">
-          <label for="card">
-            <ion-card-header>
-              <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-              <ion-card-subtitle>Tanker</ion-card-subtitle>
-              <ion-card-subtitle>1 to 35 KL</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-
-        <div class="column">
-          <input type="radio" name="payment" id="car" (change)="out('Hyva')">
-          <label for="car">
-            <ion-card-header>
-              <img
-                src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
-                style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-              <ion-card-subtitle>Hyva</ion-card-subtitle>
-              <ion-card-subtitle>1 to 35 Tonnes</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-
-        <div class="column">
-          <input type="radio" name="payment" id="ca" (change)="out('LCV')">
-          <label for="ca">
-            <ion-card-header>
-              <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
-                style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-              <ion-card-subtitle>LCV</ion-card-subtitle>
-              <ion-card-subtitle>1 to 6 Tonnes</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-
-        <div class="column">
-          <input type="radio" name="payment" id="cad" (change)="out('Open Truck')">
-          <label for="cad">
-            <ion-card-header>
-              <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-              <ion-card-subtitle>Open Truck</ion-card-subtitle>
-              <ion-card-subtitle>1 to 14 tonnes</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-
-        <div class="column">
-          <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
-          <label for="Trailer">
-            <ion-card-header>
-              <img
-                src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
-                style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-              <ion-card-subtitle>Trailer</ion-card-subtitle>
-              <ion-card-subtitle>1 to 100 Tonnes</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-
-        <div class="column">
-          <input type="radio" name="payment" id="container" (change)="out('Container')">
-          <label for="container">
-            <ion-card-header>
-              <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
-                style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-              <ion-card-subtitle>Container</ion-card-subtitle>
-              <ion-card-subtitle>1 to 18 Tonnes</ion-card-subtitle>
-            </ion-card-header>
-          </label>
-        </div>
-      </div>
-    </div> -->
+ 
 
     <div >
       <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">choose one
@@ -264,4 +174,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" (click)="postVehile()">Add&Post</ion-button>
+<ion-button expand="full" shape="round" class="back" (click)="postVehile()" [disabled]="trukvehiclenumber == null || trukcurrentLocation== null ||trukoperatingRoutes == '' || trukdate == null || trukname == null">Add&Post</ion-button>

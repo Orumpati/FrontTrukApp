@@ -14,6 +14,7 @@ export class ReferralPage implements OnInit {
   imgurl:string= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReFjO6rbNAKcZtfgpqkhnqWGPwcH5hAArN1A&usqp=CAU'
   link: string='https://youtu.be/5BQQM4uvRkw'
   url:string='http://trukapp.com/'
+  mess:any="copied Successfully"
 
   CopyInputText:string = "http://trukapp.com/";
 
@@ -32,6 +33,7 @@ export class ReferralPage implements OnInit {
   //copy
   copyString(){
     this.clipboard.copy(this.CopyInputText);
+    alert(this.mess)
   }
 
 

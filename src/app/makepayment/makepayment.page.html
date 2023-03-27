@@ -44,10 +44,11 @@
     </ion-card-content>-->
     </div>
   </ion-card>
+  <div style="display: flex;position:absolute ;margin-top:198px;margin-left:7px;">
+    <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
+    
+    By Signup ,You Accept <a href="/terms-conditions">T&C</a> and Privacy
+  </div>
 </ion-content>
-<div style="display: flex;position:absolute ;margin-top:60px;">
-  <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
-  
-  By Signup ,You Accept <a href="/terms-conditions">T&C</a> and Privacy
-</div>
+
 <ion-button color="#a13cd7;" (click)="pay()" [disabled]="checkbox == false">Pay Now</ion-button>

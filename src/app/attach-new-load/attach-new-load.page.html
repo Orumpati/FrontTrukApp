@@ -18,15 +18,17 @@
 
       <div class="container">
         <div class="title">
-         <h1>Load Details</h1> 
+         <h3 style="color:orange;">Load Details</h3> 
         </div>
-        
+        <br>
         <!--select origin Location-->
-<ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
-  <ion-icon align="center" name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
-  <div style="display: flex;">
+       <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
+       <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
+       <span style="font-size: 18px;">PickUp Location</span>
+       <div style="display: flex;">
+ 
         <div class="form-group">
-          <ion-input type="text" class="form-control" placeholder="Pick Up Location"
+          <ion-input type="text" appCapitalize class="form-control" placeholder="Pick Up Location"
             [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
             (ionClear)="ClearAutocomplete()"></ion-input>
         </div>&nbsp;&nbsp;
@@ -34,28 +36,35 @@
 
         <!--Pickup pincode-->
 
-        <div class="form-group">
+        <div class="form-group" style="display: flex;">
           <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+          <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
+          <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
         </div>
         </div>
-      </ion-card>
+       </ion-card>
          <!--select destination Location-->
-         <ion-card style="padding-top: 10px;padding-left:5px; padding-right:5px; border-radius:9px;">
-          <ion-icon align="center" name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
+         <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
+          <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
+          <span style="font-size: 18px;">DropUp Location</span>
           <div style="display: flex;">
          <div class="form-group">
-          <ion-input type="text" class="form-control" placeholder="Drop Location"
+          <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
             [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
             (ionClear)="ClearAutocomplete()"></ion-input>
         </div>&nbsp;&nbsp;
 
         <!--Dropup pincode-->
         
-        <div class="form-group">
-          <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()"></ion-input>
+        <div class="form-group" style="display: flex;">
+          <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
+  
+          </ion-input>
+          <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
+          <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
         </div>
-</div>
-  </ion-card>
+       </div>
+       </ion-card>
          <!--showing the list of address-->
          <ion-list [hidden]="autocompleteItems.length == 0" >
           <ion-icon (click)="ClearAutocomplete()" name="close-outline"  style="float:right;font-size:20px;"></ion-icon>
@@ -128,13 +137,14 @@
         
         <!--Quantity-->
 
-        <div class="form-group" style="display: flex; margin-bottom:40px;" >
-          <div>
+        <div class="form-group" style="display: flex; " >
+          <div style="width:150px; margin-right:20px;">
           <ion-input type="  text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
           
           </ion-input>
 </div>
-          <div>
+          <div style="width: 150px;  border-radius: 15px;
+          box-shadow: 2px 2px 2px lightgray;">
             <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
              <ion-select-option value="Tonns">Tonns</ion-select-option>
@@ -159,104 +169,10 @@
         <div >
         <h1>Select vehicle</h1>
 
-        <!--select vehicle Type-->
 
-        <!-- <div class="row">
-          <div>
-            <div class="column">
-              <input type="radio" name="payment" id="card" (change)="out('Tanker')">
-              <label for="card">
-                <ion-card-header>
-                  <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" style="height: 94px;
-              width: 131px;
-              margin-top: -50px;">
-                  <ion-card-title>Tanker</ion-card-title>
-                  <ion-card-subtitle>1 to 35 KL</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <div class="column">
-              <input type="radio" name="payment" id="car" (change)="out('Hyva')">
-              <label for="car">
-                <ion-card-header>
-                  <img
-                    src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
-                    style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-                  <ion-card-title> Hyva</ion-card-title>
-                  <ion-card-subtitle>1 to 35 Tonnes</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <div class="column">
-              <input type="radio" name="payment" id="ca" (change)="out('LCV')">
-              <label for="ca">
-                <ion-card-header>
-                  <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
-                    style="height: 94px;
-              width: 131px;
-              margin-top: -50px;;">
-                  <ion-card-title>LCV</ion-card-title>
-                  <ion-card-subtitle>1 to 6 Tonnes</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <div class="column">
-              <input type="radio" name="payment" id="cad" (change)="out('Open Truck')">
-              <label for="cad">
-                <ion-card-header>
-                  <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-                  <ion-card-title>Open Truck</ion-card-title>
-                  <ion-card-subtitle>1 to 14 tonnes</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <div class="column">
-              <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
-              <label for="Trailer">
-                <ion-card-header>
-                  <img
-                    src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
-                    style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-                  <ion-card-title>Trailer</ion-card-title>
-                  <ion-card-subtitle>1 to 100 Tonnes</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <div class="column">
-              <input type="radio" name="payment" id="container" (change)="out('Container')">
-              <label for="container">
-                <ion-card-header>
-                  <img
-                    src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
-                    style="height: 94px;
-            width: 131px;
-            margin-top: -50px;;">
-                  <ion-card-title>Container</ion-card-title>
-                  <ion-card-subtitle>1 to 18 Tonnes</ion-card-subtitle>
-                </ion-card-header>
-              </label>
-            </div>
-
-            <br>
-
-           
-          </div>
-        </div> -->
-
-        <div>
-          <input type="radio" name="payment" id="card" (change)="out('Tanker')">
-          <label for="card">
+        
+          <input type="radio" name="payment" id="card" class="vehicle"  (change)="out('Tanker')">
+          <label for="card" class="selveh">
       
             <div class="imgdiv">
               <img
@@ -269,11 +185,11 @@
             </div>
       
           </label>
-        </div>
+        
       
-        <div>
-          <input type="radio" name="payment" id="cash" (change)="out('Hyva')">
-          <label for="cash">
+        
+          <input type="radio" name="payment" id="cash" class="vehicle"  (change)="out('Hyva')">
+          <label for="cash" class="selveh">
             <div class="imgdiv">
               <img
                 src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
@@ -284,13 +200,13 @@
               Hyva (1 to 35 Tons)
             </div>
           </label>
-        </div>
+        
       
       
       
-        <div>
-          <input type="radio" name="payment" id="csh" (change)="out('LCV')">
-          <label for="csh">
+        
+          <input type="radio" name="payment" id="csh" class="vehicle"  (change)="out('LCV')">
+          <label for="csh" class="selveh">
             <div class="imgdiv">
               <img
                 src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
@@ -301,11 +217,11 @@
               LCV (1 to 6 Tons)
             </div>
           </label>
-        </div>
+        
       
-        <div>
-          <input type="radio" name="payment" id="ash" (change)="out('Truk')">
-          <label for="ash">
+        
+          <input type="radio" name="payment" id="ash" class="vehicle"  (change)="out('Truk')">
+          <label for="ash" class="selveh">
             <div class="imgdiv">
               <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png"
                 style="width: 45px; height:45px; border-radius:50%;">
@@ -315,11 +231,11 @@
               Truk (1 to 14 Tons)
             </div>
           </label>
-        </div>
+        
 
         
-          <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
-          <label for="Trailer">
+          <input type="radio" name="payment" id="Trailer" class="vehicle" (change)="out('Trailer')">
+          <label for="Trailer" class="selveh">
             <div class="imgdiv">
               <img src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
                 style="width: 45px; height:45px; border-radius:50%;">
@@ -332,8 +248,8 @@
         
 
         
-          <input type="radio" name="payment" id="Container" (change)="out('Container')">
-          <label for="Container">
+          <input type="radio" name="payment" id="Container" class="vehicle"  (change)="out('Container')">
+          <label for="Container" class="selveh">
             <div class="imgdiv">
               <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
                 style="width: 45px; height:45px; border-radius:50%;">
@@ -344,31 +260,81 @@
             </div>
           </label>
         
-
-        <ion-card class="form-group" *ngIf="data =='Truk'">
-
-          <ion-card-title>Select the Truk body</ion-card-title>
-
-          <div  style="margin-top: 1rem;">
-            
-          <div >
-            <ion-radio-group [(ngModel)]="isTrukOpenOrClose" style="display: flex;">
-              <ion-item>
-                
-                <ion-radio  value="Open body"></ion-radio>&nbsp;
-                <ion-label>Open body</ion-label>
-              </ion-item>
+          <ion-card style="height: auto;" *ngIf="data =='Truk'">
+            <ion-card-title>Select the Truk type</ion-card-title>
+            <br>
+            <div class="flex" [(ngModel)]="isTrukOpenOrClose">
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Open Body</label>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Close Body</label>
+              
+  
+            </div>
+          </ion-card>
+  
           
-              <ion-item>
-               
-                <ion-radio  value="Closed body"></ion-radio>&nbsp;
-                <ion-label>Closed body</ion-label>
-              </ion-item>
-            </ion-radio-group>
-          </div>
-          </div>
-
-        </ion-card>
+  
+          <ion-card style="height: auto;" *ngIf="data =='Hyva'">
+            <ion-card-title>Select the Hyva type</ion-card-title>
+            <br>
+            <div class="flex" [(ngModel)]="typeOfHyva">
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">10 Tyre</label>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">12 Tyre</label>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">14 Tyre</label>
+    
+    
+            </div>
+          </ion-card>
+  
+          <ion-card style="height: auto;" *ngIf="data =='Trailer'">
+            <ion-card-title>Select the Trailer type</ion-card-title>
+            <br>
+            <div class="flex" [(ngModel)]="typeOfTrailer">
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">High Bed</label>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Semi Bed</label>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Low Bed</label>
+    
+    
+            </div>
+          </ion-card>
+  
+  
+          <ion-card style="height: auto;" *ngIf="data =='Container'">
+            <ion-card-title>Select the Container type:</ion-card-title>
+            <br>
+            <div class="flex" [(ngModel)]="typeOfContainer">
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl</label>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl HQ</label>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
+              <input type="radio" id="4" name="hyva" class="typeOfVehicle"/>
+              <label for="4" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
+              <input type="radio" id="5" name="hyva" class="typeOfVehicle"/>
+              <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl HQ</label>
+              <input type="radio" id="6" name="hyva" class="typeOfVehicle"/>
+              <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">19ft Sxl</label>
+              <input type="radio" id="7" name="hyva" class="typeOfVehicle"/>
+              <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">20ft Sxl</label>
+              <input type="radio" id="8" name="hyva" class="typeOfVehicle"/>
+              <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">21ft Sxl</label>
+              <input type="radio" id="9" name="hyva" class="typeOfVehicle"/>
+              <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">23ft Sxl</label>
+              <input type="radio" id="10" name="hyva" class="typeOfVehicle"/>
+              <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">24ft Sxl</label>
+    
+            </div>
+          </ion-card>
+          <br>
+          <br>
       </div>
 
       <!-- </div> -->
@@ -384,6 +350,7 @@
           <!--Expected Bill-->
 
           <div class="form-group">
+            <ion-label>what is your expected price?</ion-label>
             <ion-input type="  text" class="form-control" placeholder="Expected Price"
               [(ngModel)]="expectedPrice"></ion-input>
           </div>
@@ -395,7 +362,7 @@
           <div class="form-group">
             <div class="form-control">
               <ion-label></ion-label>
-              <ion-select placeholder="Type of Payment to Lorry Owner" [(ngModel)]="typeOfPay" (click)="gf()">
+              <ion-select placeholder="Type of Payment to truk Owner" [(ngModel)]="typeOfPay" (click)="gf()">
                 <ion-select-option value="Offline">Offline/Cash</ion-select-option>
                 <ion-select-option value="Online" >Online</ion-select-option>
 
@@ -422,10 +389,10 @@
               <p>How do you like to pay ?</p>
               <ion-radio-group [(ngModel)]="paymentTypeForOffline" >
   
-                <div style="float: left;display: flex;font-size: large;">
+              <div style="float: left;display: flex;font-size: large;"  class="form-check-inline">
                 <ion-radio value="Advance"></ion-radio>
                 <ion-label >Advance</ion-label>
-              </div>
+               </div>
                 <div style="display: inline; float: right;display: flex; font-size: large;">
                 <ion-radio value="Full Payment"></ion-radio>
                 <ion-label>Full Payment</ion-label>
@@ -480,16 +447,16 @@
 </ion-content>
 <ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" *ngIf="typeOfPay == 'Online'|| paymentTypeForOffline == null || advance == null" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null "
-  shape="round">Submit1</ion-button>
+  style="height: 50px;" >Submit</ion-button>
 
 
   <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" [hidden]=" paymentTypeForOffline == 'Advance'" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
-  shape="round">Submit2</ion-button>
+style="height: 50px;" >Submit</ion-button>
 
   <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Online'"(click)="sendData()"  expand="full" class="next"
   [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
-    shape="round">Submit3</ion-button>
+  style="height: 50px;"  >Submit</ion-button>
 <!--Expansion panel-->
 
 <!-- 

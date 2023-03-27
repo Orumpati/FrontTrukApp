@@ -41,7 +41,7 @@ citys:any
     await alert.present();
   }
   ngOnInit() {
-    this.searchCities()
+    //this.searchCities()
     console.log(this.autocompleteResults)
   }
   onInput() {
@@ -103,16 +103,16 @@ alerts(){
     timer: 1500
   })
 }
-searchCities() {
+// searchCities() {
 
-  var keyword = "nellore"
-  const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=${keyword}&limit=10&offset=0&sort=name`;
-  const headers = {
-    'X-RapidAPI-Key': 'b68b12ae01mshb45f5fc5cbfad83p1c9b2djsn7153fe006cac',
-    'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
-  };
-  this.http.get(url, { headers }).subscribe((data: any) => {
-    this.cities = data.data.map((city: { name: any; }) => city.name);
-  });
-}
+//   var keyword = "nellore"
+//   const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=${keyword}&limit=10&offset=0&sort=name`;
+//   const headers = {
+//     'X-RapidAPI-Key': 'b68b12ae01mshb45f5fc5cbfad83p1c9b2djsn7153fe006cac',
+//     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+//   };
+//   this.http.get(url, { headers }).subscribe((data: any) => {
+//     this.cities = data.data.map((city: { name: any; }) => city.name);
+//   });
+// }
 }

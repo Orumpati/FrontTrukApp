@@ -71,10 +71,10 @@ all(){
         })
 }
   openbid(data:any){
-
+console.log(data)
 localStorage.setItem('openedBid',JSON.stringify(data))
-//this.router.navigate(['view-bid'])
-this.navController.navigateForward('/truckviewbids')
+this.router.navigate(['truckviewbids'])
+//this.navController.navigateForward('/truckviewbids')
   }
   autorefresh(event:any){
     

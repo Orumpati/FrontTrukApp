@@ -16,10 +16,10 @@
     <form [formGroup]="updatedFormed" (ngSubmit)="saveDetails(userpost.value)" #userpost="ngForm">
       <ion-label>Edit Your Person Details</ion-label>
       <ion-item class="ion-margin">
-        <ion-input placeholder="Enter First Name" type="text"  clearInput="true" formControlName="firstName" ></ion-input>
+        <ion-input appCapitalize placeholder="Enter First Name" type="text"  clearInput="true" formControlName="firstName" ></ion-input>
       </ion-item>
       <ion-item class="ion-margin">
-        <ion-input placeholder="Enter Last Name" type="text"   clearInput="true" formControlName="lastName" ></ion-input>
+        <ion-input appCapitalize placeholder="Enter Last Name" type="text"   clearInput="true" formControlName="lastName" ></ion-input>
       </ion-item>
       <!--<ion-item class="ion-margin">
         <ion-input placeholder="Enter role" type="text"   clearInput="true" formControlName="role"></ion-input>
@@ -35,11 +35,11 @@
         </ion-item>
       </ion-list>
       <ion-item class="ion-margin">
-        <ion-input placeholder="Enter mobileNo" type="text"  clearInput="true" formControlName="mobileNo"></ion-input>
+        <ion-input  placeholder="Enter mobileNo" type="text"  clearInput="true" formControlName="mobileNo"></ion-input>
       </ion-item>
     
       <ion-item class="ion-margin">
-        <ion-input placeholder="Enter companyName" type="text"   clearInput="true" formControlName="companyName"></ion-input>
+        <ion-input appCapitalize placeholder="Enter companyName" type="text"   clearInput="true" formControlName="companyName"></ion-input>
       </ion-item>
       
 
@@ -62,13 +62,13 @@
       <ion-input placeholder="Enter DoorNo/Building No" type="text"   clearInput="true" formControlName="doorNo"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter Street/Area" type="text"    clearInput="true" formControlName="areaName"></ion-input>
+      <ion-input appCapitalize placeholder="Enter Street/Area" type="text"    clearInput="true" formControlName="areaName"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter LandMark" type="text"  clearInput="true" formControlName="landMark"></ion-input>
+      <ion-input appCapitalize placeholder="Enter LandMark" type="text"  clearInput="true" formControlName="landMark"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter City" type="text"    clearInput="true" formControlName="city"></ion-input>
+      <ion-input  appCapitalize placeholder="Enter City" type="text"    clearInput="true" formControlName="city"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
       <ion-input placeholder="Enter Pincode" type="text"   clearInput="true" formControlName="pincode"></ion-input>

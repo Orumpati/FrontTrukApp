@@ -206,7 +206,7 @@ loading.dismiss()
 
       ).catch(err =>{
         loading.dismiss()
-        alert('Something Went Wrong')
+  
         console.log(err)})
   }
 

@@ -23,6 +23,9 @@ export class MakepaymentPage implements OnInit {
   filname: any;
   array :any =[]
   checkbox =false
+  paymentId: any;
+  docid: any;
+  viewbidDocId: any;
   constructor(private auth:AuthpaymentService,private modal:ModalController,private alert:AlertController) { }
   async presentAlert() {
     const alert = await this.alert.create({
@@ -37,8 +40,10 @@ export class MakepaymentPage implements OnInit {
   }
   ngOnInit() {
     this.bid =JSON.parse(localStorage.getItem('filteredBid') || '{}')
+    this.viewbidDocId =JSON.parse(localStorage.getItem('DocId') || '{}')
     console.log(this.bid)
     for(let i=0;i<this.bid.length;i++){
+      this.docid = this.bid[i]._id
       this.tenPrice  =this.bid[i].tentativefinalPrice
       this.receivemobile  =this.bid[i].mobileNo
     }
@@ -55,12 +60,51 @@ this.array.push(this.payingToNmae)
   }
 
   options = {
-    "key": "rzp_live_W93qXq63hhLhjQ",
+    "key": "rzp_live_W93qXq63hhLhjQ",//rzp_test_qjJfzalIvcjn3q
     "amount":  100,
     "currency": "INR",
     "name": "Acme Corp",
     "description": "Test Transaction",
     "image": "https://example.com/your_logo",
+    "handler": (response: any) => {
+      // Handle the response here
+      console.log(response);
+      this.paymentId = response.razorpay_payment_id
+      var body = {
+  
+    
+        "_id":this.viewbidDocId,
+        "paymentId":this.paymentId
+       
+      
+       }
+       console.log(this.docid._id)
+  console.log(body)
+    
+      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/paymentconfirm", {
+        method: 'put',
+        headers: {
+          "access-Control-Allow-Origin": "*",
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(body),
+    
+      })
+        .then(response => response.json())
+        .then(async result => {
+          console.log(result)
+      
+     
+         // loading.dismiss()
+    
+    
+        }
+    
+        ).catch(err =>{
+          //loading.dismiss()
+          console.log(err)
+        })
+    },
     "order_id": "", 
     "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
     "prefill": {
@@ -80,8 +124,15 @@ pay(){
 
   this.rzp1 = new this.auth.nativeWindow().Razorpay(this.options);
    this.rzp1.open()
+ 
+
+   
+  
+ 
 }
+
 out(paymentmode:any){
 console.log(paymentmode)
 }
+ 
 }

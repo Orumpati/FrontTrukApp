@@ -181,22 +181,22 @@
 
     <p style="background-color:#e5e5e5 ;">Please share your contact details with the shipper for further communication outside the platform </p>
     <div class="mb-3">
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
+    <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
     [(ngModel)]="transporterName">
   </div>
 
     <div class="mb-3">
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
       [(ngModel)]="companyName">
     </div>
 
     <div class="mb-3">
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
       [(ngModel)]="mobileNumber">
     </div>
 
     <div class="mb-3">
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="City"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="City"
     [(ngModel)]="city">
     </div>
     
@@ -206,4 +206,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" (click)="NewPostAdd()">Post</ion-button>
+<ion-button expand="full" shape="round" class="back" [disabled]="transporterName == null  || companyName == null || mobileNumber ==null || city == null" (click)="NewPostAdd()">Post</ion-button>

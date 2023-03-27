@@ -286,6 +286,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
       .then(async result => {
         console.log(result)
         this.Items = result
+        this.Sendloadtovehicle()
         loading.dismiss()
         for(let i=0;i<result.length;i++){
           this.objId =result[i]._id

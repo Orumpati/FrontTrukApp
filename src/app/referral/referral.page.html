@@ -21,8 +21,8 @@
       <br>
       <div class="container">
         <ion-item fill="outline">
-          <ion-input> {{url}}</ion-input>
-          <ion-icon name="copy-outline" style="float: right;" color="primary"  (click)="copyString()"></ion-icon>
+         {{url}}
+          <ion-icon name="copy-outline" style="float: right;" slot="end" color="primary"  (click)="copyString()"></ion-icon>
         </ion-item>
       </div>
       <!--<ion-row>

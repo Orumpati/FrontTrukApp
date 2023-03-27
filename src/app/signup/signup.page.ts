@@ -184,10 +184,6 @@ console.log(data)
               loading.dismiss();
               alert('Unable to Signup')
             }
-       
-        
-        
-      
         }
         ).catch(
             error =>{

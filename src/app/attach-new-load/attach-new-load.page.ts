@@ -70,6 +70,11 @@ export class AttachNewLoadPage implements OnInit {
   isTrukOpenOrClose:any
   paymentTypeForOffline: any;
   advance: any;
+
+
+  typeOfHyva:any
+  typeOfTrailer:any
+  typeOfContainer:any
   constructor(
     public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController
   ) {
@@ -79,15 +84,6 @@ export class AttachNewLoadPage implements OnInit {
   }
   ngOnInit(): void {
     this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
-
-
-    function randomNumberBetween(min: number, max: number): number {
-      //return Math.random() * (max + min) ;
-      return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    
-    let randomNumber = randomNumberBetween(1, 10);
-    console.log(randomNumber);
 
     this.objects = localStorage.getItem("AttachNewLoad");  //use the localstorage we getdata from savedData
     //The localStorage object allows you to save key/value pairs in the browser.
@@ -226,7 +222,9 @@ console.log(this.typeOfPay)
       this.pickup = `${postOffice.State}`;
     } else {
       this.pickup = 'Invalid Pincode';
+   
     }
+   
   }
 
   async getDropupState() {
@@ -239,7 +237,9 @@ console.log(this.typeOfPay)
       this.dropup = `${postOffice.State}`;
     } else {
       this.dropup = 'Invalid Pincode';
+     // alert("Invalid DropUp Pincode")
     }
+    
   }
 gf(){
   if(this.typeOfPay == "Online"){
@@ -276,6 +276,9 @@ gf(){
       data: this.data,
       isTrukOpenOrClose:this.isTrukOpenOrClose,
       typeOfPay: this.typeOfPay,
+      typeOfHyva:this.typeOfHyva,
+      typeOfTrailer:this.typeOfTrailer,
+      typeOfContainer:this.typeOfContainer,
    /*    length: this.length,
       breadth: this.breadth,
       height: this.height, */
@@ -286,7 +289,7 @@ gf(){
     console.log(body)
     if(body.pickupState == 'Invalid Pincode'|| body.dropupState == 'Invalid Pincode'){
   alert("Pincode is Invalid")
-    }
+    }else{
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {
       method: 'post',
@@ -335,6 +338,7 @@ gf(){
         alert('Load Not Posted')
         console.log(err)
       })
+    }
      // }else{
        // alert('Verify Aadhar/GST')
       //  window.location.href='/profle'

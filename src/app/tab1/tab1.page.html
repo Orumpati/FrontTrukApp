@@ -10,7 +10,7 @@
      </div>
      </div>
     <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;
-        " slot="end"></ion-icon>
+        " slot="end" routerLink="/all-notifications"></ion-icon>
 
   </ion-toolbar>
 </ion-header>
@@ -145,11 +145,11 @@
                         <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" />
                           
                           &nbsp;&nbsp;<span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span><span *ngIf="text.isActive === 'Deactive'"  style="color: rgb(245, 26, 26); font-weight:bolder;">{{text.isActive}}</span>
-                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder;">{{text.isActive}}</span>
-                        </div>&nbsp;&nbsp;
+                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span>
+                        </div>
                         <div class="flex-1 ms-3" style="margin-top: -25px;">
                             <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{text.OriginLocation}}--{{text.DestinationLocation}}</a></h5>
-                            <span class="badge badge-soft-success mb-0"> Posted On {{text.date}}</span>
+                            <span class="badge badge-soft-success mb-0"> PickUp Date&Time {{text.date}}</span>
                         </div>
                     </div>
                     <div class="mt-1 pt-1">
@@ -157,7 +157,7 @@
                         <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                         <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
                     </div>
-                    <div style="display:inline-flex;" *ngIf="text.isActive === 'Active'" >
+                    <div style="display:inline-flex;" *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" >
                     
                         <button type="button" class="viewbidbtn" (click)="bidById(text)" >
                         

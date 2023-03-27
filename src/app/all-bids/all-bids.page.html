@@ -50,7 +50,8 @@
     </ion-card-content>
   
     <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" [hidden]="bidactlen > 2" >Open</ion-button>
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen > 2" >InProgress</ion-button>
+    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen > 2" [hidden] ="data.isAgentAccepted  == true && data.isShipperAccepted ==true">InProgress</ion-button>
+    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="data.isAgentAccepted  == true && data.isShipperAccepted ==true" >Finilised</ion-button>
   </ion-card>
 </div>
 

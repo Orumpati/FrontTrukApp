@@ -26,8 +26,9 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 //import { OneSignal } from '@ionic-native/onesignal';
 
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { CapitalizeDirective } from './capitalize.directive';
 @NgModule({
-  declarations: [AppComponent, 
+  declarations: [AppComponent, CapitalizeDirective, 
    // HasRoleDirective
   ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,],

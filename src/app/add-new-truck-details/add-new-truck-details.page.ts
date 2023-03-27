@@ -82,6 +82,7 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
     });
     await loading.present();
     var data = {
+      _id:this.sub,
       operatingRoutes: this.operatingRoutes,
       vehicleType: this.vehicleType,
       vehicleNo: this.vehicleNo,
@@ -91,13 +92,13 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       isTrukOpenOrClose:this.isTrukOpenOrClose,
       DriverName: this.DriverName,
       DriverNumber: this.DriverNumber,
-
+      shareContact:true,
 
       transporterName:this.transporterName,
       companyName:this.companyName,
       mobileNumber:this.mobileNumber,
       city:this.city,
-      _id:this.sub
+     
 
 
     }
@@ -118,7 +119,8 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
         console.log(result),
           this.Items = result     
         loading.dismiss()
-
+        alert("Posted Successfully")
+window.location.href="/place-bid"
       }
 
       ).catch(err =>{
@@ -128,6 +130,6 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       })
   }
   routeto(){
-    this.router.navigate(['placebid'])
+    this.router.navigate(['place-bid'])
   }
 }

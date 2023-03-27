@@ -4,7 +4,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/selecttype" style="font-size: 30px;"></ion-icon>
-      <ion-title align="center"> SignUp/Login</ion-title>
+      <ion-title align="center"> SignUp</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -30,10 +30,10 @@
       
     <ion-item class="ion-margin">
  
-      <ion-input placeholder="Enter FirstName" type="text" clearInput="true" formControlName="firstName"></ion-input>
+      <ion-input appCapitalize placeholder="Enter FirstName" type="text" clearInput="true" formControlName="firstName"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter LastName" type="text" clearInput="true" formControlName="lastName"></ion-input>
+      <ion-input appCapitalize placeholder="Enter LastName" type="text" clearInput="true" formControlName="lastName"></ion-input>
     </ion-item>
 
     <!--<ion-item class="ion-margin">
@@ -42,7 +42,7 @@
     </ion-item>-->
     <div class="ion-margin">
       <ion-item>
-      <ion-input type="text"  placeholder="  Enter Compant Address" [(ngModel)]="OriginLocation" formControlName="city"
+      <ion-input appCapitalize type="text"  placeholder="Enter Company Address" [(ngModel)]="OriginLocation" formControlName="city"
         (ionInput)="GetOriginLocation(OriginLocation)" 
         (ionClear)="ClearAutocomplete()"></ion-input>
         
@@ -56,7 +56,7 @@
   </ion-list>
 </ion-list>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter companyName" type="text" clearInput="true" formControlName="companyName"></ion-input>
+      <ion-input appCapitalize placeholder="Enter company Name" type="text" clearInput="true" formControlName="companyName"></ion-input>
     </ion-item>
   
    
@@ -64,7 +64,7 @@
       <ion-input placeholder="Enter MobileNumber" type="number" clearInput="true" formControlName="mobileNo"></ion-input>
     </ion-item>
 
-    <ion-item [hidden]="role === 'Shipper'">
+    <ion-item [hidden]="role === 'Shipper'" class="ion-margin">
       <ion-select placeholder="Select Your Routes" [multiple]="true"  formControlName="routes">
         <ion-select-option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</ion-select-option>
         <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
@@ -103,22 +103,22 @@
      
       </ion-select>
     </ion-item>
-  <br>
-    <ion-item >
+  
+    <ion-item class="ion-margin" >
       <ion-textarea
-        placeholder="Tell us About Your Company" [(ngModel)]="aboutCompany"
+        placeholder="About Your Company(Optional)" [(ngModel)]="aboutCompany"
         [clearOnEdit]="true" formControlName="aboutCompany"></ion-textarea>
         </ion-item>
     
     
   
-      <ion-button *ngIf="role == 'Shipper'" style="height: 50px;   border-radius: 10px; margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == ''"   (click)="onSubmit(userPost.value)" >
+      <ion-button *ngIf="role == 'Shipper'" style=" --border-radius: 10px; height: 50px;    margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == ''"   (click)="onSubmit(userPost.value)" >
         SIGN UP
         <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
       </ion-button>
      
      
-      <ion-button  *ngIf="role == 'Fleet Owner' || role == 'Transporter' || role == 'Agent/Broker'" style="height: 50px;   border-radius: 10px; margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == '' || userPost.value.routes == ''"      (click)="onSubmit(userPost.value)" >
+      <ion-button  *ngIf="role == 'Fleet Owner' || role == 'Transporter' || role == 'Agent/Broker'" style=" --border-radius: 10px; height: 50px;  margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == '' || userPost.value.routes == ''"      (click)="onSubmit(userPost.value)" >
         SIGN UP
         <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
       </ion-button>

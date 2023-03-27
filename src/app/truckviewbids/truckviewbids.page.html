@@ -18,15 +18,15 @@
   <ion-card class="expecPrice">
     <ion-card-header>
       <ion-card-subtitle style="color: black;">Expected Price:</ion-card-subtitle>
-      <ion-card-title>₹ {{final.expectedPrice}}/-</ion-card-title>
+      <ion-card-title>₹ {{openedBid.expectedPrice}}/-</ion-card-title>
       
     </ion-card-header>
     
     <ion-card-content>
       <ion-card-subtitle style="color: black;"><u>Details:</u></ion-card-subtitle>
-      <p style="font-size: larger; font-weight: bolder; ">{{final.OriginLocation}} -- {{final.DestinationLocation}}
+      <p style="font-size: larger; font-weight: bolder; ">{{openedBid.OriginLocation}} -- {{openedBid.DestinationLocation}}
       </p>
-      <p style="font-size: large; font-weight: bold; "> {{final.data}} -- {{final.Quantity}} Tons</p>
+      <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}} Tons</p>
     </ion-card-content>
   </ion-card>
 
@@ -58,7 +58,7 @@
   </ion-card> -->
 
   <ion-grid>
-    <ion-row *ngFor="let text of onlybid">
+    <ion-row *ngFor="let text of bidActivity">
 
       <!-- <ion-col size="9" *ngIf="text.userType!== currentUserType" class="message other-message">
 
@@ -156,11 +156,11 @@
     
 
 </ion-content>
-<div *ngIf="agentconditions == true || initialaccepted === 'Accepted'" align="center" style="margin-top:5px;"  [hidden]="paymentdone == true">
+<!--<div *ngIf="agentconditions == true || initialaccepted === 'Accepted'" align="center" style="margin-top:5px;"  [hidden]="paymentdone == true">
   <ion-button  shape="round" class="next" (click)="makepayment()">PAY NOW</ion-button>
-  </div>
+  </div>-->
 
-  <!--<ion-card style="background-color:orange;" >
+  <ion-card style="background-color:orange;" *ngIf="typepay == 'Offline' && agentconditions == true">
   
       <ion-card-header>
         <ion-card-title  style="color:white; font-weight:bolder;">
@@ -169,23 +169,34 @@
     
       </ion-card-header>
   
-    
-  
     <ion-card-content style="color:white; font-size:18;">
       Bid is accepted, please add your truk
     </ion-card-content>
     <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="posttruck()">Add New Truck</ion-button><br>
-    
-    
   
-  </ion-card>-->
+  </ion-card>
 
-<div [hidden]="agentconditions == true || initialaccepted === 'Accepted'">
+  
+  <ion-card style="background-color:orange;" *ngIf="paymentid !=null">
+  
+    <ion-card-header>
+      <ion-card-title  style="color:white; font-weight:bolder;">
+        Add Truk & Driver Details
+      </ion-card-title>
+  
+    </ion-card-header>
+
+  <ion-card-content style="color:white; font-size:18;">
+    Bid is accepted, please add your truk
+  </ion-card-content>
+  <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="posttruck()">Add New Truck</ion-button><br>
+
+</ion-card>
+
+<div [hidden]="agentconditions == true && initialaccepted === 'Accepted'">
 <ion-button fill="clear" style="float: right; color: green;" (click)="acceptBid()" [hidden]="">Accept</ion-button>
-<ion-button id="open-modal" shape="round" class="next">Negotiate</ion-button>
-</div>
-
-<ion-modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-button id="narayana" shape="round" class="next">Negotiate</ion-button>
+<ion-modal trigger="narayana" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
       <!-- <div class="ion-margin-top">
@@ -221,3 +232,42 @@
     </ion-content>
   </ng-template>
 </ion-modal>
+<ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">InitialBid</ion-button>
+<ion-modal trigger="nara" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+  <ng-template>
+    <ion-content class="ion-padding">
+      <!-- <div class="ion-margin-top">
+      <ion-label>
+        <ion-item fill="outline">
+          <ion-label position="floating">Your Bidding price</ion-label>
+          <ion-input placeholder="Enter new Price"[(ngModel)]="bidPrice"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button expand="full" class="next" shape="round" (click)="placeBid(bidPrice)">Negotiate</ion-button>
+      </ion-label>
+    </div> -->
+
+      <ion-toolbar color="light">
+        <ion-row>
+          <ion-col size="10">
+            <textarea autosize maxRowx="3" type="number" [(ngModel)]="messg" class="input">
+
+          </textarea>
+
+          </ion-col>
+
+          <ion-col size="2">
+            <ion-button expand="block" fill="clear" color="primary" [disabled]="NegoPrice === '' " class="msg-btn"
+              (click)="initialBid()">
+              <ion-icon name="send"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+</div>
+

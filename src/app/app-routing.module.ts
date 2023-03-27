@@ -284,6 +284,10 @@ const routes: Routes = [
     path: 'shippernegoplacebid',
     loadChildren: () => import('./shippernegoplacebid/shippernegoplacebid.module').then( m => m.ShippernegoplacebidPageModule)
   },
+  {
+    path: 'all-notifications',
+    loadChildren: () => import('./all-notifications/all-notifications.module').then( m => m.AllNotificationsPageModule)
+  },
   
 
 

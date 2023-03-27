@@ -14,6 +14,7 @@ export class AppComponent {
   notificationToken: any;
   UniqueDeviceID!:string;
 
+  AllNotifications: any[] = [];
   Items: any;
   logindata: any;
   constructor(private platform: Platform,private uniqueDeviceID: UniqueDeviceID) {
@@ -21,6 +22,12 @@ this. getUniqueDeviceID()
     platform.ready().then(() => {
       this.OneSignalInit();
     });
+
+    const storedItems = localStorage.getItem('InappNotifictions');
+    if (storedItems) {
+      this.AllNotifications = JSON.parse(storedItems);
+
+    }
 
 this.getUniqueDeviceID()
   }
@@ -51,11 +58,31 @@ this.getUniqueDeviceID()
   // Call this function when your app starts
  OneSignalInit(): void {
   // Uncomment to set OneSignal device logging to VERBOSE  
-  // OneSignal.setLogLevel(6, 0);
 
   // NOTE: Update the setAppId value below with your OneSignal AppId.
   OneSignal.setAppId("79da642e-49a6-4af9-8e6e-252680709d15");
+
+  OneSignal.setNotificationWillShowInForegroundHandler( (jsonData) => {
+
+    console.log("narayana" + JSON.stringify(jsonData))
+    var a = JSON.stringify(jsonData)
+    var v = JSON.parse(a)
+
+    
+    this.AllNotifications.push(v.notification.body);
+    localStorage.setItem('InappNotifictions', JSON.stringify(this.AllNotifications));
+    console.log('trukappp'+localStorage.getItem('InappNotifictions'))
+    // this show Inapp notifications
+    alert(v.notification.title + v.notification.body)
+     
+    alert(localStorage.getItem('InappNotifictions'))
+    
+    
+
+  })
+
   OneSignal.setNotificationOpenedHandler(function(jsonData: any) {
+    
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   });
 

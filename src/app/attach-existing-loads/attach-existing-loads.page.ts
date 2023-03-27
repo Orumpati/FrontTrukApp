@@ -52,15 +52,16 @@ export class AttachExistingLoadsPage implements OnInit {
     });
     await loading.present();
     var data = {
-
+      _id:this.TrukPost._id,
       trukname:this.real.trukname,
       trukcurrentLocation:this.real.trukcurrentLocation,
       trukcapacity:this.real.trukcapacity,
       trukdate:this.real.trukdate,
       trukoperatingRoutes:this.real.trukoperatingRoutes,
       trukOwnerNumber:this.real.trukOwnerNumber,
+      trukvehiclenumber:this.real.trukvehiclenumber,
       //this is addTruckMarketVehicleToLoad ID we have to make this dynamic
-      _id:this.TrukPost._id
+      
     }
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));

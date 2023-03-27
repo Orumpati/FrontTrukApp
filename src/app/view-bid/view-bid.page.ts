@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController,NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
   selector: 'app-view-bid',
   templateUrl: './view-bid.page.html',
   styleUrls: ['./view-bid.page.scss'],
 })
 export class ViewBidPage implements OnInit {
+  @ViewChild(IonModal) modal!: IonModal ;
   private refresh = new Subject<void>();
   item: any = [];
   bids:any=[];
@@ -34,13 +38,21 @@ export class ViewBidPage implements OnInit {
   tenprice: any;
   paymentdone: any;
   typepay: any;
-  
+  shareContact: any;
+  driverdetails: any;
+  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  name!: string;
+  driver: any;
+  payId: any;
+  hideaccptbtn: any;
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
       this.bids = JSON.parse(localStorage.getItem("viewBid") || '{}');
+      //this.typepay =this.bids.typeOfPay
       console.log(this.bids)
+      console.log(this.typepay)
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
       console.log(this.openedBid)
       this.bidactivityofopenbid =this.openedBid.BidActivity
@@ -70,36 +82,41 @@ return this.refresh
     .then(response => response.json())
     .then(result => {
       console.log(result)
-      this.typepay =result.typeOfPay
-      this.paymentdone =result.isPaymentCompleted
+      //this.typepay = result.typeOfPay
+      
       for(let i=0; i<result.length; i++){
+        this.payId = result[i].paymentId
+        this.driverdetails = result[i].vehicleInformation
+        this.shareContact =result[i].shareContact
+        this.typepay =result[i].typeOfPay
     var final= result[i].bids
       }
+  console.log(this.driverdetails)
       console.log(final)
         this.item = final
 
-        this.filteredbid = this.item.filter((data:any)=>{
-          return data._id == this.openedBid._id
-        })
-        console.log(this.filteredbid)
-   for(let i=0;i<this.filteredbid.length;i++){
-    this.conditions = this.filteredbid[i].isAgentAccepted
-  
-    this.agentconditions = this.filteredbid[i].isShipperAccepted
-    this.onlybid =this.filteredbid[i].BidActivity
-    this.tenprice = this.filteredbid[i].tentativefinalPrice
-   }
-console.log(this.onlybid)
+
+//onsole.log(this.onlybid)
         for(let i=0; i<this.item.length;i++){
           console.log(this.item[i])
           //this.goinsidebids =this.item[i]
           //this.finalAgentAccept =this.item[i]
-         
+          this.paymentdone =this.item[i].isPaymentCompleted
        
           this.bidActivity= this.item[i].BidActivity
           console.log(this.bidActivity)
+          this.agentconditions = this.item[i].isShipperAccepted
+          this.tenprice = this.item[i].tentativefinalPrice
+          this.conditions = this.item[i].isAgentAccepted
           this.bidnumber =this.item[i].mobileNo
             }
+            this.filteredbid = this.item.filter((data:any)=>{
+              return data._id == this.openedBid._id
+            })
+            console.log(this.filteredbid)
+       for(let i=0;i<this.filteredbid.length;i++){
+         this.hideaccptbtn =this.filteredbid[i].TohideAcceptBtn
+       }
             console.log(this.goinsidetenprice)
            // console.log(this.finalAgentAccept.isAgentAccepted)
             //console.log(this.goinsidebids.isShipperAccepted)
@@ -112,11 +129,14 @@ console.log(this.onlybid)
         
           }
           console.log(this.bidActivityprice)
+          for(let i=0; i<this.driverdetails.length; i++){
+            this.driver =this.driverdetails[i]
+          }
      
     }
   
     ).catch(err =>{
-      alert('Something went wrong')
+     // alert('Something went wrong')
       console.log(err)})
  
   }
@@ -186,6 +206,7 @@ console.log(this.onlybid)
         "mobileNo":this.openedBid.mobileNo,
         "isShipperAccepted":true,
         "bidAcceptedTo":this.openedBid.mobileNo,
+        "TohideAcceptBtn":false,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
          
@@ -261,6 +282,7 @@ console.log(this.onlybid)
 
   makepayment(){
     localStorage.setItem('filteredBid',JSON.stringify(this.filteredbid))
+    localStorage.setItem('DocId',JSON.stringify(this.bids._id))
     window.location.href='/makepayment'
   }
 
@@ -278,5 +300,18 @@ console.log(this.onlybid)
     localStorage.setItem("loadItem",JSON.stringify(this.bids._id))
     window.location.href="/add-new-truck-details"
     
+  }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
   }
 }

@@ -72,7 +72,7 @@
             <ion-icon align="center" name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
             <div style="display: flex;">
                   <div class="form-group">
-                    <ion-input type="text" class="form-control" placeholder="Pick Up Location"
+                    <ion-input type="text" appCapitalize class="form-control" placeholder="Pick Up Location"
                       [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
                       (ionClear)="ClearAutocomplete()"></ion-input>
                   </div>&nbsp;&nbsp;
@@ -90,7 +90,7 @@
                     <ion-icon align="center" name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
                     <div style="display: flex;">
                    <div class="form-group">
-                    <ion-input type="text" class="form-control" placeholder="Drop Location"
+                    <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
                       [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
                       (ionClear)="ClearAutocomplete()"></ion-input>
                   </div>&nbsp;&nbsp;
@@ -197,11 +197,9 @@
   
         </div>
       </ion-slide>
-      <ion-slide>
+      <!--<ion-slide>
   
-        <!--SLIDE 2-->
-  
-        <!-- <div class="ion-padding" slot="content"> -->
+    
           <div class="container" style="margin-bottom: 18px;">
           <h1>Select vehicle</h1>
   
@@ -321,8 +319,8 @@
           </ion-card>
         </div>
   
-        <!-- </div> -->
-      </ion-slide>
+      
+      </ion-slide>-->
       <ion-slide>
   
         <!--SLIDE 3-->
@@ -420,14 +418,14 @@
     <div #map='' style="height: 50%;"></div>
   </ion-content>
   <ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" (click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
-[disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null "
+[disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null  || expectedPrice == null ||typeOfPay== null "
   shape="round">Submit</ion-button>
 
 
   <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" (click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
-[disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
+[disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null ||expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
   shape="round">Submit</ion-button>
 
   <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Offline'"(click)="sendData()" (click)="calculateAndDisplayRoute()" expand="full" class="next"
-  [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
+  [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
     shape="round">Submit</ion-button>

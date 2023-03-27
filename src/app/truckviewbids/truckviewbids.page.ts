@@ -35,27 +35,28 @@ export class TruckviewbidsPage implements OnInit {
   tenprice: any;
   paymentdone: any;
   final: any;
+  typepay: any;
+  paymentid: any;
+  messg: any;
+  initialagentBid: any;
+  sendbidno: any;
   
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
-      this.bids = JSON.parse(localStorage.getItem("truckallBids") || '{}');
-      console.log(this.bids)
-      for(let i=0; i<this.bids.fullLoad.length; i++){
-        this.final= this.bids.fullLoad[i]
-          }
+    console.log(this.regdata)
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
       console.log(this.openedBid)
-
-      console.log(this.final._id)
-      this.bidactivityofopenbid =this.openedBid.BidActivity
+       this.typepay = this.openedBid.typeOfPay
+   
+      //this.bidactivityofopenbid =this.openedBid.BidActivity
      /* for(let i=0; i<this.bids.bids.length;i++){
            this.bidact=this.bids.bids[i]
       }*/
 
   this.all()
-  
+
      
   }
 
@@ -72,14 +73,16 @@ export class TruckviewbidsPage implements OnInit {
     .then(response => response.json())
     .then(result => {
       console.log(result)
-      this.paymentdone =result.isPaymentCompleted
+      
       for(let i=0; i<result.length; i++){
-    var final= result[i].bids
+        this.paymentid= result[i].paymentId
+    var final= result[i].bids //this is bids array
+    
       }
-      console.log(final)
+    this.sendbidno =final.mobileNo
         this.item = final
-
-        this.filteredbid = this.item.filter((data:any)=>{
+        console.log(this.item)
+       /* this.filteredbid = this.item.filter((data:any)=>{
           return data._id == this.openedBid._id
         })
         console.log(this.filteredbid)
@@ -90,16 +93,24 @@ export class TruckviewbidsPage implements OnInit {
     this.onlybid =this.filteredbid[i].BidActivity
     this.tenprice = this.filteredbid[i].tentativefinalPrice
    }
-console.log(this.onlybid)
+console.log(this.onlybid)*/
         for(let i=0; i<this.item.length;i++){
+   if(this.regdata.mobileNo == this.item[i].mobileNo){
+
           console.log(this.item[i])
           //this.goinsidebids =this.item[i]
           //this.finalAgentAccept =this.item[i]
          
-       
-          this.bidActivity= this.item[i].BidActivity
+
+
+          this.bidActivity= this.item[i].BidActivity //chatting array
           console.log(this.bidActivity)
           this.bidnumber =this.item[i].mobileNo
+          this.conditions =this.item[i].isAgentAccepted
+          this.agentconditions =this.item[i].isShipperAccepted
+          this.paymentdone =this.item[i].isPaymentCompleted
+          this.initialagentBid =this.item[i].agentInitialBidSend
+   }
             }
             console.log(this.goinsidetenprice)
            // console.log(this.finalAgentAccept.isAgentAccepted)
@@ -117,7 +128,7 @@ console.log(this.onlybid)
     }
   
     ).catch(err =>{
-      alert('Something went wrong')
+  
       console.log(err)})
  
   }
@@ -144,8 +155,8 @@ console.log(this.onlybid)
         "mess":"Placed a Bid for amount"
       
        }
-       console.log(this.bids._id)
-  console.log(this.bidnumber)
+      
+  
     
       fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
         method: 'post',
@@ -260,6 +271,54 @@ console.log(this.onlybid)
           console.log(err))
   }
 
+
+  
+  async initialBid(){
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    console.log("working")
+    var body = {
+  
+    
+      "_id":this.bids._id,
+      "mobileNo": this.regdata.mobileNo,
+      "userType":this.regdata.role,
+      "Bidprice":this.messg,
+     // "Number":parseInt(this.objects.Number), //for notification
+     // "Name":this.regdata.firstName+this.regdata.lastName, //for notification
+      "agentInitialBidSend":true,
+      //"TohideAcceptBtn":true,
+     // "mess":"placed a Bid To Your Load ,Price:" 
+    
+     }
+  
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+      method: 'post',
+      headers: {
+        "access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(body),
+  
+    })
+      .then(response => response.json())
+      .then(async result => {
+        console.log(result)
+        
+        loading.dismiss()
+        window.location.reload()
+  
+      }
+  
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)})
+  
+  }
+
   makepayment(){
     localStorage.setItem('filteredBid',JSON.stringify(this.filteredbid))
     window.location.href='/makepayment'
@@ -274,10 +333,10 @@ console.log(this.onlybid)
     }, 2000);
   }
 
-  /*posttruck(){
+  posttruck(){
     this.router.navigate(['add-new-truck-details'])
-    localStorage.setItem("loadItem",JSON.stringify(this.bids._id))
+   // localStorage.setItem("loadItem",JSON.stringify(this.openedBid._id))
     window.location.href="/add-new-truck-details"
     
-  }*/
+  }
 }
