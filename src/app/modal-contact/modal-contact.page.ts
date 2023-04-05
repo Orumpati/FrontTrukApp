@@ -19,6 +19,7 @@ export class ModalContactPage implements OnInit {
   type: any;
   quoteid: any;
   Loadid:any
+  hide: any;
   
 
   constructor(private alertController: AlertController,private router: Router) { }
@@ -29,6 +30,7 @@ export class ModalContactPage implements OnInit {
     this.quoteid= JSON.parse(localStorage.getItem('contactLoad')||'{}')
 
   console.log(this.type)
+  this.hide= JSON.parse(localStorage.getItem('clickhere')||'{}')
   }
 
 

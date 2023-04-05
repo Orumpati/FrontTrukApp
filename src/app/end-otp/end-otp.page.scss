@@ -1,0 +1,67 @@
+.inputs{
+    input{
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        text-align: center;
+        background:#79a0be;
+    }
+}
+
+.buttons{
+    position: fixed;
+    bottom: 50px;
+  
+    button{
+       width: 50px;
+       height: 50px;
+       background: #f58e26;
+       border-radius: 100%;
+       color: var(--ion-color-light);
+       outline: none;
+       box-shadow:  0 4px 8px 0 rgba(155, 204, 235, 0.2);
+       text-align: center;
+    }
+}
+
+.keypad{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+img{
+ 
+    width: 300px;
+    height: 130px;
+
+
+}
+.content{
+margin-top: -50px;
+}
+
+ion-button {
+    --background:#f58e26; 
+    margin: 10px;
+    margin-bottom: 40px;
+}
+.btn{
+    background: #f58e26;
+    height:50px ;
+  }
+  .genotp{
+    
+    margin-top: 190px;
+    
+  }
+
+  .spinner{
+    display: flex;
+    justify-content: center;
+    transform: scale(3);
+
+    
+  }

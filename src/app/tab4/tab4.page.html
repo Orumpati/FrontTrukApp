@@ -5,9 +5,10 @@
     </ion-buttons>
     <div align="center">
       <div style=" display:flex; justify-content:center;align-items:center;text-align:center; width:150px; height:60px;">
-        <ion-img src="assets/trucklogo.jpeg"></ion-img>
+        <ion-img src="assets/trueTruk.png"></ion-img>
        </div>
        </div>
+       <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -21,37 +22,35 @@
   
           
             <ion-select interface="popover" [(ngModel)]="trukpickupLocation">
-              <ion-select-option>Amaravati</ion-select-option>
-              <ion-select-option>Itanagar</ion-select-option>
-              <ion-select-option>Dispur</ion-select-option>
-              <ion-select-option>Patna</ion-select-option>
-              <ion-select-option>Raipur</ion-select-option>
-              <ion-select-option>Panaji</ion-select-option>
-              <ion-select-option>Gandhinagar</ion-select-option>
-              <ion-select-option>Chandigarh</ion-select-option>
-              <ion-select-option>Shimla</ion-select-option>
-              <ion-select-option>Ranchi</ion-select-option>
-              <ion-select-option>Bangaluru</ion-select-option>
-              <ion-select-option>Thiruvananthapuram</ion-select-option>
-              <ion-select-option>Bhopal</ion-select-option>
-              <ion-select-option>Mumbai</ion-select-option>
-              <ion-select-option>Imphal</ion-select-option>
-              <ion-select-option>Shillong</ion-select-option>
-              <ion-select-option>Aizawl</ion-select-option>
-              <ion-select-option>Kohima</ion-select-option>
-              <ion-select-option>Bhubaneswar</ion-select-option>
-              <ion-select-option>Chandigarh</ion-select-option>
-              <ion-select-option>Jaipur</ion-select-option>
-              <ion-select-option>Gangtok</ion-select-option>
-              <ion-select-option>Chennai</ion-select-option>
-              <ion-select-option>Hyderabad</ion-select-option>
-              <ion-select-option>Agartala</ion-select-option>
-              <ion-select-option>Lucknow</ion-select-option>
-              <ion-select-option>Kolkata</ion-select-option>
-              <ion-select-option>delhi</ion-select-option>
-              <ion-select-option>delhi</ion-select-option>
-              <ion-select-option>Navsari</ion-select-option>
-              <ion-select-option>Pune</ion-select-option>
+              <ion-select-option>Andhra Pradesh	</ion-select-option>
+              <ion-select-option>Arunachal Pradesh	</ion-select-option>
+              <ion-select-option>Assam</ion-select-option>
+              <ion-select-option>Bihar</ion-select-option>
+              <ion-select-option>Chhattisgarh</ion-select-option>
+              <ion-select-option>Goa</ion-select-option>
+              <ion-select-option>Gujarat</ion-select-option>
+              <ion-select-option>Haryana</ion-select-option>
+              <ion-select-option>Himachal Pradesh	</ion-select-option>
+              <ion-select-option>Jharkhand</ion-select-option>
+              <ion-select-option>Karnataka</ion-select-option>
+              <ion-select-option>Kerala	</ion-select-option>
+              <ion-select-option>Madhya Pradesh	</ion-select-option>
+              <ion-select-option>Maharashtra</ion-select-option>
+              <ion-select-option>Manipur</ion-select-option>
+              <ion-select-option>Meghalaya</ion-select-option>
+              <ion-select-option>Mizoram</ion-select-option>
+              <ion-select-option>Nagaland</ion-select-option>
+              <ion-select-option>Odisha</ion-select-option>
+              <ion-select-option>Punjab</ion-select-option>
+              <ion-select-option>Rajasthan</ion-select-option>
+              <ion-select-option>Sikkim</ion-select-option>
+              <ion-select-option>Tamil Nadu		</ion-select-option>
+              <ion-select-option>Telangana</ion-select-option>
+              <ion-select-option>Tripura	</ion-select-option>
+              <ion-select-option>Uttar Pradesh	</ion-select-option>
+              <ion-select-option>Uttarakhand</ion-select-option>
+              <ion-select-option>West Bengal	</ion-select-option>
+          
             </ion-select>
         
   
@@ -61,36 +60,35 @@
         
           
             <ion-select interface="popover" [(ngModel)]="trukdropLocation">
-              <ion-select-option>Amaravati</ion-select-option>
-              <ion-select-option>Itanagar</ion-select-option>
-              <ion-select-option>Dispur</ion-select-option>
-              <ion-select-option>Patna</ion-select-option>
-              <ion-select-option>Raipur</ion-select-option>
-              <ion-select-option>Panaji</ion-select-option>
-              <ion-select-option>Gandhinagar</ion-select-option>
-              <ion-select-option>Chandigarh</ion-select-option>
-              <ion-select-option>Shimla</ion-select-option>
-              <ion-select-option>Ranchi</ion-select-option>
-              <ion-select-option>Bangaluru</ion-select-option>
-              <ion-select-option>Thiruvananthapuram</ion-select-option>
-              <ion-select-option>Bhopal</ion-select-option>
-              <ion-select-option>Mumbai</ion-select-option>
-              <ion-select-option>Imphal</ion-select-option>
-              <ion-select-option>Shillong</ion-select-option>
-              <ion-select-option>Aizawl</ion-select-option>
-              <ion-select-option>Kohima</ion-select-option>
-              <ion-select-option>Bhubaneswar</ion-select-option>
-              <ion-select-option>Chandigarh</ion-select-option>
-              <ion-select-option>Jaipur</ion-select-option>
-              <ion-select-option>Gangtok</ion-select-option>
-              <ion-select-option>Chennai</ion-select-option>
-              <ion-select-option>Hyderabad</ion-select-option>
-              <ion-select-option>Agartala</ion-select-option>
-              <ion-select-option>Lucknow</ion-select-option>
-              <ion-select-option>Kolkata</ion-select-option>
-              <ion-select-option>delhi</ion-select-option>
-              <ion-select-option>Navsari</ion-select-option>
-              <ion-select-option>Pune</ion-select-option>
+              <ion-select-option>Andhra Pradesh	</ion-select-option>
+              <ion-select-option>Arunachal Pradesh	</ion-select-option>
+              <ion-select-option>Assam</ion-select-option>
+              <ion-select-option>Bihar</ion-select-option>
+              <ion-select-option>Chhattisgarh</ion-select-option>
+              <ion-select-option>Goa</ion-select-option>
+              <ion-select-option>Gujarat</ion-select-option>
+              <ion-select-option>Haryana</ion-select-option>
+              <ion-select-option>Himachal Pradesh	</ion-select-option>
+              <ion-select-option>Jharkhand</ion-select-option>
+              <ion-select-option>Karnataka</ion-select-option>
+              <ion-select-option>Kerala	</ion-select-option>
+              <ion-select-option>Madhya Pradesh	</ion-select-option>
+              <ion-select-option>Maharashtra</ion-select-option>
+              <ion-select-option>Manipur</ion-select-option>
+              <ion-select-option>Meghalaya</ion-select-option>
+              <ion-select-option>Mizoram</ion-select-option>
+              <ion-select-option>Nagaland</ion-select-option>
+              <ion-select-option>Odisha</ion-select-option>
+              <ion-select-option>Punjab</ion-select-option>
+              <ion-select-option>Rajasthan</ion-select-option>
+              <ion-select-option>Sikkim</ion-select-option>
+              <ion-select-option>Tamil Nadu		</ion-select-option>
+              <ion-select-option>Telangana</ion-select-option>
+              <ion-select-option>Tripura	</ion-select-option>
+              <ion-select-option>Uttar Pradesh	</ion-select-option>
+              <ion-select-option>Uttarakhand</ion-select-option>
+              <ion-select-option>West Bengal	</ion-select-option>
+          
             </ion-select>
           
         
@@ -199,7 +197,7 @@
       </a>
       <div style="margin-right: 30px;">
       <h5 class="mb-0 ">
-        <a  class="text-reset"><strong>{{text.trukcapacity}}Tons--{{text.trukname}}</strong></a>
+        <a  class="text-reset"><strong>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}}--{{text.trukname}}</strong></a>
       </h5>
    
     
@@ -216,7 +214,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
           <span class="text-muted small">Current Location</span>
-          <strong>{{text.trukcurrentLocation}}</strong>
+          <strong>{{text.OriginLocation}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
           <span class="text-muted small">Vehicle Number</span>

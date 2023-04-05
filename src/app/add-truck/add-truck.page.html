@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab4" style="font-size: 30px;"></ion-icon>
+      <ion-icon name="arrow-back-sharp" routerLink="/tab/mytrucks" style="font-size: 30px;"></ion-icon>
       <ion-title>AddTruks</ion-title>
     </div>
   </ion-toolbar>
@@ -9,48 +9,62 @@
 
 <ion-content>
   <br>
-
   <div class="container">
-    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk</h2>
-    <div class="form-group">
-      <ion-label position="floating">Enter Vechile number</ion-label>
-      <input  placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control">
-    </div>
-  
-    <div class="form-group">
-      <ion-label position="floating">Current Location</ion-label>
-      <input placeholder="Current vechile Location" [(ngModel)]="trukcurrentLocation" class="form-control">
-      <!-- <ion-icon name="location-outline" slot="end"></ion-icon> -->
-    </div>
     <div>
-      <ng-multiselect-dropdown [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
-        [data]="dropdownList" [(ngModel)]="trukoperatingRoutes" (onSelect)="onItemSelect($event)"
-        (onSelectAll)="onSelectAll($event)">
-      </ng-multiselect-dropdown>
-    </div>
-    <br>
-    <div class="form-group">
-      <div class="form-control">
-        <ion-input type="datetime-local" style="border: none; " [(ngModel)]="trukdate"></ion-input>
+      <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk
+      </h2>
+      <div class="form-group">
+        <ion-label position="floating">Enter Vechile number</ion-label>
+        <input placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control"
+          style="text-transform:uppercase">
+      </div>
+      
+
+      <div class="form-group">
+        <ion-label position="floating">Current Location</ion-label>
+        <ion-input type="text" class="form-control" placeholder="Current vechile Location" [(ngModel)]="OriginLocation"
+          class="form-control" (ionInput)="GetOriginLocation(OriginLocation)"
+          (ionClear)="ClearAutocomplete()"></ion-input>
+          
+      </div>
+
+      <!--showing the list of address-->
+      <ion-list [hidden]="autocompleteItems.length == 0">
+        <ion-icon (click)="ClearAutocomplete()" name="close-outline" style="color:rgb(201, 13, 13);"
+          style="float:right;font-size:20px;"></ion-icon>
+        <ion-list *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+          {{ item.description }}
+        </ion-list>
+      </ion-list>
+    
+      <div>
+        <ion-label position="floating">Add Your Vechile Routes</ion-label>
+        <ng-multiselect-dropdown [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
+          [data]="dropdownList" [(ngModel)]="trukoperatingRoutes" (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <br>
+      <div class="form-group">
+        
+        <div class="form-control">
+          <ion-input type="datetime-local" style="border: none; " [(ngModel)]="trukdate" placeholder="Date & Time"> Date & Time</ion-input>
+        </div>
       </div>
     </div>
- 
-  </div>
 
-  <div class="container">
- 
 
-    <div >
+    <div>
       <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">choose one
         TrukVehicle</h2>
       <div>
         <div>
-          <input type="radio" name="payment" id="card" (change)="out('Tanker')">
-          <label for="card">
+          <input type="radio" name="payment" id="card" (change)="out('Tanker')" class="vehicle">
+          <label for="card" class="selveh">
 
             <div class="imgdiv">
               <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -61,12 +75,12 @@
         </div>
 
         <div>
-          <input type="radio" name="payment" id="cash" (change)="out('Hyva')">
-          <label for="cash">
+          <input type="radio" name="payment" id="cash" (change)="out('Hyva')" class="vehicle">
+          <label for="cash" class="selveh">
             <div class="imgdiv">
               <img
                 src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -78,11 +92,11 @@
 
 
         <div>
-          <input type="radio" name="payment" id="csh" (change)="out('LCV')">
-          <label for="csh">
+          <input type="radio" name="payment" id="csh" (change)="out('LCV')" class="vehicle">
+          <label for="csh" class="selveh">
             <div class="imgdiv">
               <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -92,11 +106,11 @@
         </div>
 
         <div>
-          <input type="radio" name="payment" id="ash" (change)="out('Truk')">
-          <label for="ash">
+          <input type="radio" name="payment" id="ash" (change)="out('Truk')" class="vehicle">
+          <label for="ash" class="selveh">
             <div class="imgdiv">
               <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -106,12 +120,12 @@
         </div>
 
         <div>
-          <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
-          <label for="Trailer">
+          <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')" class="vehicle">
+          <label for="Trailer" class="selveh">
             <div class="imgdiv">
               <img
                 src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -121,11 +135,11 @@
         </div>
 
         <div>
-          <input type="radio" name="payment" id="Container" (change)="out('Container')">
-          <label for="Container">
+          <input type="radio" name="payment" id="Container" (change)="out('Container')" class="vehicle">
+          <label for="Container" class="selveh">
             <div class="imgdiv">
               <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
-                style="width: 45px; height:45px; border-radius:50%;">
+                style="width: 65px; height:65px; border-radius:50%;">
             </div>
 
             <div class="shipperdiv">
@@ -134,39 +148,91 @@
           </label>
         </div>
 
-        <ion-card class="form-group" *ngIf="trukname =='Truk'">
-
-          <ion-card-title>Select the Truk body</ion-card-title>
-
-          <div  style="margin-top: 1rem;">
-            
-          <div >
-            <ion-radio-group [(ngModel)]="isTrukOpenOrClose" style="display: flex;">
-              <ion-item>
-               
-                <ion-radio value="Open body"></ion-radio>&nbsp;
-                <ion-label>Open body</ion-label>
-              </ion-item>
-          
-              <ion-item>
-              
-                <ion-radio  value="Closed body"></ion-radio>&nbsp;
-                <ion-label>Closed body</ion-label>
-              </ion-item>
-            </ion-radio-group>
+        <ion-card style="height: auto;" *ngIf="trukname =='Truk'">
+          <ion-card-title>Select the Truk type</ion-card-title>
+          <br>
+          <div class="flex" [(ngModel)]="isTrukOpenOrClose">
+            <input type="radio" id="1" name="hyva" value="Open Body" class="typeOfVehicle" (change)="truk('Open Body')"/>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Open Body</label>
+            <input type="radio" id="2" name="hyva" value="Close Body" class="typeOfVehicle" (change)="truk('Close Body')"/>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Close Body</label>
           </div>
-          </div>
-
         </ion-card>
+
+        
+
+        <ion-card style="height: auto;" *ngIf="trukname =='Hyva'">
+          <ion-card-title>Select the Hyva type</ion-card-title>
+          <br>
+          <div class="flex" [(ngModel)]="typeOfHyva">
+            <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="HYVA('10 Tyre')"/>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">10 Tyre</label>
+            <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="HYVA('12 Tyre')"/>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">12 Tyre</label>
+            <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="HYVA('14 Tyre')"/>
+            <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">14 Tyre</label>
+  
+  
+          </div>
+        </ion-card>
+
+        <ion-card style="height: auto;" *ngIf="trukname =='Trailer'">
+          <ion-card-title>Select the Trailer type</ion-card-title>
+          <br>
+          <div class="flex" [(ngModel)]="typeOfTrailer">
+            <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">High Bed</label>
+            <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="trailer('Semi Bed')"/>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Semi Bed</label>
+            <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="trailer('Low Bed')"/>
+            <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Low Bed</label>
+  
+  
+          </div>
+        </ion-card>
+
+
+        <ion-card style="height: auto;" *ngIf="trukname =='Container'">
+          <ion-card-title>Select the Container type:</ion-card-title>
+          <br>
+          <div class="flex" [(ngModel)]="typeOfContainer">
+            <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl</label>
+            <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl HQ')"/>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl HQ</label>
+            <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl')"/>
+            <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
+            <input type="radio" id="5" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl HQ')"/>
+            <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl HQ</label>
+            <input type="radio" id="6" name="hyva" class="typeOfVehicle" (change)="container('19ft Sxl')"/>
+            <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">19ft Sxl</label>
+            <input type="radio" id="7" name="hyva" class="typeOfVehicle" (change)="container('20ft Sxl')"/>
+            <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">20ft Sxl</label>
+            <input type="radio" id="8" name="hyva" class="typeOfVehicle" (change)="container('21ft Sxl')"/>
+            <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">21ft Sxl</label>
+            <input type="radio" id="9" name="hyva" class="typeOfVehicle" (change)="container('23ft Sxl')"/>
+            <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">23ft Sxl</label>
+            <input type="radio" id="10" name="hyva" class="typeOfVehicle" (change)="container('24ft Sxl')"/>
+            <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">24ft Sxl</label>
+  
+          </div>
+        </ion-card>
+
+        <ion-card style="height: auto;" *ngIf="trukname =='Tanker'">
+          <ion-card-title>Select the Tanker type</ion-card-title>
+          <br>
+          <div class="flex" [(ngModel)]="typeofTanker">
+            <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium; ">Metal steel</label>
+            <input type="radio" id="2" name="hyva" value="Stainless steel" class="typeOfVehicle" (change)="Tanker('Stainless steel')"/>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">tainless steel</label>
+          </div>
+        </ion-card>
+
       </div>
     </div>
   </div>
 
-    <!-- <div class="form-group">
-      <ion-label for="text">Enter the Capacity</ion-label>
-      <input type="text" class="form-control" id="email" [(ngModel)]="trukcapacity" placeholder="Enter the Capacity">
-    </div>
-  </div> -->
 
 
 
@@ -174,4 +240,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" (click)="postVehile()" [disabled]="trukvehiclenumber == null || trukcurrentLocation== null ||trukoperatingRoutes == '' || trukdate == null || trukname == null">Add&Post</ion-button>
+<ion-button expand="full" shape="round" class="back" (click)="postVehile()" [disabled]="trukvehiclenumber == null || OriginLocation== null ||trukoperatingRoutes == '' || trukdate == null || trukname == null">Add&Post</ion-button>

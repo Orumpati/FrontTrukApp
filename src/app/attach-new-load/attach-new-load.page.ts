@@ -71,7 +71,7 @@ export class AttachNewLoadPage implements OnInit {
   paymentTypeForOffline: any;
   advance: any;
 
-
+  typeofTanker:any;
   typeOfHyva:any
   typeOfTrailer:any
   typeOfContainer:any
@@ -129,6 +129,30 @@ console.log(this.typeOfPay)
   out(data: any) {
     console.log(data)
     this.data = data
+  }
+
+  truk(isTrukOpenOrClose: any) {
+    console.log(isTrukOpenOrClose)
+    this.isTrukOpenOrClose = isTrukOpenOrClose
+  }
+
+  HYVA(typeOfHyva: any) {
+    console.log(typeOfHyva)
+    this.typeOfHyva = typeOfHyva
+  }
+
+  trailer(typeOfTrailer: any) {
+    console.log(typeOfTrailer)
+    this.typeOfTrailer = typeOfTrailer
+  }
+
+  container(typeOfContainer: any) {
+    console.log(typeOfContainer)
+    this.typeOfContainer = typeOfContainer
+  }
+  Tanker(typeofTanker: any) {
+    console.log(typeofTanker)
+    this.typeofTanker = typeofTanker
   }
 
   GetDestinationLocation(data: any) {
@@ -279,6 +303,7 @@ gf(){
       typeOfHyva:this.typeOfHyva,
       typeOfTrailer:this.typeOfTrailer,
       typeOfContainer:this.typeOfContainer,
+      typeofTanker:this.typeofTanker,
    /*    length: this.length,
       breadth: this.breadth,
       height: this.height, */
@@ -289,6 +314,7 @@ gf(){
     console.log(body)
     if(body.pickupState == 'Invalid Pincode'|| body.dropupState == 'Invalid Pincode'){
   alert("Pincode is Invalid")
+  loading.dismiss()
     }else{
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {

@@ -13,7 +13,7 @@
       <ion-router-outlet name="home"></ion-router-outlet>
     </ion-tab-button>
     
-    <ion-tab-button tab="shipperhome">
+    <ion-tab-button tab="shipperhome" [hidden]="type == 'Driver'">
       <ion-icon name="home"></ion-icon>
       <ion-label>home</ion-label>
       <ion-router-outlet name="shipperhome"></ion-router-outlet>
@@ -36,6 +36,18 @@
       <ion-icon name="car"></ion-icon>
       
       <ion-label>Truck Market</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="driver-active-loads" *ngIf="type == 'Driver'" >
+      <ion-icon name="car"></ion-icon>
+      
+      <ion-label>Active Loads</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="previous-loads"  *ngIf="type == 'Driver'">
+      <ion-icon name="car"></ion-icon>
+      
+      <ion-label>Previous Loads</ion-label>
     </ion-tab-button>
 
   </ion-tab-bar>

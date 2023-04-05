@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" routerLink="" style="font-size: 30px;"></ion-icon>
+      <ion-title>POD</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<!-- 
+<ion-content>
+  <ion-input label="Way bill" label-placement="floating" fill="outline" placeholder="Enter Way Bill"></ion-input>
+  <ion-input label="Order Id" label-placement="floating" fill="outline" placeholder="Enter Order Id"></ion-input>
+  <ion-input label="Consignee name" label-placement="floating" fill="outline" placeholder="Enter Consignee name"></ion-input>
+  <ion-input label="Address" label-placement="floating" fill="outline" placeholder="Enter Address"></ion-input>
+  <ion-input label="Delivered on" label-placement="floating" fill="outline" placeholder="Enter delivery Date & Time"></ion-input>
+  <ion-input label="Final Status" label-placement="floating" fill="outline" placeholder="Enter Final Status"></ion-input>
+</ion-content> -->
+
+<br>
+<ion-content>
+  <div class="container"> 
+    <h3 style="text-align: center; color: #F58E26;">Proofs of Delivery </h3>
+  <div class="form-group">
+    <label>Way bill:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Way Bill" [(ngModel)]="waybill">
+  </div>
+
+  <div class="form-group">
+    <label>Order Id:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Order Id" [(ngModel)]="orderId">
+  </div>
+  <div class="form-group">
+    <label>Consignee name:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Consignee name" [(ngModel)]="ConsigneeName">
+  </div>
+  <div class="form-group">
+    <label>Address:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Address" [(ngModel)]="Address">
+  </div>
+  <div class="form-group">
+    <label>Proof of reciept:</label>
+    <input type="file" class="form-control" >
+  </div>
+  <div class="form-group">
+    <label>Delivered on:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter delivery Date & Time" [(ngModel)]="DeliveredOn">
+  </div>
+  <div class="form-group">
+    <label>Final Status:</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Final Status" [(ngModel)]="Finalstatus">
+  </div>
+</div>
+</ion-content>
+<ion-button class="submit" shape="round" (click)="sumbit()">sumbit</ion-button>

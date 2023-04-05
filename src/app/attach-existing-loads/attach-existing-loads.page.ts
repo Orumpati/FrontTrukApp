@@ -17,7 +17,7 @@ export class AttachExistingLoadsPage implements OnInit {
 
 
   trukname:any;
-  trukcurrentLocation:any;
+  OriginLocation:any;
   trukcapacity:any;
   trukoperatingRoutes:any;
   trukdate:any;
@@ -54,7 +54,7 @@ export class AttachExistingLoadsPage implements OnInit {
     var data = {
       _id:this.TrukPost._id,
       trukname:this.real.trukname,
-      trukcurrentLocation:this.real.trukcurrentLocation,
+      OriginLocation:this.real.OriginLocation,
       trukcapacity:this.real.trukcapacity,
       trukdate:this.real.trukdate,
       trukoperatingRoutes:this.real.trukoperatingRoutes,

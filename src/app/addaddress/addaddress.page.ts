@@ -66,6 +66,8 @@ async Addaddress(data:any){
 
 }
 
-
+routetotrukviewbid(){
+  window.location.href='/profile'
+}
 
 }

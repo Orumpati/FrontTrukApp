@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     IonicModule,
     SignupPageRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,NgMultiSelectDropDownModule.forRoot()
     
   ],
   declarations: [SignupPage]

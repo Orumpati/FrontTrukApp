@@ -1,0 +1,211 @@
+<ion-header>
+  <ion-toolbar>
+
+
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" (click)="routetotrukviewbid()" style="font-size: 30px;"></ion-icon>
+      <ion-title>Add new truck Details</ion-title>
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!--<br>
+  <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk</h2>
+  <div class="container">
+    <div class="form-group">
+      <ion-label position="floating">Enter Vechile number</ion-label>
+      <input placeholder="K.A 10 5555" [(ngModel)]="vehicleNo" class="form-control">
+    </div>
+    <br>
+    <div class="form-group">
+      <ion-label position="floating">Current Location</ion-label>
+      <input placeholder="Current vechile Location" [(ngModel)]="vehicleCurrentLocation" class="form-control">
+  
+    </div>
+    <br>
+    <div>
+      <ng-multiselect-dropdown [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
+        [data]="dropdownList" [(ngModel)]="operatingRoutes" (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)">
+      </ng-multiselect-dropdown>
+    </div>
+    <br>
+    <div class="form-group">
+      <div class="form-control">
+        <ion-input type="datetime-local" style="border: none; " [(ngModel)]="date"></ion-input>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">choose one
+      TrukVehicle</h2>
+
+    <div>
+      <input type="radio" name="payment" id="card" (change)="out('Tanker')">
+      <label for="card">
+
+        <div class="imgdiv">
+          <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          Tanker (1 to 35 KL)
+        </div>
+
+      </label>
+    </div>
+
+    <div>
+      <input type="radio" name="payment" id="cash" (change)="out('Hyva')">
+      <label for="cash">
+        <div class="imgdiv">
+          <img src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          Hyva (1 to 35 Tons)
+        </div>
+      </label>
+    </div>
+
+
+
+    <div>
+      <input type="radio" name="payment" id="csh" (change)="out('LCV')">
+      <label for="csh">
+        <div class="imgdiv">
+          <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          LCV (1 to 6 Tons)
+        </div>
+      </label>
+    </div>
+
+    <div>
+      <input type="radio" name="payment" id="ash" (change)="out('Truk')">
+      <label for="ash">
+        <div class="imgdiv">
+          <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          Truk (1 to 14 Tons)
+        </div>
+      </label>
+    </div>
+
+    <div>
+      <input type="radio" name="payment" id="Trailer" (change)="out('Trailer')">
+      <label for="Trailer">
+        <div class="imgdiv">
+          <img
+            src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          Trailer (1 to 52 Tons)
+        </div>
+      </label>
+    </div>
+
+    <div>
+      <input type="radio" name="payment" id="Container" (change)="out('Container')">
+      <label for="Container">
+        <div class="imgdiv">
+          <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png"
+            style="width: 45px; height:45px; border-radius:50%;">
+        </div>
+
+        <div class="shipperdiv">
+          Container (1 to 45 Tons)
+        </div>
+      </label>
+    </div>
+
+    <ion-card class="form-group" *ngIf="vehicleType =='Truk'">
+
+      <ion-card-title>Select the Truk body</ion-card-title>
+
+      <div  style="margin-top: 1rem;">
+        
+      <div >
+        <ion-radio-group [(ngModel)]="isTrukOpenOrClose" style="display: flex;">
+          <ion-item>
+           
+            <ion-radio value="Open body"></ion-radio>&nbsp;
+            <ion-label>Open body</ion-label>
+          </ion-item>
+      
+          <ion-item>
+            
+            <ion-radio value="Closed body"></ion-radio>&nbsp;
+            <ion-label>Closed body</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      </div>
+
+    </ion-card>
+
+
+
+  </div>
+
+  <br>
+
+  <div class="container">
+    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Drive Details
+    </h2>
+    <div class="mb-3">
+
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Driver Name"
+        [(ngModel)]="DriverName">
+    </div>
+    <div class="mb-3">
+
+      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Driver Number"
+        [(ngModel)]="DriverNumber">
+    </div>
+  </div>-->
+  <div class="container">
+    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Transporter Details
+    </h2>
+
+    <p style="background-color:#e5e5e5 ;">Please share your contact details with the shipper for further communication outside the platform </p>
+    <div class="mb-3">
+    <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
+    [(ngModel)]="transporterName">
+  </div>
+
+    <div class="mb-3">
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
+      [(ngModel)]="companyName">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
+      [(ngModel)]="mobileNumber">
+    </div>
+
+    <div class="mb-3">
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="City"
+    [(ngModel)]="city">
+    </div>
+    
+
+  </div>
+
+</ion-content>
+
+
+<ion-button expand="full" shape="round" class="back" [disabled]="transporterName == null  || companyName == null || mobileNumber ==null || city == null" (click)="NewPostAdd()">Post</ion-button>

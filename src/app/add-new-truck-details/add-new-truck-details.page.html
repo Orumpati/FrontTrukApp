@@ -5,6 +5,8 @@
       <ion-title>Add new truck Details</ion-title>
     </div>
 
+ 
+
   </ion-toolbar>
 </ion-header>
 
@@ -182,22 +184,22 @@
     <p style="background-color:#e5e5e5 ;">Please share your contact details with the shipper for further communication outside the platform </p>
     <div class="mb-3">
     <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
-    [(ngModel)]="transporterName">
+    [(ngModel)]="regdata.firstName+regdata.lastName">
   </div>
 
     <div class="mb-3">
       <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
-      [(ngModel)]="companyName">
+      [(ngModel)]="regdata.companyName">
     </div>
 
     <div class="mb-3">
       <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
-      [(ngModel)]="mobileNumber">
+      [(ngModel)]="regdata.mobileNo">
     </div>
 
     <div class="mb-3">
       <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="City"
-    [(ngModel)]="city">
+    [(ngModel)]="regdata.city">
     </div>
     
 
@@ -206,4 +208,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" [disabled]="transporterName == null  || companyName == null || mobileNumber ==null || city == null" (click)="NewPostAdd()">Post</ion-button>
+<ion-button expand="full" shape="round" class="back" [disabled]="regdata.firstName == null  || regdata.companyName == null || regdata.mobileNo ==null || regdata.city == null" (click)="NewPostAdd()">Post</ion-button>

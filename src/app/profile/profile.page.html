@@ -82,8 +82,8 @@
     </div>
 
     <div class="kyc">
-    <h2 *ngIf="routes.aadharVerify === 'notVerified'" style="border: 2px solid red; color:red; padding:4px; border-radius:8px;" >KYC Pending</h2>
-    <h2 *ngIf="routes.aadharVerify === 'Verified'" style="border: 2px solid green; color:green; padding:4px; border-radius:8px;">KYC Verified</h2>
+    <h2 *ngIf="routes.aadharVerify === 'notVerified' ||routes.gstVerify === 'notVerified'" style="border: 2px solid red; color:red; padding:4px; border-radius:8px;" >KYC Pending</h2>
+    <h2 *ngIf="routes.aadharVerify === 'Verified' && routes.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:4px; border-radius:8px;">KYC Verified</h2>
     <br>
     <!--<h2 style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:4px; border-radius:8px;"> Add Company Bio </h2>-->
     </div>

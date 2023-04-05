@@ -23,6 +23,8 @@ export class TrukallbidsPage implements OnInit {
   details: any;
   showallbids: any;
   loadwithvehicle: any;
+  loadeddata: any;
+  totalloadTAll: any;
 
   constructor(private router:Router,public navController : NavController,) { }
   ionViewDidEnter(){
@@ -61,8 +63,25 @@ all(){
         .then(res => res.json())
         .then(result => {
           console.log(result)
+          
           this.loadwithvehicle = result.data
           console.log(this.loadwithvehicle)
+          for(let i=0;i<this.loadwithvehicle.length;i++){
+            this.totalloadTAll =this.loadwithvehicle[i]
+            
+            this.loadeddata =this.loadwithvehicle[i].bids
+          }
+          localStorage.setItem('totalloadTAll',JSON.stringify(this.totalloadTAll))
+          console.log(this.loadeddata)
+          console.log(this.totalloadTAll)
+          for(let i=0;i<this.loadeddata.length;i++){
+            this.bidact = this.loadeddata[i]
+            this.bidactlen = this.loadeddata[i].BidActivity.length
+            //this.mo = this.allbids[i].mobileNo
+          }
+          console.log(this.bidact)
+         
+        
     
         }
     
@@ -74,6 +93,7 @@ all(){
 console.log(data)
 localStorage.setItem('openedBid',JSON.stringify(data))
 this.router.navigate(['truckviewbids'])
+window.location.href='/truckviewbids'
 //this.navController.navigateForward('/truckviewbids')
   }
   autorefresh(event:any){

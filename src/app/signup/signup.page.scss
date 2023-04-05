@@ -19,9 +19,7 @@ ion-list {
         font-weight: 1000;
         font-size: 1.5rem;
     }
-    ion-item 
-    
-    {
+    ion-item  {
         border: 1px solid var(--ion-color-light);
         border-radius: 20px;
         -webkit-box-shadow: 0 6px 4px -4px var(--ion-color-medium);
@@ -73,6 +71,9 @@ justify-content: center;
     background-color: rgba(248, 150, 34, 0.27);
     /* change this to the color you want */
   }
+  .routes{
+    border-radius: 10px;
+  }
   
   .circle-2 {
     background-color: rgba(248, 150, 34, 0.27);
@@ -91,3 +92,4 @@ justify-content: center;
   ion-segment{
     margin-top: -50px;
   }
+

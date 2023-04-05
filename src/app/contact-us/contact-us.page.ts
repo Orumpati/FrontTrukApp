@@ -131,9 +131,11 @@ export class ContactUsPage implements OnInit {
 
 
   get() {
+    localStorage.removeItem('clickhere')
     var data ={
       Number:this.logindata.mobileNo,
       isActive:"Active"
+    
     }
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/contactusStatusAndNumber", {
       method: 'POST',

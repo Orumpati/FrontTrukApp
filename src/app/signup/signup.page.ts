@@ -4,6 +4,8 @@ import {  FormGroup, Validators,FormControl } from '@angular/forms';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { LoadingController ,NavController} from '@ionic/angular';
 import { CommonServiceService } from '../common-service.service';
+
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 declare var google :any
 @Component({
   selector: 'app-signup',
@@ -18,6 +20,12 @@ export class SignupPage implements OnInit {
   final: any;
   aboutCompany:any
   location: any;
+
+  routes:any
+
+  dropdownList: any[] = [];
+  
+  dropdownSettings!: IDropdownSettings;
 
 
   @ViewChild('map', { static: false }) mapElement: any;
@@ -53,7 +61,7 @@ export class SignupPage implements OnInit {
    var lang= JSON.parse(localStorage.getItem('language') || '{}') 
     this.allDetails =JSON.parse(localStorage.getItem('allDetails') || '{}') 
   
-console.log(this.allDetails)
+   console.log(this.allDetails)
 
    this.signupForm= new FormGroup ({
     'firstName': new FormControl('', [Validators.required]),
@@ -66,7 +74,57 @@ console.log(this.allDetails)
   });
 
   console.log(this.signupForm.value.mobileNo)
+
+
+  this.dropdownList = [
+    'Andhra Pradesh', 
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Odisha',
+    'Nagaland',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal'
+  ];
+ 
+  this.dropdownSettings = {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'item_text',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 3,
+    allowSearchFilter: true
+  };
   }
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
 
   GetOriginLocation(data: any) {
     this.IsOrigin = true;

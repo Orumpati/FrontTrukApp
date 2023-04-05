@@ -264,9 +264,9 @@
             <ion-card-title>Select the Truk type</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="isTrukOpenOrClose">
-              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="1" name="hyva" value="Open Body" class="typeOfVehicle" (change)="truk('Open Body')"/>
               <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Open Body</label>
-              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="2" name="hyva" value="Close Body" class="typeOfVehicle" (change)="truk('Close Body')"/>
               <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Close Body</label>
               
   
@@ -279,11 +279,11 @@
             <ion-card-title>Select the Hyva type</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfHyva">
-              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="HYVA('10 Tyre')"/>
               <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">10 Tyre</label>
-              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="HYVA('12 Tyre')"/>
               <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">12 Tyre</label>
-              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="HYVA('14 Tyre')"/>
               <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">14 Tyre</label>
     
     
@@ -294,11 +294,11 @@
             <ion-card-title>Select the Trailer type</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfTrailer">
-              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
               <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">High Bed</label>
-              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="trailer('Semi Bed')"/>
               <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Semi Bed</label>
-              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="trailer('Low Bed')"/>
               <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Low Bed</label>
     
     
@@ -310,27 +310,35 @@
             <ion-card-title>Select the Container type:</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfContainer">
-              <input type="radio" id="1" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
               <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl</label>
-              <input type="radio" id="2" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl HQ')"/>
               <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl HQ</label>
-              <input type="radio" id="3" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl')"/>
               <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
-              <input type="radio" id="4" name="hyva" class="typeOfVehicle"/>
-              <label for="4" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
-              <input type="radio" id="5" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="5" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl HQ')"/>
               <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl HQ</label>
-              <input type="radio" id="6" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="6" name="hyva" class="typeOfVehicle" (change)="container('19ft Sxl')"/>
               <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">19ft Sxl</label>
-              <input type="radio" id="7" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="7" name="hyva" class="typeOfVehicle" (change)="container('20ft Sxl')"/>
               <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">20ft Sxl</label>
-              <input type="radio" id="8" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="8" name="hyva" class="typeOfVehicle" (change)="container('21ft Sxl')"/>
               <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">21ft Sxl</label>
-              <input type="radio" id="9" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="9" name="hyva" class="typeOfVehicle" (change)="container('23ft Sxl')"/>
               <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">23ft Sxl</label>
-              <input type="radio" id="10" name="hyva" class="typeOfVehicle"/>
+              <input type="radio" id="10" name="hyva" class="typeOfVehicle" (change)="container('24ft Sxl')"/>
               <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">24ft Sxl</label>
     
+            </div>
+          </ion-card>
+          <ion-card style="height: auto;" *ngIf="trukname =='Tanker'">
+            <ion-card-title>Select the Tanker type</ion-card-title>
+            <br>
+            <div class="flex" [(ngModel)]="typeofTanker">
+              <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium; ">Metal steel</label>
+              <input type="radio" id="2" name="hyva" value="Stainless steel" class="typeOfVehicle" (change)="Tanker('Stainless steel')"/>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">tainless steel</label>
             </div>
           </ion-card>
           <br>

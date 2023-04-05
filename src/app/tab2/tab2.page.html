@@ -9,10 +9,10 @@
   </ion-buttons>
   <div align="center">
     <div style=" display:flex; justify-content:center;align-items:center;text-align:center; width:150px; height:60px;">
-      <ion-img src="assets/trucklogo.jpeg"></ion-img>
+      <ion-img src="assets/trueTruk.png"></ion-img>
      </div>
      </div>
-        <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" ></ion-icon>
+        <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
        
       </ion-toolbar>
   
@@ -92,7 +92,7 @@
                       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                       <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
                   
-                  <div align="center">
+                  <div align="center" [hidden]="text.isActive == 'Completed'">
                   
                       <button type="button" class="viewbidbtn" (click)="loadById(text)">
                         <span> place Bid</span>
@@ -100,6 +100,16 @@
                         </button>
                        
                   </div>
+
+                     
+                  <div align="center">
+                  
+                    <button type="button" class="viewbidbtn" *ngIf="text.isActive == 'Completed'" (click)="loadById(text)">
+                      <span> View Contact</span>
+                      
+                      </button>
+                     
+                </div>
               </div>
               </div>
           </div>

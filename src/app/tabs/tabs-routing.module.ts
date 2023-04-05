@@ -34,6 +34,15 @@ const routes: Routes = [
         path: 'mytrucks',
         loadChildren: () => import('../mytrucks/mytrucks.module').then(m => m.MytrucksPageModule)
       },
+      {
+        path: 'driver-active-loads',
+        loadChildren: () => import('../driver-active-loads/driver-active-loads.module').then(m => m.DriverActiveLoadsPageModule)
+      },
+      {
+        path: 'previous-loads',
+        loadChildren: () => import('../previous-loads/previous-loads.module').then(m => m.PreviousLoadsPageModule)
+      },
+    
     ]
     
   },

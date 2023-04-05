@@ -9,4 +9,7 @@ export class CommonServiceService {
   getLocation(){
     return this.http.get('https://ipapi.co/json/');
   }
+  isloggedIn(){
+    return localStorage.getItem('regdata')!=null
+  }
 }

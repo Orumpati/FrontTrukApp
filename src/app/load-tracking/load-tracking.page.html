@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>loadTracking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div #map='' style="height: 65%;"></div>
+  <div class="container">
+    <div style="float: right;border: 1px solid black;border-radius:10px;">
+      Distance:{{Distance}}
+      <br>
+      Time:{{Dur}}
+    </div>
+<h5>Driver Name :Narayana</h5>
+<br><br>
+<div style="display: flex;">
+<ion-icon name="location-outline" color="danger"></ion-icon>
+<p>Origin Location: {{getload.OriginLocation}}</p>
+
+</div>
+<div style="display: flex;">
+  <ion-icon name="location-outline" color="success"></ion-icon>
+  <p>Destination Location:{{getload.DestinationLocation}}</p>
+  </div>
+</div>
+
+</ion-content>
+<div style="text-align: center;">
+<ion-button  shape="round" class="more">Update Location</ion-button>
+</div>
+<div style="text-align: center;">
+  <ion-button  shape="round" class="more" (click)="endtrip()">EndTrip</ion-button>
+  </div>

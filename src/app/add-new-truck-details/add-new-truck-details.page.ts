@@ -31,9 +31,11 @@ export class AddNewTruckDetailsPage implements OnInit {
   companyName:any;
   mobileNumber:any;
   city:any;
+  regdata: any;
   constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.regdata =JSON.parse(localStorage.getItem("regdata") || '{}')
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
   
     console.log(this.sub)
@@ -94,10 +96,10 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       DriverNumber: this.DriverNumber,
       shareContact:true,
 
-      transporterName:this.transporterName,
-      companyName:this.companyName,
-      mobileNumber:this.mobileNumber,
-      city:this.city,
+      transporterName:this.regdata.firstName +this.regdata.lastName,
+      companyName:this.regdata.companyName,
+      mobileNumber:this.regdata.mobileNo,
+      city:this.regdata.city,
      
 
 
@@ -131,5 +133,11 @@ window.location.href="/place-bid"
   }
   routeto(){
     this.router.navigate(['place-bid'])
+    window.location.href='/place-bid'
+  }
+
+  routetotrukviewbid(){
+    this.router.navigate(['truckviewbids'])
+    window.location.href='/truckviewbids'
   }
 }

@@ -33,7 +33,7 @@ this.getUniqueDeviceID()
   }
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
-    
+    console.log(this.logindata)
   }
   darkMode = false;
 
@@ -73,17 +73,29 @@ this.getUniqueDeviceID()
     localStorage.setItem('InappNotifictions', JSON.stringify(this.AllNotifications));
     console.log('trukappp'+localStorage.getItem('InappNotifictions'))
     // this show Inapp notifications
-    alert(v.notification.title + v.notification.body)
+    //alert(v.notification.title + v.notification.body)
      
-    alert(localStorage.getItem('InappNotifictions'))
+    //alert(localStorage.getItem('InappNotifictions'))
     
     
 
   })
 
-  OneSignal.setNotificationOpenedHandler(function(jsonData: any) {
+  OneSignal.setNotificationOpenedHandler((jsonData: any) => {
     
       console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+
+      var a = JSON.stringify(jsonData)
+    var v = JSON.parse(a)
+
+    
+    this.AllNotifications.push(v.notification.body);
+    localStorage.setItem('InappNotifictions', JSON.stringify(this.AllNotifications));
+    console.log('trukappp'+localStorage.getItem('InappNotifictions'))
+    // this show Inapp notifications
+    //alert(v.notification.title + v.notification.body)
+     
+    //alert(localStorage.getItem('InappNotifictions'))
   });
 
   // Prompts the user for notification permissions.
@@ -122,8 +134,13 @@ alert(id.userId)
 
 }
 
+location(){
+  localStorage.setItem('locatioPath',JSON.stringify('sidebar'))
+}
+
 signout(){
   localStorage.removeItem('regdata')
+  localStorage.removeItem('lookingfor')
   window.location.href='/loginotp'
 }
 

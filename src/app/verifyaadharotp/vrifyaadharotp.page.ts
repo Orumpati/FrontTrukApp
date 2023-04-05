@@ -26,6 +26,9 @@ config = {
   ngOnInit() {
     this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
     console.log(this.logindata)
+    console.log(this.logindata['aadharVerify'])
+    var clientid = JSON.parse(localStorage.getItem("client_id") || '{}')
+    console.log(clientid)
   }
   onOtpChange(otp: string) {
     this.otp = otp;
@@ -38,7 +41,7 @@ config = {
       spinner: 'crescent'
     });
     await loading.present();
-    var clientid = localStorage.getItem("client_id")
+    var clientid = localStorage.getItem("client_id") 
     console.log(clientid)
       const final ={
         client_id: clientid,
@@ -51,8 +54,8 @@ config = {
       headers:{
                 "Access-Control-Allow-Origin": "*",
                   "Content-Type":'application/json',
-                  "clientId":'64a016ef16ec8af749ea1557511f2959:955f7766e856dadf90b8153ad2d4f9bd',
-                  "secretKey":'dzODZYAgEyOPKAOAABNr2Aooc53xMYOK0EQJKabEVPJiscEceE88hXYnpQWpiIHPz'
+                  "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                  "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
               },
       body:JSON.stringify(final),
       }).then(res => res.json())
@@ -60,24 +63,31 @@ config = {
       .then(
         result =>{
      console.log(result)
-        if(result.code == 103){
-          loading.dismiss()
-          alert('OTP is required')
-        }else if(result.result.data == null){
-          loading.dismiss()
-              alert('Enter valid OTP')
-        }else{
+        if(result.code == 100){
           loading.dismiss()
           alert('OTP verified')
           this.aadharverifystatus()
+          loading.dismiss()
+        }else if(result.result.data == null){
+          loading.dismiss()
+              alert('Enter valid OTP')
+              
+        }else if(result.code == 103){
+        
+
+          loading.dismiss()
+          alert('OTP is required')
          // this.router.navigate(['profile'])
+        }else{
+          loading.dismiss()
+          alert("Recharge Your Wallet")
         }
         
       
         }
         ).catch(
             error =>{
-              alert('Enter valid OTP');
+              //alert('Enter valid OTP');
              console.log(error)
             });
           
@@ -96,7 +106,7 @@ config = {
       
       }
       console.log(data)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata._id, {
+      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
         
       method:'put',
       headers:{
@@ -108,19 +118,29 @@ config = {
       
       .then(
         result =>{
-     console.log(result.routes)
-        loading.dismiss()
+     console.log(result)
+
+         this.logindata['aadharVerify']='Verified'
         
+
+         localStorage.setItem('regdata',JSON.stringify(this.logindata))
+        loading.dismiss()
+        window.location.href='/profile'
         
       
         }
         ).catch(
             error =>{
               loading.dismiss()
-              alert('unable to add routes');
+             // alert('unable to add routes');
              console.log(error)
             });
        
     
+    }
+
+    route(){
+      this.router.navigate(['profile'])
+      window.location.href='/profile'
     }
 }

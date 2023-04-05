@@ -24,8 +24,13 @@
         <ion-label position="floating">Enter your Mobile Number</ion-label>
         <ion-input placeholder="Enter phone NUmber" [(ngModel)]="PhoneNumber"></ion-input>
       </ion-item><br>
-      <ion-item>
+      <ion-item [hidden]="hide.hideQuery == false">
         <ion-textarea placeholder={{type}} [autoGrow]="true" [(ngModel)]="Query">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item *ngIf="hide.hideQuery == false">
+        <ion-textarea placeholder='Please Enter Your Query' [autoGrow]="true" [(ngModel)]="Query">
         </ion-textarea>
       </ion-item>
       <br>

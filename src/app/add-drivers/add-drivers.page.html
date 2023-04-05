@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" routerLink="/drivers" style="font-size: 30px;"></ion-icon>
+      <ion-title align="center">Add Driver</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<br>
+<ion-content>
+<div class="container">
+
+  <div class="form-group">
+    <label>Select vechile Type</label>
+    <div class="form-control">
+
+      <ion-select placeholder="Select vechile Type" [(ngModel)]="TrukType">
+        <ion-select-option value="LCV">LCV</ion-select-option>
+        <ion-select-option value="HYVA">HYVA</ion-select-option>
+        <ion-select-option value="Trailer">Trailer</ion-select-option>
+        <ion-select-option value="Container">Container</ion-select-option>
+        <ion-select-option value="Truk">Truk</ion-select-option>
+        <ion-select-option value="Tanker">Tanker</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label >Truk Number</label>
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="vechile Number" [(ngModel)]="TrukNumber">
+  </div>
+  <div class="form-group">
+    <label >Truk Capacity</label>
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="vechile Capacity" [(ngModel)]="TrukCapacity">
+  </div>
+  <div class="form-group">
+    <label >Truk Image</label>
+    <input type="file" class="form-control" [(ngModel)]="TrukImage">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">RC Image</label>
+    <input type="file" class="form-control" [(ngModel)]="RcImage">
+  </div>
+  <div class="form-group">
+    <label >Drive License Image</label>
+    <input type="file" class="form-control" [(ngModel)]="DrivingLienceImage">
+  </div>
+  <div class="form-group">
+    <label >Aadhar Image</label>
+    <input type="file" class="form-control" [(ngModel)]="AadharImage">
+  </div>
+  <div class="form-group">
+    <label >Pan Image</label>
+    <input type="file" class="form-control" [(ngModel)]="PanImage">
+  </div>
+  <div class="form-group">
+    <label >Drive Name</label>
+    <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Name" [(ngModel)]="DriverName">
+  </div>
+  <div class="form-group">
+    <label >Drive Number</label>
+    <input type="text" class="form-control"   placeholder="Enter Number" [(ngModel)]="DriverNumber">
+  </div>
+</div>
+
+
+
+</ion-content>
+
+
+<ion-button expand="full" shape="round" class="back" (click)="postVehile()">Sumbit</ion-button>

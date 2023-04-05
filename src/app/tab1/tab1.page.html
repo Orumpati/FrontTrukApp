@@ -6,7 +6,7 @@
    
     <div align="center">
     <div style=" display:flex; justify-content:center;align-items:center;text-align:center; width:150px; height:60px;">
-      <ion-img src="assets/trucklogo.jpeg"></ion-img>
+      <ion-img src="assets/trueTruk.png"></ion-img>
      </div>
      </div>
     <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;
@@ -162,7 +162,7 @@
                         <button type="button" class="viewbidbtn" (click)="bidById(text)" >
                         
                           <span> view Bids</span>
-                          <span class="badge">{{text.bids.length}}</span>
+                          <span class="badge" [hidden]="text.isActive === 'Completed'">{{text.bids.length}}</span>
                           </button>
 
                           <!--<button type="button" class="viewbidbtn" (click)="placebidById(text)" *ngIf="text.TruckMarketVehicle.length > 0">

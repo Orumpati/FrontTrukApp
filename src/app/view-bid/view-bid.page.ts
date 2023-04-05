@@ -45,6 +45,8 @@ export class ViewBidPage implements OnInit {
   driver: any;
   payId: any;
   hideaccptbtn: any;
+  isPaymentCompleted: any;
+  TohideNegoshit: any;
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
     ngOnInit() {
@@ -86,8 +88,10 @@ return this.refresh
       
       for(let i=0; i<result.length; i++){
         this.payId = result[i].paymentId
-        this.driverdetails = result[i].vehicleInformation
+        this.driverdetails = result[i].vehicleInformation[i]
         this.shareContact =result[i].shareContact
+        this.isPaymentCompleted =result[i].isPaymentCompleted
+        this.TohideNegoshit =result[i].TohideNegoshit
         this.typepay =result[i].typeOfPay
     var final= result[i].bids
       }
@@ -193,7 +197,11 @@ return this.refresh
     }
   
     async acceptBid(){
-      confirm("Are You Sure, To accept")
+      if(this.regdata.aadharVerify == 'notVerified' ){
+        alert("Verify Aadhar to Accept")
+  window.location.href='/profile'
+      }else{
+      //confirm("Are You Sure, To accept")*/
       const loading = await this.loadingController.create({
         message: 'Loading...',
         spinner: 'crescent'
@@ -209,9 +217,6 @@ return this.refresh
         "TohideAcceptBtn":false,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
-         
-        
-        
          "Number":this.bidnumber, //transporte
          "mess":"Accepted your bid for"
       
@@ -245,7 +250,7 @@ return this.refresh
           loading.dismiss()
           console.log(err)
         })
-     
+      }
     }
 
     acceptBidStatus(){

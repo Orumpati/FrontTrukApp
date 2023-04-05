@@ -99,6 +99,8 @@ export class EditalldetailsPage implements OnInit {
              routes:new FormControl(this.profile.routes)
         
            })
+
+           
         loading.dismiss()
       }
 
@@ -127,8 +129,8 @@ loading.dismiss()
     .then(
       result =>{
    console.log(result)
-  
-  /*this.detailsforEdit['firstName']=result.firstName
+  //console.log(this.detailsforEdit['firstName']=result.firstName)
+  this.detailsforEdit['firstName']=result.firstName
          this.detailsforEdit['lastName']=result.lastName
          this.detailsforEdit['mobileNo']=result.mobileNo
          this.detailsforEdit['role']=result.role
@@ -142,7 +144,7 @@ loading.dismiss()
          this.detailsforEdit['gstVerify']=result.gstVerify
          this.detailsforEdit['routes']=result.routes
 
-         localStorage.setItem('regdata',JSON.stringify(this.detailsforEdit))*/
+         localStorage.setItem('regdata',JSON.stringify(this.detailsforEdit))
       loading.dismiss()
       window.location.href="/profile"
       this.router.navigate(['profile'])
@@ -152,7 +154,7 @@ loading.dismiss()
       ).catch(
           error =>{
             loading.dismiss()
-            alert('unable update Data');
+            //alert('unable update Data');
            console.log(error)
           });
         

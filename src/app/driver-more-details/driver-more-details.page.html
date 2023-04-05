@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" routerLink="/driver-active-loads" style="font-size: 30px;"></ion-icon>
+      <ion-title>Active Loads</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<br>
+<ion-content>
+
+  <div #map='' style="height: 65%;"></div>
+
+  <ion-card style="font-size: 16px;" >
+    <ion-row>
+      <ion-col>Id</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>0987654</ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>Shipper Number</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.Number}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>From destination</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.OriginLocation}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>To Destination</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.DestinationLocation}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Distance</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{Distance}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Duration</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{Dur}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Vehicle type</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.data}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Quantity</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.Quantity}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Date & Time</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{getload.date}}</ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>
+
+
+<ion-button shape="round" class="more" style="width: 150px;float: right;" id="open-truk">Accept</ion-button>
+<!-- <ion-button shape="round" class="more" (click)="calculateAndDisplayRoute()">Get Direction</ion-button> -->
+
+<ion-modal #modal trigger="open-truk">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+         
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <div style="text-align: center;">
+        <img src="https://cdn-icons-png.flaticon.com/512/233/233763.png" height="20%" width="20%">
+        <h3>Strat the trip</h3>
+        <div class="container">
+     <ion-button style="float: left;" class="yes" (click)="sendOtp()" (click)="modal.dismiss()">YES</ion-button>
+     <div id="sign-in-button"></div>
+     <ion-button style="float: right;" (click)="modal.dismiss()" color="light">No</ion-button>
+    </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

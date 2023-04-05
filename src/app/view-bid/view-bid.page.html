@@ -84,7 +84,7 @@
       <ion-card  class="agentAccept"  *ngIf="conditions == true">
         <div align="center">
         
-        Agent/Transporter/Fleet accepted bid  for:{{tenprice}}
+        Agent/Transporter/Fleet accepted for:{{tenprice}}
         </div>
         </ion-card>
         <ion-card  class="shipperAccept" *ngIf="agentconditions == true">
@@ -97,20 +97,20 @@
     
 
 </ion-content>
-<div *ngIf="agentconditions == true && typepay == 'Online'" align="center" style="margin-top:5px;"  [hidden]="payId != null">
+<div *ngIf="agentconditions == true && conditions == true && typepay == 'Online'" align="center" style="margin-top:5px;"  [hidden]="isPaymentCompleted == true">
   <ion-button  shape="round" class="next" (click)="makepayment()">PAY NOW</ion-button>
   </div>
 
-  <div *ngIf="shareContact == true" align="center" style="margin-top:5px;" >
+  <div *ngIf="shareContact == true && typepay == 'Offline'" align="center" style="margin-top:5px;" >
     <ion-button  shape="round" class="next" expand="block"id="opensModal">View Contact</ion-button>
     <ion-modal trigger="opensModal" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
-              <ion-button (click)="cancel()">Cancel</ion-button>
+              <ion-button (click)="cancel()">Back</ion-button>
             </ion-buttons>
-            <ion-title>Welcome</ion-title>
+            <ion-title>Contact Details</ion-title>
         
           </ion-toolbar>
         </ion-header>
@@ -138,6 +138,43 @@
     </ion-modal>
     </div>
 
+    <div *ngIf="shareContact == true && isPaymentCompleted == true" align="center" style="margin-top:5px;" >
+      <ion-button  shape="round" class="next" expand="block"id="OnlineModal">View Contact</ion-button>
+      <ion-modal trigger="OnlineModal" (willDismiss)="onWillDismiss($event)">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="cancel()">Back</ion-button>
+              </ion-buttons>
+              <ion-title>Contact Details</ion-title>
+          
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+          
+            <ion-item>
+              <ion-label position="stacked">vehicleType</ion-label>
+              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleType"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">vehicleNo</ion-label>
+              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleNo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">DriverName</ion-label>
+              <ion-input type="text"  [(ngModel)]="driverdetails.DriverName"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">DriverNumber</ion-label>
+              <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber"></ion-input>
+            </ion-item>
+            
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      </div>
+
   <!--<ion-card style="background-color:orange;" >
   
       <ion-card-header>
@@ -160,7 +197,7 @@
 
 <div [hidden]="agentconditions == true ">
 <ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" [hidden]="hideaccptbtn == false" >Accept</ion-button>
-<ion-button id="modal" shape="round" class="next">Negotiate</ion-button>
+<ion-button id="modal" shape="round" class="next" [hidden]="conditions == true">Negotiate</ion-button>
 <ion-modal trigger="modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">

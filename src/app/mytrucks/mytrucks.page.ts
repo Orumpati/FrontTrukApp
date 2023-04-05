@@ -14,7 +14,7 @@ export class MytrucksPage implements OnInit {
   trukvehiclenumber: any;
   trukcapacity: any;
   trukname: any;
-  trukcurrentLocation: any;
+  OriginLocation: any;
   trukoperatingRoutes: any;
    trukisActive: any
   products: any;
@@ -82,8 +82,9 @@ this.completed()
         console.log(result)
           this.item = result.vehicle
           this.itemlen =result.TotalVehicles
-        console.log(this.item)
+       
         loading.dismiss()
+        console.log(this.item)
       }
 
       ).catch(err =>{
@@ -408,12 +409,14 @@ var data ={
   }
 }*/
 
+
 bidbyId(text:any){
   console.log(text.trukvehiclenumber)
 
- 
+  localStorage.setItem("loadDocId",JSON.stringify(text._id))
   localStorage.setItem("truckallBids",JSON.stringify(text.trukvehiclenumber))
   this.router.navigate(['trukallbids'])
+  window.location.href='/trukallbids'
 }
 
 }

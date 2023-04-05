@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'selectlanguage',
     loadChildren: () => import('./selectlanguage/selectlanguage.module').then( m => m.SelectlanguagePageModule),
-   //canActivate:[LoggeduserGuard]
+   canActivate:[LoggeduserGuard]
   },
   {
     path: 'selecttype',
@@ -51,7 +51,7 @@ const routes: Routes = [
   {
     path: 'loadingscreen',
     loadChildren: () => import('./loadingscreen/loadingscreen.module').then( m => m.LoadingscreenPageModule),
-   // canActivate:[LoggeduserGuard]
+    //canActivate:[LoggeduserGuard]
    
   },
 
@@ -98,7 +98,7 @@ const routes: Routes = [
   {
     path: 'shipperhome',
     loadChildren: () => import('./shipperhome/shipperhome.module').then( m => m.ShipperhomePageModule),
-    canActivate:[LoggeduserGuard]
+    //canActivate:[LoggeduserGuard]
    // canActivate:[ShipperguardGuard]
   },
   {
@@ -204,7 +204,7 @@ const routes: Routes = [
   {
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then( m => m.GetStartedPageModule),
-    //canActivate:[LoggeduserGuard]
+  //  canActivate:[LoggeduserGuard]
 
   },
   {
@@ -287,6 +287,50 @@ const routes: Routes = [
   {
     path: 'all-notifications',
     loadChildren: () => import('./all-notifications/all-notifications.module').then( m => m.AllNotificationsPageModule)
+  },
+  {
+    path: 'add-new-trukfortrukbid',
+    loadChildren: () => import('./add-new-trukfortrukbid/add-new-trukfortrukbid.module').then( m => m.AddNewTrukfortrukbidPageModule)
+  },
+  {
+    path: 'onlineshare-contact',
+    loadChildren: () => import('./onlineshare-contact/onlineshare-contact.module').then( m => m.OnlineshareContactPageModule)
+  },
+  {
+    path: 'drivers',
+    loadChildren: () => import('./drivers/drivers.module').then( m => m.DriversPageModule)
+  },
+  {
+    path: 'add-drivers',
+    loadChildren: () => import('./add-drivers/add-drivers.module').then( m => m.AddDriversPageModule)
+  },
+  {
+    path: 'driver-active-loads',
+    loadChildren: () => import('./driver-active-loads/driver-active-loads.module').then( m => m.DriverActiveLoadsPageModule)
+  },
+  {
+    path: 'driver-more-details',
+    loadChildren: () => import('./driver-more-details/driver-more-details.module').then( m => m.DriverMoreDetailsPageModule)
+  },
+  {
+    path: 'load-otp',
+    loadChildren: () => import('./load-otp/load-otp.module').then( m => m.LoadOtpPageModule)
+  },
+  {
+    path: 'previous-loads',
+    loadChildren: () => import('./previous-loads/previous-loads.module').then( m => m.PreviousLoadsPageModule)
+  },
+  {
+    path: 'load-tracking',
+    loadChildren: () => import('./load-tracking/load-tracking.module').then( m => m.LoadTrackingPageModule)
+  },
+  {
+    path: 'end-otp',
+    loadChildren: () => import('./end-otp/end-otp.module').then( m => m.EndOtpPageModule)
+  },
+  {
+    path: 'proofofdelivery',
+    loadChildren: () => import('./proofofdelivery/proofofdelivery.module').then( m => m.ProofofdeliveryPageModule)
   },
   
 

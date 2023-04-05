@@ -61,6 +61,11 @@ id:any
   driverdetails: any;
   driver: any;
   isagentAccept: any;
+  agentInitialBidSend: any;
+  paymentId: any;
+  isPaymentCompleted: any;
+  TohideNegoshit: any;
+  bidslength: any;
   
   constructor(private router:Router,public loadingController: LoadingController,public navController:NavController,
     private location:Location) { }
@@ -84,8 +89,28 @@ this.getfullarray()
 this.autorefreshdata.subscribe(res =>{
   this.getfullarray()
 })
-//this.finalAcceptforBid =JSON.parse(localStorage.getItem("finalAcceptforBid") ||'{}')
-   // console.log(this.finalAcceptforBid)
+
+ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/" +this.objects._id, {
+   method: 'get',
+   headers: {
+     "access-Control-Allow-Origin": "*",
+     "Content-Type": 'application/json'
+   },
+  // body:JSON.stringify(query)
+ })
+   .then(response => response.json())
+   .then(result => {
+     console.log(result) 
+  
+   
+ 
+
+  
+
+   }
+
+   ).catch(err =>
+     console.log(err))
 
   }
 
@@ -113,7 +138,7 @@ ionViewDidEnter(){
       .then(result => {
         console.log(result) 
      
-      
+      this.bidslength =result.bids.length
        
         //getting full array
         if(result.bids.length === 0){
@@ -125,13 +150,19 @@ ionViewDidEnter(){
         for(let i=0; i<result.bids.length;i++){
       this.final= result.bids[i]
       this.sharecontact = result.bids[i].shareContact
-      this.driverdetails =result.bids[i].vehicleInformation 
-      console.log(this.final) //inside an array
+      this.isPaymentCompleted =result.bids[i].isPaymentCompleted
+      this.TohideNegoshit = result.bids[i].TohideNegoshit
+      this.paymentId =result.bids[i].paymentId
+      this.insidebidarray= result.bids[i].initialAccept
+      this.driverdetails =result.bids[i].vehicleInformation[i] 
+      console.log(this.sharecontact) //inside an array
         }
         console.log(this.driverdetails)
           this.item = this.final.quoteBid //go inside bids array
+            this.agentInitialBidSend =this.item.agentInitialBidSend
+            this. isShipperAccepted =this.item.isShipperAccepted
           console.log(this.item)
-         
+         console.log(this.agentInitialBidSend)
           for(let i=0; i<this.item.BidActivity.length;i++){ //
             this.gettenprice =this.item.BidActivity[i]
             console.log(this.gettenprice)
@@ -141,20 +172,19 @@ ionViewDidEnter(){
             console.log(this.finalss)
             this.num =this.item.BidActivity[i].userNo
               }
-              this.ispaymentcomplete = this.item.isPaymentCompleted
-              this. isShipperAccepted =this.item.isShipperAccepted
+             // this.ispaymentcomplete = this.item.isPaymentCompleted
+             
+
+             // this. initialAccept =this.item.in
               this.isagentAccept =this.item.isAgentAccepted
         console.log(this.finalss.length)
-        
+    
         if(this.finalss.length > 0){
           this.hide=true
           this.show= false
         }
 
-        for(let i=0; i<this.finalss.length;i++){
-          this.insidebidarray= this.finalss[i].initialAccept
-          console.log(this.insidebidarray)
-            }
+     
 
       }
 
@@ -181,7 +211,14 @@ ionViewDidEnter(){
 } */
 
   async acceptBid(){
-    confirm("Are You Sure,To Accept")
+
+   if(this.regdata.aadharVerify == 'notVerified'){
+      alert("Verify Aadhar to Accept")
+window.location.href='/profile'
+    }else{
+
+    
+    //confirm("Are You Sure,To Accept")*/
   const loading = await this.loadingController.create({
     message: 'Loading...',
     spinner: 'crescent'
@@ -195,6 +232,7 @@ ionViewDidEnter(){
     "userType":this.regdata.role,
     "Bidprice":this.objects.expectedPrice,
     "initialAccept" :"Accepted",
+    "TohideAcceptBtn":true,
     "Number":parseInt(this.objects.Number),//for notification who posted the load(Shipper)
     "Name":this.regdata.firstName+this.regdata.lastName,//for notification
     "mess":"Accepted your Bid for amount"
@@ -221,7 +259,7 @@ console.log(body)
     ).catch(err =>{
       loading.dismiss()
       console.log(err)})
-
+  }
 }
 
   async initialBid(){
@@ -243,6 +281,7 @@ console.log(body)
     "Name":this.regdata.firstName+this.regdata.lastName, //for notification
     "agentInitialBidSend":true,
     "TohideAcceptBtn":true,
+    
     "mess":"placed a Bid To Your Load ,Price:" 
   
    }
@@ -259,7 +298,7 @@ console.log(body)
     .then(response => response.json())
     .then(async result => {
       console.log(result)
-      
+     // this.saveDetails()
       loading.dismiss()
       window.location.reload()
 
@@ -268,6 +307,39 @@ console.log(body)
     ).catch(err =>{
       loading.dismiss()
       console.log(err)})
+
+}
+ saveDetails(){
+var data ={
+  "TohideNegoshit":true
+}
+  
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateNego/" +this.objects._id, {
+    
+  method:'put',
+  headers:{
+            "Access-Control-Allow-Origin": "*",
+              "Content-Type":'application/json'
+          },
+  body:JSON.stringify(data),
+  }).then(res => res.json())
+  
+  .then(
+    result =>{
+ console.log(result)
+
+    
+  
+    
+  
+    }
+    ).catch(
+        error =>{
+          
+          //alert('unable update Data');
+         console.log(error)
+        });
+      
 
 }
 
@@ -316,8 +388,12 @@ console.log(body)
 
 }
   async acceptBidForFinal(){
+    if(this.regdata.aadharVerify == 'notVerified' ){
+      alert("Verify Aadhar to Accept")
+window.location.href='/profile'
+    }else{
     
-      confirm("Are you Sure To Accept")
+     // confirm("Are you Sure To Accept")*/
     
   const loading = await this.loadingController.create({
     message: 'Loading...',
@@ -325,7 +401,7 @@ console.log(body)
   });
   await loading.present();
   //this.getfullarray()
-  console.log("woejd")
+  
   var body = {
   
     
@@ -364,6 +440,7 @@ window.location.reload()
       loading.dismiss()
       console.log(err)})
   }
+}
   autorefresh(event:any){
     
     setTimeout(() => {
@@ -382,6 +459,12 @@ posttruck(){
   localStorage.setItem("loadItem",JSON.stringify(this.objects._id))
   window.location.href="/add-new-truck-details"
   
+}
+ContactOnline(){
+  this.router.navigate(['drivers'])
+  localStorage.setItem("loadItemOnline",JSON.stringify(this.objects._id))
+  localStorage.setItem("locatioPath",JSON.stringify("placebids"))
+  window.location.href="/drivers"
 }
 
 cancel() {

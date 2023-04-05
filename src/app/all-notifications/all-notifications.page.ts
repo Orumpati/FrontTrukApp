@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-all-notifications',
   templateUrl: './all-notifications.page.html',
@@ -7,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllNotificationsPage implements OnInit {
   allNotifications: any;
-
-  constructor() { }
+date:any;
+  constructor( private location:Location) { }
 
   ngOnInit() {
     this.allNotifications = JSON.parse(localStorage.getItem('InappNotifictions') || '{}')
+    this.date = new Date().getTime()
+  }
+
+  back(){
+this.location.back()
+  }
+  getTimeStamp(){
+    return new Date().toLocaleString();
   }
 
 }

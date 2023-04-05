@@ -41,8 +41,8 @@ otp:any
       const final ={
         gstin: gstinNumber,
         username: userName,
-        //otp: otp,
-        //appKey: appKey
+       // otp: otp,
+       // appKey: appKey
       
       }
       fetch("https://api.emptra.com/gstToken", {
@@ -51,8 +51,8 @@ otp:any
       headers:{
                 "Access-Control-Allow-Origin": "*",
                   "Content-Type":'application/json',
-                  "clientId":'64a016ef16ec8af749ea1557511f2959:955f7766e856dadf90b8153ad2d4f9bd',
-                  "secretKey":'dzODZYAgEyOPKAOAABNr2Aooc53xMYOK0EQJKabEVPJiscEceE88hXYnpQWpiIHPz'
+                  "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                  "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
               },
       body:JSON.stringify(final),
       }).then(res => res.json())

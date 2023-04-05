@@ -1,13 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>allNotifications</ion-title>
+    <div style="display: flex;">
+      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
+      <ion-title>All Notifications</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ 
   <ion-list>
-    <ion-item *ngFor="let item of allNotifications; let i = index">
-      {{ i + 1 }}. {{ item }}
+    <ion-item *ngFor="let item of allNotifications">
+      <ion-icon slot="start" name="notifications-outline"></ion-icon>
+      <ion-label>
+        <h2>New message</h2>
+        <p> {{ item }} </p>
+        <div class="time" text-right>
+          {{getTimeStamp()}}
+        </div>
+      </ion-label>
     </ion-item>
-  </ion-list>
+    </ion-list>
 </ion-content>

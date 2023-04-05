@@ -30,6 +30,13 @@
          
         </ion-item>
       </ion-menu-toggle>
+      <ion-menu-toggle >
+        <ion-item [hidden]="logindata.role == 'Shipper'" routerLink="/drivers" (click)="location()">
+          
+          <ion-icon name="hammer-outline"></ion-icon>My drivers
+         
+        </ion-item>
+      </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item routerLink="/referral">
           
@@ -66,14 +73,14 @@
           </ion-menu-toggle>
         </ion-item>-->
         <ion-menu-toggle>
-        <ion-item routerLink="/terms-conditions">
+        <ion-item href="http://trukapp.com/terms-and-conditions/">
           
           <ion-icon name="document-text-outline"></ion-icon>Terms & Conditions
         
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item routerLink="/privacy-policy">
+        <ion-item href="http://trukapp.com/privacy-policy/">
          
           <ion-icon name="lock-closed-outline"></ion-icon>Privacy Policy
           

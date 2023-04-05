@@ -36,6 +36,11 @@
       <ion-input appCapitalize placeholder="Enter LastName" type="text" clearInput="true" formControlName="lastName"></ion-input>
     </ion-item>
 
+
+    <ng-multiselect-dropdown [hidden]="role === 'Shipper'" [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
+    [data]="dropdownList" [(ngModel)]="routes" formControlName="routes" (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)">
+  </ng-multiselect-dropdown>
     <!--<ion-item class="ion-margin">
       <ion-input placeholder="Enter Compant Address" type="text" clearInput="true" formControlName="city" ></ion-input>
       <!--<ion-icon (click)="loac()" name="location-outline" style="color:rgb(201, 13, 13);"></ion-icon>  ngModel={{location?.city}}
@@ -59,12 +64,13 @@
       <ion-input appCapitalize placeholder="Enter company Name" type="text" clearInput="true" formControlName="companyName"></ion-input>
     </ion-item>
   
+ 
    
     <ion-item class="ion-margin">
       <ion-input placeholder="Enter MobileNumber" type="number" clearInput="true" formControlName="mobileNo"></ion-input>
     </ion-item>
 
-    <ion-item [hidden]="role === 'Shipper'" class="ion-margin">
+    <!--<ion-item [hidden]="role === 'Shipper'" class="ion-margin">
       <ion-select placeholder="Select Your Routes" [multiple]="true"  formControlName="routes">
         <ion-select-option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</ion-select-option>
         <ion-select-option value="Andhra Pradesh">Andhra Pradesh</ion-select-option>
@@ -102,7 +108,11 @@
         <ion-select-option value="West Bengal">West Bengal</ion-select-option>
      
       </ion-select>
-    </ion-item>
+    </ion-item> -->
+
+  
+   
+    
   
     <ion-item class="ion-margin" >
       <ion-textarea

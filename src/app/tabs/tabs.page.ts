@@ -14,10 +14,12 @@ trucks:any
 loads:any
 fleet:any
   agents: any;
+  type: any;
   constructor() {}
   ngOnInit(): void {
   var role=  JSON.parse( localStorage.getItem('regdata') || "{}")
   this.role =role.role
+  this.type =role.userRole
   this.lookingfor =  JSON.parse( localStorage.getItem('lookingfor') || "{}")
   console.log(this.lookingfor)
   

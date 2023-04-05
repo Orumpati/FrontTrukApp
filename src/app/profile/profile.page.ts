@@ -160,8 +160,8 @@ otp:any
           headers:{
                     "Access-Control-Allow-Origin": "*",
                       "Content-Type":'application/json',
-                      "clientId":'64a016ef16ec8af749ea1557511f2959:955f7766e856dadf90b8153ad2d4f9bd',
-                      "secretKey":'dzODZYAgEyOPKAOAABNr2Aooc53xMYOK0EQJKabEVPJiscEceE88hXYnpQWpiIHPz'
+                      "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                      "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
                   },
           body:JSON.stringify(final),
           }).then(res => res.json())
@@ -170,8 +170,12 @@ otp:any
             async result =>{
          console.log(result)
       
+      
             console.log(result.result.data.client_id)
            localStorage.setItem("client_id",JSON.stringify(result.result.data.client_id))
+           if(result.code == 104){
+            alert("Recharge Your Wallet")
+           }
 loading.dismiss()
               
            
@@ -188,7 +192,7 @@ loading.dismiss()
             ).catch(
                 error =>{
                   loading.dismiss()
-                  alert('Enter valid AadharNumber');
+            alert(error)
                  console.log(error)
                 });
               
@@ -220,14 +224,14 @@ loading.dismiss()
         }
         console.log(final)
         fetch("https://api.emptra.com/gstOtp",{
-            //fetch("https://api.emptra.com/aadhaarVerification/requestOtp", {
+            
               
               method:'post',
               headers:{
-                        "Access-Control-Allow-Origin": "*",
+                  
                           "Content-Type":'application/json',
-                          "clientId":'64a016ef16ec8af749ea1557511f2959:955f7766e856dadf90b8153ad2d4f9bd',
-                          "secretKey":'dzODZYAgEyOPKAOAABNr2Aooc53xMYOK0EQJKabEVPJiscEceE88hXYnpQWpiIHPz'
+                          "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                          "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
                       },
               body:JSON.stringify(final),
               }).then(res => res.json())
@@ -235,8 +239,9 @@ loading.dismiss()
               .then(
                 async result =>{
              console.log(result)
-             var sai =result
-                console.log(result.result.data.client_id)
+             
+            
+                console.log(result.result.response.appKey)
                localStorage.setItem("gst",JSON.stringify(this.gstinNumber))
                localStorage.setItem("gstusername",JSON.stringify(this.userName))
                loading.dismiss()
@@ -244,7 +249,7 @@ loading.dismiss()
       const ele =await this.modal.getTop()
       if(ele){
         ele.dismiss();
-        this.router.navigate(['verifygstotp'])
+       // this.router.navigate(['verifygstotp'])
         return;
       }
            
@@ -252,7 +257,7 @@ loading.dismiss()
                 ).catch(
                     error =>{
                       loading.dismiss()
-                      alert('Enter valid AadharNumber');
+                     // alert('Enter valid AadharNumber');
                      console.log(error)
                     });
                   

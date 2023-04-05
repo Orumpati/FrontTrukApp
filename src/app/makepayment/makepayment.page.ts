@@ -60,7 +60,7 @@ this.array.push(this.payingToNmae)
   }
 
   options = {
-    "key": "rzp_live_W93qXq63hhLhjQ",//rzp_test_qjJfzalIvcjn3q
+    "key":"rzp_test_qjJfzalIvcjn3q", //"rzp_live_W93qXq63hhLhjQ",//rzp_test_qjJfzalIvcjn3q
     "amount":  100,
     "currency": "INR",
     "name": "Acme Corp",
@@ -70,43 +70,10 @@ this.array.push(this.payingToNmae)
       // Handle the response here
       console.log(response);
       this.paymentId = response.razorpay_payment_id
-      var body = {
-  
-    
-        "_id":this.viewbidDocId,
-        "paymentId":this.paymentId
-       
-      
-       }
-       console.log(this.docid._id)
-  console.log(body)
-    
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/paymentconfirm", {
-        method: 'put',
-        headers: {
-          "access-Control-Allow-Origin": "*",
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(body),
-    
-      })
-        .then(response => response.json())
-        .then(async result => {
-          console.log(result)
-      
-     
-         // loading.dismiss()
-    
-    
-        }
-    
-        ).catch(err =>{
-          //loading.dismiss()
-          console.log(err)
-        })
+      this.updatePaymentDetails()
     },
     "order_id": "", 
-    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+   //"callback_url": "http://localhost:8100/view-bid",
     "prefill": {
         "name": "Gaurav Kumar",
         "email": "gaurav.kumar@example.com",
@@ -124,15 +91,53 @@ pay(){
 
   this.rzp1 = new this.auth.nativeWindow().Razorpay(this.options);
    this.rzp1.open()
- 
 
-   
-  
  
 }
 
 out(paymentmode:any){
 console.log(paymentmode)
 }
+
+updatePaymentDetails(){
+
+console.log('working payment Upate')
+ 
+    var body = {
+     "_id":this.viewbidDocId,
+     "paymentId":this.paymentId,
+     "isPaymentCompleted":true
+    
+   
+    }
+    console.log(this.docid._id)
+ console.log(body)
+ 
+   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/paymentconfirm", {
+     method: 'post',
+     headers: {
+       "access-Control-Allow-Origin": "*",
+       "Content-Type": 'application/json'
+     },
+     body: JSON.stringify(body),
+ 
+   })
+     .then(response => response.json())
+     .then(async result => {
+       console.log(result)
+   
+  //window.location.href='/view-bid'
+      // loading.dismiss()
+ 
+ 
+     }
+ 
+     ).catch(err =>{
+       //loading.dismiss()
+       console.log(err)
+     })
+    
+  }
+
  
 }

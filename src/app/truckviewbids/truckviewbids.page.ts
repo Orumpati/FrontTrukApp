@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController,NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
   selector: 'app-truckviewbids',
   templateUrl: './truckviewbids.page.html',
   styleUrls: ['./truckviewbids.page.scss'],
 })
 export class TruckviewbidsPage implements OnInit {
-
+  @ViewChild(IonModal) modal!: IonModal ;
  // private refresh = new Subject<void>();
   item: any = [];
   bids:any=[];
@@ -24,6 +26,8 @@ export class TruckviewbidsPage implements OnInit {
     goinsidebids: any;
     goinsidetenprice: any;
     finalAgentAccept: any;
+    message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+    name!: string;
   regdata: any;
   openedBid: any;
   bidactivityofopenbid: any;
@@ -40,13 +44,23 @@ export class TruckviewbidsPage implements OnInit {
   messg: any;
   initialagentBid: any;
   sendbidno: any;
-  
+  loadDocId: any;
+  show:boolean | undefined;
+  hide:boolean | undefined
+  tohideAccBtn: any;
+  tentativefinalPrice: any;
+  sharecontact: any;
+  driverdetails: any;
+  trukDocId: any;
+  TohideNegoshit: any;
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
     console.log(this.regdata)
+    this.loadDocId = JSON.parse(localStorage.getItem('totalloadTAll') || '{}')
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
+     
       console.log(this.openedBid)
        this.typepay = this.openedBid.typeOfPay
    
@@ -73,13 +87,26 @@ export class TruckviewbidsPage implements OnInit {
     .then(response => response.json())
     .then(result => {
       console.log(result)
+   
       
       for(let i=0; i<result.length; i++){
         this.paymentid= result[i].paymentId
+        this.sharecontact =result[i].shareContact
+        this.paymentdone =result[i].isPaymentCompleted
+        this.TohideNegoshit = result[i].TohideNegoshit
+        console.log(this.sharecontact)
     var final= result[i].bids //this is bids array
-    
+    console.log(final)
+    if(result[i].bids.length === 0){
+      this.show=true
+      this.hide=false
+      
+    }
+    this.driverdetails =result[i].vehicleInformation[i]
       }
-    this.sendbidno =final.mobileNo
+      
+   
+    console.log(this.driverdetails)
         this.item = final
         console.log(this.item)
        /* this.filteredbid = this.item.filter((data:any)=>{
@@ -95,21 +122,29 @@ export class TruckviewbidsPage implements OnInit {
    }
 console.log(this.onlybid)*/
         for(let i=0; i<this.item.length;i++){
+          console.log(this.item[i].mobileNo)
    if(this.regdata.mobileNo == this.item[i].mobileNo){
 
           console.log(this.item[i])
           //this.goinsidebids =this.item[i]
           //this.finalAgentAccept =this.item[i]
          
-
-
-          this.bidActivity= this.item[i].BidActivity //chatting array
-          console.log(this.bidActivity)
+          this.tohideAccBtn =this.item[i].TohideAcceptBtn
           this.bidnumber =this.item[i].mobileNo
+          
           this.conditions =this.item[i].isAgentAccepted
           this.agentconditions =this.item[i].isShipperAccepted
-          this.paymentdone =this.item[i].isPaymentCompleted
+          
           this.initialagentBid =this.item[i].agentInitialBidSend
+          this.tentativefinalPrice =this.item[i].tentativefinalPrice
+console.log(this.tohideAccBtn)
+          this.bidActivity= this.item[i].BidActivity //chatting array
+          if(this.bidActivity.length > 0){
+            this.hide=true
+            this.show= false
+          }
+          console.log(this.bidActivity)
+        
    }
             }
             console.log(this.goinsidetenprice)
@@ -141,17 +176,15 @@ console.log(this.onlybid)*/
       });
       await loading.present();
     
-      var body = {
-    
-      
+      var body = {      
         "_id":this.openedBid._id,
-        "mobileNo":this.openedBid.mobileNo, //evaritho negotiate chesthunnamo vadi mobile number
+        "mobileNo":this.bidnumber,//this.openedBid.mobileNo, //evaritho negotiate chesthunnamo vadi mobile number
         "userNo":this.regdata.mobileNo,
         "userType":this.regdata.role,
         "price":this.NegoPrice,
-        "TohideAcceptBtn":false,
+        "TohideAcceptBtn":true,
         "Name":this.regdata.firstName+this.regdata.lastName,//for notifi 
-        "Number":this.openedBid.mobileNo, //fornotifca
+        "Number":this.bidnumber, //fornotifca
         "mess":"Placed a Bid for amount"
       
        }
@@ -185,7 +218,11 @@ console.log(this.onlybid)*/
     }
   
     async acceptBid(){
-      confirm("Are You Sure, To accept")
+      if(this.regdata.aadharVerify == 'notVerified' ){
+        alert("Verify Aadhar to Accept")
+  window.location.href='/profile'
+      }else{
+     // confirm("Are You Sure, To accept")
       const loading = await this.loadingController.create({
         message: 'Loading...',
         spinner: 'crescent'
@@ -195,16 +232,18 @@ console.log(this.onlybid)*/
     
       
         "_id":this.openedBid._id,
-        "mobileNo":this.openedBid.mobileNo,
-        "isShipperAccepted":true,
+        "mobileNo":this.regdata.mobileNo,
+        "userType":this.regdata.role,
+        "Bidprice":this.loadDocId.expectedPrice,
+        "initialAccept" :"Accepted",
+        "TohideAcceptBtn":true,
         "bidAcceptedTo":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
-         "Bidprice":this.tenprice,
-         
+         "mess":"Accepted your bid for",
+
+         "Number":parseInt(this.loadDocId.Number),//for notification who posted the load(Shipper)
+
         
-        
-         "Number":this.bidnumber, //transporte
-         "mess":"Accepted your bid for"
       
        }
        console.log(this.bids._id)
@@ -226,7 +265,7 @@ console.log(this.onlybid)*/
           console.log(data)
           localStorage.setItem('viewBid',JSON.stringify(data))
           this. acceptBidStatus()
-          this.navControl.navigateForward('/view-bid')
+          this.navControl.navigateForward('/truckviewbids')
           loading.dismiss()
     
     
@@ -236,7 +275,7 @@ console.log(this.onlybid)*/
           loading.dismiss()
           console.log(err)
         })
-     
+      }
     }
 
     acceptBidStatus(){
@@ -246,8 +285,8 @@ console.log(this.onlybid)*/
       }
      // console.log(data)
   
-      console.log(this.bids._id)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.bids._id, {
+      
+      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.loadDocId._id, {
         method: 'PUT',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -283,17 +322,21 @@ console.log(this.onlybid)*/
     var body = {
   
     
-      "_id":this.bids._id,
+      "_id":this.openedBid._id,
       "mobileNo": this.regdata.mobileNo,
       "userType":this.regdata.role,
       "Bidprice":this.messg,
-     // "Number":parseInt(this.objects.Number), //for notification
-     // "Name":this.regdata.firstName+this.regdata.lastName, //for notification
+      "Number":parseInt(this.loadDocId.Number), //for notification
+      "Name":this.regdata.firstName+this.regdata.lastName, //for notification
       "agentInitialBidSend":true,
-      //"TohideAcceptBtn":true,
-     // "mess":"placed a Bid To Your Load ,Price:" 
+      "TohideAcceptBtn":true,
+     "mess":"placed a Bid To Your Load ,Price:" 
     
      }
+
+   
+
+  
   
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
       method: 'post',
@@ -319,6 +362,65 @@ console.log(this.onlybid)*/
   
   }
 
+  async acceptBidForFinal(){
+    if(this.regdata.aadharVerify == 'notVerified' ){
+      alert("Verify Aadhar to Accept")
+
+    }else{
+    
+      //confirm("Are you Sure To Accept")*/
+    
+  const loading = await this.loadingController.create({
+    message: 'Loading...',
+    spinner: 'crescent'
+  });
+  await loading.present();
+  //this.getfullarray()
+  
+  var body = {
+  
+    
+    "_id":this.openedBid._id,
+    "mobileNo":this.regdata.mobileNo,
+    "isAgentAccepted":true,
+    "TohideAcceptBtn":true,
+    "Number":parseInt(this.loadDocId.Number), // for send notifi
+    "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
+    "Bidprice":this.tentativefinalPrice, // for send notifi
+    "mess":"Accepted a bid for"
+  
+   }
+
+       
+
+   console.log(body)
+console.log(this.item.mobileNo)
+
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
+    method: 'post',
+    headers: {
+      "access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(body),
+
+  })
+    .then(response => response.json())
+    .then(async result => {
+      console.log(result)
+      loading.dismiss()
+      
+
+window.location.reload()
+    }
+
+    ).catch(err =>{
+      loading.dismiss()
+      console.log(err)})
+  }
+}
+
+
   makepayment(){
     localStorage.setItem('filteredBid',JSON.stringify(this.filteredbid))
     window.location.href='/makepayment'
@@ -334,9 +436,28 @@ console.log(this.onlybid)*/
   }
 
   posttruck(){
-    this.router.navigate(['add-new-truck-details'])
-   // localStorage.setItem("loadItem",JSON.stringify(this.openedBid._id))
-    window.location.href="/add-new-truck-details"
+    this.router.navigate(['add-new-trukfortrukbid'])
+    localStorage.setItem("loadItem",JSON.stringify(this.openedBid._id))
+    window.location.href="/add-new-trukfortrukbid"
     
+  }
+  ContactOnline(){
+    this.router.navigate(['drivers'])
+    localStorage.setItem("loadItemOnline",JSON.stringify(this.openedBid._id))
+    localStorage.setItem("locatioPath",JSON.stringify("truckViewBid"))
+    window.location.href="/drivers"
+  }
+  cancel() {
+    //this.modal.dismiss(null, 'cancel');
+    window.location.href='/truckviewbids'
+  }
+  
+  
+  
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
   }
 }

@@ -9,6 +9,7 @@
         <ion-img src="assets/trucklogo.jpeg"></ion-img>
        </div>
        </div>
+       <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-card style="height:60px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner'">
@@ -63,8 +64,8 @@
   <ion-card style=" height:60px; background:rgb(239, 202, 132); ">
   
   
-   <span *ngIf="logindata.aadharVerify === 'notVerified'" routerLink="/profile">KYC Pending</span>
-   <span *ngIf="logindata.aadharVerify === 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">KYC Verified</span>
+   <span *ngIf="logindata.aadharVerify === 'notVerified'" routerLink="/profile" style="border: 2px solid rgb(234, 10, 10); color:rgb(236, 35, 12); padding:7px; border-radius:8px;">KYC Pending</span>
+   <span *ngIf="logindata.aadharVerify === 'Verified' && logindata.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">KYC Verified</span>
   </ion-card>
 
 <div class="lower-box">

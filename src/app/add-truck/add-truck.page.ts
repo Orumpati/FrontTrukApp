@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,NgZone } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
@@ -10,8 +10,9 @@ export class AddTruckPage implements OnInit {
 
   toppings: any;
   trukname: any;
-  dropdownList: any[] = [];
   trukoperatingRoutes: any = [];
+  dropdownList: any[] = [];
+  
   dropdownSettings!: IDropdownSettings;
   trukvehiclenumber: any;
   trukcurrentLocation: any;
@@ -23,40 +24,67 @@ export class AddTruckPage implements OnInit {
   logindata: any;
   isTrukOpenOrClose: any;
 
-  constructor(private alertController: AlertController,public loadingController: LoadingController) { }
+
+  map: any;
+  address: any;
+  lat: any;
+  long: any;
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
+  location: any;
+  placeid: any;
+  GoogleAutocomplete: any;
+
+
+ IsOrigin=false;
+  OriginLocation: any;
+  DestinationLocation: any;
+
+  @ViewChild('map', { static: false }) mapElement: any;
+  typeOfHyva: any;
+  typeOfTrailer: any;
+  typeOfContainer: any;
+  typeofTanker:any;
+  
+
+  constructor(private alertController: AlertController,public loadingController: LoadingController,public zone:NgZone) { 
+
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
+  }
 
   ngOnInit() {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.dropdownList = [
-      'Amaravati', 
-      'Itanagar',
-      'Dispur',
-      'Patna',
-      'Raipur',
-      'Panaji',
-      'Gandhinagar',
-      'Chandigarh',
-      'Shimla',
-      'Ranchi',
-      'Bangaluru',
-      'Thiruvananthapuram',
-      'Bhopal',
-      'mumbai',
-      'Imphal',
-      'Shillong',
-      'Aizawl',
-      'Kohima',
-      'Bhubaneswar',
-      'Chandigarh',
-      'Jaipur',
-      'Gangtok',
-      'Chennai',
-      'Hyderabad',
-      'Agartala',
-      'Lucknow',
-      'Kolkata',
-      'delhi',
-      'Pune',
+      'Andhra Pradesh', 
+      'Arunachal Pradesh',
+      'Assam',
+      'Bihar',
+      'Chhattisgarh',
+      'Goa',
+      'Gujarat',
+      'Haryana',
+      'Himachal Pradesh',
+      'Jharkhand',
+      'Karnataka',
+      'Kerala',
+      'Madhya Pradesh',
+      'Maharashtra',
+      'Manipur',
+      'Meghalaya',
+      'Mizoram',
+      'Odisha',
+      'Nagaland',
+      'Punjab',
+      'Rajasthan',
+      'Sikkim',
+      'Tamil Nadu',
+      'Telangana',
+      'Tripura',
+      'Uttar Pradesh',
+      'Uttarakhand',
+      'West Bengal',
     ];
     this.trukoperatingRoutes = [
 
@@ -89,6 +117,88 @@ export class AddTruckPage implements OnInit {
 
   }
 
+
+
+  truk(isTrukOpenOrClose: any) {
+    console.log(isTrukOpenOrClose)
+    this.isTrukOpenOrClose = isTrukOpenOrClose
+  }
+
+  HYVA(typeOfHyva: any) {
+    console.log(typeOfHyva)
+    this.typeOfHyva = typeOfHyva
+  }
+
+  trailer(typeOfTrailer: any) {
+    console.log(typeOfTrailer)
+    this.typeOfTrailer = typeOfTrailer
+  }
+
+  container(typeOfContainer: any) {
+    console.log(typeOfContainer)
+    this.typeOfContainer = typeOfContainer
+  }
+  Tanker(typeofTanker:any){
+    
+    this.typeofTanker = typeofTanker
+  }
+
+
+  //Get origin and destination location 
+
+  GetOriginLocation(data: any) {
+    this.IsOrigin = true;
+   
+    console.log(data)
+    this.UpdateSearchResults(data);
+
+    // console.log(this.DestinationLocation)
+
+  }
+
+
+  UpdateSearchResults(data: any) {
+    console.log(data)
+    this.autocomplete.input = data;
+    console.log("UpdateSearchResults")
+    if (this.autocomplete.input == '') {
+
+      this.autocompleteItems = [];
+      return;
+    }
+    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+      (predictions: any[], status: any) => {
+        this.autocompleteItems = [];
+        this.zone.run(() => {
+          predictions.forEach((prediction) => {
+            console.log('places' + prediction)
+            this.autocompleteItems.push(prediction);
+          });
+        });
+      });
+  }
+
+  //wE CALL THIS FROM EACH ITEM.
+  SelectSearchResult(item: { place_id: any; description: any }) {
+    ///WE CAN CONFIGURE MORE COMPLEX FUNCTIONS SUCH AS UPLOAD DATA TO FIRESTORE OR LINK IT TO SOMETHING
+    //alert(JSON.stringify(item))   
+    console.log(item.description)
+    this.placeid = item.description;
+
+
+    if (this.IsOrigin) {
+      this.OriginLocation = item.description;
+      this.autocompleteItems = [];
+    }
+   
+  }
+
+   //lET'S BE CLEAN! THIS WILL JUST CLEAN THE LIST WHEN WE CLOSE THE SEARCH BAR.
+   ClearAutocomplete() {
+    this.autocompleteItems = []
+    this.autocomplete.input = ''
+  }
+
   async postVehile() {
     const loading = await this.loadingController.create({
       message: 'Loading...',
@@ -98,12 +208,17 @@ export class AddTruckPage implements OnInit {
     var body = {
       trukvehiclenumber: this.trukvehiclenumber,
       trukcapacity: this.trukcapacity,
-      trukcurrentLocation: this.trukcurrentLocation,
+      OriginLocation: this.OriginLocation,
       trukoperatingRoutes: this.trukoperatingRoutes,
       trukname: this.trukname,
       trukdate: this.trukdate,
       trukOwnerNumber:this.logindata.mobileNo,
-      isTrukOpenOrClose:this.isTrukOpenOrClose
+      isTrukOpenOrClose:this.isTrukOpenOrClose,
+     
+      typeOfHyva:this.typeOfHyva,
+      typeOfTrailer:this.typeOfTrailer,
+      typeOfContainer:this.typeOfContainer,
+      typeofTanker:this.typeofTanker
     }
     console.log()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehiclepost", {

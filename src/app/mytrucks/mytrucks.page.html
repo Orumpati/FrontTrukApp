@@ -2,9 +2,10 @@
   <ion-toolbar>
     <div align="center">
       <div style=" display:flex; justify-content:center;align-items:center;text-align:center;  width:150px; height:60px;">
-        <ion-img  src="assets/trucklogo.jpeg"></ion-img>
+        <ion-img  src="assets/trueTruk.png"></ion-img>
        </div>
        </div>
+       <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
     <!--<div style="display: flex;">
 
       <div class="form-check  form-check-inline ">
@@ -153,7 +154,8 @@
             </button>-->
             <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a><a class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
+              <!-- <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a> -->
+              <a class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
               <a class="dropdown-item"  (click)="moredetails(text)" routerLink="/trukmore-details" >More Details</a>
             </div>
           </div>
@@ -165,14 +167,14 @@
               &nbsp;&nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span>
               </div>
               <div class="flex-1 ms-3">
-                  <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark">{{text.trukvehiclenumber}}</a></h5>
+                  <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder; text-transform:uppercase;"><a  class="text-dark">{{text.trukvehiclenumber}}</a></h5>
                   <span class="badge badge-soft-success mb-0"> Posted On {{text.trukdate}}</span>
               </div>
           </div>
           <div class="mt-1 pt-0">
              &nbsp;&nbsp;&nbsp; <p  class="text-muted mb-0 mt-0"  ><i class="fa fa-location-arrow font-size-15 align-middle pe-2 " ></i> {{text.trukoperatingRoutes.length}} Routes</p>
-              <p  class="text-muted mb-0 mt-2">&nbsp;<i class=" fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.trukcapacity}} Tons --{{text.trukname}}</p>
-              <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-map-marker font-size-15 align-middle pe-2 "></i>  Avaliable in <span style="color:black; font-weight:bolder;"> {{text.trukcurrentLocation}}</span></p>
+              <p  class="text-muted mb-0 mt-2">&nbsp;<i class=" fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}} --{{text.trukname}}</p>
+              <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-map-marker font-size-15 align-middle pe-2 "></i>  Avaliable in <span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
           </div>
           <div style="display:inline-flex;     display: flex;
           text-align: center;

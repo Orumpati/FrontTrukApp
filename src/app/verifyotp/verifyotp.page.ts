@@ -189,6 +189,7 @@ if(this.verified.role === "Shipper"){
 loading.dismiss()
   this.ngZone.run(() => {
     alert('Login as Shipper')
+    this.updatedeviceid()
     this.router.navigate(['/tab/tab1'])
     localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
     localStorage.removeItem('lookingfor')
@@ -198,23 +199,34 @@ loading.dismiss()
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
 alert('Login as agent/broker')
+this.updatedeviceid()
 this.router.navigate(['/tab/shipperhome'])
 localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === "Transporter"){
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
   alert('Login as transporter')
+  this.updatedeviceid()
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === 'Fleet Owner'){
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
   alert('Login as Fleet Owner')
+  this.updatedeviceid()
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
+}else if(this.verified.userRole === 'Driver'){
+ // localStorage.setItem('lookingfor',JSON.stringify('loads'))
+ localStorage.removeItem('lookingfor')
+  loading.dismiss()
+  alert('Login as Driver')
+  this.updatedeviceid()
+  this.router.navigate(['/tab/driver-active-loads'])
+  localStorage.setItem('loginrole',JSON.stringify(this.verified.userRole))
 }
      
-this.updatedeviceid()
+
         })
         .catch((error) => {
           loading.dismiss()

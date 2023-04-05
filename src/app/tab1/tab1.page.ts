@@ -191,6 +191,7 @@ loading.dismiss()
       .then(result => {
         console.log(result),
           this.item = result.load
+          loading.dismiss()
           for(let i=0;i<this.item.length;i++){
             this.inarray = this.item[i].TruckMarketVehicle.length
           }
@@ -198,10 +199,11 @@ loading.dismiss()
           for(let i=0;i<this.inarray.length;i++){
             this.intruckdata = this.inarray[i].trukOwnerNumber
           }
+         
           console.log(this.intruckdata)
          console.log(this.item)
        
-         loading.dismiss()
+      
       }
 
       ).catch(err =>{

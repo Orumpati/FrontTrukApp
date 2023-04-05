@@ -48,8 +48,9 @@ disabled=true
  
       
     localStorage.setItem('language',JSON.stringify(this.language))
-    //this.router.navigate(['loginotp'])
-this.router.navigateByUrl('/get-started')
+    this.router.navigate(['get-started'])
+    window.location.href='/get-started'
+//this.router.navigateByUrl('/get-started')
     
 
   }

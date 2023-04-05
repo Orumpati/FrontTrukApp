@@ -96,9 +96,9 @@ export class AttachPrefferdNewloadPage implements OnInit {
     console.log(this.post)
   }
 
-  ngAfterViewInit(): void {
+  /*ngAfterViewInit(): void {
     this.loadMapWithDirection();
-  }
+  }*/
 
 
 
@@ -269,7 +269,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
       trukcurrentLocation:this.post.trukcurrentLocation,
       trukoperatingRoutes:this.post.trukoperatingRoutes,
       trukvehiclenumber:this.post.trukvehiclenumber,
-      trukOwnerNumber:this.regdata.mobileNo,
+      trukOwnerNumber:this.post.mobileNo,
     }
     console.log(body)
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
@@ -288,9 +288,9 @@ export class AttachPrefferdNewloadPage implements OnInit {
         this.Items = result
         this.Sendloadtovehicle()
         loading.dismiss()
-        for(let i=0;i<result.length;i++){
-          this.objId =result[i]._id
-        }
+    
+          this.objId =result.Id
+        
         if(result.status == 'success'){
           loading.dismiss()
           const alert = await this.alertController.create({
@@ -303,14 +303,14 @@ export class AttachPrefferdNewloadPage implements OnInit {
                   console.log('Confirm Okay');
                   //you can write your code or redirection 
                   // sample redirection code 
-                 this.router.navigate(['tab/tab4'])
+                // this.router.navigate(['tab/tab4'])
   
                 }
               }
             ],
           });
-          window.location.href = '/tab/tab4';
-          await alert.present();
+          //window.location.href = '/tab/tab4';
+          //await alert.present();
       
 
       }else{
@@ -341,7 +341,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     var data = {
       _id:this.post._id,
        
-    loadids:this.objId._id
+    loadids:this.objId
      
     }
     console.log(data)
