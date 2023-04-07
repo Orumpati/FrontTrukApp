@@ -118,19 +118,19 @@
         
           <ion-item>
             <ion-label position="stacked">Transporter Name</ion-label>
-            <ion-input type="text"  [(ngModel)]="driver.transporterName"></ion-input>
+            <ion-input type="text"  [(ngModel)]="driverdetails.transporterName" readonly></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Transporter Number</ion-label>
-            <ion-input type="text"  [(ngModel)]="driver.mobileNumber"></ion-input>
+            <ion-input type="text"  [(ngModel)]="driverdetails.mobileNumber" readonly></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Company Name</ion-label>
-            <ion-input type="text"  [(ngModel)]="driver.companyName"></ion-input>
+            <ion-input type="text"  [(ngModel)]="driverdetails.companyName" readonly></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">City</ion-label>
-            <ion-input type="text"  [(ngModel)]="driver.city"></ion-input>
+            <ion-input type="text"  [(ngModel)]="driverdetails.city" readonly></ion-input>
           </ion-item>
           
         </ion-content>
@@ -155,19 +155,19 @@
           
             <ion-item>
               <ion-label position="stacked">vehicleType</ion-label>
-              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleType"></ion-input>
+              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleType" readonly></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">vehicleNo</ion-label>
-              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleNo"></ion-input>
+              <ion-input type="text"  [(ngModel)]="driverdetails.vehicleNo" readonly></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">DriverName</ion-label>
-              <ion-input type="text"  [(ngModel)]="driverdetails.DriverName"></ion-input>
+              <ion-input type="text"  [(ngModel)]="driverdetails.DriverName" readonly></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="stacked">DriverNumber</ion-label>
-              <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber"></ion-input>
+              <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber" readonly></ion-input>
             </ion-item>
             
           </ion-content>
@@ -197,7 +197,7 @@
 
 <div [hidden]="agentconditions == true ">
 <ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" [hidden]="hideaccptbtn == false" >Accept</ion-button>
-<ion-button id="modal" shape="round" class="next" [hidden]="conditions == true">Negotiate</ion-button>
+<ion-button id="modal" shape="round" class="next" [hidden]="conditions == true" [disabled]="hideaccptbtn == false">Negotiate</ion-button>
 <ion-modal trigger="modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">

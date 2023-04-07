@@ -136,7 +136,7 @@ return this.refresh
           for(let i=0; i<this.driverdetails.length; i++){
             this.driver =this.driverdetails[i]
           }
-     
+     console.log(this.driver)
     }
   
     ).catch(err =>{
@@ -197,6 +197,7 @@ return this.refresh
     }
   
     async acceptBid(){
+      if(confirm('Are u Sure')){
       if(this.regdata.aadharVerify == 'notVerified' ){
         alert("Verify Aadhar to Accept")
   window.location.href='/profile'
@@ -251,6 +252,7 @@ return this.refresh
           console.log(err)
         })
       }
+    }
     }
 
     acceptBidStatus(){

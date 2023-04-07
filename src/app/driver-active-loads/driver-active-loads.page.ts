@@ -22,6 +22,7 @@ export class DriverActiveLoadsPage implements OnInit {
   console.log(String(this.truker.mobileNo))
 this.get()
  this. gettrukerbyload()
+ 
   }
 
   async get(){
@@ -106,6 +107,7 @@ this.get()
         this.onlydriver = this.dri[i]._id
         this.onedriver = this.dri[i].Drivers
       }
+      localStorage.setItem('onlyTranspoterId',JSON.stringify(this.onlydriver))
           console.log(this.onedriver)
           loading.dismiss()
           this.single = this.onedriver.filter((data: { DriverNumber: string; })=>{
@@ -196,5 +198,13 @@ this.get()
                console.log(error)
               });
       }
+    }
+    autorefresh(event:any){
+    
+      setTimeout(() => {
+        event.target.complete()
+        //window.location.href="tab/tab1"
+       window.location.reload()
+      }, 2000);
     }
 }

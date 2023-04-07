@@ -8,7 +8,11 @@
 </ion-header>
 <br>
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
 
+    </ion-refresher-content>
+  </ion-refresher>
   <div #map='' style="height: 65%;"></div>
 
   <ion-card style="font-size: 16px;" >
@@ -63,7 +67,8 @@
 </ion-content>
 
 
-<ion-button shape="round" class="more" style="width: 150px;float: right;" id="open-truk">Accept</ion-button>
+<ion-button shape="round" class="more" style="width: 150px;float: right;"   (click)="sendOtp()">Accept</ion-button>
+<div id="sign-in-button"></div>
 <!-- <ion-button shape="round" class="more" (click)="calculateAndDisplayRoute()">Get Direction</ion-button> -->
 
 <ion-modal #modal trigger="open-truk">
@@ -79,8 +84,8 @@
         <img src="https://cdn-icons-png.flaticon.com/512/233/233763.png" height="20%" width="20%">
         <h3>Strat the trip</h3>
         <div class="container">
-     <ion-button style="float: left;" class="yes" (click)="sendOtp()" (click)="modal.dismiss()">YES</ion-button>
-     <div id="sign-in-button"></div>
+     <ion-button style="float: left;" class="yes" (click)="modal.dismiss()">YES</ion-button>
+
      <ion-button style="float: right;" (click)="modal.dismiss()" color="light">No</ion-button>
     </div>
       </div>

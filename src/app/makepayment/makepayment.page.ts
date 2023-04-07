@@ -105,8 +105,8 @@ console.log('working payment Upate')
  
     var body = {
      "_id":this.viewbidDocId,
-     "paymentId":this.paymentId,
-     "isPaymentCompleted":true
+     paymentId:this.paymentId,
+     isPaymentCompleted:true
     
    
     }
@@ -126,7 +126,7 @@ console.log('working payment Upate')
      .then(async result => {
        console.log(result)
    
-  //window.location.href='/view-bid'
+  window.location.href='/view-bid'
       // loading.dismiss()
  
  

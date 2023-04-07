@@ -211,7 +211,7 @@ ionViewDidEnter(){
 } */
 
   async acceptBid(){
-
+if(confirm("Are u sure")){
    if(this.regdata.aadharVerify == 'notVerified'){
       alert("Verify Aadhar to Accept")
 window.location.href='/profile'
@@ -260,6 +260,7 @@ console.log(body)
       loading.dismiss()
       console.log(err)})
   }
+}
 }
 
   async initialBid(){
@@ -388,6 +389,7 @@ var data ={
 
 }
   async acceptBidForFinal(){
+    if(confirm('Are u sure')){
     if(this.regdata.aadharVerify == 'notVerified' ){
       alert("Verify Aadhar to Accept")
 window.location.href='/profile'
@@ -440,6 +442,7 @@ window.location.reload()
       loading.dismiss()
       console.log(err)})
   }
+}
 }
   autorefresh(event:any){
     

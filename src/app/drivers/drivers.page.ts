@@ -17,6 +17,7 @@ flag : any = false;
   DocId: any;
   trukDocId: any;
   location: any;
+  driv: any;
 
 
   constructor(private loadingController:LoadingController) { }
@@ -29,6 +30,7 @@ flag : any = false;
     this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
     this.location =JSON.parse(localStorage.getItem('locatioPath') || '{}')
     this.toggle()
+
   }
   async getDetails(){
     const loading = await this.loadingController.create({
@@ -52,8 +54,11 @@ flag : any = false;
    console.log(result)
    
    for(let i=0;i<result.data.length;i++){
-    this.driver =result.data[i].Drivers
+    this.driv=result.data[i].Drivers
    }
+   this.driver = this.driv.filter((data:any)=>{
+    return data.Availability == true
+   })
   //console.log(this.detailsforEdit['firstName']=result.firstName)
 
       loading.dismiss()
@@ -95,7 +100,7 @@ flag : any = false;
     this.drivers =result.data[i].Drivers
    }
    this.driver = this.drivers.filter((data:any)=>{
-    return data.Availability == true
+    return data.Availability == false
    })
    loading.dismiss()
     console.log(this.driver)
@@ -114,7 +119,7 @@ flag : any = false;
 
   
 
- async ChangeAvailable(data:any){
+/*  async ChangeAvailable(data:any){
 console.log(data.Availability)
 if(data.Availability == true){
   const loading = await this.loadingController.create({
@@ -181,9 +186,9 @@ if(data.Availability == true){
            console.log(error)
           });
   }
-}
+} */
 
-async NewPostAdd(driver:any) {
+ async NewPostAdd(driver:any) {
 console.log(driver)
 if(confirm("Are You Sure")){
   const loading = await this.loadingController.create({
@@ -192,28 +197,21 @@ if(confirm("Are You Sure")){
    });
    await loading.present();
    var data = {
-     _id:this.DocId, //642423272a83bde152824077
-    // operatingRoutes: this.operatingRoutes,
+     _id:this.DocId, 
      vehicleType: driver.TrukType,
      vehicleNo: driver.TrukNumber,
-    // vehicleCurrentLocation: this.vehicleCurrentLocation,
-   //  vehicleCapacity: this.vehicleCapacity,
-    // date: this.date,
-   //  isTrukOpenOrClose:this.isTrukOpenOrClose,
+
      DriverName: driver.DriverName,
      DriverNumber: driver.DriverNumber,
      shareContact:true,
 
-     /*transporterName:this.transporterName,
-     companyName:this.companyName,
-     mobileNumber:this.mobileNumber,
-     city:this.city,*/
+
     
 
 
    }
    console.log(data)
-   //localStorage.setItem("newpostAdd", JSON.stringify(data));
+   
 
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
      method: 'post',
@@ -228,7 +226,8 @@ if(confirm("Are You Sure")){
      .then(result => {
        console.log(result),
         // this.Items = result  
-         this.isactiveComplete()   
+         this.isactiveComplete() 
+        this.OntripStatus(driver.DriverNumber)  
        loading.dismiss()
        alert("Posted Successfully")
 window.location.href="/place-bid"
@@ -240,23 +239,19 @@ window.location.href="/place-bid"
        loading.dismiss()
      })
  }
-}
+} 
  async NewPostAddOnline(driver:any) {
-
+if(confirm('Are you Sure')){
   const loading = await this.loadingController.create({
      message: 'Loading...',
      spinner: 'crescent'
    });
    await loading.present();
    var data = {
-     _id:this.DocId, //642423272a83bde152824077
-    // operatingRoutes: this.operatingRoutes,
-     vehicleType: driver.TrukType,
-     vehicleNo: driver.TrukNumber,
-    // vehicleCurrentLocation: this.vehicleCurrentLocation,
-   //  vehicleCapacity: this.vehicleCapacity,
-    // date: this.date,
-   //  isTrukOpenOrClose:this.isTrukOpenOrClose,
+     _id:this.DocId, 
+    // vehicleType: driver.TrukType,
+     //vehicleNo: driver.TrukNumber,
+
      DriverName: driver.DriverName,
      DriverNumber: driver.DriverNumber,
      shareContact:true,
@@ -290,6 +285,7 @@ window.location.href="/place-bid"
        loading.dismiss()
        alert("Posted Successfully")
        this.isactiveComplete()
+       this.OntripStatus(driver.DriverNumber)
       window.location.href="/truckviewbids"
      }
 
@@ -298,6 +294,7 @@ window.location.href="/place-bid"
        console.log(err)
        loading.dismiss()
      })
+    }
  }
  async isactiveComplete() {
   const loading = await this.loadingController.create({
@@ -307,7 +304,7 @@ window.location.href="/place-bid"
   await loading.present();
   
   var data = {
-    trukisActive: "Completed"
+    trukisActive: "InProgress" //load ni inprgress chesthunamm
   }
   // console.log(data)
 
@@ -338,5 +335,43 @@ loading.dismiss()
     })
 }
 
+
+OntripStatus(data:any){
+  var body ={
+    _id :this.logindata.Authentication,
+    DriverNumber:data,
+    Availability:false
+  }
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateAvailability", {
+      
+  method:'post',
+  headers:{
+            "Access-Control-Allow-Origin": "*",
+              "Content-Type":'application/json'
+          },
+  body:JSON.stringify(body),
+  }).then(res => res.json())
+  
+  .then(
+    result =>{
+      //loading.dismiss()
+ console.log(result)
+    }
+    ).catch(
+        error =>{
+          //loading.dismiss()
+          //alert('unable update Data');
+         console.log(error)
+        });
+}
+
+autorefresh(event:any){
+    
+  setTimeout(() => {
+    event.target.complete()
+    //window.location.href="tab/tab1"
+   window.location.reload()
+  }, 2000);
+}
 
 }

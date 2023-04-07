@@ -187,7 +187,7 @@ if(result.mobileNo === this.phoneNumber){
         'mobileNo',
         JSON.stringify(this.phoneNumber)
       );
-      localStorage.setItem('regdata',JSON.stringify(result))
+      localStorage.setItem('logindata',JSON.stringify(result))
       loading.dismiss();
         this.ngZone.run(() => {
           this.router.navigate(['/verifyotp']);

@@ -70,7 +70,9 @@ export class AddDriversPage implements OnInit {
         console.log(result)
        // this.Items = result
         loading.dismiss()
+        this.addDriverOutSide()
    alert('Driver Added')
+  
 window.location.href='/drivers'
     
 
@@ -81,44 +83,56 @@ window.location.href='/drivers'
         console.log(err))
        loading.dismiss()
 
-       var driverdata = {
-    
-        TrukType:this.TrukType,
-        TrukNumber:this.TrukNumber,
-        TrukCapacity:this.TrukCapacity,
-        TrukImage:this.TrukImage,
-        RcImage:this.RcImage,
-        DrivingLienceImage:this.DrivingLienceImage,
-        AadharImage:this.AadharImage,
-        PanImage:this.PanImage,
-        DriverName:this.DriverName,
-        mobileNo:this.DriverNumber,
-        userRole:"Driver"
       }
 
-       fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signupDriver", {
-        method: 'post',
-        headers: {
-          "access-Control-Allow-Origin": "*",
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(driverdata),
-  
-      })
-        .then(response => response.json())
-        .then(async result => {
-          console.log(result)
-         // this.Items = result
-          //loading.dismiss()
- // window.location.href='/drivers'
-      
-  
-  
+
+      addDriverOutSide(){
+        var driverdata = {
+    
+          TrukType:this.TrukType,
+          TrukNumber:this.TrukNumber,
+          TrukCapacity:this.TrukCapacity,
+          TrukImage:this.TrukImage,
+          RcImage:this.RcImage,
+          DrivingLienceImage:this.DrivingLienceImage,
+          AadharImage:this.AadharImage,
+          PanImage:this.PanImage,
+          DriverName:this.DriverName,
+          mobileNo:this.DriverNumber,
+          userRole:"Driver"
         }
   
-        ).catch(err =>
-          console.log(err))
-         // loading.dismiss()
-  }
+         fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signupDriver", {
+          method: 'post',
+          headers: {
+            "access-Control-Allow-Origin": "*",
+            "Content-Type": 'application/json'
+          },
+          body: JSON.stringify(driverdata),
+    
+        })
+          .then(response => response.json())
+          .then(async result => {
+            console.log(result)
+
+        
+    
+    
+          }
+    
+          ).catch(err =>
+            console.log(err))
+        
+    
+      }
+
+      autorefresh(event:any){
+    
+        setTimeout(() => {
+          event.target.complete()
+          //window.location.href="tab/tab1"
+         window.location.reload()
+        }, 2000);
+      }
   }
 

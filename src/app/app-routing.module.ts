@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'selectlanguage',
     loadChildren: () => import('./selectlanguage/selectlanguage.module').then( m => m.SelectlanguagePageModule),
-   canActivate:[LoggeduserGuard]
+   //canActivate:[LoggeduserGuard]
   },
   {
     path: 'selecttype',

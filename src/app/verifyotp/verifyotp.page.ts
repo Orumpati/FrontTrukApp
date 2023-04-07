@@ -52,7 +52,7 @@ export class VerifyotpPage implements OnInit {
       this.mobileNo = JSON.parse(localStorage.getItem('mobileNo') || '{}');
       console.log(this.verify);
   //this.setfocus()
- this.verified=JSON.parse(localStorage.getItem('regdata') || '{}')
+ this.verified=JSON.parse(localStorage.getItem('logindata') || '{}')
  console.log(this.verified)
     }
   
@@ -186,6 +186,7 @@ export class VerifyotpPage implements OnInit {
           console.log(response);
           localStorage.setItem('user_data', JSON.stringify(response));
 if(this.verified.role === "Shipper"){
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
 loading.dismiss()
   this.ngZone.run(() => {
     alert('Login as Shipper')
@@ -196,6 +197,7 @@ loading.dismiss()
   });
 
 }else if(this.verified.role === "Agent/Broker"){
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
 alert('Login as agent/broker')
@@ -203,6 +205,7 @@ this.updatedeviceid()
 this.router.navigate(['/tab/shipperhome'])
 localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === "Transporter"){
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
   alert('Login as transporter')
@@ -210,6 +213,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === 'Fleet Owner'){
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
   alert('Login as Fleet Owner')
@@ -217,6 +221,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.userRole === 'Driver'){
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
  // localStorage.setItem('lookingfor',JSON.stringify('loads'))
  localStorage.removeItem('lookingfor')
   loading.dismiss()

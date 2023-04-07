@@ -58,8 +58,9 @@ export class LoadOtpPage implements OnInit {
         localStorage.setItem('user_data', JSON.stringify(response));
 
 loading.dismiss()
-this.ngZone.run(() => {
 alert('Verified')
+this.ngZone.run(() => {
+window.location.href='/load-tracking'
   this.router.navigate(['/load-tracking'])
   
   

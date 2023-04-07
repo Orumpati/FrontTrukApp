@@ -39,7 +39,7 @@ export class LoadTrackingPage implements AfterViewInit {
   }
 
   ngOnInit() {
-    
+    firebase.initializeApp(config);
     this.getload=JSON.parse(localStorage.getItem('selectedLoad') || '{}')
     console.log(this.getload)
     this.calculateAndDisplayRoute()
@@ -129,5 +129,13 @@ calculateAndDisplayRoute() {
        
         });
     }
+  }
+  autorefresh(event:any){
+    
+    setTimeout(() => {
+      event.target.complete()
+      //window.location.href="tab/tab1"
+     window.location.reload()
+    }, 2000);
   }
 }

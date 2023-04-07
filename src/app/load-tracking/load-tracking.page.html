@@ -5,7 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
 
+    </ion-refresher-content>
+  </ion-refresher>
   <div #map='' style="height: 65%;"></div>
   <div class="container">
     <div style="float: right;border: 1px solid black;border-radius:10px;">
@@ -32,4 +36,5 @@
 </div>
 <div style="text-align: center;">
   <ion-button  shape="round" class="more" (click)="endtrip()">EndTrip</ion-button>
+  <div id="sign-in-button"></div>
   </div>

@@ -16,7 +16,7 @@ export class EndOtpPage implements OnInit {
   otp!:string
   verify:any
   reCaptchaVerifier!: any;
-  mobileNo: any;
+  mobileNo: any
   constructor(private loadingCtrl:LoadingController,private ngZone:NgZone,private router:Router) { }
   config = {
     allowNumbersOnly: true,
@@ -32,6 +32,9 @@ export class EndOtpPage implements OnInit {
   ngOnInit() {
     this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
     this.mobileNo = JSON.parse(localStorage.getItem('Number') || '{}');
+  
+
+
   }
 
   onOtpChange(otp: string) {

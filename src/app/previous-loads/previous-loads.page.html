@@ -5,34 +5,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-<div style="text-align: center;" >
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
 
-  <div style="display: flex;">
-<div>Name</div>
-<div>:</div>
-<div >Raju </div>
-  </div>
-
-  <div style="display: flex;">
-    <div>Name</div>
-    <div>:</div>
-    <div>Raju </div>
-      </div>
-
-      <div style="display: flex;">
-        <div>Name</div>
-        <div>:</div>
-        <div>Raju </div>
-          </div>
-
-          <div style="display: flex;">
-            <div>Name</div>
-            <div>:</div>
-            <div>Raju </div>
-              </div>
-
-</div>
-
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card style="font-size: 16px;" *ngFor="let load of loads">
+ 
+    <ion-row>
+      <ion-col>Id</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>0987654</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>From destination</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{load.OriginLocation}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>To Destination</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{load.DestinationLocation}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Vehicle type</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col>{{load.data}}</ion-col>
+    </ion-row>
+  <br>
+    <div style="text-align: center;" >
+      <ion-button shape="round" class="more" >View Pod details</ion-button>
+    </div>
+  
   </ion-card>
 </ion-content>

@@ -5,6 +5,7 @@ import 'firebase/compat/auth';
 import  'firebase/auth';
 import 'firebase/compat/firestore';
 import { Router } from '@angular/router';
+import { get } from 'http';
 var config = {
   apiKey: "AIzaSyDM4C1YRZ14Lx_8NzbDnChklv9VInrgUmw",
   authDomain: "otplogin-c4da2.firebaseapp.com",
@@ -91,6 +92,7 @@ calculateAndDisplayRoute() {
     })}
 
   sendOtp(){
+    if(confirm('If You Accept ,Otp will send to Shipper')){
     this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       'sign-in-button',
       {
@@ -126,8 +128,16 @@ calculateAndDisplayRoute() {
         alert(error.message);
      
       });
+    }
   }
 
-
+  autorefresh(event:any){
+    
+    setTimeout(() => {
+      event.target.complete()
+      //window.location.href="tab/tab1"
+     window.location.reload()
+    }, 2000);
+  }
  
 }

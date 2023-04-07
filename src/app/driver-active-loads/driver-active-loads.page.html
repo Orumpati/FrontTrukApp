@@ -8,7 +8,12 @@
 </ion-header>
 <br>
 <ion-content>
-  <ion-grid>
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
+
+    </ion-refresher-content>
+  </ion-refresher>
+  <!--<ion-grid>
     <ion-row>
       <ion-col>
         <div>
@@ -26,7 +31,7 @@
       
     </ion-row>
   </ion-grid>
-  {{Availability}}
+  {{Availability}}-->
 <ion-card style="font-size: 16px;" *ngFor="let load of loads">
  
   <ion-row>
