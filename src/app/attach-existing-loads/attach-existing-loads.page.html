@@ -11,26 +11,7 @@
  <ion-content>
   
   <h4 style="text-align: center;">Your Perferred Vehicle</h4>
-  <!--<ion-card>
-    <div style="float: left; margin-left: 1rem;">
-      <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" width="20%"
-        height="20%">
-        <h4 [(ngModel)]="trukvehiclenumber" ngDefaultControl>{{real.trukvehiclenumber}}</h4>
-      <ion-card-subtitle [(ngModel)]="trukname" [(ngModel)]="trukcapacity" ngDefaultControl>{{real.trukcapacity}} Tonne(s) {{real.trukname}}</ion-card-subtitle>
-    </div>
 
-    <ion-card-content style="float: right; margin-top: -5rem;">
-      <ion-card-subtitle [(ngModel)]="trukcurrentLocation" ngDefaultControl>Current Location<b>{{real.trukcurrentLocation}}</b></ion-card-subtitle>
-      <ion-card-subtitle [(ngModel)]="trukoperatingRoutes" ngDefaultControl>Routes <span style="color: blue; font-weight: bold;">{{real.trukoperatingRoutes.length}}</span><u>Location</u><ion-icon name="location-outline" color="danger" style="font-size: 20px;"></ion-icon></ion-card-subtitle>
-      <ion-card-subtitle>Placeholder For Badges</ion-card-subtitle>
-    </ion-card-content>
-    <ion-chip>
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <ion-label>Transpoter</ion-label>
-    </ion-chip> 
-  </ion-card>-->
   
   <div class="card  text-center"    >
     
@@ -77,24 +58,7 @@
                
               
             </ul>
-                   
 
-                  
-<!-- <ion-modal id="example-modal" #modal trigger="open-custom-dialog" >
-  <ng-template>
-    <div class="wrapper">
-      <ion-icon style="float: right; font-size:13px; color:black;" name="close-outline" (click)="modal.dismiss()"></ion-icon><br>
-      <h1 style="white-space: nowrap;">Operating Routes</h1>
-
-      <ion-list lines="none"  *ngFor="let route of text.selectedItems index as i">
-        <ion-item button="true" detail="false" style="margin-left: 60px;">
-          <ion-label >{{i+1}}.{{route.item_text}}</ion-label>
-        </ion-item>
-       
-      </ion-list>
-    </div>
-  </ng-template>
-</ion-modal> -->
           </strong>
 
         </li>
@@ -109,29 +73,7 @@
 
 
  <h4 style="text-align: center;">Your Perferred Load Information</h4>
- <!--<ion-card>
-    <div style="float: left; margin-left: 1rem;">
-      <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg" width="10%" height="10%">
-      <span style="margin-left: 2rem;">{{TrukPost.OriginLocation}} - {{TrukPost.DestinationLocation}}</span>
-      <h3 style="margin-left: 7rem; margin-top: -1rem;">Pickup {{TrukPost.date}}</h3>
-    </div>
-    ...........................................................................................................................
-  
-    <ion-card-content>
-      {{TrukPost.product}} <br>
-      <ion-icon name="car-outline" style="font-size: 20px;"></ion-icon>{{TrukPost.Quantity}}Tonne(s) {{TrukPost.data}} <br>
-      <ion-icon name="card-outline" style="font-size: 15px;"></ion-icon> <span>  {{TrukPost.typeOfPay}}</span>
-      <span style="float: right; margin-top: -4rem;">
-        <ion-card-content >
-          <p class="price">Expected Price</p>
-          ₹ {{TrukPost.expectedPrice}} /Ton
-          
-        </ion-card-content>
-      </span>
-    </ion-card-content > 
-   
- 
-  </ion-card> -->
+
 
   <div class="card"  >
     <div class="card-body" >
@@ -143,10 +85,7 @@
         </div>
       </div>
       <br>
-        <!--<div class="dropdown float-end" style="float:right;">
-            <a class="text-muted dropdown-toggle font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
-            <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" >Edit</a><a class="dropdown-item" >Action</a><a class="dropdown-item" >Remove</a></div>
-        </div>-->
+       
     
 
         <div class="d-flex align-items-center">
@@ -170,92 +109,4 @@
  </ion-content>  
 
  <ion-button shape="round" class="sendData" (click)="SendExistingload()" Sendloadtovehicle>Post</ion-button>
- <!--<ion-button shape="round" class="sendData" (click)="Sendloadtovehicle()">Post</ion-button>-->
- <!-- <ion-header>
-  <ion-toolbar>
-    <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab5" style="font-size: 30px;"></ion-icon>
-      <ion-title>Attach existing Load</ion-title>
-    </div>
-  </ion-toolbar>
-</ion-header>
-
-
-<ion-content>
-  <br>
-   <ion-accordion-group class="container" [value]="['first']" [multiple]="true">
-
-    <ion-accordion value="first">
-      <ion-item slot="header">
-        <ion-label>your preferred Vehicle</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">
-        <div class="container">
-          <ion-item fill="outline">       
-            <ion-input [(ngModel)]="trukname">Selected vehicle::{{real.trukname}}</ion-input>   
-          </ion-item>
-          <br>
-          <ion-item fill="outline">       
-            <ion-input [(ngModel)]="trukvehiclenumber"> vehicleNo::{{real.trukvehiclenumber}}</ion-input>   
-          </ion-item>
-          <br>
-          <ion-item fill="outline">       
-            <ion-input [(ngModel)]="trukcurrentLocation">currentLocation::{{real.trukcurrentLocation}}</ion-input>
-          </ion-item>
-          <br>
-          <ion-item fill="outline">       
-            <ion-input [(ngModel)]="trukcapacity">No.of toones::{{real.trukcapacity}}</ion-input>
-          </ion-item>
-          <br>
-          <ion-item fill="outline">       
-            <ion-input [(ngModel)]="trukoperatingRoutes">operatingRoutes::{{real.trukoperatingRoutes}}</ion-input>
-          </ion-item>
-        </div>
-      </div>
-    </ion-accordion>
-  </ion-accordion-group> 
-
-
-
-
- 
-  <ion-accordion-group class="container" [value]="['first']" [multiple]="true">
-    <ion-accordion value="first">
-      <ion-item slot="header">
-        <ion-label>Your preferred load</ion-label>
-      </ion-item>
-      <div class="ion-padding" slot="content">
-        <div class="container">
-          <ion-item fill="outline">
-
-            <ion-input>Pickup Loaction::{{TrukPost.OriginLocation}}</ion-input>
-          </ion-item>
-          <br>
-          <ion-item fill="outline">
-
-            <ion-input>Dropup location::{{TrukPost.DestinationLocation}}</ion-input>
-          </ion-item>
-          <br>
-          <ion-item fill="outline">
-
-            <ion-input>Goods Type:: {{TrukPost.product}}</ion-input>
-          </ion-item>
-          <br>
-          <ion-item fill="outline">
-
-            <ion-input>Quantity::{{TrukPost.Quantity}}</ion-input>
-          </ion-item>
-          <br>
-        
-          <ion-item fill="outline">
-
-            <ion-input>Pick Date::{{TrukPost.date}}</ion-input>
-          </ion-item>
-        </div>
-      </div>
-    </ion-accordion>
-
-  </ion-accordion-group>
-</ion-content> -->
-
  

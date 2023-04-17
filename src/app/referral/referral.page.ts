@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -13,30 +14,39 @@ export class ReferralPage implements OnInit {
   text: string='SmartSwag'
   imgurl:string= 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReFjO6rbNAKcZtfgpqkhnqWGPwcH5hAArN1A&usqp=CAU'
   link: string='https://youtu.be/5BQQM4uvRkw'
-  url:string='http://trukapp.com/'
+  url:string='https://play.google.com/store/apps/details?id=com.trukapp'
   mess:any="copied Successfully"
 
   CopyInputText:string = "http://trukapp.com/";
+  
+  logindata: any;
 
-  constructor(private socialSharing:SocialSharing,private clipboard: Clipboard) { }
+  constructor(private socialSharing:SocialSharing,private clipboard: Clipboard,private router:Router) { }
 
   ngOnInit() {
+    this.logindata = JSON.parse(localStorage.getItem('regdata')|| '{}')
   }
   sShare(){
     var options = {
-      message: 'smartSwag',
-      url: 'http://trukapp.com/',
+      url: 'https://play.google.com/store/apps/details?id=com.trukapp',
+      message:"Use this Referal Code for SignUp:"+ this.logindata.referalCode ,
+    
      
     };
     this.socialSharing.shareWithOptions(options)
   }
   //copy
   copyString(){
-    this.clipboard.copy(this.CopyInputText);
+    this.clipboard.copy(this.CopyInputText+"Use this Referal Code for SignUp:"+this.logindata.referalCode);
+    //this.clipboard.copy(this.logindata.referalCode)
     alert(this.mess)
   }
 
-
+  copycode(){
+    this.clipboard.copy("Use this Referal Code for SignUp:"+this.logindata.referalCode);
+    //this.clipboard.copy(this.logindata.referalCode)
+    alert(this.mess)
+  }
 
   ShareGeneric(parameter:any){
    
@@ -65,5 +75,14 @@ export class ReferralPage implements OnInit {
 
   SendSmS(){
     this.socialSharing.shareViaSMS('hi...','+919391311615')
+  }
+
+  goback(){
+    if(this.logindata.role == 'Shipper'){
+      this.router.navigate(['tab/tab1'])
+    }else{
+    
+      this.router.navigate(['tab/tab2'])
+    }
   }
 }

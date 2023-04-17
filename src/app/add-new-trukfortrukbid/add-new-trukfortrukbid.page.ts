@@ -32,9 +32,11 @@ export class AddNewTrukfortrukbidPage implements OnInit {
   mobileNumber:any;
   city:any;
   trukDocId: any;
+  logindata: any;
   constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
 this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
     console.log(this.sub)
@@ -95,10 +97,10 @@ this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
       DriverNumber: this.DriverNumber,
       shareContact:true,
 
-      transporterName:this.transporterName,
-      companyName:this.companyName,
-      mobileNumber:this.mobileNumber,
-      city:this.city,
+      transporterName:this.logindata.firstName +this.logindata.lastName,
+      companyName:this.logindata.companyName,
+      mobileNumber:this.logindata.mobileNo,
+      city:this.logindata.city,
      
 
 

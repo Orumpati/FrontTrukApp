@@ -55,7 +55,7 @@
       <ion-col><ion-button shape="round" color="light"  >View details</ion-button></ion-col>
     </ion-row>
   </ion-grid>-->
-<ion-card style="border-radius: 10px;"  *ngFor="let data of driver" >
+<ion-card style="border-radius: 10px;"  *ngFor="let data of driver.slice().reverse()" >
   <div style="display: flex; margin-top:1rem;" >
     <div style=" margin-left:0.4rem;margin-right: 1rem; margin-top:0.7rem; ">
       <ion-icon *ngIf="data.Availability == true" name="ellipse-sharp" style="color: green;"></ion-icon>

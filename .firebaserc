@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "otplogin-c4da2"
+  },
+  "targets": {
+    "otplogin-c4da2": {
+      "hosting": {
+        "app": [
+          "otplogin-c4da2"
+        ]
+      }
+    }
+  }
+}

@@ -38,7 +38,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
   placeid: any;
   GoogleAutocomplete: any;
 
-
+  checkbox=false
 
   trukname:any;
   trukvehiclenumber:any;
@@ -72,6 +72,8 @@ export class AttachPrefferdNewloadPage implements OnInit {
   advance: any;
   isTrukOpenOrClose: any;
   objId: any;
+  pickupDis: any;
+  dropupDis: any;
 
 
   constructor(
@@ -219,6 +221,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     if (data[0].Status === 'Success') {
       const postOffice = data[0].PostOffice[0];
       this.pickup = `${postOffice.State}`;
+      this.pickupDis = `${postOffice.District}`;
     } else {
       this.pickup = 'Invalid Pincode';
     }
@@ -232,6 +235,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     if (data[0].Status === 'Success') {
       const postOffice = data[0].PostOffice[0];
       this.dropup = `${postOffice.State}`;
+      this.dropupDis = `${postOffice.District}`;
     } else {
       this.dropup = 'Invalid Pincode';
     }

@@ -2,8 +2,8 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import {  Router } from '@angular/router';
 import { IonContent, LoadingController,NavController } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { Subject } from 'rxjs';
-
+import { Subject, interval } from 'rxjs';
+import { CommonServiceService } from '../common-service.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
@@ -68,58 +68,62 @@ id:any
   bidslength: any;
   
   constructor(private router:Router,public loadingController: LoadingController,public navController:NavController,
-    private location:Location) { }
+    private location:Location,private commservice :CommonServiceService) { 
+  
+      this.placebidID= this.location.getState()
+      
+      console.log(this.placebidID.profile)
+       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
+   console.log(this.regdata)
+       this.date = new Date().getTime()
+       
+      this.objects = JSON.parse(localStorage.getItem("loadBy") || '{}');
+      console.log(this.objects)
+      this.typeofpay = this.objects.typeOfPay
+   this.getfullarray()
+   
+   this.saicode()
+    }
 
   @ViewChild(IonContent)
   content!: IonContent;
 
   ngOnInit():void{
-   this.placebidID= this.location.getState()
-      
-   console.log(this.placebidID.profile)
-    this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
-console.log(this.regdata)
-    this.date = new Date().getTime()
-    
-   this.objects = JSON.parse(localStorage.getItem("loadBy") || '{}');
-   console.log(this.objects)
-   this.typeofpay = this.objects.typeOfPay
-this.getfullarray()
-  
-this.autorefreshdata.subscribe(res =>{
-  this.getfullarray()
-})
 
- fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/" +this.objects._id, {
-   method: 'get',
-   headers: {
-     "access-Control-Allow-Origin": "*",
-     "Content-Type": 'application/json'
-   },
-  // body:JSON.stringify(query)
- })
-   .then(response => response.json())
-   .then(result => {
-     console.log(result) 
-  
-   
- 
 
-  
-
-   }
-
-   ).catch(err =>
-     console.log(err))
 
   }
+
+saicode(){
+  
+ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/" +this.objects._id, {
+  method: 'get',
+  headers: {
+    "access-Control-Allow-Origin": "*",
+    "Content-Type": 'application/json'
+  },
+ // body:JSON.stringify(query)
+})
+  .then(response => response.json())
+  .then(result => {
+    console.log(result) 
+ 
+  
+
+
+ 
+
+  }
+
+  ).catch(err =>
+    console.log(err))
+}
+
 
   get autorefreshdata(){
     return this.refresh
       }
-ionViewDidEnter(){
-  this.getfullarray()
-}
+
   getfullarray(){
 
     var query ={
@@ -196,22 +200,10 @@ ionViewDidEnter(){
 
 
 
- //send mes
- /* sendMessage() {
-  this.BidActivity.push({
-    price: 12,
-    userNo: 123456,
-    time: this.date,
-    userType:"Shipper"
-  });
-  this.newMsg = '';
-  setTimeout(() => {
-    this.content.scrollToBottom(200);
-  })
-} */
+
 
   async acceptBid(){
-if(confirm("Are u sure")){
+if(confirm("Once you accept the bid, You cant negotiate")){
    if(this.regdata.aadharVerify == 'notVerified'){
       alert("Verify Aadhar to Accept")
 window.location.href='/profile'
@@ -232,8 +224,9 @@ window.location.href='/profile'
     "userType":this.regdata.role,
     "Bidprice":this.objects.expectedPrice,
     "initialAccept" :"Accepted",
+    "isAgentAccepted":true,
     "TohideAcceptBtn":true,
-    "Number":parseInt(this.objects.Number),//for notification who posted the load(Shipper)
+    Number:this.objects.Number,//for notification who posted the load(Shipper)
     "Name":this.regdata.firstName+this.regdata.lastName,//for notification
     "mess":"Accepted your Bid for amount"
    }
@@ -252,7 +245,8 @@ console.log(body)
       console.log(result)
       
       loading.dismiss()
-      window.location.reload()
+      this.getfullarray()
+      //window.location.reload()
 
     }
 
@@ -278,7 +272,7 @@ console.log(body)
     "mobileNo": this.regdata.mobileNo,
     "userType":this.regdata.role,
     "Bidprice":this.newMsg,
-    "Number":parseInt(this.objects.Number), //for notification
+    Number:this.objects.Number, //for notification
     "Name":this.regdata.firstName+this.regdata.lastName, //for notification
     "agentInitialBidSend":true,
     "TohideAcceptBtn":true,
@@ -301,7 +295,9 @@ console.log(body)
       console.log(result)
      // this.saveDetails()
       loading.dismiss()
-      window.location.reload()
+      this.getfullarray()
+      this.commservice.filter('Register click')
+     // window.location.reload()
 
     }
 
@@ -359,7 +355,7 @@ var data ={
     "userType":this.regdata.role,
     "price":this.NegoPrice,
     "TohideAcceptBtn":true,
-    "Number":parseInt(this.objects.Number),//for notification
+    Number:this.objects.Number,//for notification
     "Name":this.regdata.firstName+this.regdata.lastName, //for notification
     "mess":"placed a Bid To Your Load ,Price:" //for notification
   
@@ -379,7 +375,8 @@ var data ={
       console.log(result)
       
       loading.dismiss()
-  window.location.reload()
+      this.getfullarray()
+  //window.location.reload()
 
     }
 
@@ -389,7 +386,7 @@ var data ={
 
 }
   async acceptBidForFinal(){
-    if(confirm('Are u sure')){
+    if(confirm("Once you accept the bid, You cant negotiate")){
     if(this.regdata.aadharVerify == 'notVerified' ){
       alert("Verify Aadhar to Accept")
 window.location.href='/profile'
@@ -411,7 +408,7 @@ window.location.href='/profile'
     "mobileNo":this.regdata.mobileNo,
     "isAgentAccepted":true,
     "TohideAcceptBtn":true,
-    "Number":parseInt(this.objects.Number), // for send notifi
+    Number:this.objects.Number, // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.item.tentativefinalPrice, // for send notifi
     "mess":"Accepted a bid for"
@@ -433,9 +430,9 @@ console.log(this.item.mobileNo)
     .then(async result => {
       console.log(result)
       loading.dismiss()
-      
+      this.getfullarray()
 
-window.location.reload()
+//window.location.reload()
     }
 
     ).catch(err =>{

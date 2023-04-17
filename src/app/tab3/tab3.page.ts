@@ -14,6 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //declare var google :any;
 import { HttpClient } from '@angular/common/http';
+
+
+
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -26,8 +33,10 @@ citys:any
   cities: string[] | undefined;
   location:any;
   cityName: string = '';
+  image:any
   autocompleteResults: google.maps.places.AutocompletePrediction[] = [];
-  constructor(private auth:AuthpaymentService,private modal:ModalController,private alert:AlertController,public loadingController: LoadingController,private commonService:CommonServiceService,private http: HttpClient) {}
+  constructor(private auth:AuthpaymentService,  private firestore: Firestore,
+    private storage: Storage,private modal:ModalController,private alert:AlertController,public loadingController: LoadingController,private commonService:CommonServiceService,private http: HttpClient) {}
 
   async presentAlert() {
     const alert = await this.alert.create({
@@ -102,6 +111,57 @@ alerts(){
     showConfirmButton: false,
     timer: 1500
   })
+}
+
+
+async takePicture() {
+  try {
+    if(Capacitor.getPlatform() != 'web') await Camera.requestPermissions();
+    const image = await Camera.getPhoto({
+      quality: 90,
+      // allowEditing: false,
+      source: CameraSource.Prompt,
+      width: 600,
+      resultType: CameraResultType.DataUrl
+    });
+    console.log('image: ', image);
+    this.image = image.dataUrl;
+    const blob = this.dataURLtoBlob(image.dataUrl);
+    const url = await this.uploadImage(blob, image);
+    console.log(url);
+    const response = await this.addDocument('test', { imageUrl: url });
+    console.log(response);
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+dataURLtoBlob(dataurl: any) {
+  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], {type:mime});
+}
+
+async uploadImage(blob: any, imageData: any) {
+  try {
+    const currentDate = Date.now();
+    const filePath = `test/${currentDate}.${imageData.format}`;
+    const fileRef = ref(this.storage, filePath);
+    const task = await uploadBytes(fileRef, blob);
+    console.log('task: ', task);
+    const url = getDownloadURL(fileRef);
+    return url;
+  } catch(e) {
+    throw(e);
+  }    
+}
+
+addDocument(path: any, data: any) {
+  const dataRef = collection(this.firestore, path);
+  return addDoc(dataRef, data);
 }
 // searchCities() {
 

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="white">
+  <ion-toolbar >
     <ion-buttons slot="start" >
       <ion-menu-button  menu="main-menu"></ion-menu-button>
     </ion-buttons>
@@ -9,8 +9,7 @@
       <ion-img src="assets/trueTruk.png"></ion-img>
      </div>
      </div>
-    <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;
-        " slot="end" routerLink="/all-notifications"></ion-icon>
+    <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
 
   </ion-toolbar>
 </ion-header>
@@ -72,7 +71,7 @@
       <ion-row>
           <ion-segment value="Active" [scrollable]="true">
             <ion-col>
-            <ion-segment-button value="Active" (click)="toggle('Active')">
+            <ion-segment-button value="Active" (click)="toggle('Active')" >
               <ion-label>Active</ion-label>
             </ion-segment-button>
             </ion-col>
@@ -107,7 +106,7 @@
  
     
         
-            <div class="card" *ngFor="let text of item | filter:searchtext" >
+            <div class="card" *ngFor="let text of item.slice().reverse() | filter:searchtext" >
                 <div class="card-body">
                   <div type="button" class="securepayment"  *ngIf="text.typeOfPay == 'Online'"  ><br>
                     &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:green;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
@@ -124,6 +123,7 @@
                     <span style="color: rgb(248, 42, 24);">Hand Cash</span>
                     </div>
                   </div>
+                
                   
                     <!--<div class="dropdown float-end" style="float:right;">
                         <a class="text-muted dropdown-toggle font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
@@ -145,7 +145,8 @@
                         <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" />
                           
                           &nbsp;&nbsp;<span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span><span *ngIf="text.isActive === 'Deactive'"  style="color: rgb(245, 26, 26); font-weight:bolder;">{{text.isActive}}</span>
-                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span>
+                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span><br>
+                      
                         </div>
                         <div class="flex-1 ms-3" style="margin-top: -25px;">
                             <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{text.OriginLocation}}--{{text.DestinationLocation}}</a></h5>
@@ -156,26 +157,28 @@
                         <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                         <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                         <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
+                        <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
+            
                     </div>
-                    <div style="display:inline-flex;" *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" >
+                    <div style="display:flex; "  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" >
                     
                         <button type="button" class="viewbidbtn" (click)="bidById(text)" >
                         
-                          <span> view Bids</span>
+                          <span style="font-weight: bolder;"> view Bids</span>
                           <span class="badge" [hidden]="text.isActive === 'Completed'">{{text.bids.length}}</span>
-                          </button>
+                          </button>&nbsp;&nbsp;&nbsp;
 
-                          <!--<button type="button" class="viewbidbtn" (click)="placebidById(text)" *ngIf="text.TruckMarketVehicle.length > 0">
-                            <span> place Bids</span>
+                          <button type="button" class="viewbidbt"  (click)="vehdetails(text)" *ngIf="text.shareContact == true">
+                            <span style="font-weight: bolder;"> View Contact</span>
                             
-                            </button>-->
-                         
+                            </button>
+                           
                     </div>
                 </div>
             </div>
         
        
-   
+          
     
     
   
@@ -270,9 +273,9 @@
     </div>
 
     
-    <div *ngIf="item.length ==0">
+    <div *ngIf="item.length ==0" class="noitem">
       <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg"
-        style="height: 70px; width: 70px;">
+        style="height: 70px; width: 70px;" class="img">
     
     <br>
     <h3 align="center">Post load to book live loads and use directory</h3>

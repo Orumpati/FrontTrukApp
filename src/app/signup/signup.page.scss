@@ -92,4 +92,8 @@ justify-content: center;
   ion-segment{
     margin-top: -50px;
   }
-
+  :host ::ng-deep {
+    .multiselect-dropdown {
+      background: white
+    }
+  }

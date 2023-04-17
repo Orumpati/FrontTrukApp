@@ -12,8 +12,9 @@ ion-segment {
     border-style: hidden;
     
     ion-row:first-child {
-      background-color:  #2dd36f;
+      background-color: white;
       font-weight: bold;
+      color: #f58e26;
     }
     ion-col {
       border: 0.5px solid #f58e26;
@@ -27,4 +28,54 @@ ion-segment {
     ion-row:last-child {
       border-bottom: 0.5px solid #f58e26;
     }
+  }
+
+
+  ion-list {
+    margin-top: 1vh;
+    ion-list-header {
+        font-weight: 1000;
+        font-size: 1.5rem;
+    }
+    ion-item  {
+        border: 1px solid var(--ion-color-light);
+        border-radius: 20px;
+        -webkit-box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+        -moz-box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+        box-shadow: 0 6px 4px -4px var(--ion-color-medium);
+    }
+    p {
+        font-size: 0.8rem;
+        padding-left: 5vw;
+    }
+}
+
+h3 {
+    color: #4e5358;
+    font-weight: 600;
+display: flex;
+justify-content: center;
+  }
+  ion-button{
+    --background:#f58e26;
+    margin-top: 20px;
+    height: 40px;
+  }
+
+  .input{
+    width: 100%;
+    border: 1px solid rgb(8, 8, 8);
+    border-radius: 10px;
+    height: 40px;
+    background: #fff;
+    resize: none;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.msg-btn{
+  --padding-start:0.5rem;
+  --padding-end:1rem;
+  margin-top: 1px;
+  font-size: 30px;
   }

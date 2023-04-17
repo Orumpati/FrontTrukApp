@@ -1,85 +1,168 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
+      <ion-icon  name="arrow-back-sharp" (click)="goback()" style="font-size: 30px;"></ion-icon>
+      
       <ion-title style="text-align:center;">Your Earning</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card style="border-radius: 13px;">
     <div class="container">
       <div>
         <div>
-          <img style="float: right; margin-top: 1rem;"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpkBooukGLBrkX76ONnWxwo2l30qi2R_jPpA&usqp=CAU"
+          <img style="float: right; margin-top: 1rem; margin-left:60px;"
+            src="https://img.freepik.com/premium-vector/rupee-great-design-any-purposes-financial-investment_194782-1520.jpg?w=740"
             width="25%"><br>
-          <h3>Total cash Earned</h3>
-          <h1 style="color:#f58e26 ;">₹400</h1>
+          <h3>Total coins Earned</h3>
+          <span style="color:#f58e26 ;font-size:22px;">{{PermanetCoins}}<small>Coins</small></span>
+          
+          <p style="color: black; font-weight:bolder;"><span style="color: red;">*</span>Note: 1 Coin = ₹ 1</p>
         </div>
       </div>
-      <div style="text-align: center;">
-        ..................................................................................</div>
-      <div>
-        
-        <div style="float: right;">
-          <h1>withdrawable</h1>
-          <h4 style="text-align: center;">₹400</h4>
-        </div>
-        <h1>withdrawn</h1>
-        <h4 >₹400</h4>
-      </div>
+   
+       
+         <ion-card style="float: left;width:150px;text-align:center; border-radius:11px; ">
+          <div >
+            <span style="color: black; font-weight:bolder; font-size:18px;">Withdrawable</span><br>
+            <span style="text-align: center;"><span style="color: #f58e26;font-size:18px;">{{Totalcoins}}</span><small style="color: black; font-weight:bolder;font-size:14px;">Coins</small></span>
+          </div>
+         </ion-card>
+    
+   
+      
 
-      <div style="text-align: center;">
-        ..................................................................................</div>
+      <!-- <div style="text-align: center;">
+        .......................................................</div> -->
 
-      <ion-button style="float: left;" shape="round" class="attach" id="open-modal">View Histroy</ion-button>
-  <ion-button style="float: right;" shape="round" class="attach" id="open-modal" >Withdraw</ion-button>
+      <!-- <ion-button style="float: left;" shape="round" class="attach" id="open-modal">View Histroy</ion-button> -->
+  <ion-button style="float: right;" shape="round" class="attach" id="open-modal"  id="moodal">Withdraw</ion-button>
     </div>
   </ion-card>
 
 
 
   <ion-segment value="custom" class="container">
-    <ion-segment-button (click)="toggle()" value="custom">
+    <ion-segment-button  value="custom" (click)="toggle()">
       <ion-label>your Refferals</ion-label>
     </ion-segment-button>
-    <ion-segment-button (click)="toggle1()" value="segment">
-      <ion-label>Remined all pendings</ion-label>
+    <ion-segment-button (click)="toggle1()"  (click)="deepu()" value="segment">
+      <ion-label>View Histroy</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-<div *ngIf="data">
-  <ion-grid class="ion-margin" [fixed]="true">
+<div *ngIf="dat">
+  <ion-grid  [fixed]="true">
     <ion-row>
-      <ion-col>S.No</ion-col>
+      <ion-col size="2">S.No</ion-col>
+      <ion-col >Name</ion-col>
       <ion-col>phonenumber</ion-col>
       <ion-col>reward</ion-col>
-      <ion-col>status</ion-col>
+      <!-- <ion-col>status</ion-col> -->
     </ion-row>
-    <ion-row *ngFor="let student of studends; index as i">
-      <ion-col>{{ i + 1 }}</ion-col>
-      <ion-col>{{ student.phonenumber }}</ion-col>
-      <ion-col>{{ student.reward }}</ion-col>
-      <ion-col>{{ student.status }}</ion-col>
+    <ion-row *ngFor="let student of referals; index as i">
+      <ion-col size="2">{{ i + 1 }}</ion-col>
+       <ion-col style="width: 90px;"> {{student.userName}}</ion-col> 
+      <ion-col>{{ student.mobileNo }}</ion-col>
+      <ion-col >100</ion-col>
+      <!-- <ion-col>{{ student.status }}</ion-col> -->
     </ion-row>
   </ion-grid>
 </div>
 <div *ngIf="data1">
-  <ion-grid class="ion-margin" [fixed]="true">
+  <ion-grid [fixed]="true">
     <ion-row>
-      <ion-col size="3" >S.No</ion-col>
-      <ion-col size="3" >phonenumber</ion-col>
-      <ion-col size="3" >reward</ion-col>
-      <ion-col size="3" >status</ion-col>
+      <ion-col size="2" >S.No</ion-col>
+
+      <ion-col size="5" >Coins Requested</ion-col>
+      <ion-col size="5">Date</ion-col>
+      <!-- <ion-col size="3" >status</ion-col> -->
     </ion-row>
-    <ion-row *ngFor="let student of studends; index as i">
-      <ion-col size="3" >{{ i + 1 }}</ion-col>
-      <ion-col size="3" >{{ student.phonenumber }}</ion-col>
-      <!-- <ion-col>{{ student.reward }}</ion-col> -->
+    <ion-row *ngFor="let student of Items; index as i">
+      <ion-col size="2" >{{ i + 1 }}</ion-col>
+      
+       <ion-col size="5">{{ student.requestedPoints }}</ion-col>
+      <ion-col size="5" >{{ student.dateOfRequest }}</ion-col>
     
     </ion-row>
   </ion-grid>
 </div>
 </ion-content>
+
+
+<ion-modal #modal trigger="moodal" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+  <ng-template>
+    <ion-content class="ion-padding">
+
+
+      <ion-toolbar color="light">
+        <div *ngIf="acc >=1">
+      <ion-row>
+           <ion-col size="10">
+            <input autosize maxRowx="3" type="number" placeholder="enter points" [(ngModel)]="inputpoints" class="input">
+    
+          
+    
+          </ion-col>
+    
+          <ion-col size="2">
+            <ion-button expand="block" fill="clear" color="primary" class="msg-btn"
+             (click)="NewPostAdd()" (click)="modal.dismiss()">
+              <ion-icon name="send"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row> 
+      </div>
+        <div *ngIf="acc == 0 || acc == undefined || acc == ''">
+        <div style="display: flex;">
+      
+          <ion-title style="text-align:center;"><u>Add Account Details</u></ion-title>
+        </div>
+
+        <form  >
+      
+          <ion-item class="ion-margin">
+       
+            <ion-input appCapitalize placeholder="Enter Account Number" type="text" clearInput="true" [(ngModel)]="accountNum" [ngModelOptions]="{standalone:true}" ></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin">
+       
+            <ion-input appCapitalize placeholder="Enter IFSC Code" type="text" clearInput="true" [(ngModel)]="ifscCode" [ngModelOptions]="{standalone:true}"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin">
+       
+            <ion-input appCapitalize placeholder="Enter Acc HolderName" type="text" clearInput="true" [(ngModel)]="accHolderName" [ngModelOptions]="{standalone:true}"></ion-input>
+          </ion-item>
+          <!-- <ion-item class="ion-margin">
+       
+            <ion-input appCapitalize placeholder="Enter UPID" type="text" clearInput="true" [(ngModel)]="upiId" [ngModelOptions]="{standalone:true}"></ion-input>
+          </ion-item> -->
+
+          <ion-button   expand="full" strong="true" type="submit" [disabled]="  accHolderName== null||accHolderName== '' || ifscCode == null||ifscCode == '' || accountNum == null||accountNum == '' "      (click)="addAccDetails()" >
+            Add Account
+      
+          </ion-button>
+        </form>
+        <div align="center">
+<span >OR</span>
+</div>
+        <form>
+          <ion-item class="ion-margin">
+       
+            <ion-input appCapitalize placeholder="Enter UPID" type="text" clearInput="true" [(ngModel)]="upiId" [ngModelOptions]="{standalone:true}"></ion-input>
+          </ion-item>
+
+          <ion-button   expand="full" strong="true" type="submit" [disabled]="upiId == null ||upiId == '' "      (click)="addAccDetails()" >
+            Add Account
+      
+          </ion-button>
+        </form>
+   </div>
+      </ion-toolbar>
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>

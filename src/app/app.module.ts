@@ -24,14 +24,21 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 //import { OneSignal } from '@ionic-native/onesignal';
-
+import { LoggeduserGuard } from './guards/loggeduser.guard';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { CapitalizeDirective } from './capitalize.directive';
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { DatePipe } from '@angular/common';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ViewshipperconPipe } from './viewshippercon.pipe';
 @NgModule({
-  declarations: [AppComponent, CapitalizeDirective, 
+  declarations: [AppComponent, CapitalizeDirective, ViewshipperconPipe, 
    // HasRoleDirective
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,provideFirebaseApp(() => initializeApp(environment.firebase)), provideStorage(() => getStorage()), provideFirestore(() => getFirestore())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FormsModule,CommonModule,ReactiveFormsModule,HttpClient,SocialSharing,Clipboard,
     
   File,
@@ -39,6 +46,8 @@ import { CapitalizeDirective } from './capitalize.directive';
   UniqueDeviceID,
   AndroidPermissions,
   Crop,
+  LoggeduserGuard,
+  DatePipe
   
   ],
   bootstrap: [AppComponent],

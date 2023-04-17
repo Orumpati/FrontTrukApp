@@ -19,6 +19,8 @@ export class AllBidsPage implements OnInit {
   usNo: any;
   bidactlen: any;
 
+
+  AtleastOneBidisClosed=false
   constructor(private router:Router,public navController : NavController,) { }
   ionViewDidEnter(){
   this.all()
@@ -56,13 +58,21 @@ all(){
         this.allbidslen =result.message[i].bids.length
         
       }
+
 console.log(this.allbids)
       for(let i=0; i<this.allbids.length;i++){
+           if(this.allbids[i].BidStatus == 'closed') {
+            console.log(this.allbids[i].BidStatus)
+            this.AtleastOneBidisClosed = true
+           }    else{
+            this.AtleastOneBidisClosed = false
+           }               //this is to see any one bid is closed
         this.bidact = this.allbids[i].BidActivity
         this.bidactlen = this.allbids[i].BidActivity.length
         this.mo = this.allbids[i].mobileNo
+        
       }
-      console.log(this.bidactlen)
+      
       this.tranNum= this.bidact.filter((data:any)=>{
         return  data.userNo == this.mo
         })  
@@ -101,7 +111,5 @@ this.navController.navigateForward('/view-bid')
      window.location.reload()
     }, 2000);
   }
-route(){
-  this.navController.navigateForward('/tab/tab1');
-}
+
 }

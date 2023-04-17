@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
+      <ion-icon *ngIf="logindata.role == 'Shipper'" name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
+      <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
       <ion-title style="text-align:center;">Contact Us</ion-title>
     </div>
   </ion-toolbar>
@@ -56,7 +57,12 @@
       </ion-item>
     </ion-radio-group>
   </ion-list> -->
-  <ion-radio-group id="narayana">  
+
+    
+    
+  
+  <ion-radio-group id="narayana"> 
+    <div *ngIf="itemlen != 0" class="noitem"> 
   <div class="card" *ngFor="let card of item" (click)="typeofPay(card.typeOfPay)">
     <div class="card-body" >
       <div type="button" class="securepayment" *ngIf="card.typeOfPay == 'Online'" ><br>
@@ -106,6 +112,11 @@
         </div>
     </div>
 </div>
+</div>
+<div *ngIf="itemlen === 0" class="noitem">
+  
+  <h1>No Loads!</h1>
+</div>
 
 <ion-modal #modal trigger="narayana">
   <ng-template>
@@ -134,88 +145,3 @@
 </ion-content>
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- this is a contact us details popup page -->
-
-
-<!-- <ion-modal *ngIf="hide === 'show'">
-    <ng-template>
-      <ion-content>
-        <ion-toolbar>
-          <ion-title>Contact Details</ion-title>
-          <ion-buttons slot="end">
-            <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-        <ion-list>
-          <div class="container">
-            <ion-item fill="outline">
-              <ion-label position="floating" >Enter Your Name</ion-label>
-              <ion-input placeholder="Enter text" [(ngModel)]="Name"></ion-input>
-            </ion-item><br>
-            <ion-item fill="outline">
-              <ion-label position="floating" >Enter Your Email Address</ion-label>
-              <ion-input placeholder="Enter text" [(ngModel)]="To"></ion-input>
-            </ion-item><br>
-            <ion-item fill="outline">
-              <ion-label position="floating" >Enter your Mobile Number</ion-label>
-              <ion-input placeholder="Enter text" [(ngModel)]="PhoneNumber"></ion-input>
-            </ion-item><br>
-            <ion-item>
-              <ion-textarea placeholder="Please  the mention ypur Query here....." [autoGrow]="true" [(ngModel)]="Query">
-              </ion-textarea>
-            </ion-item>
-            <br>
-            <ion-button style="float: right;"   (click)="addContact()">Submit</ion-button>
-          </div>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal> -->
-
-
-
-
-
-<!-- <ion-accordion value="second">
-  <ion-item slot="header" color="light">
-    <ion-label>How I get truk and driver details </ion-label>
-  </ion-item>
-  <div class="ion-padding" slot="content">
-    Second Content
-  </div>
-</ion-accordion><br>
-<ion-accordion value="third">
-  <ion-item slot="header" color="light">
-    <ion-label>Payment</ion-label>
-  </ion-item>
-  <div class="ion-padding" slot="content">
-    Third Content
-  </div>
-</ion-accordion><br>
-<ion-accordion value="four">
-  <ion-item slot="header" color="light">
-    <ion-label>How I see the load tracking </ion-label>
-  </ion-item>
-  <div class="ion-padding" slot="content">
-    Third Content
-  </div>
-</ion-accordion><br>
-<ion-accordion value="five">
-  <ion-item slot="header" color="light">
-    <ion-label>Other Reason</ion-label>
-  </ion-item>
-  <div class="ion-padding" slot="content">
-    Third Content
-  </div>
-</ion-accordion> -->

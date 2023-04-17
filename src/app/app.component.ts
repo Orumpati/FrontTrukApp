@@ -29,18 +29,15 @@ this. getUniqueDeviceID()
 
     }
 
-this.getUniqueDeviceID()
+//this.getUniqueDeviceID()
+this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
   }
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     console.log(this.logindata)
   }
-  darkMode = false;
 
-  toggleDarkMode() {
-    this.darkMode = !this.darkMode;
-    document.body.classList.toggle('dark', this.darkMode);
-  }
+
   getUniqueDeviceID() {
     this.uniqueDeviceID.get()
       .then((uuid: any) => {
@@ -73,8 +70,10 @@ this.getUniqueDeviceID()
     localStorage.setItem('InappNotifictions', JSON.stringify(this.AllNotifications));
     console.log('trukappp'+localStorage.getItem('InappNotifictions'))
     // this show Inapp notifications
-    //alert(v.notification.title + v.notification.body)
-     
+    if(v.notification.body){
+    alert( v.notification.body)
+    window.location.reload()
+    }
     //alert(localStorage.getItem('InappNotifictions'))
     
     
@@ -139,9 +138,11 @@ location(){
 }
 
 signout(){
+  if(confirm('Are You Sure,You Want to Logout')){
   localStorage.removeItem('regdata')
   localStorage.removeItem('lookingfor')
   window.location.href='/loginotp'
+  }
 }
 
 

@@ -36,15 +36,15 @@
       <ion-input appCapitalize placeholder="Enter LastName" type="text" clearInput="true" formControlName="lastName"></ion-input>
     </ion-item>
 
-
+    <div style=" width: 305px;
+    height: 50px;
+    border-radius: 19px;
+    margin-left: 25px;">
     <ng-multiselect-dropdown [hidden]="role === 'Shipper'" [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
     [data]="dropdownList" [(ngModel)]="routes" formControlName="routes" (onSelect)="onItemSelect($event)"
     (onSelectAll)="onSelectAll($event)">
   </ng-multiselect-dropdown>
-    <!--<ion-item class="ion-margin">
-      <ion-input placeholder="Enter Compant Address" type="text" clearInput="true" formControlName="city" ></ion-input>
-      <!--<ion-icon (click)="loac()" name="location-outline" style="color:rgb(201, 13, 13);"></ion-icon>  ngModel={{location?.city}}
-    </ion-item>-->
+</div>
     <div class="ion-margin">
       <ion-item>
       <ion-input appCapitalize type="text"  placeholder="Enter Company Address" [(ngModel)]="OriginLocation" formControlName="city"
@@ -111,7 +111,9 @@
     </ion-item> -->
 
   
-   
+    <ion-item class="ion-margin">
+      <ion-input placeholder="Enter Referal Code" type="string" clearInput="true" formControlName="signupReferalCode" ></ion-input>
+    </ion-item>
     
   
     <ion-item class="ion-margin" >

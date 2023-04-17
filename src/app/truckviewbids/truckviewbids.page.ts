@@ -53,6 +53,8 @@ export class TruckviewbidsPage implements OnInit {
   driverdetails: any;
   trukDocId: any;
   TohideNegoshit: any;
+  shipperNo: any;
+  
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
   
     ngOnInit() {
@@ -60,10 +62,11 @@ export class TruckviewbidsPage implements OnInit {
     console.log(this.regdata)
     this.loadDocId = JSON.parse(localStorage.getItem('totalloadTAll') || '{}')
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
-     
-      console.log(this.openedBid)
+      this.trukDocId =JSON.parse(localStorage.getItem('loadDocId') || '{}')
+     console.log(this.openedBid)
+      console.log(parseInt(this.loadDocId.Number))
        this.typepay = this.openedBid.typeOfPay
-   
+  
       //this.bidactivityofopenbid =this.openedBid.BidActivity
      /* for(let i=0; i<this.bids.bids.length;i++){
            this.bidact=this.bids.bids[i]
@@ -94,7 +97,8 @@ export class TruckviewbidsPage implements OnInit {
         this.sharecontact =result[i].shareContact
         this.paymentdone =result[i].isPaymentCompleted
         this.TohideNegoshit = result[i].TohideNegoshit
-        console.log(this.sharecontact)
+        this.shipperNo = result[i].Number
+        console.log(Number(this.shipperNo))
     var final= result[i].bids //this is bids array
     console.log(final)
     if(result[i].bids.length === 0){
@@ -122,7 +126,7 @@ export class TruckviewbidsPage implements OnInit {
    }
 console.log(this.onlybid)*/
         for(let i=0; i<this.item.length;i++){
-          console.log(this.item[i].mobileNo)
+          console.log(Number(this.item[i].mobileNo))
    if(this.regdata.mobileNo == this.item[i].mobileNo){
 
           console.log(this.item[i])
@@ -184,7 +188,7 @@ console.log(this.tohideAccBtn)
         "price":this.NegoPrice,
         "TohideAcceptBtn":true,
         "Name":this.regdata.firstName+this.regdata.lastName,//for notifi 
-        "Number":this.bidnumber, //fornotifca
+        Number:this.shipperNo, //fornotifca
         "mess":"Placed a Bid for amount"
       
        }
@@ -203,7 +207,8 @@ console.log(this.tohideAccBtn)
         .then(response => response.json())
         .then(async result => {
           console.log(result)
-          window.location.reload()
+          this.all()
+         // window.location.reload()
           loading.dismiss()
           
     
@@ -222,6 +227,7 @@ console.log(this.tohideAccBtn)
         alert("Verify Aadhar to Accept")
   window.location.href='/profile'
       }else{
+        if(confirm("Once you accept the bid, You cant negotiate")){
      // confirm("Are You Sure, To accept")
       const loading = await this.loadingController.create({
         message: 'Loading...',
@@ -236,12 +242,13 @@ console.log(this.tohideAccBtn)
         "userType":this.regdata.role,
         "Bidprice":this.loadDocId.expectedPrice,
         "initialAccept" :"Accepted",
+        "BidStatus":"closed",
         "TohideAcceptBtn":true,
         "bidAcceptedTo":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "mess":"Accepted your bid for",
 
-         "Number":parseInt(this.loadDocId.Number),//for notification who posted the load(Shipper)
+         Number:this.loadDocId.Number,//for notification who posted the load(Shipper)
 
         
       
@@ -267,7 +274,7 @@ console.log(this.tohideAccBtn)
           this. acceptBidStatus()
           this.navControl.navigateForward('/truckviewbids')
           loading.dismiss()
-    
+          this.all()
     
         }
     
@@ -276,17 +283,17 @@ console.log(this.tohideAccBtn)
           console.log(err)
         })
       }
-    }
+    }}
 
     acceptBidStatus(){
 
       var data={
-        isActive:"Completed"
+        trukisActive:"Completed"
       }
      // console.log(data)
   
       
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.loadDocId._id, {
+      fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
         method: 'PUT',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -300,9 +307,9 @@ console.log(this.tohideAccBtn)
           console.log(result),
   
             this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
-  
+            this.all()
        
-          window.location.reload()  // reloading window
+          //window.location.reload()  // reloading window
   
         }
   
@@ -326,7 +333,7 @@ console.log(this.tohideAccBtn)
       "mobileNo": this.regdata.mobileNo,
       "userType":this.regdata.role,
       "Bidprice":this.messg,
-      "Number":parseInt(this.loadDocId.Number), //for notification
+      Number:this.loadDocId.Number, //for notification
       "Name":this.regdata.firstName+this.regdata.lastName, //for notification
       "agentInitialBidSend":true,
       "TohideAcceptBtn":true,
@@ -352,7 +359,8 @@ console.log(this.tohideAccBtn)
         console.log(result)
         
         loading.dismiss()
-        window.location.reload()
+        this.all()
+        //window.location.reload()
   
       }
   
@@ -367,7 +375,7 @@ console.log(this.tohideAccBtn)
       alert("Verify Aadhar to Accept")
 
     }else{
-    
+      if(confirm("Once you accept the bid, You cant negotiate")){
       //confirm("Are you Sure To Accept")*/
     
   const loading = await this.loadingController.create({
@@ -384,7 +392,8 @@ console.log(this.tohideAccBtn)
     "mobileNo":this.regdata.mobileNo,
     "isAgentAccepted":true,
     "TohideAcceptBtn":true,
-    "Number":parseInt(this.loadDocId.Number), // for send notifi
+    "BidStatus":"closed",
+    Number:this.loadDocId.Number, // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.tentativefinalPrice, // for send notifi
     "mess":"Accepted a bid for"
@@ -409,15 +418,15 @@ console.log(this.item.mobileNo)
     .then(async result => {
       console.log(result)
       loading.dismiss()
-      
-
-window.location.reload()
+      this. acceptBidStatus()
+      this.all()
+//window.location.reload()
     }
 
     ).catch(err =>{
       loading.dismiss()
       console.log(err)})
-  }
+  }}
 }
 
 

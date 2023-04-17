@@ -57,7 +57,8 @@ export class ModalContactPage implements OnInit {
       .then(response => response.json())
       .then( async result => {
         console.log(result),
-          this.Items = result  
+          this.Items = result
+          this.email();  
           const alert = await this.alertController.create({
             header: 'Successfull',
             // subHeader: 'Important message',
@@ -67,6 +68,10 @@ export class ModalContactPage implements OnInit {
                 text: 'Okay',
                 handler: () => {
                   console.log('Confirm Okay');
+                  this.PhoneNumber=''
+                  this.To=''
+                  this.Query=''
+                  this.Name=''
                   //you can write your code or redirection 
                   // sample redirection code 
                  // window.location.href = '/contact-us';
@@ -83,19 +88,18 @@ export class ModalContactPage implements OnInit {
 
       ).catch(err =>
         console.log(err))
-        this.email();
+       
   }
 
 
 
   email() {
     var data = {
-      To:this.To,   
-      Name: this.Name,
-      PhoneNumber:this.PhoneNumber,
-      Query:this.Query
-       
-    }
+      text:`UserName:${this.Name},
+           MobileNo: ${this.PhoneNumber} ,
+           To: ${this.To} ,
+           Query:${this.Query}`  
+  }
     console.log(data)
 
     fetch("https://amused-crow-cowboy-hat.cyclic.app/contact/emailnotification", {

@@ -179,7 +179,8 @@ export class Tab2Page {
     localStorage.setItem("loadBy", JSON.stringify(load));
     this.router.navigate(['place-bid'], 
         { state: { profile: load._id }});
-    //this.router.navigate(["place-bid"])
+    this.router.navigate(["place-bid"])
+    
    }
 
 

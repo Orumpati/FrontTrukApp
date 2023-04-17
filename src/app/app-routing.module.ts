@@ -34,6 +34,8 @@ const routes: Routes = [
 
   {
     path: 'selectlanguage',
+    //canActivate:[LoggeduserGuard,NotloggedguardGuard],
+   // canActivate:[NotloggedguardGuard],
     loadChildren: () => import('./selectlanguage/selectlanguage.module').then( m => m.SelectlanguagePageModule),
    //canActivate:[LoggeduserGuard]
   },
@@ -51,7 +53,7 @@ const routes: Routes = [
   {
     path: 'loadingscreen',
     loadChildren: () => import('./loadingscreen/loadingscreen.module').then( m => m.LoadingscreenPageModule),
-    //canActivate:[LoggeduserGuard]
+    //canActivate:[DriverloginGuard]
    
   },
 
@@ -331,6 +333,16 @@ const routes: Routes = [
   {
     path: 'proofofdelivery',
     loadChildren: () => import('./proofofdelivery/proofofdelivery.module').then( m => m.ProofofdeliveryPageModule)
+  },
+  {
+    path: 'dummy',
+    canActivate:[LoggeduserGuard],
+    loadChildren: () => import('./dummy/dummy.module').then( m => m.DummyPageModule)
+  },
+
+  {
+    path: 'viewshippercon',
+    loadChildren: () => import('./viewshippercon/viewshippercon.module').then( m => m.ViewshipperconPageModule)
   },
   
 

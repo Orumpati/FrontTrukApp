@@ -18,7 +18,7 @@
     border-radius: 10px 10px 10px 50px;
     margin-left: -18px;
     margin-top: -50px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
   }
   
   .header-content{
@@ -132,6 +132,6 @@ ion-modal::part(backdrop) {
 }
 
 ion-modal ion-toolbar {
-  --background: rgb(14 116 144);
+  --background:orange;
   --color: white;
 }

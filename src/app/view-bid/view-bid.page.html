@@ -19,7 +19,7 @@
     <ion-card-header>
       <ion-card-subtitle style="color: black;">Expected Price:</ion-card-subtitle>
       <ion-card-title>₹ {{bids.expectedPrice}}/-</ion-card-title>
-      
+      <ion-card-title [hidden]="bids.advance == null" style="float: right;margin-top:-40px;" >Advance ₹{{bids.advance}}/-</ion-card-title>
     </ion-card-header>
     
     <ion-card-content>
@@ -43,9 +43,6 @@
 
   <ion-grid>
     <ion-row *ngFor="let text of bidActivity">
-
-   
-
        <ion-col size="8" offset="3" *ngIf="text.userType==regdata.role" class=" my-message">
 
         <b text-left style="font-size: 15px;">{{text.userType}}</b><br>
@@ -102,13 +99,13 @@
   </div>
 
   <div *ngIf="shareContact == true && typepay == 'Offline'" align="center" style="margin-top:5px;" >
-    <ion-button  shape="round" class="next" expand="block"id="opensModal">View Contact</ion-button>
+    <ion-button  shape="round" class="next" expand="block" id="opensModal">View Contact</ion-button>
     <ion-modal trigger="opensModal" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
-              <ion-button (click)="cancel()">Back</ion-button>
+              <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
             </ion-buttons>
             <ion-title>Contact Details</ion-title>
         
@@ -122,7 +119,9 @@
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Transporter Number</ion-label>
-            <ion-input type="text"  [(ngModel)]="driverdetails.mobileNumber" readonly></ion-input>
+            <!-- <ion-input type="text"  [(ngModel)]="driverdetails.mobileNumber" readonly></ion-input> -->
+            <ion-input><a href="tel:{{driverdetails.mobileNumber}}">{{driverdetails.mobileNumber}}</a></ion-input>
+            <ion-icon name="copy-outline" style="float: right;margin-top:25px;" slot="end" color="primary"  (click)="copyString()"></ion-icon>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Company Name</ion-label>
@@ -145,7 +144,8 @@
           <ion-header>
             <ion-toolbar>
               <ion-buttons slot="start">
-                <ion-button (click)="cancel()">Back</ion-button>
+                
+                <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
               </ion-buttons>
               <ion-title>Contact Details</ion-title>
           
@@ -167,7 +167,9 @@
             </ion-item>
             <ion-item>
               <ion-label position="stacked">DriverNumber</ion-label>
-              <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber" readonly></ion-input>
+              <!-- <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber" readonly></ion-input> -->
+              <ion-input><a href="tel:{{driverdetails.DriverNumber}}">{{driverdetails.DriverNumber}}</a></ion-input>
+              <ion-icon name="copy-outline" style="float: right;margin-top:25px;" slot="end" color="primary"  (click)="copy()"></ion-icon>
             </ion-item>
             
           </ion-content>
@@ -197,8 +199,8 @@
 
 <div [hidden]="agentconditions == true ">
 <ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" [hidden]="hideaccptbtn == false" >Accept</ion-button>
-<ion-button id="modal" shape="round" class="next" [hidden]="conditions == true" [disabled]="hideaccptbtn == false">Negotiate</ion-button>
-<ion-modal trigger="modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-button id="modal" shape="round" class="next" [hidden]="conditions == true || initialaccepted == 'Accepted'" [disabled]="hideaccptbtn == false">Negotiate</ion-button>
+<ion-modal #modal trigger="modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
       <!-- <div class="ion-margin-top">
@@ -215,15 +217,13 @@
       <ion-toolbar color="light">
         <ion-row>
           <ion-col size="10">
-            <textarea autosize maxRowx="3" type="number" [(ngModel)]="NegoPrice" class="input">
-
-          </textarea>
-
+       
+          <input autosize maxRowx="3" type="number" placeholder="enter your price" [(ngModel)]="NegoPrice" class="input">
           </ion-col>
 
           <ion-col size="2">
             <ion-button expand="block" fill="clear" color="primary" [disabled]="NegoPrice === '' " class="msg-btn"
-              (click)="negotiate()">
+              (click)="negotiate()" (click)="modal.dismiss()">
               <ion-icon name="send"></ion-icon>
             </ion-button>
           </ion-col>

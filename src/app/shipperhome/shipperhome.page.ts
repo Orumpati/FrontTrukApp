@@ -54,6 +54,7 @@ option = {
   truckshift: any;
   loadshift: any;
   loortr: any;
+  completetrucks: any;
   constructor(public loadingController: LoadingController,private router:Router) { }
 
   ngOnInit() {
@@ -105,17 +106,24 @@ option = {
       .then(result => {
         console.log(result),
           this.item = result.Loads
-          var activeloads1 = this.item.filter((data:any) =>{
+          var loginuser = this.item.filter((data:any) =>{
+            return data.Number  == this.logindata.mobileNo
+      })
+
+
+
+          var activeloads1 = loginuser.filter((data:any) =>{
                 return data.isActive  === 'Active'
           })
+          console.log(activeloads1)
           this.activeloads1= activeloads1.length
           
-          var pendbids1 = this.item.filter((data:any) =>{
+          var pendbids1 = loginuser.filter((data:any) =>{
             return data.isActive  === 'In-Progress'
       })
       this.pendingbids1= pendbids1.length
 
-      var closebids1 = this.item.filter((data:any) =>{
+      var closebids1 = loginuser.filter((data:any) =>{
         return data.isActive  === 'Completed'
   })
   this.closedbids1= closebids1.length
@@ -151,11 +159,21 @@ window.location.reload()
       .then(response => response.json())
       .then(result => {
         console.log(result),
-          this.truck = result.data
-          var acttruck = this.truck.filter((data:any) =>{
+          this.truck = result.data 
+
+          var userlogin = this.truck.filter((data:any) =>{
+            return data.trukOwnerNumber  == this.logindata.mobileNo
+      })
+
+          var acttruck = userlogin.filter((data:any) =>{
             return data.trukisActive  === 'Active'
       })
+
+      var comtruck = userlogin.filter((data:any) =>{
+        return data.trukisActive  === 'Completed'
+  })
       this.activetrucks= acttruck.length
+      this.completetrucks= comtruck.length
         console.log(this.truck)
       }
 

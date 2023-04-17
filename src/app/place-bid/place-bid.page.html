@@ -17,6 +17,7 @@
     <ion-card-header>
       <ion-card-subtitle>Expected Price:</ion-card-subtitle>
       <ion-card-title>₹ {{objects.expectedPrice}} -/</ion-card-title>
+      <ion-card-title [hidden]="objects.advance == null" style="float: right;margin-top:-40px;" >Advance₹ {{objects.advance}}/-</ion-card-title>
       <p>-----------------------------------------------------------------------</p>
     </ion-card-header>
     <ion-card-content>
@@ -26,34 +27,11 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- <ion-card >
-  <div >
-    <h1>{{finalss}}</h1>
-  </div>
-</ion-card> -->
+
 
 <ion-grid>
   <ion-row *ngFor="let text of finalss">
-
-    <!-- <ion-col size="9" *ngIf="text.userType!== currentUserType" class="message other-message">
-
-      <b text-left>{{text.userType}}</b><br>
-      <b text-left>{{text.price}}</b><br>
-
-
-
-       <div class="time" text-right><br>
-        {{text.time | date:'short' }}
-      </div> 
-
-    </ion-col> -->
-   
      <ion-col size="8" offset="3" *ngIf="text.userType == regdata.role">
-
-      <div align="center"  class="shipperAccept" *ngIf="text.initialAccept === 'Accepted'">
-        Bid accepted for :₹ {{text.price}}/-
-      </div>
-
 
     <div [hidden]="text.initialAccept === 'Accepted'"  class="my-message" >
       <b>{{text.userType}}::</b><br>
@@ -126,14 +104,14 @@ You Accepted the bid for {{item.tentativefinalPrice}}
 </ion-content>
 
 <div [hidden]="item.isAgentAccepted == true || insidebidarray === 'Accepted'  ">
-<ion-card  >
+<ion-card [hidden]="insidebidarray == 'Accepted'" >
   <ion-card-header>
     <ion-card-title>Bidding actions</ion-card-title>
 
   </ion-card-header>
 
   <ion-card-content>
-    Negotiate the bid rate or accept and proceed with the transactiom
+    Negotiate the bid rate or accept and proceed with the transaction
   </ion-card-content>
 
 
@@ -188,36 +166,25 @@ You Accepted the bid for {{item.tentativefinalPrice}}
   
 </ion-card>-->
 
-<ion-button  id="moodal" shape="round" class="next" [disabled]="item.TohideAcceptBtn == true"   [hidden]="item.isShipperAccepted == true || isagentAccept == true || finalss == null"  >Negotiate</ion-button>
+<ion-button  id="moodal" shape="round" class="next" [disabled]="item.TohideAcceptBtn == true"   [hidden]="item.isShipperAccepted == true || isagentAccept == true || finalss == null ||insidebidarray == 'Accepted'"  >Negotiate</ion-button>
 
 
 
-<ion-modal trigger="moodal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-modal #modal trigger="moodal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
-      <!-- <div class="ion-margin-top">
-        <ion-label>
-          <ion-item fill="outline">
-            <ion-label position="floating">Your Bidding price</ion-label>
-            <ion-input placeholder="Enter new Price"[(ngModel)]="bidPrice"></ion-input>
-          </ion-item>
-          <br>
-          <ion-button expand="full" class="next" shape="round" (click)="placeBid(bidPrice)">Negotiate</ion-button>
-        </ion-label>
-      </div> -->
+
 
       <ion-toolbar color="light">
         <ion-row>
           <ion-col size="10">
-            <textarea autosize maxRowx="3" [(ngModel)]="NegoPrice" class="input">
-    
-            </textarea>
-    
+      
+            <input autosize maxRowx="3" type="number" placeholder="enter your price" [(ngModel)]="NegoPrice" class="input">
           </ion-col>
     
           <ion-col size="2">
             <ion-button expand="block" fill="clear" color="primary" [disabled]="NegoPrice === '' " class="msg-btn"
-             (click)="negotiate()" >
+             (click)="negotiate()" (click)="modal.dismiss()">
               <ion-icon name="send"></ion-icon>
             </ion-button>
           </ion-col>
@@ -249,7 +216,7 @@ You Accepted the bid for {{item.tentativefinalPrice}}
     </ion-row>
   </ion-toolbar>
 </ion-footer> -->
-<ion-modal trigger="open-modall" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-modal #moodal trigger="open-modall" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
       <!-- <div class="ion-margin-top">
@@ -266,15 +233,13 @@ You Accepted the bid for {{item.tentativefinalPrice}}
       <ion-toolbar color="light">
         <ion-row>
           <ion-col size="10">
-            <textarea autosize maxRowx="3" [(ngModel)]="newMsg" class="input">
-    
-            </textarea>
-    
+          
+            <input autosize maxRowx="3" type="number" placeholder="enter your price" [(ngModel)]="newMsg" class="input">
           </ion-col>
     
           <ion-col size="2">
             <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg == '' " class="msg-btn"
-            (click)="initialBid()">
+            (click)="initialBid()" (click)="moodal.dismiss()">
               <ion-icon name="send"></ion-icon>
             </ion-button>
           </ion-col>

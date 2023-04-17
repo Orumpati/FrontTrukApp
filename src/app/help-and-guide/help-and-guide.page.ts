@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./help-and-guide.page.scss'],
 })
 export class HelpAndGuidePage implements OnInit {
+  logindata: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
   }
 
 }

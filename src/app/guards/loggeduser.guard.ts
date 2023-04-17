@@ -15,18 +15,19 @@ export class LoggeduserGuard implements CanActivate {
 
 
   canActivate(){
-    if(this.service.isloggedIn() ){
+    if(this.service.isloggedIn() &&( this.logindata.role == 'Shipper' || this.logindata.role == 'Transporter' || this.logindata.role == 'Fleet Owner') ){
       this.router.navigate(['tab/shipperhome'])
-      return true;
+ return true
+       }else if(this.logindata.userRole == 'Driver'){
+      this.router.navigate(['tab/driver-active-loads'])
       
+      return true
      
     }else{
       this.router.navigate(['selectlanguage'])
-      
       return false
-     
     }
     
-  }
+  } 
   
 }

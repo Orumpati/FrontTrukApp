@@ -37,12 +37,13 @@ otp:any
     await loading.present();
     var gstinNumber = localStorage.getItem("gst")
     var userName = localStorage.getItem("gstusername")
+    var appkey = localStorage.getItem("AppKey")
     console.log(gstinNumber)
       const final ={
         gstin: gstinNumber,
         username: userName,
-       // otp: otp,
-       // appKey: appKey
+        otp: this.otp,
+        appKey:appkey
       
       }
       fetch("https://api.emptra.com/gstToken", {

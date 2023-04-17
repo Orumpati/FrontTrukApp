@@ -191,6 +191,7 @@ loading.dismiss()
   this.ngZone.run(() => {
     alert('Login as Shipper')
     this.updatedeviceid()
+    localStorage.setItem('regdata',JSON.stringify(this.verified))
     this.router.navigate(['/tab/tab1'])
     localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
     localStorage.removeItem('lookingfor')
@@ -200,6 +201,7 @@ loading.dismiss()
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
 alert('Login as agent/broker')
 this.updatedeviceid()
 this.router.navigate(['/tab/shipperhome'])
@@ -208,6 +210,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as transporter')
   this.updatedeviceid()
   this.router.navigate(['/tab/shipperhome'])
@@ -216,6 +219,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   localStorage.setItem('lookingfor',JSON.stringify('loads'))
   loading.dismiss()
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as Fleet Owner')
   this.updatedeviceid()
   this.router.navigate(['/tab/shipperhome'])
@@ -225,6 +229,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
  // localStorage.setItem('lookingfor',JSON.stringify('loads'))
  localStorage.removeItem('lookingfor')
   loading.dismiss()
+  localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as Driver')
   this.updatedeviceid()
   this.router.navigate(['/tab/driver-active-loads'])
@@ -236,7 +241,6 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
         .catch((error) => {
           loading.dismiss()
           console.log(error);
-    localStorage.removeItem('regdata')
             alert(error.message);
           });
     }
@@ -269,6 +273,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
     }
 
     async getOTP(){
+      window.location.reload()
       const loading = await this.loadingCtrl.create({
         message: 'Loading...',
         spinner: 'crescent'
@@ -277,7 +282,6 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
       var data ={
         mobileNo:this.mobileNo
       }
-      //fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getRegisterData", {
         fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
         method:'post',
         headers:{
@@ -290,13 +294,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
         .then(
            async result =>{
             console.log(result)
-        
-        /*this.regData=result.data
-     
-        console.log(this.regData)
-    console.log(this.phoneNumber)
-     this.regNumber = this.regData.find((t: { mobileNo: any; })=>t.mobileNo == this.phoneNumber);
-    console.log(this.regNumber)*/
+ 
     
     if(result.mobileNo === this.mobileNo){
     
@@ -323,9 +321,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
           );
           localStorage.setItem('regdata',JSON.stringify(result))
           loading.dismiss();
-            this.ngZone.run(() => {
-              this.router.navigate(['/verifyotp']);
-            });
+          
           
         
         })
@@ -349,7 +345,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
         await alert.present();
       
           //this.presentToast("Not Registered","danger");
-          this.router.navigate(['/selecttype'])
+      
          // window.location.href="/selecttype"
       
     }
@@ -366,7 +362,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
             });
            
             await alert.present();
-           this.router.navigate(['/selecttype']) 
+            
             // window.location.href="/selecttype"
                   
                 

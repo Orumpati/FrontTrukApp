@@ -31,6 +31,7 @@ export class ContactUsPage implements OnInit {
   hide = 'no';
   selectedItem: any;
   logindata: any;
+  itemlen: any;
 
 
   constructor(private alertController: AlertController, public atrCtrl: AlertController, private router: Router) { }
@@ -148,6 +149,7 @@ export class ContactUsPage implements OnInit {
       .then(response => response.json())
       .then(result => {
         console.log(result),
+        this.itemlen =result.TotalLoads
           this.item = result.load
         console.log(this.item)
       }

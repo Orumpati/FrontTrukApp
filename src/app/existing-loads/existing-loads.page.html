@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab5" router-direction="forward"
+      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab1" 
         style="font-size: 30px;"></ion-icon>
       <ion-title>Existing Loads</ion-title>
     </div>
@@ -37,7 +37,7 @@
   <h1 style="text-align: center;">Choosing the Loads</h1>
   <ion-list>
     <ion-radio-group >
-      <ion-item *ngFor="let card of item">
+      <ion-item *ngFor="let card of item.slice().reverse()">
         <ion-radio slot="end" (click)="sendData(card)" (change)="out('English')" class="radio"></ion-radio> 
           <ion-card>
             <div style="float: left; margin-left: 1rem;">

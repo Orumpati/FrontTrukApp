@@ -2,7 +2,8 @@
   <ion-toolbar>
     <ion-title>
       <div style="display: flex;">
-        <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
+        <ion-icon *ngIf="logindata.role == 'Shipper'" name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
+        <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
         <ion-title style="text-align:center;">Help & Guide</ion-title>
       </div>
     

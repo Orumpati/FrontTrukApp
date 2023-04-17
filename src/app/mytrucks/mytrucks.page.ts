@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-mytrucks',
   templateUrl:'./mytrucks.page.html' ,
@@ -28,6 +29,7 @@ export class MytrucksPage implements OnInit {
 
   constructor(public loadingController: LoadingController,private router:Router) {
     //this.gettruckbidata()
+   
    }
 
 
@@ -35,18 +37,13 @@ export class MytrucksPage implements OnInit {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.get()
   //this.active()
-  this.toggles()
+  
+  //this.toggles()
    // this.viewTruckSpecificLoads()
-  }
-ionViewDidEnter(){
-  this.get()
-  this.active()
-}
-  active(){
-    
-this.toggles()
 
   }
+
+
 
   deactive() {
     
@@ -61,6 +58,7 @@ this.completed()
     this.inproge()
       }
   async get() {
+    this.toggles()
     const loading = await this.loadingController.create({
       //message: 'Loading...',
       spinner: 'lines'

@@ -25,10 +25,7 @@ export class AttachExistingLoadsPage implements OnInit {
   router: any;
   trukOwnerNumber:any;
 
-  // OriginLocation:any;
-  // DestinationLocation:any;
-  // product:any;
-  // Quantity:any;
+
   
   constructor(private alertController: AlertController, router:Router,public loadingController: LoadingController) {  }
   ngOnInit(): void {
@@ -38,7 +35,7 @@ export class AttachExistingLoadsPage implements OnInit {
 
     console.log(this.real)
 
-    this.truk = localStorage.getItem("attachload");  //use the localstorage we getdata from savedData
+    this.truk = localStorage.getItem("attachload");  
     //The localStorage object allows you to save key/value pairs in the browser.
     this.TrukPost = JSON.parse(this.truk)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
 
@@ -60,7 +57,7 @@ export class AttachExistingLoadsPage implements OnInit {
       trukoperatingRoutes:this.real.trukoperatingRoutes,
       trukOwnerNumber:this.real.trukOwnerNumber,
       trukvehiclenumber:this.real.trukvehiclenumber,
-      //this is addTruckMarketVehicleToLoad ID we have to make this dynamic
+      
       
     }
     console.log(data)
@@ -82,7 +79,7 @@ export class AttachExistingLoadsPage implements OnInit {
           this.Sendloadtovehicle()
           loading.dismiss()
           const alert = await this.alertController.create({
-            header: 'Successfull',
+            header: 'Successfully added',
             // subHeader: 'Important message',
            // message: 'truk  Successfully',
             buttons: [
@@ -90,8 +87,7 @@ export class AttachExistingLoadsPage implements OnInit {
                 text: 'Okay',
                 handler: () => {
                   console.log('Confirm Okay');
-                  //you can write your code or redirection 
-                  // sample redirection code 
+              
                    window.location.href = '/tab/tab4';
                 }
               }

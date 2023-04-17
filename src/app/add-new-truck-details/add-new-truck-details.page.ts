@@ -131,7 +131,7 @@ window.location.href="/place-bid"
         loading.dismiss()
       })
   }
-  routeto(){
+  goback(){
     this.router.navigate(['place-bid'])
     window.location.href='/place-bid'
   }

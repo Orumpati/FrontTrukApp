@@ -4,7 +4,7 @@ import {  FormGroup, Validators,FormControl } from '@angular/forms';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { LoadingController ,NavController} from '@ionic/angular';
 import { CommonServiceService } from '../common-service.service';
-
+import { DatePipe } from '@angular/common';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 declare var google :any
 @Component({
@@ -42,20 +42,28 @@ export class SignupPage implements OnInit {
   placeid: any;
   GoogleAutocomplete: any;
 
-
+  signupReferalCode:any
 
   OriginLocation: any;
   DestinationLocation: any;
   IsOrigin=false;
+  referralCode: any;
+  docId: any;
+  ref: any;
+  sai: any;
+  OrderTime: any;
+  currenttime:any;
+  finals: any;
 
-  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService,public zone:NgZone) {
+  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService,public zone:NgZone,private datepipe:DatePipe) {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = [];
    }
 
   ngOnInit() {
-    
+    this.OrderTime =this.datepipe.transform((new Date), 'MM/dd/yyyy ');
+    this.currenttime =this.datepipe.transform((new Date), ' h:mm:ss');
     this.getUniqueDeviceID();
    this.role = JSON.parse(localStorage.getItem('selectType') || '{}')
    var lang= JSON.parse(localStorage.getItem('language') || '{}') 
@@ -71,6 +79,7 @@ export class SignupPage implements OnInit {
     'routes': new FormControl('', [Validators.required]),
     mobileNo: new FormControl( '' ,[Validators.required ]),
     'aboutCompany': new FormControl('', [Validators.required]),
+    'signupReferalCode':new FormControl('',[Validators.required])
   });
 
   console.log(this.signupForm.value.mobileNo)
@@ -116,8 +125,12 @@ export class SignupPage implements OnInit {
     itemsShowLimit: 3,
     allowSearchFilter: true
   };
-  }
+ 
+ 
 
+  
+  }
+ 
   onItemSelect(item: any) {
     console.log(item);
   }
@@ -191,6 +204,19 @@ export class SignupPage implements OnInit {
   }
 
   async onSubmit(data:any){
+
+
+    // const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    // this.referralCode = '';
+    // for (let i = 0; i < 6; i++) {
+    //   this.referralCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    // }
+    // console.log(this.referralCode)
+
+    // Combine the user's name and referral code
+    this.referralCode = data.firstName.toUpperCase().slice(0, 2)+data.lastName.toUpperCase().slice(0, 2) + String(data.mobileNo).slice(0, 4);
+alert(this.referralCode)
+
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
@@ -209,10 +235,14 @@ console.log(data)
   role:this.role,
    uniqueDeviceId:this.UniqueDeviceID,
    routes:data.routes,
-   aboutCompany:this.aboutCompany
+   aboutCompany:this.aboutCompany,
+   referalCode:this.referralCode,
+   signupReferalCode:data.signupReferalCode,
+   SignupDate:this.OrderTime +''+this.currenttime
 }
  console.log(this.final)
 
+if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signupReferalCode == undefined){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signup", {
       
       method:'post',
@@ -225,11 +255,12 @@ console.log(data)
       
       .then(
         result =>{
-
+         
           if(result.status == "success"){
             loading.dismiss();
             localStorage.setItem('Number',this.final.mobileNo)
             alert('Your account is registered')
+            window.location.href='/loginotp'
             this.navController.navigateForward('/loginotp');
           }
      
@@ -237,6 +268,7 @@ console.log(data)
             loading.dismiss();
             alert("Already registered please login")
             //this.router.navigate(['/loginotp'])
+            window.location.href='/loginotp'
             this.navController.navigateForward('/loginotp');
             }else if(result.status == "faileds"){
               loading.dismiss();
@@ -251,8 +283,162 @@ console.log(data)
              
             });
 
+          }else {
+
+            var ss={
+              referalCode:data.signupReferalCode
+            }
+            fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refferedBy", {
+                
+            method:'post',
+            headers:{
+                      "Access-Control-Allow-Origin": "*",
+                        "Content-Type":'application/json'
+                    },
+            body:JSON.stringify(ss),
+            }).then(res => res.json())
+            
+            .then(
+              async result =>{
+          console.log(result)
+          this.sai =result.ref
+          this.docId=result._id
+  
+   
+
+          if(result.status == 'success'){
+            this.finals ={
+  
+              firstName:data.firstName,
+               lastName:data.lastName,
+               mobileNo:data.mobileNo,
+               city:data.city,
+               companyName:data.companyName,
+              role:this.role,
+               uniqueDeviceId:this.UniqueDeviceID,
+               routes:data.routes,
+               aboutCompany:this.aboutCompany,
+               referalCode:this.referralCode,
+               signupReferalCode:data.signupReferalCode,
+               SignupDate:this.OrderTime +''+this.currenttime,
+               TotalCoins:100,
+               PermanetCoins:100
+            }
+
+            fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signup", {
+      
+            method:'post',
+            headers:{
+                      "Access-Control-Allow-Origin": "*",
+                        "Content-Type":'application/json'
+                    },
+            body:JSON.stringify(this.finals),
+            }).then(res => res.json())
+            
+            .then(
+              result =>{
+      
+                if(result.status == "success"){
+                  loading.dismiss();
+                  localStorage.setItem('Number',this.final.mobileNo)
+                  this.referedusersigned(data.firstName,data.lastName,data.mobileNo,this.docId)
+                  this.addcoinstoRefered(data.signupReferalCode)
+                  alert('Your account is registered')
+                 
+                  window.location.href='/loginotp'
+                  this.navController.navigateForward('/loginotp');
+                }
+           
+                else if(result.status == "failed" ){
+                  loading.dismiss();
+                  alert("Already registered please login")
+                  //this.router.navigate(['/loginotp'])
+                  window.location.href='/loginotp'
+                  this.navController.navigateForward('/loginotp');
+                  }else if(result.status == "faileds"){
+                    loading.dismiss();
+                    alert('Unable to Signup')
+                  }
+              }
+              ).catch(
+                  error =>{
+                    loading.dismiss();
+                    alert('register not  successfull');
+                   console.log(error)
+                   
+                  });
+    
+          }else{
+            alert('Invalid Referal code')
+            loading.dismiss();
+          }
+        })
+  }
+
+}
+
+referedusersigned(firstName:any,lastName:any,mobileNo:any,docId:any){
+  var data ={
+    _id:docId,
+    firstName:firstName,
+    lastName:lastName,
+    mobileNo:mobileNo
+  }
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refereduserdata", {
+      
+  method:'post',
+  headers:{
+            "Access-Control-Allow-Origin": "*",
+              "Content-Type":'application/json'
+          },
+  body:JSON.stringify(data),
+  }).then(res => res.json())
+  
+  .then(
+    result =>{
+console.log(result)
+  
+    }
+    ).catch(
+        error =>{
+      
+         console.log(error)
+         
+        });
+}
+
+
+
+
+
+
+addcoinstoRefered(signupReferalCode:any){
+  var data ={
+    referalCode:signupReferalCode
   
   }
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addcoinstoRefered", {
+      
+  method:'post',
+  headers:{
+            "Access-Control-Allow-Origin": "*",
+              "Content-Type":'application/json'
+          },
+  body:JSON.stringify(data),
+  }).then(res => res.json())
+  
+  .then(
+    result =>{
+console.log(result)
+  
+    }
+    ).catch(
+        error =>{
+      
+         console.log(error)
+         
+        });
+}
 
   loac(){
     this.commonService.getLocation().subscribe((response)=>{

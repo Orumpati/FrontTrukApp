@@ -1,14 +1,14 @@
-<ion-app>
-  <ion-menu menuId="main-menu" content-id="main">
+<ion-app >
+  <ion-menu menuId="main-menu" content-id="main"  >
     
-    <ion-content>
+    <ion-content >
       <div class="menu-header-bg"></div>
-      <div class="header-content" routerLink="/profile">
-        <img src="https://th.bing.com/th/id/OIP.c3xZFEubLwRrbMU1w2W1uwHaHa?w=198&h=198&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+      <div class="header-content" >
+        <img src="https://wallpapercave.com/wp/wp5968727.png" alt="">
         <ion-label>
-          <h2>{{logindata.firstName}} {{logindata.lastName}}</h2>
-          <p>{{logindata.role}}</p>
-          <p>{{logindata.mobileNo}}</p>
+          <p style="font-size: 20px;">{{logindata.firstName}} {{logindata.lastName}}</p>
+          <p style="font-size: 15px;">{{logindata.role}}</p>
+          <p style="font-size: 15px;">{{logindata.mobileNo}}</p>
         </ion-label>
       </div>
       <!--<div class="action-button">
@@ -23,20 +23,14 @@
           <ion-icon  name="person-circle-outline"></ion-icon>My Profile
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item>
-          
-          <ion-icon name="hammer-outline"></ion-icon>My Bids
-         
-        </ion-item>
-      </ion-menu-toggle>
+<!--     
       <ion-menu-toggle >
         <ion-item [hidden]="logindata.role == 'Shipper'" routerLink="/drivers" (click)="location()">
           
           <ion-icon name="hammer-outline"></ion-icon>My drivers
          
         </ion-item>
-      </ion-menu-toggle>
+      </ion-menu-toggle> -->
       <ion-menu-toggle>
         <ion-item routerLink="/referral">
           
@@ -47,13 +41,13 @@
       <ion-menu-toggle>
         <ion-item routerLink="/help-and-guide">
           
-          <ion-icon name="help-circle-outline"></ion-icon>Help $ Guid
+          <ion-icon name="help-circle-outline"></ion-icon>Help & Guide
           
         </ion-item>
       </ion-menu-toggle>
 
      
-        <ion-item class="active" id="open-modal">
+        <ion-item  id="open-modal">
          
           <ion-icon name="star-outline"></ion-icon>Rate-Us
           

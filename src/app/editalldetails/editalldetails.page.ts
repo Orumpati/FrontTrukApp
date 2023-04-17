@@ -146,6 +146,7 @@ loading.dismiss()
 
          localStorage.setItem('regdata',JSON.stringify(this.detailsforEdit))
       loading.dismiss()
+      alert('Saved Successfully')
       window.location.href="/profile"
       this.router.navigate(['profile'])
       
@@ -160,7 +161,7 @@ loading.dismiss()
         
   
   }
-routeto(){
+goback(){
   window.location.href="/profile"
 this.router.navigate(['profile'])
 }

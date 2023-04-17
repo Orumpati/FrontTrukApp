@@ -352,7 +352,7 @@ window.location.reload()
      window.location.reload()
     }, 2000);
   }
-routeto(){
+goback(){
 window.location.href="/tab/tab1"
 this.router.navigate(['/tab/tab1'])
 }

@@ -130,7 +130,6 @@ window.location.href='/drivers'
     
         setTimeout(() => {
           event.target.complete()
-          //window.location.href="tab/tab1"
          window.location.reload()
         }, 2000);
       }

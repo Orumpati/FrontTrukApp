@@ -25,7 +25,8 @@ export class TrukallbidsPage implements OnInit {
   loadwithvehicle: any;
   loadeddata: any;
   totalloadTAll: any;
-
+  AtleastOneBidisClosed=false
+  shipper: any;
   constructor(private router:Router,public navController : NavController,) { }
   ionViewDidEnter(){
   this.all()
@@ -75,8 +76,15 @@ all(){
           console.log(this.loadeddata)
           console.log(this.totalloadTAll)
           for(let i=0;i<this.loadeddata.length;i++){
-            this.bidact = this.loadeddata[i]
+            this.bidact = this.loadeddata[i].isAgentAccepted
+            this.shipper = this.loadeddata[i].isShipperAccepted
             this.bidactlen = this.loadeddata[i].BidActivity.length
+            if(this.bidact.BidStatus == 'closed') {
+          
+              this.AtleastOneBidisClosed = true
+             }    else{
+              this.AtleastOneBidisClosed = false
+             } 
             //this.mo = this.allbids[i].mobileNo
           }
           console.log(this.bidact)

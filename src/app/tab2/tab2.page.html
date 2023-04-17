@@ -49,13 +49,10 @@
       
       
           <div *ngIf="item.length !=0">
-          
-
-
-
-            <div class="card" *ngFor='let text of item | filter:searchtext' >
+        
+            <div class="card" *ngFor="let text of item.slice().reverse() | filter:searchtext " >
               <div class="card-body" >
-                <div type="button" class="securepayment" *ngIf="text.typeOfPay == 'Online'" ><br>
+                <div type="button" class="securepayment" *ngIf="text.typeOfPay == 'Online'" >
                   &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:green;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
                   <div>
                   <span style="color: green;">Online Payment</span>,&nbsp;
@@ -63,7 +60,7 @@
                   </div>
                 </div>
 
-                <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'"  ><br>
+                <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'"  >
                   &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:rgb(248, 42, 24);" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
                   <div>
                   <span style="color: rgb(248, 42, 24);">Offline Payment</span><br>
@@ -80,8 +77,8 @@
                   <div class="d-flex align-items-center">
                       <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" />
                         <br>
-                      &nbsp;&nbsp;<span style="color: black; font-weight:bolder;">{{text.isActive}}</span>
-                      </div>&nbsp;&nbsp;
+                      <span style="color: black; font-weight:bolder;">{{text.isActive}}</span>
+                      </div>
                       <div class="flex-1" style="margin-top: -17px;">
                           <h5 class="font-size-12 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{text.OriginLocation}}--{{text.DestinationLocation}}</a></h5>
                           <span class="badge badge-soft-success mb-0"> Posted On {{text.date}}</span>
@@ -91,6 +88,7 @@
                      &nbsp;&nbsp;&nbsp; <p  class="text-muted mb-0 "  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                       <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
+                      <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
                   
                   <div align="center" [hidden]="text.isActive == 'Completed'">
                   

@@ -30,10 +30,11 @@
     </ion-refresher-content>
   </ion-refresher>
   <div *ngIf="allbidslen != 0" >
-  <ion-card class="allBids" *ngFor="let data of loadwithvehicle ">
+  <ion-card class="allBids" *ngFor="let data of loadwithvehicle.slice().reverse() ">
     <ion-card-header>
       <ion-card-title>Their new price</ion-card-title>
       <ion-card-title>₹{{data.expectedPrice}}/- Fixed</ion-card-title>
+      
       <!--<ion-chip style="float:right; margin-top: -59px;">
         <ion-avatar>
           <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -49,9 +50,9 @@
   
 
 
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" [hidden]="bidactlen > 2" [hidden] ="bidact.isAgentAccepted  == true && bidact.isShipperAccepted ==true">Open</ion-button>
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen > 2" [hidden] ="bidact.isAgentAccepted  == true && bidact.isShipperAccepted ==true">InProgress</ion-button>
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidact.isAgentAccepted  == true && bidact.isShipperAccepted ==true" >Finilised</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)"  [hidden] ="(bidact  == true && shipper ==true) ||bidactlen >= 1" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true">Open</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen >= 1" [hidden] ="bidact == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true">InProgress</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidact  == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true" >Finilised</ion-button>
   </ion-card>
 </div>
 

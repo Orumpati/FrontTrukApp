@@ -14,8 +14,8 @@ spin!:boolean
    //await this.presentLoading()
    setTimeout(() => {
     this.spin=false
-    window.location.href="/selectlanguage"
-    this.router.navigate(['selectlanguage'])
+    window.location.href="/dummy"
+    this.router.navigate(['dummy'])
    }, 2500);
   }
 

@@ -30,7 +30,7 @@ type:any
 
   selectType(){
     localStorage.setItem('selectType',JSON.stringify(this.type))
-    this.router.navigate(['signup'])
+    //this.router.navigate(['signup'])
 window.location.href="/signup"
   }
   autorefresh(event:any){

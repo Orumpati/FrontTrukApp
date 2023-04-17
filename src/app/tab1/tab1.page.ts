@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { IonModal, LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
- 
+  @ViewChild(IonModal) modal!: IonModal ;
   segmentValue='1';
   item: any = [];    //Storing the items data in the array
   isactive:any;
@@ -42,7 +44,11 @@ body={
   searchtext:any
   inarray: any;
   intruckdata: any;
-  constructor(private router:Router,public loadingController: LoadingController,public nav:NavController) {}
+  sharcont: any;
+  driverdetails: any;
+  mess:any="copied Successfully"
+  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
 
   
 
@@ -55,8 +61,10 @@ body={
   ngOnInit():void{
     
    this.toggle(this.isActive="Active")
+   this.activeGet()
    this.logindata =JSON.parse(localStorage.getItem('regdata')||'{}')
    console.log(this.logindata)
+   this.driverdetails =JSON.parse(localStorage.getItem('driverdetails')||'{}')
   }
   ionViewDidEnter(){
     this.toggle(this.isActive="Active")
@@ -300,6 +308,8 @@ body: JSON.stringify(body),
 .then(result => {
   console.log(result),
     this.item = result.load
+
+
    console.log(this.item)
    loading.dismiss()
 }
@@ -309,7 +319,12 @@ body: JSON.stringify(body),
   console.log(err)
 })
 }
+vehdetails(data:any){
+  console.log(data)
+  localStorage.setItem('vehdetails',JSON.stringify(data))
+  window.location.href='/viewshippercon'
 
+}
 
 autorefresh(event:any){
    
@@ -317,7 +332,7 @@ autorefresh(event:any){
 
     event.target.complete()
     
-    
+    window.location.reload()
   }, 2000);
 }
 
@@ -325,5 +340,23 @@ placebidById(data:any){
   localStorage.setItem("shipperplacebid",JSON.stringify(data))
   this.router.navigate(["shippernegoplacebid"])
 
+}
+
+cancel() {
+  window.location.href='/tab/tab1'
+}
+
+
+
+onWillDismiss(event: Event) {
+  const ev = event as CustomEvent<OverlayEventDetail<string>>;
+  if (ev.detail.role === 'confirm') {
+    this.message = `Hello, ${ev.detail.data}!`;
+  }
+}
+copy(){
+  this.clipboard.copy(this.driverdetails.mobileNumber);
+  //this.clipboard.copy(this.logindata.referalCode)
+  alert(this.mess)
 }
 }

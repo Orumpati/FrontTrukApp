@@ -25,7 +25,7 @@
         <ion-list>
           <ion-item>
             <ion-label position="stacked" style="color: #F58E26; font-size: 25px;">Selected vehicle:</ion-label>
-            <ion-input [(ngModel)]="trukname" readonly>{{post.trukname}}</ion-input>
+            <ion-input [(ngModel)]="trukname" readonly>{{post.trukname}}--{{post.isTrukOpenOrClose}}{{post.typeOfHyva}}{{post.typeOfTrailer}}{{post.typeOfContainer}}{{post.typeofTanker}}</ion-input>
           </ion-item>
           <br>
           <ion-item>
@@ -61,7 +61,7 @@
     <ion-slides pager="true" [options]="slideOpts">
       <ion-slide>
   
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px;">
           <div class="title">
            <h1>Load Details</h1> 
           </div>
@@ -71,34 +71,36 @@
           <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
             <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
             <span style="font-size: 18px;">PickUp Location</span>
-            <div style="display: flex;">
+            
       
              <div class="form-group">
                <ion-input type="text" appCapitalize class="form-control" placeholder="Pick Up Location"
                  [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
                  (ionClear)="ClearAutocomplete()"></ion-input>
-             </div>&nbsp;&nbsp;
+             </div>
              
      
              <!--Pickup pincode-->
      
              <div class="form-group" style="display: flex;">
                <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
-               <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
-               <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
+     
              </div>
-             </div>
+             
+             <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
+             <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
+             <span style="color: black;font-weight:bolder;font-size:17;">{{pickupDis}}</span>
             </ion-card>
               <!--select destination Location-->
               <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
                <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
                <span style="font-size: 18px;">DropUp Location</span>
-               <div style="display: flex;">
+               
               <div class="form-group">
                <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
                  [(ngModel)]="DestinationLocation" (ionInput)="GetDestinationLocation(DestinationLocation)"
                  (ionClear)="ClearAutocomplete()"></ion-input>
-             </div>&nbsp;&nbsp;
+             </div>
      
              <!--Dropup pincode-->
              
@@ -106,10 +108,11 @@
                <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
        
                </ion-input>
-               <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
-               <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
+
              </div>
-            </div>
+             <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
+             <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
+            <span style="color: black;font-weight:bolder;font-size:17;">{{dropupDis}}</span>
             </ion-card>
               <!--showing the list of address-->
               <ion-list [hidden]="autocompleteItems.length == 0" >
@@ -348,7 +351,7 @@
             <ion-label></ion-label>
             <ion-select placeholder="Type of Payment to Lorry Owner" [(ngModel)]="typeOfPay">
               <ion-select-option value="Offline">Offline/Cash</ion-select-option>
-              <ion-select-option value="Online">Online</ion-select-option>
+              <!--<ion-select-option value="Online">Online</ion-select-option>-->
 
             </ion-select>
           </div>
@@ -382,11 +385,11 @@
         <!--How much advance -->
         <div class="form-group" *ngIf="paymentTypeForOffline =='Advance'" [hidden]="typeOfPay == 'Online'" style="margin-bottom: 10px;">
           <p>How much would you like to pay in advance ?</p>
-          <ion-input type="text" class="form-control" placeholder="Advance" [(ngModel)]="advance"></ion-input>
+          <ion-input type="text" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
         </div>
 
         
-        <p *ngIf="typeOfPay =='Offline' " style="color: rgb(243, 77, 77);font-size: small;">We are Not Responsible for payment T&C</p>
+        <!-- <p *ngIf="typeOfPay =='Offline' " style="color: rgb(243, 77, 77);font-size: small;">We are Not Responsible for payment T&C</p> -->
   
   
   
@@ -396,7 +399,14 @@
               <ion-textarea type="  text" class="form-control" placeholder="Comments"
                 [(ngModel)]="comments"></ion-textarea>
             </div>
+            <div style="display: flex;position:absolute ;">
+              <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
+              
+              <span style="font-size: 14px;">By Submiting ,You Accept <a href="http://trukapp.com/terms-and-conditions/"><u>T&C</u></a> and <a href="http://trukapp.com/privacy-policy/"><u>Privacy Policy</u></a></span>
+            </div>
           </div>
+
+      
         <!-- </div> -->
       </ion-slide>
     </ion-slides>
@@ -411,27 +421,25 @@
         Next <ion-icon name="arrow-forward"></ion-icon>
       </ion-button>
     </div>
-  
+   
     <!-- <div class="container">
   
     </div> -->
   
     <!--<div #map='' style="height: 50%;"></div>-->
   </ion-content>
-  <!--<ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" *ngIf="typeOfPay == 'Online'|| paymentTypeForOffline == null || advance == null" (click)="sendData()"  expand="full" class="next"
-  [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || expectedPrice == null ||typeOfPay== null "
-    style="height: 50px;" >Submit</ion-button>
+  <ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" *ngIf="typeOfPay == 'Online'|| paymentTypeForOffline == null || advance == null" (click)="sendData()"  expand="full" class="next"
+  [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null  || expectedPrice == null ||OriginLocation == '' || DestinationLocation == '' || pickupPincode == '' || dropupPincode == '' || date == '' || product == '' || Quantity == '' ||  expectedPrice == '' ||typeOfPay== '' ||paymentTypeForOffline == ''  "
+    style="height: 50px; border-radius:10px;" >Submit</ion-button>
   
   
     <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" [hidden]=" paymentTypeForOffline == 'Advance'" (click)="sendData()"  expand="full" class="next"
-  [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
-  style="height: 50px;" >Submit</ion-button>
+  [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null ||  expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null ||OriginLocation == '' || DestinationLocation == '' || pickupPincode == '' || dropupPincode == '' || date == '' || product == '' || Quantity == '' ||  expectedPrice == '' ||typeOfPay== '' ||paymentTypeForOffline == '' " 
+  style="height: 50px;border-radius:10px;" >Submit</ion-button>
   
     <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Online'"(click)="sendData()"  expand="full" class="next"
-    [disabled]="OriginLocation == null || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null  || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
-    style="height: 50px;"  >Submit</ion-button>-->
+    [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null ||  expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null ||OriginLocation == '' || DestinationLocation == '' || pickupPincode == '' || dropupPincode == '' || date == '' || product == '' || Quantity == '' ||  expectedPrice == '' ||typeOfPay== '' ||paymentTypeForOffline == '' || advance == ''" 
+    style="height: 50px;border-radius:10px;"  >Submit</ion-button>
      
-    <ion-button (click)="sendData()"  expand="full" class="next"
-     
-    style="height: 50px;"  >Submit</ion-button>
+    <!-- <ion-button (click)="sendData()"  expand="full" class="next" style="height: 50px;" [disabled]="checkbox==false" >Submit</ion-button> -->
 

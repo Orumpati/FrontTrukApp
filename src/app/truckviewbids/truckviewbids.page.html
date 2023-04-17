@@ -26,7 +26,7 @@
       <ion-card-subtitle style="color: black;"><u>Details:</u></ion-card-subtitle>
       <p style="font-size: larger; font-weight: bolder; ">{{openedBid.OriginLocation}} -- {{openedBid.DestinationLocation}}
       </p>
-      <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}} Tons</p>
+      <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -196,14 +196,14 @@
 <div [hidden]="agentconditions == true && conditions == true" [hidden] ="initialaccepted === 'Accepted'">
 <!--<ion-button fill="clear" style="float: right; color: green;" (click)="acceptBid()" [hidden]="">Accept</ion-button>-->
 <ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" *ngIf="show">Accept</ion-button>
-<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBidForFinal()" *ngIf="hide"  [hidden]="tohideAccBtn === true" >Accept</ion-button>
+<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px; " (click)="acceptBidForFinal()" *ngIf="hide"  [hidden]="tohideAccBtn === true" >Accept</ion-button>
 
 
 <ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">InitialBid</ion-button>
 </div>
 <div>
 <ion-button id="deepu" shape="round" style="width: 120px;" class="next"    [hidden]="agentconditions == true || initialaccepted === 'Accepted' || conditions == true || bidActivity == null" [disabled]="tohideAccBtn === true">Negotiate</ion-button>
-<ion-modal trigger="deepu" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-modal #moodal trigger="deepu" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
       <!-- <div class="ion-margin-top">
@@ -220,15 +220,15 @@
       <ion-toolbar color="light">
         <ion-row>
           <ion-col size="10">
-            <textarea autosize maxRowx="3" type="number" [(ngModel)]="NegoPrice" class="input">
-
-          </textarea>
+          
+              <input autosize maxRowx="3" type="number" placeholder="Enter your price" [(ngModel)]="NegoPrice" class="input">
+          
 
           </ion-col>
 
           <ion-col size="2">
             <ion-button expand="block" fill="clear" color="primary" [disabled]="NegoPrice === '' " class="msg-btn"
-              (click)="negotiate()">
+              (click)="negotiate()" (click)="moodal.dismiss()">
               <ion-icon name="send"></ion-icon>
             </ion-button>
           </ion-col>
@@ -239,7 +239,7 @@
     </ion-content>
   </ng-template>
 </ion-modal>
-<ion-modal trigger="nara" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
+<ion-modal #modal trigger="nara" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
       <!-- <div class="ion-margin-top">
@@ -256,15 +256,13 @@
       <ion-toolbar color="light">
         <ion-row>
           <ion-col size="10">
-            <textarea autosize maxRowx="3" type="number" [(ngModel)]="messg" class="input">
-
-          </textarea>
-
+   
+          <input autosize maxRowx="3" type="number" placeholder="Enter your price" [(ngModel)]="messg" class="input">
           </ion-col>
 
           <ion-col size="2">
             <ion-button expand="block" fill="clear" color="primary" [disabled]="NegoPrice === '' " class="msg-btn"
-              (click)="initialBid()">
+              (click)="initialBid()" (click)="modal.dismiss()">
               <ion-icon name="send"></ion-icon>
             </ion-button>
           </ion-col>
@@ -283,7 +281,8 @@
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
-            <ion-button (click)="cancel()">Back</ion-button>
+            <!--<ion-button (click)="cancel()">Back</ion-button>-->
+            <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
           </ion-buttons>
           <ion-title>Contact Details</ion-title>
       
@@ -320,7 +319,8 @@
         <ion-header>
           <ion-toolbar>
             <ion-buttons slot="start">
-              <ion-button (click)="cancel()">Back</ion-button>
+              <!--<ion-button (click)="cancel()">Back</ion-button>-->
+              <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
             </ion-buttons>
             <ion-title>Contact Details</ion-title>
         

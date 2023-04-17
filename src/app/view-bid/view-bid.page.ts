@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController,NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { CommonServiceService } from '../common-service.service';
 @Component({
   selector: 'app-view-bid',
   templateUrl: './view-bid.page.html',
@@ -47,7 +48,14 @@ export class ViewBidPage implements OnInit {
   hideaccptbtn: any;
   isPaymentCompleted: any;
   TohideNegoshit: any;
-    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
+  mess:any="copied Successfully"
+  data: any;
+    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router,private commservice:CommonServiceService,private clipboard:Clipboard) {
+      this.commservice.listen().subscribe((m:any)=>{
+        console.log(m);
+        this.all();
+      })
+     }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
@@ -64,14 +72,10 @@ export class ViewBidPage implements OnInit {
 
   this.all()
   
-      this.autorefreshdata.subscribe(res =>{
-        this.all()
-      })
+      
   }
 
-  get autorefreshdata(){
-return this.refresh
-  }
+
 
   all(){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/"+ this.bids._id, {
@@ -95,6 +99,8 @@ return this.refresh
         this.typepay =result[i].typeOfPay
     var final= result[i].bids
       }
+      localStorage.setItem('driverdetails',JSON.stringify(this.driverdetails))
+
   console.log(this.driverdetails)
       console.log(final)
         this.item = final
@@ -163,7 +169,7 @@ return this.refresh
         "price":this.NegoPrice,
         "TohideAcceptBtn":false,
         "Name":this.regdata.firstName+this.regdata.lastName,//for notifi 
-        "Number":this.openedBid.mobileNo, //fornotifca
+        Number:this.openedBid.mobileNo, //fornotifca
         "mess":"Placed a Bid for amount"
       
        }
@@ -182,9 +188,11 @@ return this.refresh
         .then(response => response.json())
         .then(async result => {
           console.log(result)
-          window.location.reload()
+          this.all()
+         // window.location.reload()
+         
           loading.dismiss()
-          
+          //this.refreshData()
     
     
         }
@@ -197,7 +205,7 @@ return this.refresh
     }
   
     async acceptBid(){
-      if(confirm('Are u Sure')){
+      if(confirm("Once you accept the bid, You cant negotiate")){
       if(this.regdata.aadharVerify == 'notVerified' ){
         alert("Verify Aadhar to Accept")
   window.location.href='/profile'
@@ -216,9 +224,10 @@ return this.refresh
         "isShipperAccepted":true,
         "bidAcceptedTo":this.openedBid.mobileNo,
         "TohideAcceptBtn":false,
+        "BidStatus":"closed",
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
-         "Number":this.bidnumber, //transporte
+         Number:this.bidnumber, //transporte
          "mess":"Accepted your bid for"
       
        }
@@ -242,9 +251,10 @@ return this.refresh
           localStorage.setItem('viewBid',JSON.stringify(data))
           this. acceptBidStatus()
           this.navControl.navigateForward('/view-bid')
+         
           loading.dismiss()
     
-    
+          this.all()
         }
     
         ).catch(err =>{
@@ -278,8 +288,8 @@ return this.refresh
   
             this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
   
-       
-          window.location.reload()  // reloading window
+            this.all()
+          //window.location.reload()  // reloading window
   
         }
   
@@ -320,5 +330,16 @@ return this.refresh
     if (ev.detail.role === 'confirm') {
       this.message = `Hello, ${ev.detail.data}!`;
     }
+  }
+
+  copyString(){
+    this.clipboard.copy(this.driverdetails.mobileNumber);
+    //this.clipboard.copy(this.logindata.referalCode)
+    alert(this.mess)
+  }
+  copy(){
+    this.clipboard.copy(this.driverdetails.DriverNumber);
+    //this.clipboard.copy(this.logindata.referalCode)
+    alert(this.mess)
   }
 }

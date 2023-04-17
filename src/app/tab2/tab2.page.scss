@@ -98,7 +98,7 @@ ion-segment{
   height: min-content;
   float:inline-start;
   display: flex;
-  margin-top: 10px;
+
   border-radius: 16px;
   padding: 4px;
   font-size: 10px;
@@ -120,16 +120,15 @@ body{margin-top:20px;
   }
   .card {
       margin-bottom: 24px;
-      box-shadow: 0 2px 3px #e4e8f0;
+      //box-shadow: 0 2px 3px #e4e8f0;
       
   }
-  .card {
+  .card-body {
       position: relative;
       display: flex;
       flex-direction: column;
       min-width: 0;
-      word-wrap: break-word;
-      background-color: #fff;
+      
       background-clip: border-box;
       border: 1px solid #4e535f;
       border-radius: 1rem;
@@ -181,7 +180,7 @@ body{margin-top:20px;
     height: min-content;
     float:inline-start;
     display: flex;
-    margin-top: 10px;
+    
     border-radius: 16px;
     padding: 4px;
     font-size: 10px;

@@ -14,7 +14,7 @@
     <div class="container">
       <ion-item fill="outline">
         <ion-label position="floating">Enter Your Name</ion-label>
-        <ion-input placeholder="Enter text" [(ngModel)]="Name"></ion-input>
+        <ion-input placeholder="Enter name" [(ngModel)]="Name"></ion-input>
       </ion-item><br>
       <ion-item fill="outline">
         <ion-label position="floating">Enter Your Email Address</ion-label>
@@ -22,7 +22,7 @@
       </ion-item><br>
       <ion-item fill="outline">
         <ion-label position="floating">Enter your Mobile Number</ion-label>
-        <ion-input placeholder="Enter phone NUmber" [(ngModel)]="PhoneNumber"></ion-input>
+        <ion-input placeholder="Enter phone Number" [(ngModel)]="PhoneNumber"></ion-input>
       </ion-item><br>
       <ion-item [hidden]="hide.hideQuery == false">
         <ion-textarea placeholder={{type}} [autoGrow]="true" [(ngModel)]="Query">
@@ -34,7 +34,7 @@
         </ion-textarea>
       </ion-item>
       <br>
-      <ion-button style="float: right;" (click)="addContact()" class="summit">Submit</ion-button>
+      <ion-button style="float: right;" (click)="addContact()" class="summit" [disabled]="Name == ''||Name == null|| To ==''||To ==null||PhoneNumber==''||PhoneNumber==null||Query ==''||Query ==null">Submit</ion-button>
     </div>
   </ion-card>
 </ion-content>

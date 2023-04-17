@@ -36,7 +36,7 @@ export class AttachNewLoadPage implements OnInit {
   location: any;
   placeid: any;
   GoogleAutocomplete: any;
-
+  checkbox=false
 
 
   trukname:any;
@@ -75,6 +75,9 @@ export class AttachNewLoadPage implements OnInit {
   typeOfHyva:any
   typeOfTrailer:any
   typeOfContainer:any
+  randomNumber: any;
+  pickupDis: any;
+  dropupDis: any;
   constructor(
     public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController
   ) {
@@ -91,7 +94,8 @@ export class AttachNewLoadPage implements OnInit {
 
     console.log(this.objects)
 console.log(this.typeOfPay)
-  
+this.randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
+console.log(this.randomNumber)
   }
 
  /* ngAfterViewInit(): void {
@@ -244,6 +248,7 @@ console.log(this.typeOfPay)
     if (data[0].Status === 'Success') {
       const postOffice = data[0].PostOffice[0];
       this.pickup = `${postOffice.State}`;
+      this.pickupDis = `${postOffice.District}`;
     } else {
       this.pickup = 'Invalid Pincode';
    
@@ -259,6 +264,7 @@ console.log(this.typeOfPay)
     if (data[0].Status === 'Success') {
       const postOffice = data[0].PostOffice[0];
       this.dropup = `${postOffice.State}`;
+      this.dropupDis = `${postOffice.District}`;
     } else {
       this.dropup = 'Invalid Pincode';
      // alert("Invalid DropUp Pincode")
@@ -304,11 +310,12 @@ gf(){
       typeOfTrailer:this.typeOfTrailer,
       typeOfContainer:this.typeOfContainer,
       typeofTanker:this.typeofTanker,
+      LoadId:this.randomNumber,
    /*    length: this.length,
       breadth: this.breadth,
       height: this.height, */
       comments: this.comments,
-   
+      LoadPosterName:this.regdata.firstName + this.regdata.lastName,
       mess:"Posted a Load"
     }
     console.log(body)
@@ -337,24 +344,7 @@ gf(){
 
       }else{
         loading.dismiss()
-        const alert = await this.alertController.create({
-          header: 'Successfull',
-          message: 'Load posted Successfully',
-          buttons: [
-            {
-              text: 'Okay',
-              handler: () => {
-                console.log('Confirm Okay');
-                //you can write your code or redirection 
-                // sample redirection code 
-                window.location.href = '/tab/tab1';
-
-              }
-            }
-          ],
-        });
-      
-        await alert.present();
+      alert('Load Posted Successfully')
 
       }
       }

@@ -6,70 +6,21 @@
        </div>
        </div>
        <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
-    <!--<div style="display: flex;">
 
-      <div class="form-check  form-check-inline ">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
-        <label class="form-check-label" for="exampleRadios1">
-          Looking for Truks
-        </label>
-      </div>
-      <div class="form-check form-check-inline" slot="end" class="load">
-        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-          Looking for loads
-        </label>
-      </div>
-    </div>-->
-    
-      <!-- <div style="display: flex; ">
-        <ion-icon name="arrow-back-sharp" routerLink="/shipperhome" style="font-size: 30px;"></ion-icon>
-        <ion-title align="center"> My Trucks</ion-title>
-      </div> -->
                           
   </ion-toolbar>
 </ion-header>
 
 
-  <!--<div style="align-items: center; text-align: center;">
-    <img src="https://media.gettyimages.com/photos/empty-dump-truck-picture-id505895442" width="50%" height="50%">
-  </div>-->
-  <!--<ion-card>
-    <ion-card-header>
-    
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="float: right; background: none; border: none;">
-          <mat-icon>filter_alt</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item >
-            <mat-icon >Active</mat-icon>
-            <span (click)="toggle('Active')">Active</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon>Deactive</mat-icon>
-            <span (click)="toggle('Deactive')">Deactive</span>
-          </button>
-        </mat-menu>
-      <ion-card-subtitle>My Trucks</ion-card-subtitle>  
-    </ion-card-header>
-  </ion-card>-->
 
-  <!-- <mat-card>
-    <mat-card-content>My Trucks</mat-card-content>
-    <mat-card-content style="float: right;"><ion-icon name="filter"></ion-icon></mat-card-content>
-  </mat-card> -->
   <br>
   <div class="container">
     <ion-row>
       <ion-segment [scrollable]="true" value="home">
   
-        <!--<ion-col>
-          <ion-segment-button value="home" (click)="get()">
-            <ion-label>All Truks</ion-label>
-          </ion-segment-button>
-        </ion-col>-->
+     
         <ion-col>
-          <ion-segment-button value="home" (click)="active()">
+          <ion-segment-button value="home" (click)="toggles()">
             <ion-label>Active</ion-label>
           </ion-segment-button>
         </ion-col>
@@ -78,11 +29,7 @@
             <ion-label>Deactive</ion-label>
           </ion-segment-button>
         </ion-col>
-        <!--<ion-col>
-          <ion-segment-button value="pin" (click)="inprogress()">
-            <ion-label>In-progress</ion-label>
-          </ion-segment-button>
-        </ion-col>-->
+   
         <ion-col>
           <ion-segment-button value="call" (click)="completedtog()">
             <ion-label>Completed</ion-label>
@@ -92,61 +39,10 @@
     </ion-row>
   </div>
   <ion-content *ngIf="itemlen !=0">
-    <!--<ion-card *ngFor="let text of item">
-
-
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="float: right; background: none; border: none;">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/truk-edit-page" (click)="SendData(text)">
-          <mat-icon >edit</mat-icon>
-          <span routerLink="/truk-edit-page" (click)="SendData(text)">Edit</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>deactive</mat-icon>
-          <span (click)="isactive(text)" [(ngModel)]="trukisActive">Deactive</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>more Details</mat-icon>.
-          <span>More Detail</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span (click)="deleteTruk(text._id)">Delete</span>
-        </button>
-      </mat-menu>
-
-      <div style="text-align: center; margin-top: 10px;">
-        <h1 style="margin-left: -236px;">{{text.trukisActive}}</h1>
-        <img src="https://media.gettyimages.com/photos/empty-dump-truck-picture-id505895442" width="25%" height="25%"
-          style="float: left;">
-          
-        <h1 style="margin-top: 28px;">{{text.trukvehiclenumber}}</h1>
-        <p style="margin-top: -12px;">Posted On {{text.trukdate}} | Exprires in 48 Hours</p>
-      </div>
-      <hr>
-      <div style="text-align: center; margin-top: -15px;">
-        ................................................................</div>
-
-      <ion-card-content style="text-align: center; margin-top: -11px;">
-        {{text.trukcapacity}} Tons --{{text.trukname}} <br>
-        Avaliable in {{text.trukcurrentLocation}} <br>
-        {{text.trukoperatingRoutes.length}} Routes <br>
-        <ion-button>View Bids</ion-button>
-      </ion-card-content>
-
-
-    </ion-card>-->
+ 
     
-    <div class="card" *ngFor="let text of item" >
+    <div class="card" *ngFor="let text of item.slice().reverse()" >
       <div class="card-body" >
-      
-          <!--<div class="dropdown float-end" style="float:right;">
-              <a class="text-muted dropdown-toggle font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
-              <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a><a class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a></div>
-          </div>-->
-
 
           <div class="dropdown" style="float: right;" *ngIf="text.trukisActive == 'Active'" >
             <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -164,7 +60,7 @@
           <div class="d-flex align-items-center">
               <div><img src="https://media.gettyimages.com/photos/empty-dump-truck-picture-id505895442" alt="" class="avatar-md rounded-circle img-thumbnail" />
                 <br>
-              &nbsp;&nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span>
+              &nbsp;&nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span><span style="color: rgb(27, 237, 62); font-weight:bolder;" *ngIf="text.trukisActive == 'Completed'">{{text.trukisActive}}</span>
               </div>
               <div class="flex-1 ms-3">
                   <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder; text-transform:uppercase;"><a  class="text-dark">{{text.trukvehiclenumber}}</a></h5>
@@ -176,13 +72,22 @@
               <p  class="text-muted mb-0 mt-2">&nbsp;<i class=" fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}} --{{text.trukname}}</p>
               <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-map-marker font-size-15 align-middle pe-2 "></i>  Avaliable in <span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
           </div>
-          <div style="display:inline-flex;     display: flex;
+          <div style="display:inline-flex; display: flex;
           text-align: center;
           justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'Active'">
           
               <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
                 <span> View Bids</span>
                 <span class="badge">{{text.attachedLoadIds.length}}</span>
+        
+                </button>
+            
+          </div>
+          <div style="display:inline-flex; display: flex; text-align: center; justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'Completed'">
+          
+              <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
+                <span style="white-space: nowrap;"> View Contact</span>
+          
         
                 </button>
             

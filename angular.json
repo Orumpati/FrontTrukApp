@@ -115,7 +115,6 @@
               }
             ],
             "styles": [
-              
               "src/theme/variables.scss",
               "src/global.scss"
             ],
@@ -159,6 +158,16 @@
             "production": {
               "browserTarget": "app:build:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "app:build:production",
+            "firebaseProject": "otplogin-c4da2",
+            "firebaseHostingSite": "otplogin-c4da2"
           }
         }
       }

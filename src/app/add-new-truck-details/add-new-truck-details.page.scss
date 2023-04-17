@@ -1,25 +1,4 @@
-// .class{
-//   margin-top: 10px;
-// }
 
-// input[type=radio]{
-//   --webkit-appearance: none;
-// }
-
-// label{
-// height: 160px;
-// width: 160px;
-// border: 3px solid rgb(122, 119, 119);
-// margin: 10px;
-// border-radius: 10px;
-// position: relative;
-// color: #f58e26;
-// transition: 0.5s;
-
-// ion-card-header{
-//   margin-top: 35px;
-// }
-// }
 
 .fa {
   font-size: 80px;
@@ -29,21 +8,7 @@
   transform: translate(-50%, -80%); 
   }
   
-  // label>span {
-  // font-size: 25px;
-  
-  // font-weight: 500;
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, 80%);
-  // }
-  
-  // input[type=radio]:checked + label {
-  // background-color: #f58e26;
-  // color: #ffffff;
-  // box-shadow: 0 15px 45px rgb(24,249,141,0.2);
-  // }
+
   
   .column {
     float: left;
@@ -51,7 +16,6 @@
     padding: 5px;
   }
   
-  /* Clearfix (clear floats) */
   .row::after {
     content: "";
     clear: both;
@@ -120,23 +84,16 @@
   }
   }
   
-  // ion-button{
-  //   background: #f58e26;
-  //   height:50px ;
-  //  border-radius: 10px;
-  //   margin: 10px;
-  //   margin-bottom: 30px;
-    
-  // }
+
   
   
-  //////////////////
+  
   input[type=radio]{
     -webkit-appearance: none;
   }
   
   label{
-  // border: 3px solid #f58e26;
+  
   display: flex;
   margin-left: 8px;
   margin-right: 8px ;

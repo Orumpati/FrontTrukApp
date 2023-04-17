@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import{ActionSheetController, LoadingController, ModalController,PopoverController}from '@ionic/angular'
 import { Router, NavigationExtras } from '@angular/router';
-import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
+import {  CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 import { Crop } from '@ionic-native/crop/ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { File } from '@awesome-cordova-plugins/file/ngx';
+
+
+
+import { Firestore, addDoc, collection } from '@angular/fire/firestore';
+import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -31,9 +38,10 @@ otp:any
  securepath: any = window;
  url: any;
   spin: boolean | undefined;
-  
+  image: any;
   constructor(private modal:ModalController,private router: Router,private actionsheet:ActionSheetController,
-   private camera:Camera,private file:File,private crop:Crop,private domsanitize: DomSanitizer,public loadingController: LoadingController
+    private firestore: Firestore,
+    private storage: Storage,private file:File,private crop:Crop,private domsanitize: DomSanitizer,public loadingController: LoadingController
     ) { }
   config = {
     allowNumbersOnly: true,
@@ -239,20 +247,23 @@ loading.dismiss()
               .then(
                 async result =>{
              console.log(result)
+             if(result.result.status == 400){
+              alert('Please enable API request from Your GST profile')
+             }else{
              
             
-                console.log(result.result.response.appKey)
                localStorage.setItem("gst",JSON.stringify(this.gstinNumber))
                localStorage.setItem("gstusername",JSON.stringify(this.userName))
+               localStorage.setItem("AppKey",JSON.stringify(result.result.response.appKey))
                loading.dismiss()
                         
       const ele =await this.modal.getTop()
       if(ele){
         ele.dismiss();
-       // this.router.navigate(['verifygstotp'])
+       this.router.navigate(['verifygstotp'])
         return;
       }
-           
+    }  
                 }
                 ).catch(
                     error =>{
@@ -350,7 +361,55 @@ loading.dismiss()
      
   
   }
+  async editphoto(){
+    
+    try {
+      if(Capacitor.getPlatform() != 'web') await Camera.requestPermissions();
+      const image = await Camera.getPhoto({
+        quality: 90,
+        // allowEditing: false,
+        source: CameraSource.Prompt,
+        width: 600,
+        resultType: CameraResultType.DataUrl
+      });
+      console.log('image: ', image);
+      this.image = image.dataUrl;
+      const blob = this.dataURLtoBlob(image.dataUrl);
+      const url = await this.uploadImage(blob, image);
+      console.log(url);
+      const response = await this.addDocument('test', { imageUrl: url });
+      console.log(response);
+    } catch(e) {
+      console.log(e);
+    }
+  }
 
+  dataURLtoBlob(dataurl: any) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+  }
+
+  async uploadImage(blob: any, imageData: any) {
+    try {
+      const currentDate = Date.now();
+      const filePath = `test/${currentDate}.${imageData.format}`;
+      const fileRef = ref(this.storage, filePath);
+      const task = await uploadBytes(fileRef, blob);
+      console.log('task: ', task);
+      const url = getDownloadURL(fileRef);
+      return url;
+    } catch(e) {
+      throw(e);
+    }    
+  }
+  addDocument(path: any, data: any) {
+    const dataRef = collection(this.firestore, path);
+    return addDoc(dataRef, data);
+  }
   autorefresh(event:any){
     
     setTimeout(() => {
@@ -359,5 +418,12 @@ loading.dismiss()
      window.location.reload()
     }, 2000);
   }
-    
+  goback(){
+    if(this.logindata.role == 'Shipper'){
+      this.router.navigate(['tab/tab1'])
+    }else{
+      
+      this.router.navigate(['tab/tab2'])
+    }
+  }
 }

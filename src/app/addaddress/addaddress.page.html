@@ -15,8 +15,7 @@
   </div>
   <ion-list lines="none" class="ion-margin">
    
-    <!--<ion-list-header>WELCOME !</ion-list-header>
-    <h3>Sign Up Page</h3>-->
+ 
     <form   #userPost="ngForm" [formGroup]="signupForm">
       <ion-radio-group value="strawberries"  formControlName="addressType" style="display: flex; margin-left:27px;">
         <ion-item style="margin-right: 5px;">
@@ -35,15 +34,7 @@
     <ion-item class="ion-margin">
       <ion-input appCapitalize placeholder="Enter DoorNo/Building No" type="text"  formControlName="doorNo" clearInput="true" ></ion-input>
     </ion-item>
-    <!--<ion-text  
-    color="danger" 
-    *ngIf="!signupForm.get('doorNo')?.valid && signupForm.get('doorNo')?.touched">
-    <ion-text
-      class="error" 
-      *ngIf="signupForm.get('doorNo')?.hasError('required')">
-      * Please enter doorNo
-    </ion-text>
-  </ion-text>-->
+
     <ion-item class="ion-margin">
       <ion-input appCapitalize placeholder="Enter Street/Area" type="text"  formControlName="areaName" clearInput="true" ></ion-input>
     </ion-item>
@@ -60,7 +51,7 @@
   
       <ion-button  expand="full" strong="true" type="submit" [disabled]="userPost.invalid" (click)="Addaddress(userPost.value)" >
         Save
-        <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
+      
       </ion-button>
     
     </form>

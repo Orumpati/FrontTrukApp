@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
+      <ion-icon  name="arrow-back-sharp"  (click)="goback()" style="font-size: 30px;"></ion-icon>
+      <!-- <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon> -->
       <ion-title style="text-align:center;">Referral</ion-title>
     </div>
   </ion-toolbar>
@@ -12,18 +13,31 @@
 
 <ion-content>
   <div style="text-align: center;">
-    <h1 style="color: #f58e26;;">How it Works <ion-icon name="information-circle"></ion-icon></h1>
+    <h1 style="color: #f58e26;;">How it Works <ion-icon name="information-circle" id="click-trigger"></ion-icon></h1>
+    <ion-popover trigger="click-trigger" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">
+          1.Here You Know how referal code will work and how to get your reward kcjhvcjqygfgqiufg iuqgfi iequfgi iufiqbf iuif ififq fjefie ief qefiubfkeq j
+        </ion-content>
+      </ng-template>
+    </ion-popover>
   </div>
   <div class="container">
-    <ion-card>
+    <ion-card style="border-radius: 10px; width:auto;">
 
-      <ion-card-title style="text-align: center;">Invite the Referral link</ion-card-title>
-      <br>
-      <div class="container">
-        <ion-item fill="outline">
-         {{url}}
-          <ion-icon name="copy-outline" style="float: right;" slot="end" color="primary"  (click)="copyString()"></ion-icon>
-        </ion-item>
+      <ion-card-title style="text-align: center;font-size:19px;margin-top:10px;">Invite the Referral link</ion-card-title>
+    
+      <div style=" padding:13px;">
+        <div style="width: 300px;">
+         <span style="text-align: center;font-size:15px;">{{url}}</span>&nbsp;&nbsp;
+         <ion-icon name="copy-outline" style="font-size:20px; padding-top:5px;"  color="primary"  (click)="copyString()"></ion-icon>
+         <div style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:220px;" >
+         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referal Code:</span>{{logindata.referalCode}}</span>&nbsp;&nbsp;
+         <ion-icon name="copy-outline" style="font-size:20px; "  color="primary"  (click)="copycode()"></ion-icon>
+        </div>
+        </div>
+
+        
       </div>
       <!--<ion-row>
         <ion-card-content>
