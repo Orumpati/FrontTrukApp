@@ -59,7 +59,7 @@ export class AddDriversPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/AddDrivers", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -105,7 +105,7 @@ window.location.href='/drivers'
          fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signupDriver", {
           method: 'post',
           headers: {
-            "access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": 'application/json'
           },
           body: JSON.stringify(driverdata),

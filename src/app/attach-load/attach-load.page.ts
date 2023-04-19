@@ -55,7 +55,7 @@ export class AttachLoadPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type":'application/json'
 
       },

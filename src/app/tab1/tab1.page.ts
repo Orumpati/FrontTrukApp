@@ -48,6 +48,9 @@ body={
   driverdetails: any;
   mess:any="copied Successfully"
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  items: any;
+  loortr: any;
+  truckshift: any;
   constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
 
   
@@ -64,7 +67,8 @@ body={
    this.activeGet()
    this.logindata =JSON.parse(localStorage.getItem('regdata')||'{}')
    console.log(this.logindata)
-   this.driverdetails =JSON.parse(localStorage.getItem('driverdetails')||'{}')
+   //this.driverdetails =JSON.parse(localStorage.getItem('driverdetails')||'{}')
+   this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   }
   ionViewDidEnter(){
     this.toggle(this.isActive="Active")
@@ -78,7 +82,7 @@ body={
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
     })
@@ -119,7 +123,7 @@ body={
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + docData._id, {
       method: 'PUT',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -148,11 +152,10 @@ loading.dismiss()
      }
 
      bidById(bid: any) {
-      //   console.log(load)
         localStorage.setItem("viewBid", JSON.stringify(bid));
-       // this.router.navigate(["all-bids"])
-        this.nav.navigateForward('/all-bids')
-        
+       //this.router.navigate(["all-bids"])
+       // this.nav.navigateForward('/all-bids')
+        window.location.href='/all-bids'
        }
 
  
@@ -166,11 +169,7 @@ loading.dismiss()
         this.deActiveGet()
         console.log(isActive)
        }
-       togglesss(isActive:any){
-        this.isactive=isActive
-        this.inTransitGet()
-        console.log(isActive)
-       }
+   
        toggless(isActive:any){
         this.isactive=isActive
         this.completedGet()
@@ -190,7 +189,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
@@ -236,7 +235,7 @@ loading.dismiss()
 fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
   method: 'POST',
   headers: {
-    "access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "*",
     "Content-Type": 'application/json'
   },
   body: JSON.stringify(body),
@@ -255,7 +254,7 @@ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" 
   })
 }
 
-  async inTransitGet(){
+  async inprogress(){
   const loading = await this.loadingController.create({
     message: 'Loading...',
     spinner: 'crescent'
@@ -263,12 +262,14 @@ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" 
   await loading.present();
   console.log(this.isactive)
   var body={
-    Number: this.logindata.mobileNo, isActive:"In-Progress" 
+    Number: this.logindata.mobileNo, 
+   // shipperAccept:true,
+    shareContact:false
   }
-fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
+fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findLoadsInProgress" , {
 method: 'POST',
 headers: {
-  "access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "*",
   "Content-Type": 'application/json'
 },
 body: JSON.stringify(body),
@@ -276,7 +277,10 @@ body: JSON.stringify(body),
 .then(response => response.json())
 .then(result => {
   console.log(result),
-    this.item = result.load
+    this.items = result.data
+    this.item = this.items.filter((data: { shipperAccept: boolean; }) =>{
+      return data.shipperAccept == true
+    })
    console.log(this.item)
    loading.dismiss()
 }
@@ -294,12 +298,13 @@ body: JSON.stringify(body),
   await loading.present();
   console.log(this.isactive)
   var body={
-    Number: this.logindata.mobileNo, isActive:"Completed" 
+    Number: this.logindata.mobileNo,
+     isActive:"Completed" 
   }
 fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
 method: 'POST',
 headers: {
-  "access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "*",
   "Content-Type": 'application/json'
 },
 body: JSON.stringify(body),
@@ -346,7 +351,83 @@ cancel() {
   window.location.href='/tab/tab1'
 }
 
+  async repost(text:any){
+    if(confirm('Are you sure, you want to reactivate?')){
+    const loading = await this.loadingController.create({
+      //message: 'Loading...',
+      spinner: 'lines'
+    });
+    await loading.present();
+    var data={
+      isActive:"Active"
+    }
+   // console.log(data)
 
+    //console.log(docData)
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + text._id, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result),
+
+          this.products = result //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+loading.dismiss()
+     
+       window.location.reload()  // reloading window
+
+      }
+
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)}) 
+}
+  }
+
+  async delete(text:any){
+    if(confirm('Are you sure, you want to delete?')){
+  const loading = await this.loadingController.create({
+    //message: 'Loading...',
+    spinner: 'lines'
+  });
+  await loading.present();
+  var data={
+    isActive:"Delete"
+  }
+ // console.log(data)
+
+  //console.log(docData)
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + text._id, {
+    method: 'PUT',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result),
+
+        this.products = result //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+loading.dismiss()
+   
+     window.location.reload()  // reloading window
+
+    }
+
+    ).catch(err =>{
+      loading.dismiss()
+      console.log(err)})
+    }
+}
 
 onWillDismiss(event: Event) {
   const ev = event as CustomEvent<OverlayEventDetail<string>>;
@@ -354,9 +435,23 @@ onWillDismiss(event: Event) {
     this.message = `Hello, ${ev.detail.data}!`;
   }
 }
-copy(){
-  this.clipboard.copy(this.driverdetails.mobileNumber);
-  //this.clipboard.copy(this.logindata.referalCode)
-  alert(this.mess)
-}
+// copy(){
+//   this.clipboard.copy(this.driverdetails.mobileNumber);
+//   //this.clipboard.copy(this.logindata.referalCode)
+//   alert(this.mess)
+// }
+
+
+looking(){
+  this.truckshift ="trucks"
+    localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+    window.location.href='/tab/shipperhome'
+  }
+  lookingload(){
+  this.truckshift ="loads"
+    localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+    window.location.href='/tab/shipperhome'
+//this.router.navigate('shipperhome')
+  }
+
 }

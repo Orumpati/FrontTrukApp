@@ -136,7 +136,7 @@ export class TrukEditPagePage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/updateLoads/" + this.real._id, {
       method: 'PUT',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.

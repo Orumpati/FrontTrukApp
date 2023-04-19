@@ -39,7 +39,7 @@ export class ProofofdeliveryPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachPod", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),

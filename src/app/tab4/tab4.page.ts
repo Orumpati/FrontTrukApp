@@ -14,12 +14,7 @@ export class Tab4Page implements OnInit {
 
   filter: any
   categories = ['LCV', 'Truk', 'Hyva', 'container', 'Tanker'];
-  // lcv = false;
-  // truck = false;
-  // hyva = false;
-  // container = false;
-  // tanker = false;
-  // trailer = false;
+
   trukvehiclenumber: any;
   trukcapacity: any;
   trukname: any;
@@ -37,11 +32,14 @@ export class Tab4Page implements OnInit {
   length: any;
   routes: any;
   itemlen: any;
+  truckshift: any;
+  loortr: any;
+  logindata: any;
 
   constructor(private router:Router, private toastController: ToastController,public loadingController: LoadingController) { }
 
   ngOnInit() {
-
+    this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     //this.getAllvehicle()
    // this.vehicleSearch()
    this.getAllvehicles()
@@ -64,7 +62,7 @@ export class Tab4Page implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-
+    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
 
 
   }
@@ -82,71 +80,7 @@ ionViewDidEnter(){
     console.log(category)
 
   }
-  /*async presentToast(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'all LCV vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
 
-    await toast.present();
-  }
-  async all(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'All Vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }
-
-  async opentruk(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'All openTruk vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }
-  async hyva(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'all hyva vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }
-  async container(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'All container Vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }
-  async tanker(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'All Tanker Vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }
-  async trailer(position:  'middle') {
-    const toast = await this.toastController.create({
-      message: 'All Trailer Vehicles!',
-      duration: 500,
-      position: position,
-      color:'warning'
-    });
-    await toast.present();
-  }*/
 
   toggle(trukname: any) {
     console.log(trukname)
@@ -191,7 +125,7 @@ ionViewDidEnter(){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/filterByVehicle/" + this.filter, {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
 
@@ -292,7 +226,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/allVehicles", {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
     })
@@ -320,6 +254,17 @@ loading.dismiss()
     localStorage.setItem("AttachNewLoad", JSON.stringify(data));
     this.router.navigate(['attach-prefferd-newload'])
   }
-
+  looking(){
+    this.truckshift ="trucks"
+      localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+      //this.router.navigate(['tab/shipperhome'])
+  window.location.href='/tab/shipperhome'
+    }
+    lookingload(){
+    this.truckshift ="loads"
+      localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+      window.location.href='/tab/shipperhome'
+  //this.router.navigate('shipperhome')
+    }
 
 }

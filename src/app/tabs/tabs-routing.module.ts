@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShipperguardGuard } from '../guards/shipperguard.guard';
+//import { ShipperguardGuard } from '../guards/shipperguard.guard';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [

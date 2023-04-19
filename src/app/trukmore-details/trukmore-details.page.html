@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
-      <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
+      <ion-icon name="arrow-back-sharp" routerLink="/tab/mytrucks" style="font-size: 30px;"></ion-icon>
     <ion-title>TrukMoreDetails</ion-title>
     </div>
   </ion-toolbar>
@@ -10,7 +10,7 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
+    <ion-refresher-content  refreshingSpinner="circles" refreshingText="Refreshing..">
 
     </ion-refresher-content>
   </ion-refresher>
@@ -24,11 +24,11 @@
     </ion-card-header>
     <div class="container">
       <h5>Vechile Number          :{{moreDetails.trukvehiclenumber}}</h5>
-      <h5>Current Vehile Location :{{moreDetails.trukcurrentLocation}}</h5>
+      <h5>Current Vehile Location :{{moreDetails.OriginLocation}}</h5>
       <h5>Truk Posted Date        :{{moreDetails.trukdate}}</h5>
       <h5>Tuck Routes             :{{moreDetails.trukoperatingRoutes}}</h5>
       <h5>Truk Type               :{{moreDetails.trukname}}</h5>
-      <h5>Truk Capacity           :{{moreDetails.trukcapacity}}</h5>
+      <!-- <h5>Truk Capacity           :{{moreDetails.trukcapacity}}</h5> -->
       
       <p>------------------------------------------------------------------</p>
     </div>

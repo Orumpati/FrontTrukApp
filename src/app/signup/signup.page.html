@@ -37,10 +37,10 @@
     </ion-item>
 
     <div style=" width: 305px;
-    height: 50px;
+    height: 50px;margin-bottom:8px;
     border-radius: 19px;
-    margin-left: 25px;">
-    <ng-multiselect-dropdown [hidden]="role === 'Shipper'" [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
+    margin-left: 25px;" [hidden]="role === 'Shipper'">
+    <ng-multiselect-dropdown  [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
     [data]="dropdownList" [(ngModel)]="routes" formControlName="routes" (onSelect)="onItemSelect($event)"
     (onSelectAll)="onSelectAll($event)">
   </ng-multiselect-dropdown>
@@ -112,7 +112,7 @@
 
   
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter Referal Code" type="string" clearInput="true" formControlName="signupReferalCode" ></ion-input>
+      <ion-input placeholder="Enter Referal Code(Optional)" type="string" clearInput="true" formControlName="signupReferalCode" ></ion-input>
     </ion-item>
     
   

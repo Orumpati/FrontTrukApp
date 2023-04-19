@@ -96,11 +96,11 @@ this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
       DriverName: this.DriverName,
       DriverNumber: this.DriverNumber,
       shareContact:true,
-
+      contactSharedNum:this.logindata.mobileNo,
       transporterName:this.logindata.firstName +this.logindata.lastName,
       companyName:this.logindata.companyName,
       mobileNumber:this.logindata.mobileNo,
-      city:this.logindata.city,
+      city:this.logindata.city
      
 
 
@@ -111,7 +111,7 @@ this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -151,7 +151,7 @@ async isactiveComplete() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
     method: 'PUT',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.

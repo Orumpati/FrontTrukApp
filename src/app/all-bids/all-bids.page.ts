@@ -20,7 +20,8 @@ export class AllBidsPage implements OnInit {
   bidactlen: any;
 
 
-  AtleastOneBidisClosed=false
+  AtleastOneBidisClosed= false
+  allbidsfor: any;
   constructor(private router:Router,public navController : NavController,) { }
   ionViewDidEnter(){
   this.all()
@@ -43,7 +44,7 @@ all(){
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/getsingleloadbids", {
     method: 'POST',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),      
@@ -55,17 +56,20 @@ all(){
 
       for(let i=0; i<result.message.length;i++){
         this.allbids =result.message[i].bids
+       
         this.allbidslen =result.message[i].bids.length
         
       }
 
 console.log(this.allbids)
       for(let i=0; i<this.allbids.length;i++){
-           if(this.allbids[i].BidStatus == 'closed') {
-            console.log(this.allbids[i].BidStatus)
+        this.allbidsfor =this.allbids[i].BidStatus
+        console.log(this.allbidslen)
+           if(this.allbidsfor == "closed" && this.allbidslen >= 2) {
+            console.log(this.allbidsfor)
             this.AtleastOneBidisClosed = true
-           }    else{
-            this.AtleastOneBidisClosed = false
+           }else if(this.allbidsfor == "closed" && this.allbidslen <=1){
+            this.AtleastOneBidisClosed = true
            }               //this is to see any one bid is closed
         this.bidact = this.allbids[i].BidActivity
         this.bidactlen = this.allbids[i].BidActivity.length
@@ -98,10 +102,11 @@ console.log(this.allbids)
       console.log(err))
 }
   openbid(data:any){
-
+console.log(data)
 localStorage.setItem('openedBid',JSON.stringify(data))
 //this.router.navigate(['view-bid'])
-this.navController.navigateForward('/view-bid')
+//this.navController.navigateForward('/view-bid')
+window.location.href='/view-bid'
   }
   autorefresh(event:any){
     

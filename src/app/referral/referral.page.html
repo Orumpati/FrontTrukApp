@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <ion-icon  name="arrow-back-sharp"  (click)="goback()" style="font-size: 30px;"></ion-icon>
       <!-- <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon> -->
-      <ion-title style="text-align:center;">Referral</ion-title>
+      <ion-title style="text-align:center;">TrukApp Referral</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -17,7 +17,14 @@
     <ion-popover trigger="click-trigger" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
-          1.Here You Know how referal code will work and how to get your reward kcjhvcjqygfgqiufg iuqgfi iequfgi iufiqbf iuif ififq fjefie ief qefiubfkeq j
+          ■ Share the Referral code with your friend. <br>
+■ Your friend should use the code to sign up into TrukApp.  <br>
+■ The Coins will be credited ONLY when your friend verifies KYC.  <br>
+■ You will receive 100 coins for each unique referral signup.    <br>
+■ You can withdraw referral coins by raising a withdrawal request.    <br>
+■ Withdrawal requests should be in denominations of 100.    <br>
+■ Maximum coins one can withdraw at once is 500.   <br>
+■ Maximum Referral Money one can earn is 1000 INR.    
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -25,40 +32,21 @@
   <div class="container">
     <ion-card style="border-radius: 10px; width:auto;">
 
-      <ion-card-title style="text-align: center;font-size:19px;margin-top:10px;">Invite the Referral link</ion-card-title>
+      <ion-card-title style="text-align: center;font-size:19px;margin-top:10px;">Invite your friends</ion-card-title>
     
       <div style=" padding:13px;">
-        <div style="width: 300px;">
-         <span style="text-align: center;font-size:15px;">{{url}}</span>&nbsp;&nbsp;
+        
+         <span align="center" style="text-align: center;font-size:15px;">{{url}}</span>&nbsp;&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; padding-top:5px;"  color="primary"  (click)="copyString()"></ion-icon>
-         <div style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:220px;" >
-         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referal Code:</span>{{logindata.referalCode}}</span>&nbsp;&nbsp;
+         <div  style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:220px;margin-left: 35px;" >
+         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referral Code: </span>{{logindata.referalCode}}</span>&nbsp;&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; "  color="primary"  (click)="copycode()"></ion-icon>
-        </div>
+        
         </div>
 
         
       </div>
-      <!--<ion-row>
-        <ion-card-content>
-         <ion-col size="4">
-            <ion-button color="success" (click)="ShareWhatsapp()"><ion-icon
-                name="logo-whatsapp"></ion-icon></ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button color="warning" (click)="SendInstagram()"><ion-icon
-                name="logo-instagram"></ion-icon></ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button color="primary" (click)="ShareFacebook()"><ion-icon
-                name="logo-facebook"></ion-icon></ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button color="secondary" (click)="SendTwitter()"><ion-icon name="logo-twitter"></ion-icon></ion-button>
-          </ion-col> 
-       
-        </ion-card-content>
-      </ion-row>-->
+   
 
       <div style="text-align: center; margin:5px;">
         

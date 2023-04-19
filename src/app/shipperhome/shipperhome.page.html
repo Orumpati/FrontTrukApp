@@ -36,7 +36,7 @@
   
   
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing...">
+    <ion-refresher-content  refreshingSpinner="circles" refreshingText="Refreshing...">
 
     </ion-refresher-content>
   </ion-refresher>
@@ -58,7 +58,7 @@
          
        
       </div>
-      <strong class="loadss">Active loads</strong>
+      <strong class="loadss">Active Loads</strong>
     
     </div>
 
@@ -83,7 +83,7 @@
          <p class="count">{{closedbids1}}</p>
        
       </div>
-      <strong class="loadss">closed Bids</strong>
+      <strong class="loadss">Closed Bids</strong>
     
     </div>
 
@@ -93,10 +93,10 @@
         <div >
           <ion-icon name="logo-dropbox" style="font-size:30px;padding-left:10px;margin-top:16px; color:orange;"></ion-icon>
         </div>
-         <p class="count">{{completetrucks}}</p>
+         <p class="count">{{activeloads1}}</p>
        
       </div>
-      <strong class="loadss">closed Loads</strong>
+      <strong class="loadss">Active Loads</strong>
     
     </div>
     <div class="item"   *ngIf="logindata.role == 'Transporter' || logindata.role == 'Agent/Broker'|| logindata.role == 'Fleet Owner'" [hidden]="loortr == 'trucks'">
@@ -108,7 +108,7 @@
          <p class="count">{{activetrucks}}</p>
        
       </div>
-      <strong class="loadss">Active Trucks</strong>
+      <strong class="loadss">Active Truks</strong>
     
     </div>
     <!-- <div class="item"   *ngIf="logindata.role == 'Transporter' || logindata.role == 'Agent/Broker'|| logindata.role == 'Fleet Owner'" [hidden]="loortr == 'trucks'">
@@ -119,7 +119,7 @@
          <p class="count">0</p>
        
       </div>
-      <strong class="loadss">Pending Bids</strong>
+      <strong class="loadss">Active Bids</strong>
     
     </div> -->
     <div class="item"   *ngIf="logindata.role == 'Transporter' || logindata.role == 'Agent/Broker'|| logindata.role == 'Fleet Owner'" [hidden]="loortr == 'trucks'">
@@ -130,7 +130,7 @@
          <p class="count">{{closedbids1}}</p>
        
       </div>
-      <strong class="loadss">closed Bids</strong>
+      <strong class="loadss">Closed Bids</strong>
     
     </div>
     
@@ -141,11 +141,12 @@
   
 
   <ion-card-content>
-    <p style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:center">As a transperter agent,Your job duties include  arranging the transfer of cargo from a warehouse to an truck and 
-    providing necessary documentation for both clients and relevents authorities </p>
+    <p style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:center">You can Add Trucks and Post Loads in your role. Please select
+      “Looking for Trucks” if you have load to ship OR select “Looking for
+      Loads” if you have Trucks to attach </p>
   </ion-card-content>
 <div style="margin-top:-17px;" align="center">
-  <ion-button routerLink="/add-truck" >Add Trucks</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ion-button routerLink="/add-truck" >Add Truks</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <ion-button routerLink="/attach-new-load" >Post Load</ion-button>
   </div>
 </ion-card>
@@ -158,8 +159,8 @@
 </ion-slides>
 
 <div *ngIf="logindata.role == 'Shipper'">
-<h5 style="margin-left: 13px;">Top recomdations</h5>
-&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">Near by Trucks</button>
+<h5 style="margin-left: 13px;">Top Recommendations</h5>
+&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">Near by Truks</button>
 
 
 <ion-slides #slides autoplay="true" loop="true" pager="false" scrollbar="true" [options]="slideOpt">
@@ -171,7 +172,7 @@
       
       <ion-card-content>
         <p>LCV</p> 
-        <p>1-6 Tonns</p>
+        <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
   </ion-slide>
@@ -182,8 +183,8 @@
         </div>
       
       <ion-card-content>
-        <p>open truck</p> 
-        <p>1-6 Tonns</p>
+        <p>Open Truk</p> 
+        <p>1-6 Tonnes</p>
       </ion-card-content>
       </ion-card>
   </ion-slide>
@@ -194,8 +195,8 @@
         </div>
       
       <ion-card-content>
-        <p>container</p> 
-        <p>1-6 Tonns</p>
+        <p>Container</p> 
+        <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
   </ion-slide>
@@ -206,8 +207,8 @@
         </div>
       
       <ion-card-content>
-        <p>gg</p> 
-        <p>1-6 Tonns</p>
+        <p>Trailer</p> 
+        <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
   </ion-slide>
@@ -219,18 +220,18 @@
       
       <ion-card-content>
         <p>LCV</p> 
-        <p>1-6 Tonns</p>
+        <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
   </ion-slide>
 </ion-slides>
 </div>
-<h4>Learn about</h4>
+&nbsp;&nbsp;&nbsp;<h4>TruKApp Tutorials</h4>
 <div class="about">
   <div class="aboutimage">
-
+<img src="assets/trueTruk.png">
   </div>
-  <div>How to use truck app</div>
+  <div>How to use Truk app</div>
 
 </div>
 </ion-content>

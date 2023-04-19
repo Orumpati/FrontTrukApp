@@ -38,15 +38,7 @@ export class EditalldetailsPage implements OnInit {
    this.logindata=JSON.parse( localStorage.getItem('regdata') || "{}")
    //console.log(this.logindata)
    this.get()
-  /* for(let i=0;i<this.detailsforEdit.routes.length;i++){
-      this.routeDetails=this.detailsforEdit.routes[i]
-   }
-   console.log(this.detailsforEdit)
-
-   console.log(this.detailsforEdit['firstName'])*/
-  
-   //this.updatedFormed.setValue({firstName: this.profile.firstName});
-   //this.updatedFormed.value.firstName =this.profile.firstName
+ 
   }
   updatedFormed = new FormGroup({
     mobileNo :new FormControl(''),
@@ -75,7 +67,7 @@ export class EditalldetailsPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body:JSON.stringify(data)

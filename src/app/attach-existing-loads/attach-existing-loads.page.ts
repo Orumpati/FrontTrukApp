@@ -66,7 +66,7 @@ export class AttachExistingLoadsPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addTruckMarketVehicleToLoad", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -125,7 +125,7 @@ export class AttachExistingLoadsPage implements OnInit {
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),

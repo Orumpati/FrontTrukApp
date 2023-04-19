@@ -48,7 +48,7 @@ export class ModalContactPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/contact/addcontact", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -105,7 +105,7 @@ export class ModalContactPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/contact/emailnotification", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),

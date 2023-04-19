@@ -8,9 +8,11 @@ import { LoadingController } from '@ionic/angular';
 })
 export class VerifygstotpPage implements OnInit {
 otp:any
+  logindata: any;
   constructor(private router:Router,public loadingController: LoadingController) { }
 
   ngOnInit() {
+    this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
   }
 
   config = {
@@ -61,17 +63,25 @@ otp:any
       .then(
         result =>{
      console.log(result)
-        if(result.code === 103){
-          loading.dismiss()
-          alert('OTP is required')
-        }else if(result.result.data === null){
-          loading.dismiss()
-              alert('Enter valid OTP')
-        }else{
-          loading.dismiss()
-          alert('OTP verified')
-          this.router.navigate(['profile'])
-        }
+     if(result.code == 100){
+      loading.dismiss()
+      alert('OTP verified')
+      this.aadharverifystatus()
+      loading.dismiss()
+    }else if(result.result.data == null){
+      loading.dismiss()
+          alert('Enter valid OTP')
+          
+    }else if(result.code == 103){
+    
+
+      loading.dismiss()
+      alert('OTP is required')
+     // this.router.navigate(['profile'])
+    }else{
+      loading.dismiss()
+      alert("Recharge Your Wallet")
+    }
         
       
         }
@@ -85,5 +95,47 @@ otp:any
     
     }
 
+    async aadharverifystatus(){
+      const loading = await this.loadingController.create({
+        message: 'Verifying...',
+        spinner: 'crescent'
+      });
+      await loading.present();
+      var data ={
+        gstVerify:'Verified'
+      
+      }
+      console.log(data)
+      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
+        
+      method:'put',
+      headers:{
+                "Access-Control-Allow-Origin": "*",
+                  "Content-Type":'application/json'
+              },
+      body:JSON.stringify(data),
+      }).then(res => res.json())
+      
+      .then(
+        result =>{
+     console.log(result)
 
+         this.logindata['gstVerify']='Verified'
+        
+
+         localStorage.setItem('regdata',JSON.stringify(this.logindata))
+        loading.dismiss()
+        window.location.href='/profile'
+        
+      
+        }
+        ).catch(
+            error =>{
+              loading.dismiss()
+             // alert('unable to add routes');
+             console.log(error)
+            });
+       
+    
+    }
 }

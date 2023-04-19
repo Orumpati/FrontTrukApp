@@ -43,7 +43,7 @@ this.get()
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findloadbydrivers", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -92,7 +92,7 @@ this.get()
    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/findtransporterbydrivers", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),

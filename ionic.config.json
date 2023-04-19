@@ -1,7 +1,8 @@
 {
-  "name": "truckapp",
+  "name": "TruKApp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

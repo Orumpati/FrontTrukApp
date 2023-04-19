@@ -42,7 +42,7 @@ ionViewDidEnter(){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
     })

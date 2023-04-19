@@ -3,7 +3,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp"  routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
-      <ion-title>All bids</ion-title>
+      <ion-title>All Bids</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -19,27 +19,28 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
+    <ion-refresher-content refreshingSpinner="circles" refreshingText="Refreshing..">
 
     </ion-refresher-content>
   </ion-refresher>
   <div *ngIf="allbidslen != 0" >
-  <ion-card class="allBids" *ngFor="let data of allbids.slice().reverse() ">
+  <ion-card class="allBids" *ngFor="let dataofbids of allbids">
     <ion-card-header>
-      <ion-card-title>Their new price</ion-card-title>
-      <ion-card-title>₹{{data.tentativefinalPrice}}/- Fixed</ion-card-title>
+      <ion-card-title>Bid from :-{{dataofbids.UserName}}</ion-card-title>
+      <ion-card-title>₹{{dataofbids.tentativefinalPrice}}/- Fixed</ion-card-title>
    
-      
-      
     </ion-card-header>
   
-    <ion-card-content>
-    
+    <ion-card-content ><!--style="float: right; font-size:17px;font-weight:bolder; color:black;"-->
+      <!-- <div style="display: flex;">
+      <div style=" font-size:20px;font-weight:bolder; color:rgb(34, 247, 10);"><ion-icon name="checkmark-circle"></ion-icon></div>&nbsp;
+    <div>verified</div>
+    </div> -->
     </ion-card-content>
   
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" [hidden] ="(data.isAgentAccepted  == true && data.isShipperAccepted ==true)|| bidactlen >= 1" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true">Open</ion-button><!--[hidden]="bidactlen > 2" [hidden] ="data.isAgentAccepted  == true && data.isShipperAccepted ==true"-->
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen >= 1" [hidden] ="data.isAgentAccepted  == true && data.isShipperAccepted ==true"  [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true">InProgress</ion-button>
-    <ion-button style="margin-top: -47px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="data.isAgentAccepted  == true && data.isShipperAccepted ==true"  [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == true" >Finalised</ion-button>
+    <ion-button style="margin-top: -15px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(dataofbids)" [hidden] ="(dataofbids.isAgentAccepted  == true && dataofbids.isShipperAccepted ==true)|| bidactlen >= 1" [disabled]="dataofbids.BidStatus == 'open' && AtleastOneBidisClosed == true">Open</ion-button><!--[hidden]="bidactlen > 2" [hidden] ="data.isAgentAccepted  == true && data.isShipperAccepted ==true"-->
+    <ion-button style="margin-top: -15px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(dataofbids)" *ngIf ="bidactlen >= 1" [hidden] ="dataofbids.isAgentAccepted  == true && dataofbids.isShipperAccepted ==true"  [disabled]="dataofbids.BidStatus == 'open' && AtleastOneBidisClosed == true">InProgress</ion-button>
+    <ion-button style="margin-top: -15px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(dataofbids)" *ngIf ="dataofbids.isAgentAccepted  == true && dataofbids.isShipperAccepted ==true"  [disabled]="dataofbids.BidStatus == 'open' && AtleastOneBidisClosed == true" >Finalised</ion-button>
   </ion-card>
 </div>
 

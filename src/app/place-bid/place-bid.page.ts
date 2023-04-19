@@ -99,7 +99,7 @@ saicode(){
  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/" +this.objects._id, {
   method: 'get',
   headers: {
-    "access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "*",
     "Content-Type": 'application/json'
   },
  // body:JSON.stringify(query)
@@ -133,7 +133,7 @@ saicode(){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/showAgentSideBidConversation", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body:JSON.stringify(query)
@@ -203,9 +203,9 @@ saicode(){
 
 
   async acceptBid(){
-if(confirm("Once you accept the bid, You cant negotiate")){
+if(confirm("Once you accept the bid, you cannot negotiate")){
    if(this.regdata.aadharVerify == 'notVerified'){
-      alert("Verify Aadhar to Accept")
+      alert("Verify your Aadhar to accept")
 window.location.href='/profile'
     }else{
 
@@ -234,7 +234,7 @@ console.log(body)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -284,7 +284,7 @@ console.log(body)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -364,7 +364,7 @@ var data ={
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -386,9 +386,9 @@ var data ={
 
 }
   async acceptBidForFinal(){
-    if(confirm("Once you accept the bid, You cant negotiate")){
+    if(confirm("Once you accept the bid, you cannot negotiate")){
     if(this.regdata.aadharVerify == 'notVerified' ){
-      alert("Verify Aadhar to Accept")
+      alert("Verify your Aadhar to accept")
 window.location.href='/profile'
     }else{
     
@@ -420,7 +420,7 @@ console.log(this.item.mobileNo)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),

@@ -77,11 +77,11 @@
 
   <div class="card"  >
     <div class="card-body" >
-      <div type="button" class="securepayment" ><br>
-        &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:green;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+      <div type="button" class="securepayment" >
+
         <div>
-        <span style="color: green;">Online Payment</span><br>
-        <span style="color: green;">Truk App Assured</span>
+        <span style="color: green;">Online Payment</span>
+     
         </div>
       </div>
       <br>
@@ -94,7 +94,8 @@
 
             </div>
             <div class="flex-1 ms-3" style="margin-top: -25px;">
-                <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{TrukPost.OriginLocation}} --{{TrukPost.DestinationLocation}}</a></h5>
+                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{TrukPost.OriginLocation}}</a></span><br>
+                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="success"></ion-icon>{{TrukPost.DestinationLocation}}</a></span><br>
                 <span class="badge badge-soft-success mb-0"> Posted On {{TrukPost.date}}</span>
             </div>
         </div>

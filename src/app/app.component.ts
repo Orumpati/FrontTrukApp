@@ -138,7 +138,7 @@ location(){
 }
 
 signout(){
-  if(confirm('Are You Sure,You Want to Logout')){
+  if(confirm('You want to Log-Out, Are you Sure?')){
   localStorage.removeItem('regdata')
   localStorage.removeItem('lookingfor')
   window.location.href='/loginotp'

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController,NavController } from '@ionic/angular';
-import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { IonModal } from '@ionic/angular';
@@ -13,7 +12,7 @@ import { CommonServiceService } from '../common-service.service';
 })
 export class ViewBidPage implements OnInit {
   @ViewChild(IonModal) modal!: IonModal ;
-  private refresh = new Subject<void>();
+  
   item: any = [];
   bids:any=[];
   NegoPrice:any;
@@ -30,7 +29,7 @@ export class ViewBidPage implements OnInit {
     finalAgentAccept: any;
   regdata: any;
   openedBid: any;
-  bidactivityofopenbid: any;
+  transNo: any;
   filteredbid: any;
   onlybid: any;
   conditions: any;
@@ -65,7 +64,8 @@ export class ViewBidPage implements OnInit {
       console.log(this.typepay)
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
       console.log(this.openedBid)
-      this.bidactivityofopenbid =this.openedBid.BidActivity
+      this.transNo =this.openedBid.mobileNo
+      console.log(this.transNo)
       for(let i=0; i<this.bids.bids.length;i++){
            this.bidact=this.bids.bids[i]
       }
@@ -81,7 +81,7 @@ export class ViewBidPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/"+ this.bids._id, {
     method: 'GET',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
   
     }
   })
@@ -103,8 +103,10 @@ export class ViewBidPage implements OnInit {
 
   console.log(this.driverdetails)
       console.log(final)
-        this.item = final
-
+       // this.item = final
+        this.item = final.filter((data:any)=>{
+          return data._id == this.openedBid._id
+        })
 
 //onsole.log(this.onlybid)
         for(let i=0; i<this.item.length;i++){
@@ -120,12 +122,10 @@ export class ViewBidPage implements OnInit {
           this.conditions = this.item[i].isAgentAccepted
           this.bidnumber =this.item[i].mobileNo
             }
-            this.filteredbid = this.item.filter((data:any)=>{
-              return data._id == this.openedBid._id
-            })
-            console.log(this.filteredbid)
-       for(let i=0;i<this.filteredbid.length;i++){
-         this.hideaccptbtn =this.filteredbid[i].TohideAcceptBtn
+           
+            console.log(this.item)
+       for(let i=0;i<this.item.length;i++){
+         this.hideaccptbtn =this.item[i].TohideAcceptBtn
        }
             console.log(this.goinsidetenprice)
            // console.log(this.finalAgentAccept.isAgentAccepted)
@@ -205,7 +205,7 @@ export class ViewBidPage implements OnInit {
     }
   
     async acceptBid(){
-      if(confirm("Once you accept the bid, You cant negotiate")){
+      if(confirm("Once you accept the bid, you cannot negotiate")){
       if(this.regdata.aadharVerify == 'notVerified' ){
         alert("Verify Aadhar to Accept")
   window.location.href='/profile'
@@ -225,6 +225,7 @@ export class ViewBidPage implements OnInit {
         "bidAcceptedTo":this.openedBid.mobileNo,
         "TohideAcceptBtn":false,
         "BidStatus":"closed",
+        "shipperAccept":true,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
          Number:this.bidnumber, //transporte
@@ -237,7 +238,7 @@ export class ViewBidPage implements OnInit {
       fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/initialacceptbyshipper", {
         method: 'post',
         headers: {
-          "access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": 'application/json'
         },
         body: JSON.stringify(body),
@@ -249,7 +250,7 @@ export class ViewBidPage implements OnInit {
           const data = result.message
           console.log(data)
           localStorage.setItem('viewBid',JSON.stringify(data))
-          this. acceptBidStatus()
+         // this. acceptBidStatus()
           this.navControl.navigateForward('/view-bid')
          
           loading.dismiss()
@@ -265,37 +266,7 @@ export class ViewBidPage implements OnInit {
     }
     }
 
-    acceptBidStatus(){
-
-      var data={
-        isActive:"Completed"
-      }
-     // console.log(data)
-  
-      console.log(this.bids._id)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.bids._id, {
-        method: 'PUT',
-        headers: {
-          "access-Control-Allow-Origin": "*",
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
-  
-      })
-        .then(response => response.json())
-        .then(result => {
-          console.log(result),
-  
-            this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
-  
-            this.all()
-          //window.location.reload()  // reloading window
-  
-        }
-  
-        ).catch(err =>
-          console.log(err))
-  }
+   
 
   makepayment(){
     localStorage.setItem('filteredBid',JSON.stringify(this.filteredbid))

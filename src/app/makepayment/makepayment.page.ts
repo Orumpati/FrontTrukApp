@@ -116,7 +116,7 @@ console.log('working payment Upate')
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/paymentconfirm", {
      method: 'post',
      headers: {
-       "access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Origin": "*",
        "Content-Type": 'application/json'
      },
      body: JSON.stringify(body),

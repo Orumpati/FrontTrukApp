@@ -63,23 +63,10 @@ regData:any
   ngOnInit() {
     firebase.initializeApp(config);
 this.number =localStorage.getItem('Number')
- //const firbase = firebase.messaging().getToken()
- //console.log(firbase)
-    //firebaseMessaging.instance.getToken().then((value: any) =>{
-     // console.log(value)
-   // })
-   //var uuid = new DeviceUUID().get();
-   //this.getPermission();
-   //this.getUniqueDeviceID();
-   
-   /*this.OneSignal.addSubscriptionObserver().subscribe((state: { from: { subscribed: any; }; to: { subscribed: any; userId: string; }; }) => {
-    if (!state.from.subscribed && state.to.subscribed) {
-     console.log("Subscribed for OneSignal push notifications! :: ID "+state.to.userId);
-    }
- });*/
+
 
   }
-  	// get the OneSignal userId aka playerId
+
   	
   
   getUniqueDeviceID() {
@@ -143,7 +130,7 @@ route(){
   var data ={
     mobileNo:this.phoneNumber
   }
-  //fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getRegisterData", {
+
     fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
     method:'post',
     headers:{
@@ -233,17 +220,7 @@ if(result.mobileNo === this.phoneNumber){
        
         await alert.present();
        this.router.navigate(['/selecttype']) 
-        // window.location.href="/selecttype"
-              
-            
-       /*setTimeout(() => {
-        this.spin=false
-        this.ngZone.run(() => {
-          this.router.navigate(['/selecttype']);
-        });
-      }, 2000);*/
-        
-       
+ 
       
          console.log(error)
         });

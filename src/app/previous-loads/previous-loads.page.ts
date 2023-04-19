@@ -33,7 +33,7 @@ export class PreviousLoadsPage implements OnInit {
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findloadbydrivers", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),

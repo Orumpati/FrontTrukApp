@@ -20,22 +20,22 @@
         <div class="title">
          <h3 style="color:orange;">Load Details</h3> 
         </div>
-        <br>
+      
         <!--select origin Location-->
        <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
        <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
-       <span style="font-size: 18px;">PickUp Location</span>
+       <span style="font-size: 18px;">Pick-up Location</span>
        
  
         <div class="form-group">
-          <ion-input type="text" appCapitalize class="form-control" placeholder="Pick Up Location"
+          <ion-input type="text" appCapitalize class="form-control" placeholder="Pick-up Location"
             [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
             (ionClear)="ClearAutocomplete()"></ion-input>
         </div>
         <!--Pickup pincode-->
 
         <div class="form-group" >
-          <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+          <ion-input placeholder="Pick-up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
 
         </div>
       
@@ -47,7 +47,7 @@
          <!--select destination Location-->
          <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
           <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
-          <span style="font-size: 18px;">DropUp Location</span>
+          <span style="font-size: 18px;">Drop Location</span>
           
          <div class="form-group">
           <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
@@ -58,7 +58,7 @@
         <!--Dropup pincode-->
         
         <div class="form-group" style="display: flex;">
-          <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
+          <ion-input placeholder="Drop Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
   
           </ion-input>
 
@@ -130,8 +130,8 @@
 
         <div class="form-group">
           <div class="form-control" >
-            <ion-label position="floating">PickUp Date & Time</ion-label>
-            <ion-input type="datetime-local" placeholder="Pickup Date" style="border: none; "
+            <ion-label position="floating">Pick-Up Date & Time</ion-label>
+            <ion-input type="datetime-local" placeholder="Pick-up Date" style="border: none; "
               [(ngModel)]="date"></ion-input>
           </div>
         </div>
@@ -150,7 +150,7 @@
           box-shadow: 2px 2px 2px lightgray;">
             <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
-             <ion-select-option value="Tonns">Tonns</ion-select-option>
+             <ion-select-option value="Tonns">Tonnes</ion-select-option>
              <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
              </ion-select>
            </span>
@@ -170,7 +170,7 @@
 
       <!-- <div class="ion-padding" slot="content"> -->
         <div >
-        <h1  style="color:orange;">Select vehicle</h1>
+        <h1  style="color:orange;">Select Vehicle</h1>
 
 
         
@@ -264,7 +264,7 @@
           </label>
         
           <ion-card style="height: auto;width:340px;" *ngIf="data =='Truk'">
-            <ion-card-title style="font-size: 19px;">Select the Truk type</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Truk type:</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="isTrukOpenOrClose">
               <input type="radio" id="1" name="hyva" value="Open Body" class="typeOfVehicle" (change)="truk('Open Body')"/>
@@ -279,7 +279,7 @@
           
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Hyva'">
-            <ion-card-title style="font-size: 19px;">Select the Hyva type</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Hyva type:</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfHyva">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="HYVA('10 Tyre')"/>
@@ -294,7 +294,7 @@
           </ion-card>
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Trailer'">
-            <ion-card-title style="font-size: 19px;">Select the Trailer type</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfTrailer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
@@ -310,7 +310,7 @@
   
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Container'">
-            <ion-card-title style="font-size: 19px;">Select the Container type:</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Container type:</ion-card-title>
             <br>
             <div  [(ngModel)]="typeOfContainer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
@@ -334,14 +334,14 @@
     
             </div>
           </ion-card>
-          <ion-card style="height: auto;width:340px;" *ngIf="trukname =='Tanker'">
-            <ion-card-title style="font-size: 19px;">Select the Tanker type</ion-card-title>
+          <ion-card style="height: auto;width:340px;" *ngIf="data =='Tanker'">
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type</ion-card-title>
             <br>
             <div  [(ngModel)]="typeofTanker">
               <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>
               <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium; ">Metal steel</label>
               <input type="radio" id="2" name="hyva" value="Stainless steel" class="typeOfVehicle" (change)="Tanker('Stainless steel')"/>
-              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">tainless steel</label>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">Stainless steel</label>
             </div>
           </ion-card>
           <br>
@@ -361,8 +361,8 @@
           <!--Expected Bill-->
 
           <div class="form-group">
-            <ion-label>what is your expected price?</ion-label>
-            <ion-input type="  text" class="form-control" placeholder="Expected Price"
+            <ion-label>What is your expected price?</ion-label>
+            <ion-input type="  text" class="form-control" placeholder="Expected Price(INR ₹)"
               [(ngModel)]="expectedPrice"></ion-input>
           </div>
 
@@ -373,7 +373,7 @@
           <div class="form-group">
             <div class="form-control">
               <ion-label></ion-label>
-              <ion-select placeholder="Type of Payment to truk Owner" [(ngModel)]="typeOfPay" (click)="gf()">
+              <ion-select placeholder="How would you like to Pay?" [(ngModel)]="typeOfPay" (click)="gf()">
                 <ion-select-option value="Offline">Offline/Cash</ion-select-option>
                 <!--<ion-select-option value="Online" >Online</ion-select-option>-->
 
@@ -400,12 +400,12 @@
               <p>How do you like to pay ?</p>
               <ion-radio-group [(ngModel)]="paymentTypeForOffline" >
   
-              <div style="float: left;display: flex;font-size: large;"  class="form-check-inline">
-                <ion-radio value="Advance"></ion-radio>
+              <div style="display: inline;float: left;display: flex;font-size: large;"  class="form-check-inline">
+                <ion-radio value="Advance"></ion-radio>&nbsp;
                 <ion-label >Advance</ion-label>
                </div>
                 <div style="display: inline; float: right;display: flex; font-size: large;">
-                <ion-radio value="Full Payment"></ion-radio>
+                <ion-radio value="Full Payment"></ion-radio>&nbsp;
                 <ion-label>Full Payment</ion-label>
               </div>
               </ion-radio-group>

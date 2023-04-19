@@ -122,7 +122,7 @@ async presentSecondAlert() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/point/pointsPost", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),
@@ -160,7 +160,7 @@ email() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/point/emailPoints", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),
@@ -193,7 +193,7 @@ email() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/point/reqestedHistory", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),
@@ -222,7 +222,7 @@ referal() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/"+this.logindata.Authentication, {
     method: 'get',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
   
     },
     
@@ -253,7 +253,7 @@ referal() {
 }
 
 
-async addAccDetails() {
+async addAccUPID() {
   const loading = await this.loadingController.create({
     message: 'Loading...',
     spinner: 'crescent'
@@ -271,12 +271,15 @@ async addAccDetails() {
 
 
   }
- 
+  let regex = new RegExp("/^[a-zA-Z0-9.-]{2, 256}@[a-zA-Z][a-zA-Z]{2, 64}$/")
+  if (regex.test(data.upiId) == true) {
+    
+
 
   fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addAccDetails", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),
@@ -298,6 +301,62 @@ window.location.reload()
       console.log(err)
      
     })
+  }
+  else {
+      alert('Enter Correct Upid')
+      loading.dismiss()
+  }
+}
+
+
+async addAccDetails() {
+  const loading = await this.loadingController.create({
+    message: 'Loading...',
+    spinner: 'crescent'
+  });
+  await loading.present();
+  
+  var data = {
+    _id:this.logindata.Authentication,
+    accountNum:this.accountNum,
+    ifscCode:this.ifscCode,
+    accHolderName:this.accHolderName,
+    upiId:this.upiId
+    
+   
+
+
+  }
+
+    
+
+
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addAccDetails", {
+    method: 'post',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),
+
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result),
+     
+        
+        loading.dismiss()
+        
+      alert("Account details added Successfully")
+window.location.reload()
+    }
+
+    ).catch(err =>{
+      loading.dismiss()
+      console.log(err)
+     
+    })
+  
 }
 
 
@@ -339,61 +398,5 @@ goback(){
     this.router.navigate(['tab/tab2'])
   }
 }
-/*updateCoins(withdrawcoins:any){
-  var data ={
-    TotalCoins:this.totslcoinDB - withdrawcoins
-  }
-  
-  fetch("http://localhost:3000/TruckAppUsers/updateCoins/" + this.logindata.Authentication, {
-    method: 'put',
-    headers: {
-      "access-Control-Allow-Origin": "*",
-      "Content-Type": 'application/json'
-    },
-    body: JSON.stringify(data),
 
-  })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result)
-     
-        
-
-    }
-
-    ).catch(err =>{
-      
-      console.log(err)
-     
-    })
-}*/
-
-
-/*updateminusCoins(coins:any){
-  var data ={
-    TotalCoins:coins
-  }
-  fetch("http://localhost:3000/TruckAppUsers/updateCoins/" + this.logindata.Authentication, {
-    method: 'put',
-    headers: {
-      "access-Control-Allow-Origin": "*",
-      "Content-Type": 'application/json'
-    },
-    body: JSON.stringify(data),
-
-  })
-    .then(response => response.json())
-    .then(result => {
-      console.log(result)
-     
-        
-
-    }
-
-    ).catch(err =>{
-      
-      console.log(err)
-     
-    })
-}*/
 }

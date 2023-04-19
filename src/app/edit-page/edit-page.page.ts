@@ -73,50 +73,7 @@ export class EditPagePage implements OnInit {
     })
   }
 
-  // get() {
-  //   console.log(this.Id)
-  //   fetch("http://localhost:3000/postLoad/loadById/" + this.Id, {
-  //     method: 'GET',
-  //     headers: {
-  //       "access-Control-Allow-Origin": "*",
-  //     },
-
-
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       console.log(result),
-  //         this.products = result
-  //       console.log(this.products)
-
-
-
-  //       var dd = this.updateproductForm.setValue({
-  //         OriginLocation: this.result.OriginLocation,
-  //         DestinationLocation: this.result.DestinationLocation,
-  //         date: this.result.date,
-  //        // vehicle: this.result.vehicle,
-  //         product: this.result.product,
-  //         Quantity: this.result.Quantity,
-  //         expectedPrice: this.result.expectedPrice,
-  //         //tonnes: this.result.tonnes,
-  //         Number: this.result.Number,
-  //         //loadCapacity: this.result.loadCapacity,
-  //         typeOfPay: this.result.typeOfPay,
-  //         comments: this.result.comments,
-  //         length: this.result.length,
-  //         breadth: this.result.breadth,
-  //         height: this.result.height,
-  //         data:this.result.data
-  //       });
-
-  //       console.log(dd)
-  //     },
-
-
-  //     ).catch(err =>
-  //       console.log(err))
-  // }
+  
   updateForm(data: any) {
 
 
@@ -147,7 +104,7 @@ export class EditPagePage implements OnInit {
     fetch("http://localhost:3000/quotes/updateQuotes/" + this.real._id, {
       method: 'PUT',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.

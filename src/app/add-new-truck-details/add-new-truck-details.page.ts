@@ -96,6 +96,7 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       DriverNumber: this.DriverNumber,
       shareContact:true,
 
+      contactSharedNum:this.regdata.mobileNo,
       transporterName:this.regdata.firstName +this.regdata.lastName,
       companyName:this.regdata.companyName,
       mobileNumber:this.regdata.mobileNo,
@@ -110,7 +111,7 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),
@@ -119,8 +120,10 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       .then(response => response.json())
       .then(result => {
         console.log(result),
-          this.Items = result     
+          this.Items = result 
+          this.acceptBidStatus()    
         loading.dismiss()
+      
         alert("Posted Successfully")
 window.location.href="/place-bid"
       }
@@ -131,6 +134,40 @@ window.location.href="/place-bid"
         loading.dismiss()
       })
   }
+
+
+
+  acceptBidStatus(){
+
+    var data={
+      isActive:"Completed"
+    }
+   // console.log(data)
+
+    console.log(this.sub)
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.sub, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+
+        //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+        //  this.all()
+        //window.location.reload()  // reloading window
+
+      }
+
+      ).catch(err =>
+        console.log(err))
+}
   goback(){
     this.router.navigate(['place-bid'])
     window.location.href='/place-bid'

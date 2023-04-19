@@ -216,7 +216,7 @@ if(confirm("Are You Sure")){
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
      method: 'post',
      headers: {
-       "access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Origin": "*",
        "Content-Type": 'application/json'
      },
      body: JSON.stringify(data),
@@ -271,7 +271,7 @@ if(confirm('Are you Sure')){
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
      method: 'post',
      headers: {
-       "access-Control-Allow-Origin": "*",
+       "Access-Control-Allow-Origin": "*",
        "Content-Type": 'application/json'
      },
      body: JSON.stringify(data),
@@ -312,7 +312,7 @@ if(confirm('Are you Sure')){
   fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
     method: 'PUT',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.

@@ -67,68 +67,7 @@ export class ContactUsPage implements OnInit {
   }
 
 
-  // addContact() {
-  //   var data = {
-  //     Name: this.Name,
-  //     PhoneNumber:this.PhoneNumber,
-  //     To:this.To,
-  //     Query:this.Query
-  //   }
-  //   console.log(data)
-  //   localStorage.setItem("newpostAdd", JSON.stringify(data));
-
-  //   fetch("http://localhost:3000/contact/addcontact", {
-  //     method: 'post',
-  //     headers: {
-  //       "access-Control-Allow-Origin": "*",
-  //       "Content-Type": 'application/json'
-  //     },
-  //     body: JSON.stringify(data),
-
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       console.log(result),
-  //         this.Items = result  
-
-  //     }
-
-  //     ).catch(err =>
-  //       console.log(err))
-  //       this.email();
-  // }
-
-
-
-  // email() {
-  //   var data = {
-  //     To:this.To,   
-  //     Name: this.Name,
-  //     PhoneNumber:this.PhoneNumber,
-  //     Query:this.Query
-
-  //   }
-  //   console.log(data)
-
-  //   fetch("http://localhost:3000/contact/emailnotification", {
-  //     method: 'post',
-  //     headers: {
-  //       "access-Control-Allow-Origin": "*",
-  //       "Content-Type": 'application/json'
-  //     },
-  //     body: JSON.stringify(data),
-
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       console.log(result),
-  //         this.Items = result  
-
-  //     }
-
-  //     ).catch(err =>
-  //       console.log(err))
-  // }
+ 
 
 
   get() {
@@ -141,7 +80,7 @@ export class ContactUsPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/contactusStatusAndNumber", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body:JSON.stringify(data)

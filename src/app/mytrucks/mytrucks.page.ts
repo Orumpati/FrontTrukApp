@@ -25,6 +25,8 @@ export class MytrucksPage implements OnInit {
   trukveh: any;
   filterbytrukname: any;
   loadwithvehicle: any;
+  truckshift: any;
+  loortr: any;
 
 
   constructor(public loadingController: LoadingController,private router:Router) {
@@ -36,6 +38,7 @@ export class MytrucksPage implements OnInit {
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.get()
+    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   //this.active()
   
   //this.toggles()
@@ -70,7 +73,7 @@ this.completed()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body:JSON.stringify(data)
@@ -117,7 +120,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + Data._id, {
       method: 'PUT',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -139,7 +142,44 @@ loading.dismiss()
         console.log(err)
       })
   }
+  async reactive(id:any){
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    
+    var data = {
+      trukisActive: "Active"
+    }
+    // console.log(data)
 
+
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + id, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result),
+
+          this.products = JSON.parse(result)  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+loading.dismiss()
+        //window.location.reload()  // reloading window
+
+      }
+
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)
+      })
+  }
 //get based on login number
 async toggles() {
   const loading = await this.loadingController.create({
@@ -158,7 +198,7 @@ async toggles() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
     method: 'POST',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -206,7 +246,7 @@ async completed() {
   fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
     method: 'POST',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -214,9 +254,11 @@ async completed() {
   })
     .then(res => res.json())
     .then(result => {
-      console.log(result),
-
-        this.item= result.vehicle
+      console.log(result)
+      var data=result.vehicle.filter((data: { contactSharedNum: any; })=>{
+        return data.contactSharedNum == this.logindata.mobileNo
+      })
+        this.item= data
         this.itemlen =result.TotalVehicles  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
 console.log(this.item)
 loading.dismiss()
@@ -241,7 +283,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/deleteTruk/" + id, {
       method: 'DELETE',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'text/plain'
 
       },
@@ -281,7 +323,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -321,7 +363,7 @@ loading.dismiss()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -357,7 +399,7 @@ var data ={
  fetch("http://localhost:3000/quotes/LoadsForSpecificTruck", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -368,19 +410,7 @@ var data ={
         console.log(result)
         this.loadwithvehicle =result.data
         console.log(this.loadwithvehicle)
-      //  this.gettruckbidata()
-       /* for(let i=0;i<result.data.length;i++){
-          var gg =result.data[i].TruckMarketVehicle
-        }
-        console.log(gg)
-  this. filterbytrukname = gg.filter((data: any) =>{
-    return data.trukvehiclenumber == this.trukveh.trukvehiclenumber
-  })
-  console.log(this.filterbytrukname)*/
-            //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
-  
-  
-        //window.location.reload()  // reloading window
+ 
   
       }
   
@@ -390,22 +420,7 @@ var data ={
       })
 }
 
-/*gettruckbidata(){
-  console.log("working")
- // var truckno = trukvehNumber;
- //this.active()
- this.toggles()
-  var totaltruks =this.item
-  console.log(totaltruks)
-  for(let j=0;j<this.item.length;j++){
-  for(let i=0;i<this.loadwithvehicle.length;i++){
- 
-         if(this.item.vehicle[0].trukvehiclenumber == this.loadwithvehicle[i].TruckMarketVehicle[0].trukvehiclenumber){
-          console.log(this.loadwithvehicle[i])
-         }
-  }
-  }
-}*/
+
 
 
 bidbyId(text:any){
@@ -413,8 +428,21 @@ bidbyId(text:any){
 
   localStorage.setItem("loadDocId",JSON.stringify(text._id))
   localStorage.setItem("truckallBids",JSON.stringify(text.trukvehiclenumber))
-  this.router.navigate(['trukallbids'])
+  //this.router.navigate(['trukallbids'])
   window.location.href='/trukallbids'
 }
 
+looking(){
+  this.truckshift ="trucks"
+    localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+    this.router.navigate(['tab/shipperhome'])
+window.location.reload()
+  }
+  lookingload(){
+  this.truckshift ="loads"
+    localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+    this.router.navigate(['tab/shipperhome'])
+    window.location.reload()
+//this.router.navigate('shipperhome')
+  }
 }

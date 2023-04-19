@@ -12,13 +12,33 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+  <div style="display: flex; margin-top:19px;" align="center">
+
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
+      <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
+        Looking for Truks
+      </label>
+    </div>
+    <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
+      &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
+        Looking for loads
+      </label>
+    </div>
+  
+  </div>
+
+  </ion-card>
+
 <ion-content>
 
   
     
       <ion-list style="margin-left: 10px; margin-right:10px;"> 
         <ion-item style="border-bottom:2px solid black;margin-left: 10px; margin-right:10px;">
-          <ion-label position="floating" >Select Pick up Location</ion-label>
+          <ion-label position="floating" >Select Pick-up Location</ion-label>
   
           
             <ion-select interface="popover" [(ngModel)]="trukpickupLocation">
@@ -98,7 +118,9 @@
       </ion-list>
 
   
-  <h3 >Select Vechile Type For Your load</h3>
+  <h3 style="display: flex;
+  justify-content: center;
+  font-size: 20px;" >Filter by Vehicle Type</h3>
 
   
   <div >
@@ -114,39 +136,39 @@
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('LCV')" >
             <ion-label>LCV</ion-label>
-            <p>1-8 Tonne</p>
+            <p>1-8 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Truk')" >
             <ion-label>Truk</ion-label>
-            <p>1-42Tonne</p>
+            <p>1-42Tonnes</p>
           </ion-segment-button>
         </ion-col>
 
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Hyva')">
             <ion-label>Hyva</ion-label>
-            <p>1-35 Tonne</p>
+            <p>1-35 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Container')" >
             <ion-label>container</ion-label>
-            <p>1-18 Tonne</p>
+            <p>1-18 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Trailer')" >
             <ion-label>Trailer</ion-label>
-            <p>1-100 Tonne</p>
+            <p>1-100 Tonnes</p>
           </ion-segment-button>
         </ion-col>
 
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Tanker')" >
             <ion-label>Tanker</ion-label>
-            <p>1-35 Tonne</p>
+            <p>1-35 Tonnes</p>
           </ion-segment-button>
         </ion-col>
       </ion-segment>
@@ -156,44 +178,31 @@
 <!--</ion-content>
  filter by vehicles form page -->
 <div  *ngIf="itemlen !=0">
-  <!--<ion-card  *ngFor="let text of item">
-    <div style="float: left; margin-left: 1rem;">
-      <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" width="25%"
-        height="25%">
-        <h4  ngDefaultControl>{{text.trukvehiclenumber}}</h4>
-      <h4> {{text.trukcapacity}}Tons {{text.trukname}}</h4>
-    </div>
-
-    <div style="float: right; margin-top: -5rem;">
-      <p>Current Location<b>{{text.trukcurrentLocation}}</b></p>
-      <p>Routes <span style="color: blue; font-weight: bold;">{{text.trukoperatingRoutes.length}}</span><u>Location</u> <ion-icon name="location-outline"
-          color="danger"></ion-icon></p>
-      <h3>Placeholder For Badges</h3>
-    </div>
-    <ion-chip>
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <ion-label>Transpoter</ion-label>
-    </ion-chip>
-
-    <div style="text-align: center">
-      ...............................................................................................</div>
-    <ion-button style="float: right; margin-bottom: 12px;" shape="round" class="attach" id="open-modal"
-      routerLink="/attach-prefferd-newload" (click)="AttachNewLoad(text)">AttachNewLoad</ion-button>
-    <ion-button style="float: left;" shape="round" class="attach" id="open-modal" routerLink="/attach-load"
-      (click)="SendData(text)">ExistingLoad</ion-button>
-
-  </ion-card>-->
+ 
   <div class="card  text-center"  *ngFor="let text of item"  >
     
 
     <!--Card body-->
     <div class="card-body p-0" >
       <!--avatar-->
-      <div style="display: flex;">
-      <a  class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
+      <div style="display: flex; padding-bottom:10px;">
+      <a *ngIf="text.trukname == 'LCV'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto ">
         <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" class="avatar-img img-fluid rounded-circle" alt="">
+      </a>
+      <a *ngIf="text.trukname == 'Tanker'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
+        <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" class="avatar-img img-fluid rounded-circle" alt="">
+      </a>
+      <a *ngIf="text.trukname == 'Hyva'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
+        <img src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg" class="avatar-img img-fluid rounded-circle" alt="">
+      </a>
+      <a *ngIf="text.trukname == 'Truk'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
+        <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" class="avatar-img img-fluid rounded-circle" alt="">
+      </a>
+      <a *ngIf="text.trukname == 'Trailer'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
+        <img src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png" class="avatar-img img-fluid rounded-circle" alt="">
+      </a>
+      <a *ngIf="text.trukname == 'Container'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto " style="padding-bottom:10px;">
+        <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png" class="avatar-img img-fluid rounded-circle" alt="">
       </a>
       <div style="margin-right: 30px;">
       <h5 class="mb-0 ">
@@ -202,19 +211,19 @@
    
     
       <span class="text-muted small d-block mb-2">
-        <ion-chip>
+        <!-- <ion-chip>
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
           <ion-label>Transpoter</ion-label>
-        </ion-chip>
+        </ion-chip> -->
       </span>
       </div>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
           <span class="text-muted small">Current Location</span>
-          <strong>{{text.OriginLocation}}</strong>
+          <strong style="width: 150px;">{{text.OriginLocation}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
           <span class="text-muted small">Vehicle Number</span>
@@ -225,28 +234,13 @@
           <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{text.trukoperatingRoutes.length}} locations
 
 
-            <ul class = "dropdown-menu" role = "menu" style="height: max-height;overflow-y:scroll;">
+            <ul class = "dropdown-menu" role = "menu" style="height: 200px;overflow-y:scroll;">
              <li *ngFor="let route of text.trukoperatingRoutes index as i">&nbsp; &nbsp;&nbsp;&nbsp;<a>{{i+1}}.{{route}}</a></li>
           
               
              
            </ul>
-                  
-<!--<ion-modal id="example-modal" #modal trigger="open-custom-dialog" >
-  <ng-template>
-    <div class="wrapper">
-      <ion-icon style="float: right; font-size:13px; color:black;" name="close-outline" (click)="modal.dismiss()"></ion-icon><br>
-      <h1 style="white-space: nowrap;">Operating Routes</h1>
 
-      <ion-list lines="none"  *ngFor="let route of text.selectedItems index as i">
-        <ion-item button="true" detail="false" style="margin-left: 60px;">
-          <ion-label >{{i+1}}.{{route.item_text}}</ion-label>
-        </ion-item>
-       
-      </ion-list>
-    </div>
-  </ng-template>
-</ion-modal>-->
           </strong>
 
         </li>
@@ -265,7 +259,7 @@
 
 <div *ngIf="itemlen === 0" class="noitem">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYIDHG7JivZlXLJC27oeHti76eHrkkNdq_A&usqp=CAU" />
-  <h1>No truk vehicle!</h1>
+  <h1>No Truks Avaliable!</h1>
 </div>
 
 

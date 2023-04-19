@@ -83,7 +83,7 @@ export class TruckviewbidsPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/"+ this.openedBid._id, {
     method: 'GET',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
   
     }
   })
@@ -113,18 +113,7 @@ export class TruckviewbidsPage implements OnInit {
     console.log(this.driverdetails)
         this.item = final
         console.log(this.item)
-       /* this.filteredbid = this.item.filter((data:any)=>{
-          return data._id == this.openedBid._id
-        })
-        console.log(this.filteredbid)
-   for(let i=0;i<this.filteredbid.length;i++){
-    this.conditions = this.filteredbid[i].isAgentAccepted
-  
-    this.agentconditions = this.filteredbid[i].isShipperAccepted
-    this.onlybid =this.filteredbid[i].BidActivity
-    this.tenprice = this.filteredbid[i].tentativefinalPrice
-   }
-console.log(this.onlybid)*/
+     
         for(let i=0; i<this.item.length;i++){
           console.log(Number(this.item[i].mobileNo))
    if(this.regdata.mobileNo == this.item[i].mobileNo){
@@ -198,7 +187,7 @@ console.log(this.tohideAccBtn)
       fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
         method: 'post',
         headers: {
-          "access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": 'application/json'
         },
         body: JSON.stringify(body),
@@ -259,7 +248,7 @@ console.log(this.tohideAccBtn)
       fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/initialacceptbyshipper", {
         method: 'post',
         headers: {
-          "access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": 'application/json'
         },
         body: JSON.stringify(body),
@@ -272,6 +261,7 @@ console.log(this.tohideAccBtn)
           console.log(data)
           localStorage.setItem('viewBid',JSON.stringify(data))
           this. acceptBidStatus()
+          this.acceptBidS()
           this.navControl.navigateForward('/truckviewbids')
           loading.dismiss()
           this.all()
@@ -296,7 +286,7 @@ console.log(this.tohideAccBtn)
       fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
         method: 'PUT',
         headers: {
-          "access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": 'application/json'
         },
         body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
@@ -317,6 +307,37 @@ console.log(this.tohideAccBtn)
           console.log(err))
   }
 
+  acceptBidS(){
+
+    var data={
+      isActive:"Completed"
+    }
+   // console.log(data)
+
+    
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.openedBid._id, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+
+        //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+        //  this.all()
+        //window.location.reload()  // reloading window
+
+      }
+
+      ).catch(err =>
+        console.log(err))
+}
 
   
   async initialBid(){
@@ -348,7 +369,7 @@ console.log(this.tohideAccBtn)
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
@@ -408,7 +429,7 @@ console.log(this.item.mobileNo)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -419,6 +440,7 @@ console.log(this.item.mobileNo)
       console.log(result)
       loading.dismiss()
       this. acceptBidStatus()
+      this.acceptBidS()
       this.all()
 //window.location.reload()
     }

@@ -224,7 +224,7 @@ export class AddTruckPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehiclepost", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
@@ -246,7 +246,7 @@ export class AddTruckPage implements OnInit {
                 console.log('Confirm Okay');
                 //you can write your code or redirection 
                 // sample redirection code 
-                window.location.href = '/your-truck-posted';
+                window.location.href = '/tab/mytrucks';
 
               }
             }

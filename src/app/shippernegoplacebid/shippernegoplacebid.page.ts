@@ -95,7 +95,7 @@ ionViewDidEnter(){
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/showAgentSideBidConversation", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body:JSON.stringify(query)
@@ -144,23 +144,6 @@ ionViewDidEnter(){
   }
   
 
-
-
-
- //send mes
- /* sendMessage() {
-  this.BidActivity.push({
-    price: 12,
-    userNo: 123456,
-    time: this.date,
-    userType:"Shipper"
-  });
-  this.newMsg = '';
-  setTimeout(() => {
-    this.content.scrollToBottom(200);
-  })
-} */
-
   async acceptBid(){
     confirm("Are You Sure,To Accept")
   const loading = await this.loadingController.create({
@@ -184,7 +167,7 @@ console.log(body)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -231,7 +214,7 @@ console.log(body)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -276,7 +259,7 @@ console.log(body)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),
@@ -325,7 +308,7 @@ console.log(this.item.mobileNo)
   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
-      "access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": 'application/json'
     },
     body: JSON.stringify(body),

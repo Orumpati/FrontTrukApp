@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Refreshing..">
+    <ion-refresher-content  refreshingSpinner="circles" refreshingText="Refreshing..">
 
     </ion-refresher-content>
   </ion-refresher>
@@ -23,7 +23,7 @@
     <ion-card-content>
       <p style="font-size: larger; font-weight: bolder; ">{{objects.OriginLocation}} -- {{objects.DestinationLocation}}
       </p>
-      <p style="font-size: large; font-weight: bold; "> {{objects.data}} -- {{objects.Quantity}} Tons</p>
+      <p style="font-size: large; font-weight: bold; "> {{objects.data}} -- {{objects.Quantity}} </p>
     </ion-card-content>
   </ion-card>
 
@@ -31,10 +31,10 @@
 
 <ion-grid>
   <ion-row *ngFor="let text of finalss">
-     <ion-col size="8" offset="3" *ngIf="text.userType == regdata.role">
+     <ion-col size="8" offset="3" *ngIf="text.userNo == regdata.mobileNo">
 
     <div [hidden]="text.initialAccept === 'Accepted'"  class="my-message" >
-      <b>{{text.userType}}::</b><br>
+      <b  style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
       <span>₹ {{text.price}}/-</span>
       <!--<b>PHno -{{text.userNo}}</b>-->
       <div class="time" text-right><br>
@@ -47,9 +47,9 @@
 
   <!-- <ion-row *ngFor="let text of finalss"> -->
 
-    <ion-col size="8" *ngIf="text.userType!== regdata.role" class="message other-message">
+    <ion-col size="8" *ngIf="text.userNo!== regdata.mobileNo" class="message other-message">
 
-      <b text-left>{{text.userType}}</b><br>
+      <b text-left style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
       <b text-left>₹ {{text.price}}/-</b>
 
        <div class="time" text-right><br>

@@ -63,13 +63,19 @@ option = {
     this.get()
     this.gettrucks()
   this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
-    /*this.http.get('http://localhost:3000/images').subscribe(images => {
-      console.log(images)
-      this.bannerImages = images;
-    });*/
 
+
+    this. databaseimgs()    
+  }
+
+  async databaseimgs(){
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
     fetch("https://amused-crow-cowboy-hat.cyclic.app/truckinfo/gethome",{
-      //fetch("https://api.emptra.com/aadhaarVerification/requestOtp", {
+      
         
         method:'get',
         headers:{
@@ -88,17 +94,19 @@ option = {
         this.adsarray=result.data[i]
         console.log(this.adsarray)
        }
-      
+      loading.dismiss()
           })
-        
   }
-
   async get() {
-
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
     })
@@ -128,10 +136,8 @@ option = {
   })
   this.closedbids1= closebids1.length
          console.log(this.item)
-      
-      }
-
-      ).catch(err =>{
+         loading.dismiss()
+      }).catch(err =>{
         
         console.log(err)})
   }
@@ -152,7 +158,7 @@ window.location.reload()
     fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/allVehicles/" +this.logindata.mobileNo, {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
     })
@@ -182,21 +188,6 @@ window.location.reload()
   }
 
 
-  /*bannerImages = [
-    {
-      imgurl: 'https://th.bing.com/th?id=OIP.mDbUajyLNzxCJkZJTw-ysgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2'
-    }, {
-      imgurl: 'https://th.bing.com/th?id=OIP.mDbUajyLNzxCJkZJTw-ysgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2'
-    }, {
-      imgurl: 'https://th.bing.com/th?id=OIP.mDbUajyLNzxCJkZJTw-ysgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2'
-    },
-    {
-      imgurl: 'https://th.bing.com/th?id=OIP.mDbUajyLNzxCJkZJTw-ysgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2'
-    },
-    {
-      imgurl: 'https://th.bing.com/th?id=OIP.mDbUajyLNzxCJkZJTw-ysgHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2'
-    }
-  ];*/
   autorefresh(event:any){
     
     setTimeout(() => {

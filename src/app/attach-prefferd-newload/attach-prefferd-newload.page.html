@@ -18,7 +18,7 @@
    <ion-accordion-group >
     <ion-accordion value="four" class="ion-padding">
       <ion-item slot="header" color="light" class="vehicle">
-        <ion-label style="font-size: larger;">Your Preferred Vechile</ion-label>
+        <ion-label style="font-size: larger;">It's Your Preferred Vechile</ion-label>
       </ion-item>
       
       <div  slot="content">
@@ -70,11 +70,11 @@
   
           <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
             <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
-            <span style="font-size: 18px;">PickUp Location</span>
+            <span style="font-size: 18px;">Pick-Up Location</span>
             
       
              <div class="form-group">
-               <ion-input type="text" appCapitalize class="form-control" placeholder="Pick Up Location"
+               <ion-input type="text" appCapitalize class="form-control" placeholder="Pick-Up Location"
                  [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
                  (ionClear)="ClearAutocomplete()"></ion-input>
              </div>
@@ -83,18 +83,18 @@
              <!--Pickup pincode-->
      
              <div class="form-group" style="display: flex;">
-               <ion-input placeholder="Pickup Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+               <ion-input placeholder="Pick-Up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
      
              </div>
              
              <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
              <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
-             <span style="color: black;font-weight:bolder;font-size:17;">{{pickupDis}}</span>
+             <span style="color: black;font-weight:bolder;font-size:17px;">{{pickupDis}}</span>
             </ion-card>
               <!--select destination Location-->
               <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
                <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
-               <span style="font-size: 18px;">DropUp Location</span>
+               <span style="font-size: 18px;">Drop Location</span>
                
               <div class="form-group">
                <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
@@ -124,7 +124,7 @@
           <!--Pickup State-->
   
     
-            <ion-input type="hidden"  placeholder="Pickup State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
+            <ion-input type="hidden"  placeholder="Pick-Up State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
     
   
      
@@ -132,7 +132,7 @@
           <!--Dropup State-->
   
         
-            <ion-input type="hidden" placeholder="Dropup State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
+            <ion-input type="hidden" placeholder="Drop State" disabled="disabled" [(ngModel)]="dropup"></ion-input>
         
   
           
@@ -181,7 +181,7 @@
   
           <div class="form-group" style="display: flex; " >
             <div style="width:150px; margin-right:20px;">
-            <ion-input type="  text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
+            <ion-input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
             
             </ion-input>
   </div>
@@ -189,7 +189,7 @@
             box-shadow: 2px 2px 2px lightgray;">
               <span >
                 <ion-select placeholder="Type" [(ngModel)]="QuantityType">
-               <ion-select-option value="Tonns">Tonns</ion-select-option>
+               <ion-select-option value="Tonns">Tonnes</ion-select-option>
                <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
                </ion-select>
              </span>
@@ -336,7 +336,7 @@
             <!--Expected Bill-->
   
             <div class="form-group">
-              <ion-input type="  text" class="form-control" placeholder="Expected Price"
+              <ion-input type="  text" class="form-control" placeholder="Expected Price(INR ₹)"
                 [(ngModel)]="expectedPrice"></ion-input>
             </div>
   
@@ -349,7 +349,7 @@
         <div class="form-group">
           <div class="form-control">
             <ion-label></ion-label>
-            <ion-select placeholder="Type of Payment to Lorry Owner" [(ngModel)]="typeOfPay">
+            <ion-select placeholder="Mode of Payment to Lorry Owner" [(ngModel)]="typeOfPay">
               <ion-select-option value="Offline">Offline/Cash</ion-select-option>
               <!--<ion-select-option value="Online">Online</ion-select-option>-->
 
@@ -367,11 +367,11 @@
             <ion-radio-group [(ngModel)]="paymentTypeForOffline" >
              
               <div style="float: left;display: flex;font-size: large;">
-              <ion-radio value="Advance">Advance</ion-radio>
+              <ion-radio value="Advance">Advance</ion-radio>&nbsp;
               <ion-label >Advance</ion-label>
             </div>
               <div style="display: inline; float: right;display: flex;font-size: large;">
-              <ion-radio value="Full Payment"></ion-radio>
+              <ion-radio value="Full Payment"></ion-radio>&nbsp;
               <ion-label>Full Payment</ion-label>
             </div>
             </ion-radio-group>

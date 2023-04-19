@@ -10,20 +10,47 @@ export class AllNotificationsPage implements OnInit {
   allNotifications: any;
 date:any;
   logindata: any;
+  logo: any;
+  allNotificatio =0
   constructor( private location:Location,private router:Router) {
-    
+
    }
 
   ngOnInit() {
+ 
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
-    var Notifications = localStorage.getItem('InappNotifictions') 
-    if(Notifications == ''||Notifications == null||Notifications == undefined ){
-      alert('No Notifications')
-    }else{
-      this.allNotifications = Notifications
-    }
+    this.allNotifications = localStorage.getItem('InappNotifictions') 
+if(this.allNotifications){
+  this.allNotificatio =1
+}else{
+this.allNotificatio =0
+}
     this.date = new Date().getTime()
+    this.dackendImages()
 
+  }
+
+  dackendImages(){
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/truckinfo/gethome",{
+        
+    method:'get',
+    headers:{
+              "Access-Control-Allow-Origin": "*",
+          
+            },
+  
+    }).then(res => res.json())
+    
+    .then(
+      async result =>{
+      
+      
+   console.log(result)
+   for(let i=0;i<result.data.length;i++){
+    this.logo=result.data[i].trucklogo
+   }
+  console.log(this.logo)
+      })
   }
 
   back(){

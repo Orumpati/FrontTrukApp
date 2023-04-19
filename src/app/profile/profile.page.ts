@@ -247,22 +247,23 @@ loading.dismiss()
               .then(
                 async result =>{
              console.log(result)
-             if(result.result.status == 400){
-              alert('Please enable API request from Your GST profile')
+             if(result.code == 100){
+              localStorage.setItem("gst",JSON.stringify(this.gstinNumber))
+              localStorage.setItem("gstusername",JSON.stringify(this.userName))
+              localStorage.setItem("AppKey",JSON.stringify(result.result.response.appKey))
+              loading.dismiss()
+                       
+     const ele =await this.modal.getTop()
+     if(ele){
+       ele.dismiss();
+      this.router.navigate(['verifygstotp'])
+       return;
+     }
+           
              }else{
              
-            
-               localStorage.setItem("gst",JSON.stringify(this.gstinNumber))
-               localStorage.setItem("gstusername",JSON.stringify(this.userName))
-               localStorage.setItem("AppKey",JSON.stringify(result.result.response.appKey))
-               loading.dismiss()
-                        
-      const ele =await this.modal.getTop()
-      if(ele){
-        ele.dismiss();
-       this.router.navigate(['verifygstotp'])
-        return;
-      }
+              alert('Please enable API request from Your GST profile')
+     
     }  
                 }
                 ).catch(
@@ -282,7 +283,11 @@ loading.dismiss()
 
 
   async getaddressdetails(){
- 
+    const loading = await this.loadingController.create({
+      message: 'Verifying...',
+      spinner: 'crescent'
+    });
+    await loading.present();
     fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/" + this.logindata.Authentication, {
       
       method:'get',
@@ -304,7 +309,7 @@ loading.dismiss()
          this.routes=this.addressdetail[i]
          console.log(this.routes)
          this.passdata =this.routes//store pbject into localstorage
-
+loading.dismiss()
          console.log(this.passdata.routes)
          
          }
@@ -312,7 +317,7 @@ loading.dismiss()
         }
         ).catch(
             error =>{
-              
+              loading.dismiss()
               //alert('unable to get address details');
              console.log(error)
             });

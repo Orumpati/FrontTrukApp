@@ -9,10 +9,29 @@
       <ion-img src="assets/trueTruk.png"></ion-img>
      </div>
      </div>
-    <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
+    <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-right: 5px;" slot="end" routerLink="/all-notifications"></ion-icon>
 
   </ion-toolbar>
 </ion-header>
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+  <div style="display: flex; margin-top:19px;" align="center">
+
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
+      <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
+        Looking for Truks
+      </label>
+    </div>
+    <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
+      &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
+        Looking for loads
+      </label>
+    </div>
+  
+  </div>
+
+  </ion-card>
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
@@ -20,53 +39,10 @@
 
     </ion-refresher-content>
   </ion-refresher>
-  <!-- <ion-toolbar class="new-background-color"> -->
 
-  <!-- <ion-button  class="homeButtons" >Load listing</ion-button>
-  <ion-button class="secondButton" style="margin-left: 170px;">My Bids</ion-button> -->
-
-
-  <!-- <ion-list>
-    <div class="ion-margin marginBottom" (ionChange)="segmentChanged($event)">
-      <ion-segment mode="ios" [value]="segmentValue">
-        <ion-segment-button value="1">
-          <ion-label>Load Listing</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="2">
-          <ion-label>My Bids</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-    <app-loadlisting *ngIf="segmentValue =='1'"></app-loadlisting>
-    <app-mybids *ngIf="segmentValue =='2'"></app-mybids>
-  </ion-list> -->
-
-  <!-- </ion-toolbar> -->
 
   <div class="container">
-    <!--<br>
-    <img src="https://img.freepik.com/free-vector/hand-drawn-transport-truck_23-2149145940.jpg"
-      style="align-items: center; text-align: center;">
-
-    <br>-->
-
-
-  <!-- <ion-card-subtitle style="font-size:larger; font-weight: bold; float: left;">Loads:</ion-card-subtitle> -->
-    
-        
-          
-          <!--<ion-segment [scrollable]="true" value="home">
-            <ion-segment-button value="home" (click)="toggle('Active')">
-              <ion-label>Active</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="heart" (click)="toggles('Deactive')">
-              <ion-label>Deactive</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="pin" (click)="toggless('Completed')">
-              <ion-label>Completed</ion-label>
-            </ion-segment-button>
-      
-          </ion-segment>-->
+ 
       <br>
       <ion-row>
           <ion-segment value="Active" [scrollable]="true">
@@ -78,12 +54,14 @@
             
             <ion-col>
             <ion-segment-button value="Deactive" (click)="toggles('Deactive')">
-              <ion-label>Deactive</ion-label>
+              <ion-label>Deactivated</ion-label>
             </ion-segment-button>
             </ion-col>
-            <!--<ion-segment-button value="heat" (click)="togglesss('In-Progress')">
+            <!-- <ion-col>
+            <ion-segment-button value="heat" (click)="inprogress()">
               <ion-label>In-Progress</ion-label>
-            </ion-segment-button>-->
+            </ion-segment-button>
+            </ion-col> -->
             <ion-col>
             <ion-segment-button value="Completed" (click)="toggless('Completed')">
               <ion-label>Completed</ion-label>
@@ -108,19 +86,18 @@
         
             <div class="card" *ngFor="let text of item.slice().reverse() | filter:searchtext" >
                 <div class="card-body">
-                  <div type="button" class="securepayment"  *ngIf="text.typeOfPay == 'Online'"  ><br>
-                    &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:green;" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                  <div type="button" class="securepayment"  *ngIf="text.typeOfPay == 'Online'"  >
+                  
                     <div>
-                    <span style="color: green;">Online Payment</span><br>
-                    <span style="color: green;">Truk App Assured</span>
+                    <span style="color: green;">Online Payment</span>
                     </div>
                   </div>
 
-                  <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'"  ><br>
-                    &nbsp;&nbsp; <i class="fa fa-shield" style="font-size: 25px; color:rgb(248, 42, 24);" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                  <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'" style="width:95px;"  >
+                    
                     <div>
-                    <span style="color: rgb(248, 42, 24);">Offline Payment</span><br>
-                    <span style="color: rgb(248, 42, 24);">Hand Cash</span>
+                    <span style="color: rgb(248, 42, 24);">Cash Payment</span>
+                
                     </div>
                   </div>
                 
@@ -129,15 +106,16 @@
                         <a class="text-muted dropdown-toggle font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
                         <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" >Edit</a><a class="dropdown-item" >Action</a><a class="dropdown-item" >Remove</a></div>
                     </div>-->
-                    <div class="dropdown" style="float: right;top:-37px;" *ngIf="text.isActive === 'Active'" >
+                    <div class="dropdown" style="float: right;top:-37px;"  >
                       <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         D
                       </button>-->
-                      <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></i>
+                      <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" [hidden]="text.isActive === 'Completed'"></i>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <!--<a class="dropdown-item" routerLink="/edit-page" (click)="sendData(text)">Edit</a>-->
-                        <a class="dropdown-item" (click)="Isactive(text)" >Deactive</a>
-                        <a class="dropdown-item" (click)="loadDetails(text)" >More Details</a>
+                        <a class="dropdown-item"  (click)="repost(text)" *ngIf="text.isActive === 'Deactive'">Reactivate</a>
+                        <a class="dropdown-item"  (click)="delete(text)" *ngIf="text.isActive === 'Deactive'">Delete</a>
+                        <a class="dropdown-item" (click)="Isactive(text)" *ngIf="text.isActive === 'Active'">Deactive</a>
+                        <a class="dropdown-item" (click)="loadDetails(text)" *ngIf="text.isActive === 'Active'">More Details</a>
                       </div>
                     </div>
 
@@ -145,27 +123,31 @@
                         <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" />
                           
                           &nbsp;&nbsp;<span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span><span *ngIf="text.isActive === 'Deactive'"  style="color: rgb(245, 26, 26); font-weight:bolder;">{{text.isActive}}</span>
-                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span><br>
+                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span>
+                          <!-- <span *ngIf="text.shipperAccept === true && text.shareContact == false"  style="color: orange; font-weight:bolder; font-size:14px;">In Progress</span> -->
+                          <br>
                       
                         </div>
                         <div class="flex-1 ms-3" style="margin-top: -25px;">
-                            <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;">{{text.OriginLocation}}--{{text.DestinationLocation}}</a></h5>
+                            <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.OriginLocation}}</a></span><br>
+                            <span class="font-size-16 mb-1" style=" font-weight:bolder;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{text.DestinationLocation}}</a></span><br>
                             <span class="badge badge-soft-success mb-0"> PickUp Date&Time {{text.date}}</span>
                         </div>
                     </div>
                     <div class="mt-1 pt-1">
                         <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                         <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
-                        <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
-                        <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
+                        <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹<span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
+                        <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
             
                     </div>
                     <div style="display:flex; "  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" >
                     
                         <button type="button" class="viewbidbtn" (click)="bidById(text)" >
                         
-                          <span style="font-weight: bolder;"> view Bids</span>
-                          <span class="badge" [hidden]="text.isActive === 'Completed'">{{text.bids.length}}</span>
+                          <span style="font-weight: bolder;" > View Bids</span>
+                          <!-- <span style="font-weight: bolder;" *ngIf="text.shipperAccept == true" [hidden]="text.shareContact == true"> Share Contact</span> -->
+                          <span class="badge" [hidden]="text.isActive === 'Completed'||text.shipperAccept == true">{{text.bids.length}}</span>
                           </button>&nbsp;&nbsp;&nbsp;
 
                           <button type="button" class="viewbidbt"  (click)="vehdetails(text)" *ngIf="text.shareContact == true">
@@ -278,7 +260,7 @@
         style="height: 70px; width: 70px;" class="img">
     
     <br>
-    <h3 align="center">Post load to book live loads and use directory</h3>
+    <h4 align="center" >Post your load to get suitable bids</h4>
     <br>
   </div>
   </div>

@@ -11,6 +11,26 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+  <div style="display: flex; margin-top:19px;" align="center">
+
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
+      <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
+        Looking for Truks
+      </label>
+    </div>
+    <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
+      &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
+        Looking for loads
+      </label>
+    </div>
+  
+  </div>
+
+  </ion-card>
+
 
 
   <br>
@@ -21,18 +41,18 @@
      
         <ion-col>
           <ion-segment-button value="home" (click)="toggles()">
-            <ion-label>Active</ion-label>
+            <ion-label style="font-size: 15px;">Active</ion-label>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button value="star" (click)="deactive()">
-            <ion-label>Deactive</ion-label>
+            <ion-label style="font-size: 15px;">Deactive</ion-label>
           </ion-segment-button>
         </ion-col>
    
         <ion-col>
           <ion-segment-button value="call" (click)="completedtog()">
-            <ion-label>Completed</ion-label>
+            <ion-label style="font-size: 15px;">Completed</ion-label>
           </ion-segment-button>
         </ion-col>
       </ion-segment>
@@ -48,17 +68,36 @@
             <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               D
             </button>-->
-            <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></i>
+            <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" ></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <!-- <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a> -->
               <a class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
+              <a class="dropdown-item" (click)="reactive(text._id)">Reactivate</a>
               <a class="dropdown-item"  (click)="moredetails(text)" routerLink="/trukmore-details" >More Details</a>
             </div>
           </div>
      
 
           <div class="d-flex align-items-center">
-              <div><img src="https://media.gettyimages.com/photos/empty-dump-truck-picture-id505895442" alt="" class="avatar-md rounded-circle img-thumbnail" />
+              <div>
+                <a *ngIf="text.trukname == 'LCV'" >
+                  <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
+                <a *ngIf="text.trukname == 'Tanker'" >
+                  <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
+                <a *ngIf="text.trukname == 'Hyva'" >
+                  <img src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
+                <a *ngIf="text.trukname == 'Truk'" >
+                  <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
+                <a *ngIf="text.trukname == 'Trailer'" >
+                  <img src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
+                <a *ngIf="text.trukname == 'Container'" >
+                  <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+                </a>
                 <br>
               &nbsp;&nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span><span style="color: rgb(27, 237, 62); font-weight:bolder;" *ngIf="text.trukisActive == 'Completed'">{{text.trukisActive}}</span>
               </div>
@@ -106,7 +145,7 @@
 </ion-content>
 
 <div class="center">
-  <ion-button routerLink="/add-truck" class="bb" expand="full" >Add Trucks</ion-button>
+  <ion-button routerLink="/add-truck" class="bb" expand="full" >Add Truk</ion-button>
 
 
 </div> 

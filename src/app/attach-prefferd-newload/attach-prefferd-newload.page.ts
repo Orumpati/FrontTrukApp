@@ -280,7 +280,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
@@ -354,7 +354,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
       method: 'post',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(data),

@@ -90,11 +90,13 @@ ion-segment{
   //--background: #F58E26;
   border-radius: 20px;
 }
-
+ion-label{
+  font-size: 10px;
+}
 
 ///////////
  .securepayment{
-  width: 225px;
+  width: 90px;
   height: min-content;
   float:inline-start;
   display: flex;
@@ -176,7 +178,7 @@ body{margin-top:20px;
   }
 
   .offlinepayment{
-    width: 125px;
+    width: 90px;
     height: min-content;
     float:inline-start;
     display: flex;

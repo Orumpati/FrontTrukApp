@@ -29,6 +29,9 @@ export class Tab2Page {
   tabValue: any;
   logindata: any;
   isactive: any;
+  items: any;
+  truckshift: any;
+  loortr: any;
   
 
 
@@ -44,6 +47,7 @@ export class Tab2Page {
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.post()
+    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   }
   ionViewDidEnter(){
     this.post()
@@ -54,11 +58,7 @@ export class Tab2Page {
     this.post()
     //console.log(isActive)
    }
-   /*togglesss(isActive:any){
-    this.isactive=isActive
-    this.inTransitget()
-    console.log(isActive)
-   }*/
+
    toggless(isActive:any){
     this.isactive=isActive
     this.completedGet()
@@ -73,7 +73,7 @@ export class Tab2Page {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadMarket", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
@@ -89,15 +89,17 @@ export class Tab2Page {
         console.log(err))
   }
 
-  /*inTransitget(){
+  AcceptedbyShipper(){
     var body={
-          mobileNo:9876543234,
-          isActive:"In-Progress"
+      mobileNo:this.logindata.mobileNo,
+     // isShipperAccepted:true,
+      //isAgentAccepted:false,
+      shareContact:false
         }
-        fetch("http://localhost:3000/quotes/LoadMarket", {
+        fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/transporteInprogress", {
           method: 'POST',
           headers: {
-            "access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": 'application/json'
           },
           body: JSON.stringify(body),
@@ -105,14 +107,18 @@ export class Tab2Page {
           .then(response => response.json())
           .then(result => {
             console.log(result),
-              this.item = result.item
+              this.items = result.item
+          
+              this.item =this.items.filter((data: { shipperAccept: any; }) =>{
+                return data.shipperAccept == true
+              })
             console.log(this.item)
           }
     
           ).catch(err =>
             console.log(err))
     
-      }*/
+      }
    async completedGet(){
     const loading = await this.loadingController.create({
       message: 'Verifying...',
@@ -126,15 +132,18 @@ export class Tab2Page {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadMarket", {
       method: 'POST',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": 'application/json'
       },
       body: JSON.stringify(body),
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result),
-          this.item = result.item
+        console.log(result)
+        var data=result.item.filter((data: { contactSharedNum: any; })=>{
+          return data.contactSharedNum == this.logindata.mobileNo
+        })
+          this.item = data
         console.log(this.item)
         loading.dismiss()
       }
@@ -155,7 +164,7 @@ export class Tab2Page {
     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
       method: 'GET',
       headers: {
-        "access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "*",
 
       },
     })
@@ -177,8 +186,7 @@ export class Tab2Page {
    loadById(load: any) {
   //   console.log(load)
     localStorage.setItem("loadBy", JSON.stringify(load));
-    this.router.navigate(['place-bid'], 
-        { state: { profile: load._id }});
+  
     this.router.navigate(["place-bid"])
     
    }
@@ -188,5 +196,17 @@ export class Tab2Page {
     localStorage.removeItem('regdata')
     window.location.href='/loginotp'
   }
+
+  looking(){
+    this.truckshift ="trucks"
+      localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+      window.location.href='/tab/shipperhome'
+    }
+    lookingload(){
+    this.truckshift ="loads"
+      localStorage.setItem('lookingfor',JSON.stringify(this.truckshift))
+      window.location.href='/tab/shipperhome'
+  //this.router.navigate('shipperhome')
+    }
  
 }

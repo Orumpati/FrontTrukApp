@@ -215,7 +215,7 @@ export class SignupPage implements OnInit {
 
     // Combine the user's name and referral code
     this.referralCode = data.firstName.toUpperCase().slice(0, 2)+data.lastName.toUpperCase().slice(0, 2) + String(data.mobileNo).slice(0, 4);
-alert(this.referralCode)
+//alert(this.referralCode)
 
     const loading = await this.loadingController.create({
       message: 'Loading...',
@@ -303,7 +303,7 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
           console.log(result)
           this.sai =result.ref
           this.docId=result._id
-  
+           
    
 
           if(result.status == 'success'){
