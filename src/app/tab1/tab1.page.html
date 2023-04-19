@@ -57,11 +57,11 @@
               <ion-label>Deactivated</ion-label>
             </ion-segment-button>
             </ion-col>
-            <!-- <ion-col>
+             <ion-col>
             <ion-segment-button value="heat" (click)="inprogress()">
               <ion-label>In-Progress</ion-label>
             </ion-segment-button>
-            </ion-col> -->
+            </ion-col> 
             <ion-col>
             <ion-segment-button value="Completed" (click)="toggless('Completed')">
               <ion-label>Completed</ion-label>
@@ -141,9 +141,9 @@
                         <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
             
                     </div>
-                    <div style="display:flex; "  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" >
+                    <div style="display:flex; " >
                     
-                        <button type="button" class="viewbidbtn" (click)="bidById(text)" >
+                        <button type="button" class="viewbidbtn" (click)="bidById(text)"  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" [disabled]="text.shipperAccept == true">
                         
                           <span style="font-weight: bolder;" > View Bids</span>
                           <!-- <span style="font-weight: bolder;" *ngIf="text.shipperAccept == true" [hidden]="text.shareContact == true"> Share Contact</span> -->
@@ -154,6 +154,10 @@
                             <span style="font-weight: bolder;"> View Contact</span>
                             
                             </button>
+                            <button type="button" class="viewbidbt"  (click)="bidById(text)" *ngIf="text.shareContact == false && text.shipperAccept == true">
+                              <span style="font-weight: bolder;"> View Bids</span>
+                              
+                              </button>
                            
                     </div>
                 </div>

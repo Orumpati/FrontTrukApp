@@ -32,6 +32,8 @@ export class Tab2Page {
   items: any;
   truckshift: any;
   loortr: any;
+  itemActive: any;
+  itemShare: any;
   
 
 
@@ -92,9 +94,7 @@ export class Tab2Page {
   AcceptedbyShipper(){
     var body={
       mobileNo:this.logindata.mobileNo,
-     // isShipperAccepted:true,
-      //isAgentAccepted:false,
-      shareContact:false
+     
         }
         fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/transporteInprogress", {
           method: 'POST',
@@ -109,8 +109,15 @@ export class Tab2Page {
             console.log(result),
               this.items = result.item
           
-              this.item =this.items.filter((data: { shipperAccept: any; }) =>{
-                return data.shipperAccept == true
+              this.itemActive =this.items.filter((data: { isActive: any; }) =>{
+                return data.isActive == 'Active'
+              })
+
+              this.itemShare =this.itemActive.filter((data: { shareContact: any; }) =>{
+                return data.shareContact == 'false'
+              })
+              this.item =this.itemShare.filter((data: { contactSharedNum: any; }) =>{
+                return data.contactSharedNum == this.logindata.mobileNo
               })
             console.log(this.item)
           }

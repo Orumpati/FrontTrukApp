@@ -226,6 +226,7 @@ export class ViewBidPage implements OnInit {
         "TohideAcceptBtn":false,
         "BidStatus":"closed",
         "shipperAccept":true,
+        "contactSharedNum":this.regdata.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
          Number:this.bidnumber, //transporte

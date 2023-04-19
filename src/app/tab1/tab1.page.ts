@@ -51,6 +51,8 @@ body={
   items: any;
   loortr: any;
   truckshift: any;
+  itemActive: any;
+  itemShare: any;
   constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
 
   
@@ -263,8 +265,7 @@ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" 
   console.log(this.isactive)
   var body={
     Number: this.logindata.mobileNo, 
-   // shipperAccept:true,
-    shareContact:false
+  
   }
 fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findLoadsInProgress" , {
 method: 'POST',
@@ -278,9 +279,19 @@ body: JSON.stringify(body),
 .then(result => {
   console.log(result),
     this.items = result.data
-    this.item = this.items.filter((data: { shipperAccept: boolean; }) =>{
-      return data.shipperAccept == true
+    this.itemActive = this.items.filter((data: { isActive: any; }) =>{
+      return data.isActive == 'Active'
+
     })
+    this.item = this.itemActive.filter((data: { shareContact: any; }) =>{
+      return data.shareContact == false
+      
+    })
+    // this.item = this.itemShare.filter((data: { contactSharedNum: any; }) =>{
+    //   return data.contactSharedNum == this.logindata.mobileNo
+      
+    // })
+
    console.log(this.item)
    loading.dismiss()
 }

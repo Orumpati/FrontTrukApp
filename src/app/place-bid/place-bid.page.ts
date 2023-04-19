@@ -226,6 +226,8 @@ window.location.href='/profile'
     "initialAccept" :"Accepted",
     "isAgentAccepted":true,
     "TohideAcceptBtn":true,
+    "shipperAccept":true, //for inprogress
+    "contactSharedNum":this.regdata.mobileNo,//for inprogress
     Number:this.objects.Number,//for notification who posted the load(Shipper)
     "Name":this.regdata.firstName+this.regdata.lastName,//for notification
     "mess":"Accepted your Bid for amount"
@@ -408,6 +410,8 @@ window.location.href='/profile'
     "mobileNo":this.regdata.mobileNo,
     "isAgentAccepted":true,
     "TohideAcceptBtn":true,
+    "shipperAccept":true,//for inprogress
+    "contactSharedNum":this.regdata.mobileNo,//for inprogress
     Number:this.objects.Number, // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.item.tentativefinalPrice, // for send notifi
