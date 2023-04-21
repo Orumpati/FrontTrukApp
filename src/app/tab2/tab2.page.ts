@@ -110,12 +110,13 @@ export class Tab2Page {
               this.items = result.item
           
               this.itemActive =this.items.filter((data: { isActive: any; }) =>{
-                return data.isActive == 'Active'
+                return data.isActive == 'inprogress'
               })
-
+console.log(this.itemActive)
               this.itemShare =this.itemActive.filter((data: { shareContact: any; }) =>{
-                return data.shareContact == 'false'
+                return data.shareContact == false
               })
+              console.log(this.itemShare)
               this.item =this.itemShare.filter((data: { contactSharedNum: any; }) =>{
                 return data.contactSharedNum == this.logindata.mobileNo
               })

@@ -301,11 +301,7 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
             .then(
               async result =>{
           console.log(result)
-          this.sai =result.ref
-          this.docId=result._id
-           
-   
-
+        
           if(result.status == 'success'){
             this.finals ={
   
@@ -321,8 +317,8 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
                referalCode:this.referralCode,
                signupReferalCode:data.signupReferalCode,
                SignupDate:this.OrderTime +''+this.currenttime,
-               TotalCoins:100,
-               PermanetCoins:100
+               //TotalCoins:100,
+               //PermanetCoins:100
             }
 
             fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signup", {
@@ -341,8 +337,8 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
                 if(result.status == "success"){
                   loading.dismiss();
                   localStorage.setItem('Number',this.final.mobileNo)
-                  this.referedusersigned(data.firstName,data.lastName,data.mobileNo,this.docId)
-                  this.addcoinstoRefered(data.signupReferalCode)
+                 // this.referedusersigned(data.firstName,data.lastName,data.mobileNo,this.docId)
+                  //this.addcoinstoRefered(data.signupReferalCode)
                   alert('Your account is registered')
                  
                   window.location.href='/loginotp'

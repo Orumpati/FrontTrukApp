@@ -17,10 +17,10 @@
       </ion-toolbar>
   
     </ion-header>
-    <ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+    <ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.userRole == 'Driver'">
       <div style="display: flex; margin-top:19px;" align="center">
     
-        <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+        <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
           <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
           <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
             Looking for Truks
@@ -116,10 +116,11 @@
                       <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
                       <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
                   
-                  <div align="center" [hidden]="text.isActive == 'Completed' || text.shipperAccept == true">
+                  <div align="center" [hidden]="text.isActive == 'Completed'">
                   
                       <button type="button" class="viewbidbtn" (click)="loadById(text)">
-                        <span> Place Bid</span>
+                        <span [hidden]="text.isActive == 'inprogress'"> Place Bid</span>
+                        <span *ngIf="text.isActive == 'inprogress'"> Place Bid</span>
                         
                         </button>
                        
@@ -128,11 +129,8 @@
 
                      
                   <div align="center">
-                    <button type="button" class="viewbidbtn" *ngIf="text.isActive == 'Active' && text.shipperAccept == true" [disabled]="text.isActive == 'Active' && text.shipperAccept == true">
-                      <span>Bid is closed</span>
-                      
-                      </button>
-                  
+                 
+                 
                     <button type="button" class="viewbidbtn" *ngIf="text.isActive == 'Completed'" (click)="loadById(text)">
                       <span> View Contact</span>
                       

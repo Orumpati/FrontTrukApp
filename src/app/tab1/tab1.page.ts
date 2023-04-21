@@ -53,6 +53,7 @@ body={
   truckshift: any;
   itemActive: any;
   itemShare: any;
+  itemshi: any;
   constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
 
   
@@ -279,10 +280,15 @@ body: JSON.stringify(body),
 .then(result => {
   console.log(result),
     this.items = result.data
-    this.itemActive = this.items.filter((data: { isActive: any; }) =>{
-      return data.isActive == 'Active'
+    this.itemshi = this.items.filter((data: { shipperAccept: any; }) =>{
+      return data.shipperAccept == true
 
     })
+    this.itemActive = this.itemshi.filter((data: { isActive: any; }) =>{
+      return data.isActive == 'inprogress'
+
+    })
+    console.log(this.itemActive)
     this.item = this.itemActive.filter((data: { shareContact: any; }) =>{
       return data.shareContact == false
       

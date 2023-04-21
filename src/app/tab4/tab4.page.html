@@ -12,10 +12,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
-    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'" >
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
         Looking for Truks

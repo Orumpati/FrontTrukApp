@@ -11,10 +11,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
-    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
         Looking for Truks
@@ -41,18 +41,23 @@
      
         <ion-col>
           <ion-segment-button value="home" (click)="toggles()">
-            <ion-label style="font-size: 15px;">Active</ion-label>
+            <ion-label style="font-size: 10px;">Active</ion-label>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button value="star" (click)="deactive()">
-            <ion-label style="font-size: 15px;">Deactive</ion-label>
+            <ion-label style="font-size: 10px;">Deactive</ion-label>
+          </ion-segment-button>
+        </ion-col>
+        <ion-col>
+          <ion-segment-button value="wars" (click)="inproge()">
+            <ion-label style="font-size: 10px;">In-Progress</ion-label>
           </ion-segment-button>
         </ion-col>
    
         <ion-col>
           <ion-segment-button value="call" (click)="completedtog()">
-            <ion-label style="font-size: 15px;">Completed</ion-label>
+            <ion-label style="font-size: 10px;">Completed</ion-label>
           </ion-segment-button>
         </ion-col>
       </ion-segment>
@@ -131,6 +136,16 @@
                 </button>
             
           </div>
+
+          <div style="display:inline-flex; display: flex; text-align: center; justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'In-Progress'">
+          
+            <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
+              <span style="white-space: nowrap;"> View Bids</span>
+        
+      
+              </button>
+          
+        </div>
       </div>
       </div>
   

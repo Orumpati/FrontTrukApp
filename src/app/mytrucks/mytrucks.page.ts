@@ -27,6 +27,7 @@ export class MytrucksPage implements OnInit {
   loadwithvehicle: any;
   truckshift: any;
   loortr: any;
+  itemShare: any;
 
 
   constructor(public loadingController: LoadingController,private router:Router) {
@@ -255,10 +256,10 @@ async completed() {
     .then(res => res.json())
     .then(result => {
       console.log(result)
-      var data=result.vehicle.filter((data: { contactSharedNum: any; })=>{
-        return data.contactSharedNum == this.logindata.mobileNo
-      })
-        this.item= data
+      // var data=result.vehicle.filter((data: { contactSharedNum: any; })=>{
+      //   return data.contactSharedNum == this.logindata.mobileNo
+      // })
+        this.item= result.vehicle
         this.itemlen =result.TotalVehicles  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
 console.log(this.item)
 loading.dismiss()
@@ -354,8 +355,8 @@ loading.dismiss()
     await loading.present();
     var data = {
       trukOwnerNumber:String(this.logindata.mobileNo),
-      trukisActive:'In-Progress'
-     
+      trukisActive:'In-Progress',
+      
     }
     // console.log(data)
   
@@ -373,7 +374,11 @@ loading.dismiss()
       .then(result => {
         console.log(result),
   
-          this.item= result.vehicle
+          this.itemShare= result.vehicle
+          this.item = this.itemShare.filter((data: { trukOwnerNumber: any; }) =>{
+              return data.trukOwnerNumber == this.logindata.mobileNo
+              
+             })
           this.itemlen =result.TotalVehicles  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
   console.log(this.item)
   loading.dismiss()

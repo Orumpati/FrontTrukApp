@@ -5,7 +5,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/tab4" style="font-size: 30px;"></ion-icon>
-      <ion-title>Attach Your Prefferd New Load</ion-title>
+      <ion-title>Attach Your Preferred New Load</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -18,7 +18,7 @@
    <ion-accordion-group >
     <ion-accordion value="four" class="ion-padding">
       <ion-item slot="header" color="light" class="vehicle">
-        <ion-label style="font-size: larger;">It's Your Preferred Vechile</ion-label>
+        <ion-label style="font-size: larger;">Your Preferred Vechile</ion-label>
       </ion-item>
       
       <div  slot="content">
@@ -70,11 +70,11 @@
   
           <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
             <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
-            <span style="font-size: 18px;">Pick-Up Location</span>
+            <span style="font-size: 18px;">Pick-up Location</span>
             
       
              <div class="form-group">
-               <ion-input type="text" appCapitalize class="form-control" placeholder="Pick-Up Location"
+               <ion-input type="text" appCapitalize class="form-control" placeholder="Pick-up Location"
                  [(ngModel)]="OriginLocation" (ionInput)="GetOriginLocation(OriginLocation)"
                  (ionClear)="ClearAutocomplete()"></ion-input>
              </div>
@@ -83,7 +83,7 @@
              <!--Pickup pincode-->
      
              <div class="form-group" style="display: flex;">
-               <ion-input placeholder="Pick-Up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+               <ion-input placeholder="Pick-up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
      
              </div>
              
@@ -105,7 +105,7 @@
              <!--Dropup pincode-->
              
              <div class="form-group" style="display: flex;">
-               <ion-input placeholder="Dropup Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
+               <ion-input placeholder="Drop Pincode" class="form-control"[(ngModel)]="dropupPincode" (ionChange)="getDropupState()">
        
                </ion-input>
 
@@ -124,7 +124,7 @@
           <!--Pickup State-->
   
     
-            <ion-input type="hidden"  placeholder="Pick-Up State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
+            <ion-input type="hidden"  placeholder="Pick-up State" disabled="disabled" [(ngModel)]="pickup"></ion-input>
     
   
      
@@ -169,7 +169,7 @@
   
           <div class="form-group">
             <div class="form-control">
-              <ion-label>PickUp Date&Time</ion-label>
+              <ion-label>Pick-up Date&Time</ion-label>
               <ion-input type="datetime-local" placeholder="Pickup Date" style="border: none; "
                 [(ngModel)]="date"></ion-input>
             </div>
@@ -349,7 +349,7 @@
         <div class="form-group">
           <div class="form-control">
             <ion-label></ion-label>
-            <ion-select placeholder="Mode of Payment to Lorry Owner" [(ngModel)]="typeOfPay">
+            <ion-select placeholder="How would you like to pay?" [(ngModel)]="typeOfPay">
               <ion-select-option value="Offline">Offline/Cash</ion-select-option>
               <!--<ion-select-option value="Online">Online</ion-select-option>-->
 
@@ -402,7 +402,7 @@
             <div style="display: flex;position:absolute ;">
               <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
               
-              <span style="font-size: 14px;">By Submiting ,You Accept <a href="http://trukapp.com/terms-and-conditions/"><u>T&C</u></a> and <a href="http://trukapp.com/privacy-policy/"><u>Privacy Policy</u></a></span>
+              <span style="font-size: 14px;">By Submitting ,You Accept <a href="http://trukapp.com/terms-and-conditions/"><u>T&C</u></a> and <a href="http://trukapp.com/privacy-policy/"><u>Privacy Policy</u></a></span>
             </div>
           </div>
 

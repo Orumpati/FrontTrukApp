@@ -40,7 +40,7 @@
     height: 50px;margin-bottom:8px;
     border-radius: 19px;
     margin-left: 25px;" [hidden]="role === 'Shipper'">
-    <ng-multiselect-dropdown  [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
+    <ng-multiselect-dropdown  [placeholder]="'Add Your Vehicle Routes (States)'" [settings]="dropdownSettings"
     [data]="dropdownList" [(ngModel)]="routes" formControlName="routes" (onSelect)="onItemSelect($event)"
     (onSelectAll)="onSelectAll($event)">
   </ng-multiselect-dropdown>

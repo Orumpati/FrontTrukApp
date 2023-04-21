@@ -247,6 +247,7 @@ console.log(body)
       console.log(result)
       
       loading.dismiss()
+      this.acceptBidStatus()
       this.getfullarray()
       //window.location.reload()
 
@@ -434,6 +435,7 @@ console.log(this.item.mobileNo)
     .then(async result => {
       console.log(result)
       loading.dismiss()
+      this.acceptBidStatus()
       this.getfullarray()
 
 //window.location.reload()
@@ -444,6 +446,40 @@ console.log(this.item.mobileNo)
       console.log(err)})
   }
 }
+}
+
+
+
+acceptBidStatus(){
+
+  var data={
+    isActive:"inprogress"
+  }
+ // console.log(data)
+
+  
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.objects._id, {
+    method: 'PUT',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
+
+      //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+      //  this.all()
+      //window.location.reload()  // reloading window
+
+    }
+
+    ).catch(err =>
+      console.log(err))
 }
   autorefresh(event:any){
     
@@ -461,12 +497,14 @@ this.router.navigate(['/tab/tab2'])
 posttruck(){
   this.router.navigate(['add-new-truck-details'])
   localStorage.setItem("loadItem",JSON.stringify(this.objects._id))
+  localStorage.setItem("loadItemMobile",JSON.stringify(this.objects.Number))
   window.location.href="/add-new-truck-details"
   
 }
 ContactOnline(){
   this.router.navigate(['drivers'])
   localStorage.setItem("loadItemOnline",JSON.stringify(this.objects._id))
+  
   localStorage.setItem("locatioPath",JSON.stringify("placebids"))
   window.location.href="/drivers"
 }

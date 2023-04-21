@@ -64,6 +64,7 @@ export class TruckviewbidsPage implements OnInit {
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
       this.trukDocId =JSON.parse(localStorage.getItem('loadDocId') || '{}')
      console.log(this.openedBid)
+     console.log(this.trukDocId)
       console.log(parseInt(this.loadDocId.Number))
        this.typepay = this.openedBid.typeOfPay
   
@@ -233,6 +234,8 @@ console.log(this.tohideAccBtn)
         "initialAccept" :"Accepted",
         "BidStatus":"closed",
         "TohideAcceptBtn":true,
+        "shipperAccept":true,//for inprogress
+        "contactSharedNum":this.regdata.mobileNo,//for inprogress
         "bidAcceptedTo":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "mess":"Accepted your bid for",
@@ -261,7 +264,7 @@ console.log(this.tohideAccBtn)
           console.log(data)
           localStorage.setItem('viewBid',JSON.stringify(data))
           this. acceptBidStatus()
-          this.acceptBidS()
+          //this.acceptBidS()
           this.navControl.navigateForward('/truckviewbids')
           loading.dismiss()
           this.all()
@@ -275,37 +278,7 @@ console.log(this.tohideAccBtn)
       }
     }}
 
-    acceptBidStatus(){
 
-      var data={
-        trukisActive:"Completed"
-      }
-     // console.log(data)
-  
-      
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
-        method: 'PUT',
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": 'application/json'
-        },
-        body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
-  
-      })
-        .then(response => response.json())
-        .then(result => {
-          console.log(result),
-  
-            this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
-            this.all()
-       
-          //window.location.reload()  // reloading window
-  
-        }
-  
-        ).catch(err =>
-          console.log(err))
-  }
 
   acceptBidS(){
 
@@ -414,6 +387,8 @@ console.log(this.tohideAccBtn)
     "isAgentAccepted":true,
     "TohideAcceptBtn":true,
     "BidStatus":"closed",
+    "shipperAccept":true,//for inprogress
+    "contactSharedNum":this.regdata.mobileNo,//for inprogress
     Number:this.loadDocId.Number, // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.tentativefinalPrice, // for send notifi
@@ -440,7 +415,7 @@ console.log(this.item.mobileNo)
       console.log(result)
       loading.dismiss()
       this. acceptBidStatus()
-      this.acceptBidS()
+     
       this.all()
 //window.location.reload()
     }
@@ -491,4 +466,37 @@ console.log(this.item.mobileNo)
       this.message = `Hello, ${ev.detail.data}!`;
     }
   }
+
+
+  acceptBidStatus(){
+
+    var data={
+      trukisActive:"In-Progress"
+    }
+   // console.log(data)
+
+    
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehicleinprogress/" + this.trukDocId, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result),
+        this.acceptBidS()
+          this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+          this.all()
+     
+        //window.location.reload()  // reloading window
+
+      }
+
+      ).catch(err =>
+        console.log(err))
+}
 }

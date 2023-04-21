@@ -13,10 +13,10 @@
 
   </ion-toolbar>
 </ion-header>
-<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
-    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
+    <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
         Looking for Truks
@@ -143,7 +143,7 @@
                     </div>
                     <div style="display:flex; " >
                     
-                        <button type="button" class="viewbidbtn" (click)="bidById(text)"  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" [disabled]="text.shipperAccept == true">
+                        <button type="button" class="viewbidbtn" (click)="bidById(text)"  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" [hidden]="text.shipperAccept == true">
                         
                           <span style="font-weight: bolder;" > View Bids</span>
                           <!-- <span style="font-weight: bolder;" *ngIf="text.shipperAccept == true" [hidden]="text.shareContact == true"> Share Contact</span> -->
@@ -154,7 +154,7 @@
                             <span style="font-weight: bolder;"> View Contact</span>
                             
                             </button>
-                            <button type="button" class="viewbidbt"  (click)="bidById(text)" *ngIf="text.shareContact == false && text.shipperAccept == true">
+                            <button type="button" class="viewbidbt"  (click)="bidById(text)" *ngIf="text.shareContact == false && text.isActive == 'inprogress'">
                               <span style="font-weight: bolder;"> View Bids</span>
                               
                               </button>

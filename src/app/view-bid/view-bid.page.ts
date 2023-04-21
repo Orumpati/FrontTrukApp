@@ -49,6 +49,7 @@ export class ViewBidPage implements OnInit {
   TohideNegoshit: any;
   mess:any="copied Successfully"
   data: any;
+  truckOwnerNum: any;
     constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router,private commservice:CommonServiceService,private clipboard:Clipboard) {
       this.commservice.listen().subscribe((m:any)=>{
         console.log(m);
@@ -226,7 +227,7 @@ export class ViewBidPage implements OnInit {
         "TohideAcceptBtn":false,
         "BidStatus":"closed",
         "shipperAccept":true,
-        "contactSharedNum":this.regdata.mobileNo,
+        "contactSharedNum":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
          Number:this.bidnumber, //transporte
@@ -250,12 +251,16 @@ export class ViewBidPage implements OnInit {
           console.log(result)
           const data = result.message
           console.log(data)
+          for(let i=0;i<data.length;i++){
+            this.truckOwnerNum =data[i].TruckMarketVehicle[i].trukOwnerNumber
+          }
           localStorage.setItem('viewBid',JSON.stringify(data))
          // this. acceptBidStatus()
           this.navControl.navigateForward('/view-bid')
          
           loading.dismiss()
-    
+    this.acceptBidStatus()
+    this.truckisactive()
           this.all()
         }
     
@@ -267,7 +272,78 @@ export class ViewBidPage implements OnInit {
     }
     }
 
-   
+  //change trucisActive in
+  async truckisactive() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    var data = {
+      trukOwnerNumber:this.truckOwnerNum,
+      trukisActive:'In-Progress'
+     
+    }
+    // console.log(data)
+  
+  
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+      method: 'POST',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+  
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result),
+  
+        
+
+  loading.dismiss()
+        //window.location.reload()  // reloading window
+  
+      }
+  
+      ).catch(err =>{
+        loading.dismiss()
+        console.log(err)
+      })
+  }
+
+acceptBidStatus(){
+
+  var data={
+    isActive:"inprogress"
+  }
+ // console.log(data)
+
+  
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.bids._id, {
+    method: 'PUT',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
+
+      //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+      //  this.all()
+      //window.location.reload()  // reloading window
+
+    }
+
+    ).catch(err =>
+      console.log(err))
+}
 
   makepayment(){
     localStorage.setItem('filteredBid',JSON.stringify(this.filteredbid))

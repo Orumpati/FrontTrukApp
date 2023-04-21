@@ -24,7 +24,7 @@
       <!--<ion-item class="ion-margin">
         <ion-input placeholder="Enter role" type="text"   clearInput="true" formControlName="role"></ion-input>
       </ion-item>-->
-      <!-- <ion-list class="ion-margin" *ngIf="logindata.role == 'Shipper'">
+      <ion-list class="ion-margin" *ngIf="logindata.role == 'Shipper'">
         <ion-item>
           <ion-select interface="popover" placeholder="Select Role" formControlName="role">
             <ion-select-option value="Shipper">Shipper</ion-select-option>
@@ -33,8 +33,8 @@
             <ion-select-option value="Fleet Owner">Fleet Owner</ion-select-option>
           </ion-select>
         </ion-item> 
-      </ion-list> -->
-      <ion-item class="ion-margin">
+      </ion-list>
+      <ion-item class="ion-margin" [hidden]="logindata.role == 'Shipper'">
         <ion-input  placeholder="Enter role" type="text"   clearInput="true" formControlName="role" readonly></ion-input>
       </ion-item>
       <ion-item class="ion-margin">

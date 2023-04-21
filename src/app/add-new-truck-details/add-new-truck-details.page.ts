@@ -32,12 +32,13 @@ export class AddNewTruckDetailsPage implements OnInit {
   mobileNumber:any;
   city:any;
   regdata: any;
+  subNum: any;
   constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     this.regdata =JSON.parse(localStorage.getItem("regdata") || '{}')
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
-  
+this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}') 
     console.log(this.sub)
     this.dropdownList = [
       'Mumbai',
@@ -96,12 +97,16 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
       DriverNumber: this.DriverNumber,
       shareContact:true,
 
+
+      Number:this.subNum,
       contactSharedNum:this.regdata.mobileNo,
       transporterName:this.regdata.firstName +this.regdata.lastName,
       companyName:this.regdata.companyName,
       mobileNumber:this.regdata.mobileNo,
       city:this.regdata.city,
-     
+    //  mess:"shared contact",
+    //  Name:this.regdata.firstName +this.regdata.lastName,
+    //  Bidprice:"Details"
 
 
     }
@@ -119,13 +124,14 @@ this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result),
+        console.log(result)
+        this.acceptBidStatus() 
           this.Items = result 
-          this.acceptBidStatus()    
+           
         loading.dismiss()
       
         alert("Posted Successfully")
-window.location.href="/place-bid"
+       window.location.href="/place-bid"
       }
 
       ).catch(err =>{

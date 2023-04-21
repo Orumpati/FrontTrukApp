@@ -165,15 +165,15 @@
                   <ion-input placeholder="Enter GST Number" type="text" clearInput="true"  [(ngModel)]="gstinNumber"  [ngModelOptions]="{standalone: true}" ></ion-input>
                 </ion-item>
       
-                <ion-label>UserName</ion-label>
+                <!-- <ion-label>UserName</ion-label>
                 <ion-item class="ion-margin">
                   <ion-input placeholder="Enter UserName" type="text" clearInput="true"  [(ngModel)]="userName"  [ngModelOptions]="{standalone: true}"></ion-input>
-                </ion-item>
+                </ion-item> -->
               </ion-card-content>
             </ion-card>
       
             <ion-button shape="round" expand="full" strong="true" type="submit" (click)="verifygstin()" >
-              Get OTP
+              Submit
               <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
             </ion-button>
             
@@ -184,7 +184,7 @@
 
 
       <div class="verifybutton" *ngIf="routes.gstVerify == 'Verified'">
-        <h3 style=" margin-left:20px; padding-top:20px;" > GSTIN Verified</h3>
+        <h3 style=" margin-left:20px; padding-top:20px; color:green;" > GSTIN Verified</h3>
         
         </div>
     </div>

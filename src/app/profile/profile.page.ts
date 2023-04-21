@@ -157,19 +157,21 @@ otp:any
   console.log(this.AadharNumber)
 
     const final ={
-      aadhaarNumber:this.AadharNumber,
-    
+     // aadhaarNumber:this.AadharNumber,
+      id_number:this.AadharNumber
     }
     console.log(final)
-    fetch("https://api.emptra.com/aadhaarVerification/requestOtp",{
-        //fetch("https://api.emptra.com/aadhaarVerification/requestOtp", {
+    // fetch("https://api.emptra.com/aadhaarVerification/requestOtp",{
+        fetch("https://kyc-api.aadhaarkyc.io/api/v1/aadhaar-v2/generate-otp", {
           
           method:'post',
           headers:{
                     "Access-Control-Allow-Origin": "*",
                       "Content-Type":'application/json',
-                      "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
-                      "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
+                      'Authorization': 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MTkwNTkwNCwianRpIjoiZGI2YzJjYTYtY2JhMC00ZTg2LThhNzAtZjBiY2UwOGM0NmFlIiwidHlwZSI6ImFjY2VzcyIsImlkZW50aXR5IjoiZGV2LnJhb25laW5mb3RlY2hAc3VyZXBhc3MuaW8iLCJuYmYiOjE2ODE5MDU5MDQsImV4cCI6MTk5NzI2NTkwNCwidXNlcl9jbGFpbXMiOnsic2NvcGVzIjpbIndhbGxldCJdfX0.Lzr1HfRgBKmRvfiwCQYC_OxUoHP7S-R5dfRKTCo5Ags"
+                      // "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                      // "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
+                     // "Token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MTkwNTkwNCwianRpIjoiZGI2YzJjYTYtY2JhMC00ZTg2LThhNzAtZjBiY2UwOGM0NmFlIiwidHlwZSI6ImFjY2VzcyIsImlkZW50aXR5IjoiZGV2LnJhb25laW5mb3RlY2hAc3VyZXBhc3MuaW8iLCJuYmYiOjE2ODE5MDU5MDQsImV4cCI6MTk5NzI2NTkwNCwidXNlcl9jbGFpbXMiOnsic2NvcGVzIjpbIndhbGxldCJdfX0.Lzr1HfRgBKmRvfiwCQYC_OxUoHP7S-R5dfRKTCo5Ags"
                   },
           body:JSON.stringify(final),
           }).then(res => res.json())
@@ -179,38 +181,38 @@ otp:any
          console.log(result)
       
       
-            console.log(result.result.data.client_id)
-           localStorage.setItem("client_id",JSON.stringify(result.result.data.client_id))
-           if(result.code == 104){
-            alert("Recharge Your Wallet")
-           }
-loading.dismiss()
-              
-           
-           
-      const ele =await this.modal.getTop()
-    if(ele){
-      ele.dismiss();
-      this.router.navigate(['vrifyaadharotp'])
-      return;
-    }
       
-  
+           localStorage.setItem("client_id",JSON.stringify(result.data.client_id))
+           if(result.success == true){
+            loading.dismiss()
+                   
+            const ele =await this.modal.getTop()
+          if(ele){
+            ele.dismiss();
+            this.router.navigate(['vrifyaadharotp'])
+            loading.dismiss()
+            return;
+            
+          }
+          loading.dismiss()
+           }else if(result.success == false){
+            loading.dismiss()
+alert('Enter Valid Aadhaar Number')
+
+           }
+
+           loading.dismiss()
             }
             ).catch(
                 error =>{
                   loading.dismiss()
             alert(error)
+            loading.dismiss()
                  console.log(error)
                 });
               
       
     }
-
-
-
-
-
       async verifygstin(){
         const loading = await this.loadingController.create({
           message: 'Verifying...',
@@ -226,20 +228,24 @@ loading.dismiss()
     
         const final ={
         
-          gstin:this.gstinNumber ,
-          username: this.userName
+          // gstin:this.gstinNumber ,
+          // username: this.userName
+          id_number: this.gstinNumber,
+          filing_status_get: true
         
         }
         console.log(final)
-        fetch("https://api.emptra.com/gstOtp",{
-            
-              
+        // fetch("https://api.emptra.com/gstOtp",{ 
+          fetch("https://kyc-api.aadhaarkyc.io/api/v1/corporate/gstin",{ 
+       
               method:'post',
               headers:{
                   
                           "Content-Type":'application/json',
-                          "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
-                          "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
+                          // "clientId":'773901a84fd7da63fb77100ad2cefcf9:c5ba2d212af3d978c2a857062001a431',
+                          // "secretKey":'FEwoB08LfXN7ie8m5y1JgQL8TSj0bO6adngxGoa5Yfc4XeXd9Pe3I2VEfGh7ZAap9'
+                         // "key_secret":"UkKHbe3qsudouF1fOlTl91WKMpi2",
+                          'Authorization': 'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4MTkwNTkwNCwianRpIjoiZGI2YzJjYTYtY2JhMC00ZTg2LThhNzAtZjBiY2UwOGM0NmFlIiwidHlwZSI6ImFjY2VzcyIsImlkZW50aXR5IjoiZGV2LnJhb25laW5mb3RlY2hAc3VyZXBhc3MuaW8iLCJuYmYiOjE2ODE5MDU5MDQsImV4cCI6MTk5NzI2NTkwNCwidXNlcl9jbGFpbXMiOnsic2NvcGVzIjpbIndhbGxldCJdfX0.Lzr1HfRgBKmRvfiwCQYC_OxUoHP7S-R5dfRKTCo5Ags"
                       },
               body:JSON.stringify(final),
               }).then(res => res.json())
@@ -247,18 +253,18 @@ loading.dismiss()
               .then(
                 async result =>{
              console.log(result)
-             if(result.code == 100){
-              localStorage.setItem("gst",JSON.stringify(this.gstinNumber))
-              localStorage.setItem("gstusername",JSON.stringify(this.userName))
-              localStorage.setItem("AppKey",JSON.stringify(result.result.response.appKey))
+             if(result.success  == true){
+          
               loading.dismiss()
-                       
-     const ele =await this.modal.getTop()
-     if(ele){
-       ele.dismiss();
-      this.router.navigate(['verifygstotp'])
-       return;
-     }
+              this.aadharverifystatus()
+              this.gstdetails(result.data)
+                   alert('GST Verified')    
+     //const ele =await this.modal.getTop()
+    //  if(ele){
+    //    ele.dismiss();
+    //   this.router.navigate(['verifygstotp'])
+    //    return;
+    //  }
            
              }else{
              
@@ -431,4 +437,92 @@ loading.dismiss()
       this.router.navigate(['tab/tab2'])
     }
   }
+
+
+
+  
+  async aadharverifystatus(){
+    const loading = await this.loadingController.create({
+      message: 'Verifying...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+    var data ={
+      gstVerify:'Verified'
+    
+    }
+    console.log(data)
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
+      
+    method:'put',
+    headers:{
+              "Access-Control-Allow-Origin": "*",
+                "Content-Type":'application/json'
+            },
+    body:JSON.stringify(data),
+    }).then(res => res.json())
+    
+    .then(
+      result =>{
+   console.log(result)
+
+       this.logindata['gstVerify']='Verified'
+      
+
+       localStorage.setItem('regdata',JSON.stringify(this.logindata))
+      loading.dismiss()
+      window.location.href='/profile'
+      
+    
+      }
+      ).catch(
+          error =>{
+            loading.dismiss()
+           // alert('unable to add routes');
+           console.log(error)
+          });
+     
+  
+  }
+
+
+
+
+
+  
+  async gstdetails(data:any){
+    const loading = await this.loadingController.create({
+      message: 'Verifying...',
+      spinner: 'crescent'
+    });
+    await loading.present();
+
+    
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/gstDetails/" + this.logindata.Authentication, {
+      
+      method:'post',
+      headers:{
+                "Access-Control-Allow-Origin": "*",
+                  "Content-Type":'application/json'
+              },
+      body:JSON.stringify(data)
+      }).then(res => res.json())
+      
+      .then(
+        result =>{
+     
+         console.log(result)
+         loading.dismiss()
+
+
+     
+        }
+        ).catch(
+            error =>{
+              loading.dismiss()
+              //alert('unable to get address details');
+             console.log(error)
+            });
+           
+}
 }

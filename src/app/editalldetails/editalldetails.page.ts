@@ -9,7 +9,7 @@ import { threadId } from 'worker_threads';
   styleUrls: ['./editalldetails.page.scss'],
 })
 export class EditalldetailsPage implements OnInit {
-  detailsforEdit:any
+
   routeDetails:any
   logindata: any;
   profile: any;
@@ -102,6 +102,7 @@ loading.dismiss()
   }
 
   async saveDetails(data:any){
+    console.log(data)
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
@@ -121,26 +122,26 @@ loading.dismiss()
     .then(
       result =>{
    console.log(result)
-  //console.log(this.detailsforEdit['firstName']=result.firstName)
-  this.detailsforEdit['firstName']=result.firstName
-         this.detailsforEdit['lastName']=result.lastName
-         this.detailsforEdit['mobileNo']=result.mobileNo
-         this.detailsforEdit['role']=result.role
-         this.detailsforEdit['city']=result.city
-         this.detailsforEdit['companyName']=result.companyName
-         this.detailsforEdit['addressType']=result.addressType
-         this.detailsforEdit['doorNo']=result.doorNo
-         this.detailsforEdit['areaName']=result.areaName
-         this.detailsforEdit['landMark']=result.landMark
-         this.detailsforEdit['aadharVerify']=result.aadharVerify
-         this.detailsforEdit['gstVerify']=result.gstVerify
-         this.detailsforEdit['routes']=result.routes
+  
+  this.logindata['firstName']=result.firstName
+         this.logindata['lastName']=result.lastName
+         this.logindata['mobileNo']=result.mobileNo
+         this.logindata['role']=result.role
+         this.logindata['city']=result.city
+         this.logindata['companyName']=result.companyName
+         this.logindata['addressType']=result.addressType
+         this.logindata['doorNo']=result.doorNo
+         this.logindata['areaName']=result.areaName
+         this.logindata['landMark']=result.landMark
+         this.logindata['aadharVerify']=result.aadharVerify
+         this.logindata['gstVerify']=result.gstVerify
+         this.logindata['routes']=result.routes
 
-         localStorage.setItem('regdata',JSON.stringify(this.detailsforEdit))
-      loading.dismiss()
+         localStorage.setItem('regdata',JSON.stringify(this.logindata))
+     
       alert('Saved Successfully')
       window.location.href="/profile"
-      this.router.navigate(['profile'])
+      loading.dismiss()
       
     
       }

@@ -33,12 +33,14 @@ export class AddNewTrukfortrukbidPage implements OnInit {
   city:any;
   trukDocId: any;
   logindata: any;
+  subNum: any;
   constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
 this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
+this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}') 
     console.log(this.sub)
     this.dropdownList = [
       'Mumbai',
@@ -100,9 +102,11 @@ this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
       transporterName:this.logindata.firstName +this.logindata.lastName,
       companyName:this.logindata.companyName,
       mobileNumber:this.logindata.mobileNo,
-      city:this.logindata.city
-     
-
+      city:this.logindata.city,
+    //  Number:this.subNum,
+    //   mess:"shared contact",
+    //   Name:this.logindata.firstName +this.logindata.lastName,
+    //   Bidprice:"Details"
 
     }
     console.log(data)
@@ -121,7 +125,8 @@ this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
       .then(result => {
         console.log(result),
           this.Items = result  
-          this.isactiveComplete()   
+       
+          this. acceptBidStatus()  
         loading.dismiss()
         alert("Posted Successfully")
 window.location.href="/truckviewbids"
@@ -133,6 +138,45 @@ window.location.href="/truckviewbids"
         loading.dismiss()
       })
   }
+
+
+  acceptBidStatus(){
+
+    var data={
+      isActive:"Completed"
+    }
+   // console.log(data)
+  
+    
+    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.sub, {
+      method: 'PUT',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+  
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+        this.isactiveComplete() 
+        //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+  
+        //  this.all()
+        //window.location.reload()  // reloading window
+  
+      }
+  
+      ).catch(err =>
+        console.log(err))
+  }
+  
+
+
+
+
+
 
 //make status complete in truck details
 async isactiveComplete() {
@@ -148,7 +192,7 @@ async isactiveComplete() {
   // console.log(data)
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
+  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehicleinprogress/" + this.trukDocId, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",
