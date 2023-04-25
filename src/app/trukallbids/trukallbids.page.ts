@@ -52,7 +52,7 @@ all(){
   var data ={
     trukvehiclenumber:this.truckallbids
   }
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadsForSpecificTruck", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/LoadsForSpecificTruck", {
         method: 'POST',
         headers: {
           "Access-Control-Allow-Origin": "*",

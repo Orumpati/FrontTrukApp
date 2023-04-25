@@ -34,6 +34,9 @@ import { DatePipe } from '@angular/common';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ViewshipperconPipe } from './viewshippercon.pipe';
+
+// import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 @NgModule({
   declarations: [AppComponent, CapitalizeDirective, ViewshipperconPipe, 
    // HasRoleDirective
@@ -47,7 +50,8 @@ import { ViewshipperconPipe } from './viewshippercon.pipe';
   AndroidPermissions,
   Crop,
   LoggeduserGuard,
-  DatePipe
+  DatePipe,
+  
   
   ],
   bootstrap: [AppComponent],

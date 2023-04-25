@@ -96,7 +96,7 @@ id:any
 
 saicode(){
   
- fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/" +this.objects._id, {
+ fetch("https://trukapp2023.herokuapp.com/quotes/quoteByid/" +this.objects._id, {
   method: 'get',
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -130,7 +130,7 @@ saicode(){
      "_id": this.objects._id,
       "mobileNo":this.regdata.mobileNo//8762345675 //this.regdata.mobileNo
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/showAgentSideBidConversation", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/showAgentSideBidConversation", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -233,7 +233,7 @@ window.location.href='/profile'
     "mess":"Accepted your Bid for amount"
    }
 console.log(body)
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -247,8 +247,9 @@ console.log(body)
       console.log(result)
       
       loading.dismiss()
+    
+    
       this.acceptBidStatus()
-      this.getfullarray()
       //window.location.reload()
 
     }
@@ -284,7 +285,7 @@ console.log(body)
   
    }
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -314,7 +315,7 @@ var data ={
   "TohideNegoshit":true
 }
   
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateNego/" +this.objects._id, {
+  fetch("https://trukapp2023.herokuapp.com/quotes/updateNego/" +this.objects._id, {
     
   method:'put',
   headers:{
@@ -364,7 +365,7 @@ var data ={
   
    }
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/updateBids", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -422,7 +423,7 @@ window.location.href='/profile'
    console.log(body)
 console.log(this.item.mobileNo)
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -435,9 +436,9 @@ console.log(this.item.mobileNo)
     .then(async result => {
       console.log(result)
       loading.dismiss()
-      this.acceptBidStatus()
+    
       this.getfullarray()
-
+      this.acceptBidStatus()
 //window.location.reload()
     }
 
@@ -458,7 +459,7 @@ acceptBidStatus(){
  // console.log(data)
 
   
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.objects._id, {
+  fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.objects._id, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -470,7 +471,7 @@ acceptBidStatus(){
     .then(response => response.json())
     .then(result => {
       console.log(result)
-
+      this.getfullarray()
       //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
 
       //  this.all()

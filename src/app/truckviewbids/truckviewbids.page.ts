@@ -81,7 +81,7 @@ export class TruckviewbidsPage implements OnInit {
 
 
   all(){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/"+ this.openedBid._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteByid/"+ this.openedBid._id, {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -98,6 +98,7 @@ export class TruckviewbidsPage implements OnInit {
         this.sharecontact =result[i].shareContact
         this.paymentdone =result[i].isPaymentCompleted
         this.TohideNegoshit = result[i].TohideNegoshit
+        this.initialaccepted  =result[i].initialAccept
         this.shipperNo = result[i].Number
         console.log(Number(this.shipperNo))
     var final= result[i].bids //this is bids array
@@ -147,7 +148,7 @@ console.log(this.tohideAccBtn)
       console.log(this.bidnumber)
   
       for(let i=0; i<this.bidActivity.length;i++){
-        this.initialaccepted =this.bidActivity[i].initialAccept
+        //this.initialaccepted =this.bidActivity[i].initialAccept
       
         this.bidActivityprice= this.bidActivity[i].userNo
         
@@ -185,7 +186,7 @@ console.log(this.tohideAccBtn)
       
   
     
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
+      fetch("https://trukapp2023.herokuapp.com/quotes/updateBids", {
         method: 'post',
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -235,6 +236,7 @@ console.log(this.tohideAccBtn)
         "BidStatus":"closed",
         "TohideAcceptBtn":true,
         "shipperAccept":true,//for inprogress
+        "isAgentAccepted":true,
         "contactSharedNum":this.regdata.mobileNo,//for inprogress
         "bidAcceptedTo":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
@@ -248,7 +250,7 @@ console.log(this.tohideAccBtn)
        console.log(this.bids._id)
   console.log(body)
     
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/initialacceptbyshipper", {
+      fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
         method: 'post',
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -265,7 +267,7 @@ console.log(this.tohideAccBtn)
           localStorage.setItem('viewBid',JSON.stringify(data))
           this. acceptBidStatus()
           //this.acceptBidS()
-          this.navControl.navigateForward('/truckviewbids')
+          //this.navControl.navigateForward('/truckviewbids')
           loading.dismiss()
           this.all()
     
@@ -288,7 +290,7 @@ console.log(this.tohideAccBtn)
    // console.log(data)
 
     
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.openedBid._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.openedBid._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -339,7 +341,7 @@ console.log(this.tohideAccBtn)
 
   
   
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -401,7 +403,7 @@ console.log(this.tohideAccBtn)
    console.log(body)
 console.log(this.item.mobileNo)
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -476,7 +478,7 @@ console.log(this.item.mobileNo)
    // console.log(data)
 
     
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehicleinprogress/" + this.trukDocId, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/vehicleinprogress/" + this.trukDocId, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -488,15 +490,50 @@ console.log(this.item.mobileNo)
       .then(response => response.json())
       .then(result => {
         console.log(result),
-        this.acceptBidS()
+        //this.acceptBidS()
           this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
           this.all()
-     
+     this.acceptBidSta()
         //window.location.reload()  // reloading window
 
       }
 
       ).catch(err =>
         console.log(err))
+}
+
+
+
+
+acceptBidSta(){
+
+  var data={
+    isActive:"inprogress"
+  }
+ // console.log(data)
+
+  
+  fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.openedBid._id, {
+    method: 'PUT',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),        // JSON Means An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.
+
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
+      
+      //  this.products = result  //it  runs $parse automatically when it runs the $digest loop, basically $parse is the way angular evaluates expressions
+
+      //  this.all()
+      //window.location.reload()  // reloading window
+
+    }
+
+    ).catch(err =>
+      console.log(err))
 }
 }

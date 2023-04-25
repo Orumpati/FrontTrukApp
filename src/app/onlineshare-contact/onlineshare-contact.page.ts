@@ -58,7 +58,7 @@ export class OnlineshareContactPage implements OnInit {
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -117,7 +117,7 @@ window.location.href="/place-bid"
      console.log(data)
      //localStorage.setItem("newpostAdd", JSON.stringify(data));
  
-     fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+     fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
        method: 'post',
        headers: {
          "Access-Control-Allow-Origin": "*",
@@ -158,7 +158,7 @@ window.location.href="/place-bid"
     // console.log(data)
   
   
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/TrukDeactive/" + this.trukDocId, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",

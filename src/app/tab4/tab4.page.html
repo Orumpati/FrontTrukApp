@@ -24,7 +24,7 @@
     <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
       &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
-        Looking for loads
+        Looking for Loads
       </label>
     </div>
   
@@ -129,7 +129,7 @@
         <ion-col>
           <ion-segment-button value="heart" (click)="vehicleSearch()">
             <ion-icon name="filter" style="font-size: 20px;"></ion-icon>
-            <p>Allvehicles</p>
+            <p>All Vehicles</p>
           </ion-segment-button>
         </ion-col>
 
@@ -142,7 +142,7 @@
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Truk')" >
             <ion-label>Truk</ion-label>
-            <p>1-42Tonnes</p>
+            <p>1-42 Tonnes</p>
           </ion-segment-button>
         </ion-col>
 
@@ -185,7 +185,7 @@
     <!--Card body-->
     <div class="card-body p-0" >
       <!--avatar-->
-      <div style="display: flex; padding-bottom:10px;">
+      <div style="display: flex; padding-bottom:19px;">
       <a *ngIf="text.trukname == 'LCV'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto ">
         <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" class="avatar-img img-fluid rounded-circle" alt="">
       </a>
@@ -204,21 +204,12 @@
       <a *ngIf="text.trukname == 'Container'" class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto " style="padding-bottom:10px;">
         <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png" class="avatar-img img-fluid rounded-circle" alt="">
       </a>
-      <div style="margin-right: 30px;">
-      <h5 class="mb-0 ">
-        <a  class="text-reset"><strong>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}}--{{text.trukname}}</strong></a>
-      </h5>
-   
+      
+      
+        <a style="margin-top: 25px;margin-right:15px;"><strong>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}}--{{text.trukname}}</strong></a>
     
-      <span class="text-muted small d-block mb-2">
-        <!-- <ion-chip>
-          <ion-avatar>
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-          <ion-label>Transpoter</ion-label>
-        </ion-chip> -->
-      </span>
-      </div>
+   
+  
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">

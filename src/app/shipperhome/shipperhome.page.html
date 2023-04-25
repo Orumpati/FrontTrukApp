@@ -12,7 +12,7 @@
        <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
   </ion-toolbar>
 </ion-header>
-<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
+ <div style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
     <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
@@ -30,7 +30,8 @@
   
   </div>
 
-  </ion-card>
+</div> 
+ 
 <ion-content>
 
   
@@ -150,20 +151,35 @@
   </ion-card-content>
 <div style="margin-top:-17px;" align="center">
   <ion-button routerLink="/add-truck" >Add Truks</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <ion-button routerLink="/attach-new-load" >Post Load</ion-button>
+  <ion-button routerLink="/attach-new-load" [hidden]="logindata.role == 'Fleet Owner'">Post Load</ion-button>
   </div>
 </ion-card>
 
 <ion-slides pager="true" [options]="slideOpts" style="border-radius: 15px;" >
-  <ion-slide *ngFor="let image of adsarray.AdsArray index as i">  
+  <!-- <ion-slide *ngFor="let image of adsarray.AdsArray index as i">  
     <img class="banner-image" [src]="image"/>
-    <button style="position:absolute; margin-top:100px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button>
+  </ion-slide> -->
+  <ion-slide >  
+    <img class="banner-image" routerLink="/referral" src={{referbanner}}/>
+    <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
+  </ion-slide>
+  <ion-slide >  
+    <img class="banner-image" src={{trukbanner}}/>
+    <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
+  </ion-slide>
+  <ion-slide >  
+    <img class="banner-image" src={{trukbanner}}/>
+    <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
+  </ion-slide>
+  <ion-slide >  
+    <img class="banner-image" routerLink="/referral" src={{referbanner}}/>
+    <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
   </ion-slide>
 </ion-slides>
 
 <div *ngIf="logindata.role == 'Shipper'">
 <h5 style="margin-left: 13px;">Top Recommendations</h5>
-&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">Near by Truks</button>
+&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">Near By Truks</button>
 
 
 <ion-slides #slides autoplay="true" loop="true" pager="false" scrollbar="true" [options]="slideOpt">
@@ -187,7 +203,7 @@
       
       <ion-card-content>
         <p>Open Truk</p> 
-        <p>10- Tonnes</p>
+        <p>10-21 Tonnes</p>
       </ion-card-content>
       </ion-card>
   </ion-slide>
@@ -237,4 +253,16 @@
   <div>How to use Truk app</div>
 
 </div>
+
+<ion-modal #modal [isOpen]="openbanner">
+  <ng-template>
+    <ion-content>
+
+     <div style="display: flex;justify-content:center;" >
+      <ion-button style="position: absolute; margin-left:200px; background-color:orange;" (click)="modal.dismiss()"><ion-icon name="close" style="color: white;"></ion-icon></ion-button>
+      <img src="assets/kyc.jpeg" style="width: 350px; height:411px;" routerLink="/profile">
+     </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 </ion-content>

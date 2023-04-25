@@ -92,7 +92,7 @@ ionViewDidEnter(){
      "_id": this.shipplacbid._id,
       "mobileNo":this.regdata.mobileNo//8762345675 //this.regdata.mobileNo
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/showAgentSideBidConversation", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/showAgentSideBidConversation", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -164,7 +164,7 @@ ionViewDidEnter(){
     "mess":"Accepted your Bid for amount"
    }
 console.log(body)
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -211,7 +211,7 @@ console.log(body)
   
    }
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/placeBid", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -256,7 +256,7 @@ console.log(body)
   
    }
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/updateBids", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -305,7 +305,7 @@ console.log(body)
    console.log(body)
 console.log(this.item.mobileNo)
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/finalacceptbyagent", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/finalacceptbyagent", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",

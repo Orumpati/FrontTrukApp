@@ -277,7 +277,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     }
     console.log(body)
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/generateQuote", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -351,7 +351,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/addloadtotruck", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",

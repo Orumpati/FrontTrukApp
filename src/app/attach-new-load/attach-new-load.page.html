@@ -35,15 +35,23 @@
         <!--Pickup pincode-->
 
         <div class="form-group" >
-          <ion-input placeholder="Pick-up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()"></ion-input>
+          <ion-input placeholder="Pick-up Pincode" class="form-control"[(ngModel)]="pickupPincode" (ionChange)="getPickupState()" ></ion-input>
 
         </div>
       
         
         <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
         <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
-       <span style="font-weight:bolder;font-size:17px;">{{pickupDis}}</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'">{{pickupDis}}</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="pickup == 'Invalid Pincode'">Invalid</span>
        </ion-card>
+
+       <ion-list [hidden]="autocompleteItems.length == 0 "  >
+        <ion-icon (click)="ClearAutocomplete()" name="close-outline"  style="float:right;font-size:20px;"></ion-icon>
+        <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+          {{ item.description }}
+        </ion-item>
+      </ion-list>
          <!--select destination Location-->
          <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
           <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
@@ -66,10 +74,11 @@
        
        <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
        <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
-       <span style="font-weight:bolder;font-size:17px;">{{dropupDis}}</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'">{{dropupDis}}</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="dropup == 'Invalid Pincode'">Invalid</span>
        </ion-card>
          <!--showing the list of address-->
-         <ion-list [hidden]="autocompleteItems.length == 0" >
+         <ion-list [hidden]="autocompleteItems.length == 0 "    >
           <ion-icon (click)="ClearAutocomplete()" name="close-outline"  style="float:right;font-size:20px;"></ion-icon>
           <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
             {{ item.description }}
@@ -120,6 +129,24 @@
               <ion-select-option value="Fertilizer and Seeds">Fertilizer and Seeds</ion-select-option>
               <ion-select-option value="Food">Food</ion-select-option>
 
+              <ion-select-option value="Furniture">Furniture</ion-select-option>
+              <ion-select-option value="Household Items">Household Items</ion-select-option>
+              <ion-select-option value="Vegetables">Vegetables</ion-select-option>
+              <ion-select-option value="Fruits">Fruits</ion-select-option>
+              <ion-select-option value="Water">Water</ion-select-option>
+              <ion-select-option value="Petrol/Desiel">Petrol/Desiel</ion-select-option>
+              <ion-select-option value="Kerosene">Kerosene</ion-select-option>
+              <ion-select-option value="Other Inflammables">Other Inflammables</ion-select-option>
+              <ion-select-option value="Construction Materials">Construction Materials</ion-select-option>
+              <ion-select-option value="Cotton">Cotton</ion-select-option>
+              <ion-select-option value="Sand">Sand</ion-select-option>
+              <ion-select-option value="Electronics Items">Electronics Items</ion-select-option>
+              <ion-select-option value="Steel/Iron">Steel/Iron</ion-select-option>
+              <ion-select-option value="Stones">Stones</ion-select-option>
+              <ion-select-option value="Milk">Milk</ion-select-option>
+              <ion-select-option value="Bike">Bike</ion-select-option>
+              <ion-select-option value="Car">Car</ion-select-option>
+              <ion-select-option value="Others">Others</ion-select-option>
             </ion-select>
           </div>
         </div>
@@ -142,7 +169,7 @@
 
         <div class="form-group" style="display: flex; " >
           <div style="width:150px; margin-right:20px;">
-          <ion-input type="  text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
+          <ion-input type="number" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
           
           </ion-input>
 </div>
@@ -314,23 +341,23 @@
             <br>
             <div  [(ngModel)]="typeOfContainer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
-              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl</label>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32 ft sxl</label>
               <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl HQ')"/>
-              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32 ft sxl HQ</label>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32 ft sxl HQ</label>
               <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl')"/>
-              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl</label>
-              &nbsp;&nbsp;<input type="radio" id="5" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl HQ')"/>
-              <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">32ft mxl HQ</label>
+              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32ft mxl</label>
+              <input type="radio" id="5" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl HQ')"/>
+              <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32ft mxl HQ</label>
               <input type="radio" id="6" name="hyva" class="typeOfVehicle" (change)="container('19ft Sxl')"/>
-              <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">19ft Sxl</label>
+              <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">19ft Sxl</label>
               <input type="radio" id="7" name="hyva" class="typeOfVehicle" (change)="container('20ft Sxl')"/>
-              <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">20ft Sxl</label>
+              <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">20ft Sxl</label>
               <input type="radio" id="8" name="hyva" class="typeOfVehicle" (change)="container('21ft Sxl')"/>
-              <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">21ft Sxl</label>
+              <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">21ft Sxl</label>
               <input type="radio" id="9" name="hyva" class="typeOfVehicle" (change)="container('23ft Sxl')"/>
-              <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">23ft Sxl</label>
+              <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">23ft Sxl</label>
               <input type="radio" id="10" name="hyva" class="typeOfVehicle" (change)="container('24ft Sxl')"/>
-              <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">24ft Sxl</label>
+              <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">24ft Sxl</label>
     
             </div>
           </ion-card>
@@ -362,7 +389,7 @@
 
           <div class="form-group">
             <ion-label>What is your expected price?</ion-label>
-            <ion-input type="  text" class="form-control" placeholder="Expected Price(INR ₹)"
+            <ion-input type="number" class="form-control" placeholder="Expected Price(INR ₹)"
               [(ngModel)]="expectedPrice"></ion-input>
           </div>
 
@@ -420,7 +447,7 @@
           <!--How much advance -->
           <div class="form-group" *ngIf="paymentTypeForOffline =='Advance'" [hidden]="typeOfPay == 'Online'" style="margin-bottom: 10px;">
             <p>How much would you like to pay in advance ?</p>
-            <ion-input type="text" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
+            <ion-input type="number" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
           </div>
   
             <!--Comments-->

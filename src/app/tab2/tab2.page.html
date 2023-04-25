@@ -17,7 +17,7 @@
       </ion-toolbar>
   
     </ion-header>
-    <ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.userRole == 'Driver'">
+    <!-- <ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.userRole == 'Driver'">
       <div style="display: flex; margin-top:19px;" align="center">
     
         <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
@@ -35,7 +35,8 @@
       
       </div>
     
-      </ion-card>
+      </ion-card> -->
+      
     <ion-content class="ion-padding">
      
     <ion-row>
@@ -45,31 +46,28 @@
           <ion-label>Active Loads</ion-label>
         </ion-segment-button>
         </ion-col>
-    
+        <ion-col>
+          <ion-segment-button value="sandeep" (click)="toggless('Completed')">
+            <ion-label>Completed</ion-label>
+          </ion-segment-button>
+        </ion-col>
         <ion-col>
         <ion-segment-button value="pin" (click)="AcceptedbyShipper()">
           <ion-label>InProgress</ion-label>
         </ion-segment-button>
        
       </ion-col> 
-      <ion-col>
-        <ion-segment-button value="sandeep" (click)="toggless('Completed')">
-          <ion-label>Completed</ion-label>
-        </ion-segment-button>
-      </ion-col>
+    
       </ion-segment>
       </ion-row>
-      <br>
+      
       
       
         <div class="container">
           <ion-searchbar animated="true" placeholder="Search" style="width: 101%; --border-radius: 20px; margin-left: -1px;"
             align="centre" [(ngModel)]="searchtext"></ion-searchbar>
       
-          <br>
-      
-      
-      
+        
       
           <div *ngIf="item.length !=0">
         
@@ -85,12 +83,12 @@
 
                 <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'"  >
                   
-                  <div>
+                  
                   <span style="color: rgb(248, 42, 24);">Cash Payment</span><br>
                 
-                  </div>
+                  
                 </div>
-                
+                <br>
                   <!--<div class="dropdown float-end" style="float:right;">
                       <a class="text-muted dropdown-toggle font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true"><i class="bx bx-dots-horizontal-rounded"></i></a>
                       <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" >Edit</a><a class="dropdown-item" >Action</a><a class="dropdown-item" >Remove</a></div>
@@ -101,17 +99,17 @@
                       <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" /><br>
                         
                       <span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span>
-                      <span *ngIf="text.isActive === 'Completed'" style="color: rgb(23, 231, 106); font-weight:bolder;">{{text.isActive}}</span>
+                      <span *ngIf="text.isActive === 'Completed'" style="color: rgb(23, 231, 106); font-weight:bolder;font-size:13px;" >{{text.isActive}}</span>
                       <!-- <span *ngIf="text.shareContact == false && text.shipperAccept == true" style="color:orange; font-weight:bolder;">In Progress</span> -->
-                      </div>
-                      <div class="flex-1" style="margin-top: -17px;">
-                       <span class="font-size-12 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{text.OriginLocation}}</a></span><br>
-                        <span class="font-size-12 mb-1" styl="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.DestinationLocation}}</a></span><br>
+                      </div>&nbsp;
+                      <div class="flex-1" style="margin-top: -17px; overflow-y: scroll;">
+                       <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{text.OriginLocation}}</a></span><br>
+                        <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.DestinationLocation}}</a></span><br>
                           <span class="badge badge-soft-success mb-0"> Posted On {{text.date}}</span>
                       </div>
                   </div>
                 
-                     <p  class="text-muted mb-0 "  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
+                      <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                       <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
                       <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
@@ -128,10 +126,10 @@
              
 
                      
-                  <div align="center">
+                  <div align="center" *ngIf="text.isActive == 'Completed'">
                  
                  
-                    <button type="button" class="viewbidbtn" *ngIf="text.isActive == 'Completed'" (click)="loadById(text)">
+                    <button type="button" class="viewbidbtn"  (click)="loadById(text)">
                       <span> View Contact</span>
                       
                       </button>
@@ -156,18 +154,28 @@
         </div> -->
       
       
-          <div *ngIf="item.length ==0">
+          <div *ngIf="item.length ==0" style="text-align: center;">
            
             <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg"
               style="height: 70px; width: 70px;">
-            <h3>No loads have been posted yet...!</h3>
+            <h3 style="text-align: center;">No loads have been posted yet...!</h3>
           </div>
           <!-- <br>
           <h3 align="center">Post load to book live loads and use directory</h3>
           <br> -->
         </div>
       
+        <ion-modal #modal [isOpen]="openbanner">
+          <ng-template>
+            <ion-content>
       
+             <div style="display: flex;justify-content:center;" >
+              <ion-button style="position: absolute; margin-left:200px;" (click)="modal.dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+              <img src="assets/kyc.jpeg" style="width: 350px; height:371px;" routerLink="/profile">
+             </div>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
       </ion-content>
 
   </div>

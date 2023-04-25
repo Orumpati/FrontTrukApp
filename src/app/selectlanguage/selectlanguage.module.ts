@@ -13,7 +13,8 @@ import { SelectlanguagePage } from './selectlanguage.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectlanguagePageRoutingModule
+    SelectlanguagePageRoutingModule,
+    
   ],
   declarations: [SelectlanguagePage]
 })

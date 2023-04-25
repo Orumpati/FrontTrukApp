@@ -64,7 +64,7 @@ export class EditalldetailsPage implements OnInit {
     var data ={
       mobileNo: this.logindata.mobileNo
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
+    fetch("https://trukapp2023.herokuapp.com/login/loginDetails", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -109,7 +109,7 @@ loading.dismiss()
     });
     await loading.present();
     console.log(data)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateprofile/" +this.profile._id, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updateprofile/" +this.profile._id, {
       
     method:'put',
     headers:{

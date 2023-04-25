@@ -2,7 +2,8 @@ import { Component, OnInit, } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { reload } from 'firebase/auth';
 import { LoadingController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+//import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-shipperhome',
   templateUrl: './shipperhome.page.html',
@@ -28,7 +29,7 @@ export class ShipperhomePage implements OnInit {
 // set app banner slides
 slideOpts = {
   initialSlide: 0,
-  speed: 200,
+  speed: 2000,
   loop: true,
   innerHeight:100,
   
@@ -55,26 +56,48 @@ option = {
   loadshift: any;
   loortr: any;
   completetrucks: any;
-  constructor(public loadingController: LoadingController,private router:Router) { }
+  openbanner=false;
+  lang: any;
+  referbanner: any;
+  trukbanner: any;
+  truklogo: any;
+  constructor(public loadingController: LoadingController,private router:Router) { 
+   this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+
+
+
+  //  translateService.addLangs(['en', 'hi']);
+  //  translateService.setDefaultLang('en');
+  }
 
   ngOnInit() {
     this.logindata =  JSON.parse(localStorage.getItem('regdata')|| '{}')
+    if(this.logindata.aadharVerify == 'notVerified' || this.logindata.gstVerify == 'notVerified'){
+      this.modalorp()
+    }
+    this.lang = localStorage.getItem('language')
+     this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+     
     console.log(this.logindata)
     this.get()
     this.gettrucks()
-  this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+
 
 
     this. databaseimgs()    
   }
-
+ 
+  modalorp(){
+    this.openbanner =!this.openbanner;
+    
+   }
   async databaseimgs(){
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/truckinfo/gethome",{
+    fetch("https://trukapp2023.herokuapp.com/truckinfo/gethome",{
       
         
         method:'get',
@@ -91,6 +114,9 @@ option = {
           
        console.log(result)
        for(let i=0;i<result.data.length;i++){
+        this.referbanner=result.data[i].Referbanner
+        this.trukbanner=result.data[i].Trukbanner
+        this.truklogo=result.data[i].truklogo
         this.adsarray=result.data[i]
         console.log(this.adsarray)
        }
@@ -98,12 +124,13 @@ option = {
           })
   }
   async get() {
+   
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/allQuotes", {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -155,7 +182,7 @@ window.location.reload()
   }
 
   gettrucks() {
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/allVehicles/" +this.logindata.mobileNo, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/allVehicles/" +this.logindata.mobileNo, {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",

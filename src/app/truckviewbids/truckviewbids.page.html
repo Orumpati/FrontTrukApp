@@ -17,16 +17,23 @@
 
   <ion-card class="expecPrice">
     <ion-card-header>
-      <ion-card-subtitle style="color: black;">Expected Price:</ion-card-subtitle>
-      <ion-card-title>₹ {{openedBid.expectedPrice}}/-</ion-card-title>
+      <ion-card-subtitle style="color: black;">Expected Price:-<span style="font-weight: bolder; color:black;">₹ {{openedBid.expectedPrice}}/-</span></ion-card-subtitle>
+      <!-- <ion-card-title>₹ {{openedBid.expectedPrice}}/-</ion-card-title> -->
+      <ion-card-title [hidden]="openedBid.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >Advance:<span style="font-weight: bolder; color:black;"> ₹ {{openedBid.advance}}/-</span></ion-card-title>
       
     </ion-card-header>
     
     <ion-card-content>
-      <ion-card-subtitle style="color: black;"><u>Details:</u></ion-card-subtitle>
-      <p style="font-size: larger; font-weight: bolder; ">{{openedBid.OriginLocation}} -- {{openedBid.DestinationLocation}}
+      <ion-card-subtitle style="color: black;font-size:18px;">Details:-</ion-card-subtitle>
+      <!-- <p style="font-size: larger; font-weight: bolder; ">{{openedBid.OriginLocation}} -- {{openedBid.DestinationLocation}}
       </p>
-      <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}}</p>
+      <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}}</p> -->
+      <div class="flex-1" style="overflow-y: scroll;">
+        <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{openedBid.OriginLocation}}</a></span><br>
+        <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{openedBid.DestinationLocation}}</a></span><br>
+        </div>
+      <!-- <p style="font-size: large; font-weight: bold; "> {{bids.data}} -- {{bids.Quantity}}</p> -->
+      <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 " style="color: blue;"></i>{{openedBid.Quantity}}--{{openedBid.data}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -116,13 +123,13 @@
       <ion-card  class="agentAccept"  *ngIf="conditions == true">
         <div align="center">
         
-        Agent/Transporter/Fleet accepted for:{{tentativefinalPrice}}
+        You Approved for:{{tentativefinalPrice}}
         </div>
         </ion-card>
         <ion-card  class="shipperAccept" *ngIf="agentconditions == true">
           <div align="center">
           
-          You approved for:{{tentativefinalPrice}}
+            Shipper Accepted for:{{tentativefinalPrice}}
           </div>
           </ion-card>
 

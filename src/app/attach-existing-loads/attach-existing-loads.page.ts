@@ -63,7 +63,7 @@ export class AttachExistingLoadsPage implements OnInit {
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addTruckMarketVehicleToLoad", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/addTruckMarketVehicleToLoad", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -122,7 +122,7 @@ export class AttachExistingLoadsPage implements OnInit {
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/addloadtotruck", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/addloadtotruck", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",

@@ -79,7 +79,7 @@ export class ViewBidPage implements OnInit {
 
 
   all(){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteByid/"+ this.bids._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteByid/"+ this.bids._id, {
     method: 'GET',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -177,7 +177,7 @@ export class ViewBidPage implements OnInit {
        console.log(this.bids._id)
   console.log(this.bidnumber)
     
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/updateBids", {
+      fetch("https://trukapp2023.herokuapp.com/quotes/updateBids", {
         method: 'post',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -237,7 +237,7 @@ export class ViewBidPage implements OnInit {
        console.log(this.bids._id)
   console.log(body)
     
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/initialacceptbyshipper", {
+      fetch("https://trukapp2023.herokuapp.com/quotes/initialacceptbyshipper", {
         method: 'post',
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -287,7 +287,7 @@ export class ViewBidPage implements OnInit {
     // console.log(data)
   
   
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -321,7 +321,7 @@ acceptBidStatus(){
  // console.log(data)
 
   
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.bids._id, {
+  fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.bids._id, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",

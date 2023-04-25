@@ -56,7 +56,7 @@ export class AddDriversPage implements OnInit {
       DriverNumber:this.DriverNumber
     }
     console.log(data)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/AddDrivers", {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/AddDrivers", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -102,7 +102,7 @@ window.location.href='/drivers'
           userRole:"Driver"
         }
   
-         fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signupDriver", {
+         fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/signupDriver", {
           method: 'post',
           headers: {
             "Access-Control-Allow-Origin": "*",

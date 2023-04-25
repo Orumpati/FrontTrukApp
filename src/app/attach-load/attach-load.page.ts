@@ -8,7 +8,7 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./attach-load.page.scss'],
 })
 export class AttachLoadPage implements OnInit {
-
+toggle!:boolean
   item: any = [];
   OriginLocation: any;
   DestinationLocation: any;
@@ -24,7 +24,9 @@ export class AttachLoadPage implements OnInit {
   logindata: any;
   
   
-
+  backgroundColor = 'orange';
+  Color='black'
+  slectindex: any;
   constructor( private router:Router,public loadingController: LoadingController) { }
   ionViewDidEnter(){
     this.get()
@@ -52,7 +54,7 @@ export class AttachLoadPage implements OnInit {
       Number:this.logindata.mobileNo,
       isActive :'Active'
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/loadsByStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -79,8 +81,19 @@ export class AttachLoadPage implements OnInit {
     //this.language =data
   }
 
-  sendData(data:any){
+  sendData(data:any,index:any){
     console.log(data)
+  
+// var den = this.item.filter((a: { _id: any; })=>{
+//   return a._id == data._id
+// })
+// console.log(den)
+// for(let i=0;i<den.length;i++){
+//   var sajeed =den[i]._id
+// }
+//     if(sajeed == data._id){
+//       this.toggle =!this.toggle
+//     }
     this.language =data
     localStorage.setItem("attachload", JSON.stringify(data));
     //The localStorage object allows you to save key/value pairs in the browser.
@@ -89,5 +102,8 @@ export class AttachLoadPage implements OnInit {
    proceed(){
      this.router.navigate(['attach-existing-loads'])
    }
+
+
+  
 
 }

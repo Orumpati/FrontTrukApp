@@ -86,6 +86,8 @@ export class AttachNewLoadPage implements OnInit {
     this.autocompleteItems = [];
   }
   ngOnInit(): void {
+
+  
     this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
 
     this.objects = localStorage.getItem("AttachNewLoad");  //use the localstorage we getdata from savedData
@@ -324,7 +326,7 @@ gf(){
   loading.dismiss()
     }else{
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/generateQuote", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/generateQuote", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",

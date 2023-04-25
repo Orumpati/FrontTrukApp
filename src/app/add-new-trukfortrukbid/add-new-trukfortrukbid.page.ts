@@ -39,9 +39,11 @@ export class AddNewTrukfortrukbidPage implements OnInit {
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
 this.sub =JSON.parse(localStorage.getItem("loadItem") || '{}')
-this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
+//this.trukDocId = JSON.parse(localStorage.getItem('loadDocId') || '{}')
 this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}') 
+this.trukDocId =JSON.parse(localStorage.getItem('loadDocId') || '{}')
     console.log(this.sub)
+    console.log(this.trukDocId)
     this.dropdownList = [
       'Mumbai',
       'Bangaluru',
@@ -112,7 +114,7 @@ this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}')
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -127,9 +129,11 @@ this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}')
           this.Items = result  
        
           this. acceptBidStatus()  
+          this.isactiveComplete()
         loading.dismiss()
         alert("Posted Successfully")
-window.location.href="/truckviewbids"
+//window.location.href="/truckviewbids"
+this.router.navigate(['truckviewbids'])
       }
 
       ).catch(err =>{
@@ -148,7 +152,7 @@ window.location.href="/truckviewbids"
    // console.log(data)
   
     
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.sub, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.sub, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -192,7 +196,7 @@ async isactiveComplete() {
   // console.log(data)
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehicleinprogress/" + this.trukDocId, {
+  fetch("https://trukapp2023.herokuapp.com/addTruk/vehicleinprogress/" + this.trukDocId, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",

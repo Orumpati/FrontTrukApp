@@ -21,15 +21,15 @@ export class GetStartedPage implements OnInit {
     {
       imgurl: 'assets/1.jpg',
       live:"Truck Market",
-      data:"Book Truks,trailers& Trankers from live market and find best delas"
+      data:"Access Live Truck Market and Get Best Bids for your Loads"
     }, {
       imgurl: 'assets/2.jpg',
       live:"Live Market",
-      data:"Book Truks,trailers& Trankers from live market and find best delas"
+      data:"Book Trucks,Trailers and Tankers from the Live Market"
     }, {
       imgurl: 'assets/3.jpg',
       live:"Load Market",
-      data:"Book Truks,trailers& Trankers from live market and find best delas"
+      data:"Access Loads from the Live Market and provide your bids"
     }
   ];
   ngOnInit() {

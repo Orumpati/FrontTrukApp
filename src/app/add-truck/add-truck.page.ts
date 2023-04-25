@@ -221,7 +221,7 @@ export class AddTruckPage implements OnInit {
       typeofTanker:this.typeofTanker
     }
     console.log()
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehiclepost", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/vehiclepost", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -238,7 +238,7 @@ export class AddTruckPage implements OnInit {
         const alert = await this.alertController.create({
           header: 'Successfull',
           // subHeader: 'Important message',
-          message: 'truk posted Successfully',
+          message: 'Truk Posted Successfully',
           buttons: [
             {
               text: 'Okay',

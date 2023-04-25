@@ -113,7 +113,7 @@ console.log('working payment Upate')
     console.log(this.docid._id)
  console.log(body)
  
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/paymentconfirm", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/paymentconfirm", {
      method: 'post',
      headers: {
        "Access-Control-Allow-Origin": "*",

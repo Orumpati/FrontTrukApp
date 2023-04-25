@@ -89,8 +89,15 @@
              
              <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
              <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
-             <span style="color: black;font-weight:bolder;font-size:17px;">{{pickupDis}}</span>
+             <span style="color: black;font-weight:bolder;font-size:17px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'">{{pickupDis}}</span>
+             <span style="color: black;font-weight:bolder;font-size:17px;" *ngIf="pickup == 'Invalid Pincode'">Invalid</span>
             </ion-card>
+            <ion-list [hidden]="autocompleteItems.length == 0" >
+              <ion-icon (click)="ClearAutocomplete()" name="close-outline"  style="float:right;font-size:20px;"></ion-icon>
+              <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+                {{ item.description }}
+              </ion-item>
+            </ion-list>
               <!--select destination Location-->
               <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
                <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
@@ -112,7 +119,8 @@
              </div>
              <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
              <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
-            <span style="color: black;font-weight:bolder;font-size:17;">{{dropupDis}}</span>
+            <span style="color: black;font-weight:bolder;font-size:17;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'">{{dropupDis}}</span>
+            <span style="color: black;font-weight:bolder;font-size:17;" *ngIf="dropup == 'Invalid Pincode'">Invalid</span>
             </ion-card>
               <!--showing the list of address-->
               <ion-list [hidden]="autocompleteItems.length == 0" >
@@ -181,7 +189,7 @@
   
           <div class="form-group" style="display: flex; " >
             <div style="width:150px; margin-right:20px;">
-            <ion-input type="text" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
+            <ion-input type="number" class="form-control" placeholder="Quantity" [(ngModel)]="Quantity">
             
             </ion-input>
   </div>
@@ -336,7 +344,7 @@
             <!--Expected Bill-->
   
             <div class="form-group">
-              <ion-input type="  text" class="form-control" placeholder="Expected Price(INR ₹)"
+              <ion-input type="number" class="form-control" placeholder="Expected Price(INR ₹)"
                 [(ngModel)]="expectedPrice"></ion-input>
             </div>
   
@@ -385,7 +393,7 @@
         <!--How much advance -->
         <div class="form-group" *ngIf="paymentTypeForOffline =='Advance'" [hidden]="typeOfPay == 'Online'" style="margin-bottom: 10px;">
           <p>How much would you like to pay in advance ?</p>
-          <ion-input type="text" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
+          <ion-input type="number" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
         </div>
 
         

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //import {OneSignal} from '@ionic-native/onesignal'
+// import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 @Component({
   selector: 'app-selectlanguage',
   templateUrl: './selectlanguage.page.html',

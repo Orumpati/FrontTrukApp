@@ -109,3 +109,20 @@ ion-button{
     --background: orange;
     --border-radius: 12px;
 }
+
+ion-modal {
+    --height: 55%;
+    --width:80%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  ion-modal::part(backdrop) {
+    background: rgb(139, 169, 213);
+    opacity: 1;
+  }
+  
+  ion-modal ion-toolbar {
+    // --background: rgb(252, 166, 7);
+    // --color: white;
+  }

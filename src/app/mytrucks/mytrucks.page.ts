@@ -32,14 +32,14 @@ export class MytrucksPage implements OnInit {
 
   constructor(public loadingController: LoadingController,private router:Router) {
     //this.gettruckbidata()
-   
+    //this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
    }
 
 
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     this.get()
-    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+    //this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   //this.active()
   
   //this.toggles()
@@ -62,6 +62,7 @@ this.completed()
     this.inproge()
       }
   async get() {
+    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
     this.toggles()
     const loading = await this.loadingController.create({
       //message: 'Loading...',
@@ -71,7 +72,7 @@ this.completed()
     var data ={
       trukOwnerNumber:this.logindata.mobileNo
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -118,7 +119,7 @@ loading.dismiss()
     // console.log(data)
 
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + Data._id, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/TrukDeactive/" + Data._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -156,7 +157,7 @@ loading.dismiss()
     // console.log(data)
 
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + id, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/TrukDeactive/" + id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -196,7 +197,7 @@ async toggles() {
   // console.log(data)
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+  fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
     method: 'POST',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -244,7 +245,7 @@ async completed() {
   // console.log(data)
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+  fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
     method: 'POST',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -281,7 +282,7 @@ loading.dismiss()
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/deleteTruk/" + id, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/deleteTruk/" + id, {
       method: 'DELETE',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -321,7 +322,7 @@ loading.dismiss()
     // console.log(data)
   
   
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -361,7 +362,7 @@ loading.dismiss()
     // console.log(data)
   
   
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/truksByStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/truksByStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -401,7 +402,7 @@ viewTruckSpecificLoads(){
 var data ={
   trukOwnerNumber:"8897820507"
 }
- fetch("http://localhost:3000/quotes/LoadsForSpecificTruck", {
+ fetch("https://trukapp2023.herokuapp.com/quotes/LoadsForSpecificTruck", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",

@@ -1,133 +1,4 @@
-// ion-accordion {
-//     margin: 0 auto;
-//   }
-  
-//   ion-accordion.accordion-expanding,
-//   ion-accordion.accordion-expanded {
-//     width: calc(100% - 32px);
-  
-//     margin: 16px auto;
-//   }
-  
-//   ion-accordion.accordion-collapsing ion-item[slot="header"],
-//   ion-accordion.accordion-collapsed ion-item[slot="header"] {
-//     --background: var(--ion-color-light);
-//     --color: var(--ion-color-light-contrast);
-//   }
-  
-//   ion-accordion.accordion-expanding ion-item[slot="header"],
-//   ion-accordion.accordion-expanded ion-item[slot="header"] {
-//     --background: #f58e26;
-//     --color: var(--ion-color-primary-contrast);
-//   }
 
-
-//   ion-card-header.ios {
-//     display: flex;
-//     flex-flow: column-reverse;
-//   }
-
-//   .class{
-//     margin-top: 10px;
-//   }
-
-//   input[type=radio]{
-//     --webkit-appearance: none;
-// }
-
-// .label{
-//   height: 200px;
-//   width: 90%;
-//   border: 3px solid rgb(122, 119, 119);
-//   margin: 10px;
-//   border-radius: 10px;
-//   position: relative;
-//   color: #f58e26;
-//   transition: 0.5s;
-
-//   ion-card-header{
-//     margin-top: 35px;
-//   }
-// }
-
-// .fa {
-//   font-size: 80px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -80%); 
-// }
-
-// label>span {
-//   font-size: 25px;
-  
-//   font-weight: 500;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, 80%);
-// }
-
-// input[type=radio]:checked + label {
-// 	background-color: #f58e26;
-// 	color: #ffffff;
-// 	box-shadow: 0 15px 45px rgb(24,249,141,0.2);
-// }
-
-// .column {
-//     float: left;
-//     width: 47.33%;
-//     padding: 5px;
-//   }
-  
-//   /* Clearfix (clear floats) */
-//   .row::after {
-//     content: "";
-//     clear: both;
-//     display: table;
-//   }
-
-//   #card{
-  
-//     visibility: hidden;
-
-// }
-
-// #car{
-  
-//   visibility: hidden;
-
-// }
-
-// #ca{
-  
-//   visibility: hidden;
-
-// }
-
-// #cad{
-  
-//   visibility: hidden;
-
-// }
-
-// #Trailer{
-  
-//   visibility: hidden;
-
-// }
-// #container{
-  
-//   visibility: hidden;
-
-// }
-// .back{
-//     --background: #f58e26;
-// }
-
-// .class{
-//     --background: #f58e26;
-// }
 
 
 
@@ -151,7 +22,7 @@ ion-card{
 
 
 .securepayment{
-  width: 125px;
+  width: 105px;
   height: min-content;
   float:inline-start;
   display: flex;
@@ -163,6 +34,8 @@ ion-card{
 }
 
 
+
+
 ////////
 body{margin-top:20px;
   background-color:#eee;
@@ -170,9 +43,9 @@ body{margin-top:20px;
   .card {
       margin-bottom: 24px;
       box-shadow: 0 2px 3px #e4e8f0;
-      margin: 20px;
+      margin: 10px;
   }
-  .card {
+  .card-body {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -241,14 +114,14 @@ body{margin-top:20px;
      height:40px;
      margin-top: 20px;
      
-      background-color:orange;
+      //background-color:orange;
       border-radius: 10px;
       margin-left: 73px;
       position: relative;
       
   }
   .handpayment{
-    width: 125px;
+    width: 105px;
     height: min-content;
     float:inline-start;
     display: flex;

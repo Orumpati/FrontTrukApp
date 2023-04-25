@@ -101,7 +101,7 @@ export class EditPagePage implements OnInit {
     console.log(data)
     //console.log(this.description, this.image, this.price, this.description, this.name)
     console.log(this.real._id)
-    fetch("http://localhost:3000/quotes/updateQuotes/" + this.real._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/updateQuotes/" + this.real._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",

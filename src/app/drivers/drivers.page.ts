@@ -39,7 +39,7 @@ flag : any = false;
     });
     await loading.present();
    // console.log(data)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/" +this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/getprofiledetails/" +this.logindata.Authentication, {
       
     method:'get',
     headers:{
@@ -82,7 +82,7 @@ flag : any = false;
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/" +this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/getprofiledetails/" +this.logindata.Authentication, {
       
     method:'get',
     headers:{
@@ -213,7 +213,7 @@ if(confirm("Are You Sure")){
    console.log(data)
    
 
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
      method: 'post',
      headers: {
        "Access-Control-Allow-Origin": "*",
@@ -268,7 +268,7 @@ if(confirm('Are you Sure')){
    console.log(data)
    //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
      method: 'post',
      headers: {
        "Access-Control-Allow-Origin": "*",
@@ -309,7 +309,7 @@ if(confirm('Are you Sure')){
   // console.log(data)
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/TrukDeactive/" + this.trukDocId, {
+  fetch("https://trukapp2023.herokuapp.com/addTruk/TrukDeactive/" + this.trukDocId, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -342,7 +342,7 @@ OntripStatus(data:any){
     DriverNumber:data,
     Availability:false
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateAvailability", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updateAvailability", {
       
   method:'post',
   headers:{

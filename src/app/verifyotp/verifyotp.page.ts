@@ -44,8 +44,9 @@ export class VerifyotpPage implements OnInit {
         height: '45px',
       },
     };
-  
+    openbanner =false
     ngOnInit(){
+  
       this.getUniqueDeviceID()
     
       this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');
@@ -97,7 +98,7 @@ export class VerifyotpPage implements OnInit {
         this.checkOTP()
       }
     }*/
-  
+
     async presentLoading(){
       const loading = await this.loadingCtrl.create({
         message:'Verify OTP..',
@@ -189,8 +190,11 @@ if(this.verified.role === "Shipper"){
   localStorage.setItem('regdata',JSON.stringify(this.verified))
 loading.dismiss()
   this.ngZone.run(() => {
+
     alert('Login as Shipper')
+  
     this.updatedeviceid()
+    
     localStorage.setItem('regdata',JSON.stringify(this.verified))
     this.router.navigate(['/tab/tab1'])
     localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
@@ -203,7 +207,9 @@ loading.dismiss()
   loading.dismiss()
   localStorage.setItem('regdata',JSON.stringify(this.verified))
 alert('Login as agent/broker')
+
 this.updatedeviceid()
+
 this.router.navigate(['/tab/shipperhome'])
 localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === "Transporter"){
@@ -212,7 +218,9 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   loading.dismiss()
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as transporter')
+ 
   this.updatedeviceid()
+  
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.role === 'Fleet Owner'){
@@ -221,7 +229,9 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   loading.dismiss()
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as Fleet Owner')
+
   this.updatedeviceid()
+  
   this.router.navigate(['/tab/shipperhome'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
 }else if(this.verified.userRole === 'Driver'){
@@ -231,7 +241,9 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
   loading.dismiss()
   localStorage.setItem('regdata',JSON.stringify(this.verified))
   alert('Login as Driver')
+  
   this.updatedeviceid()
+
   this.router.navigate(['/tab/driver-active-loads'])
   localStorage.setItem('loginrole',JSON.stringify(this.verified.userRole))
 }
@@ -250,7 +262,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
       var body ={
         uniqueDeviceId:this.UniqueDeviceID
       }
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updatedeviceid/" + this.verified.Authentication, {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updatedeviceid/" + this.verified.Authentication, {
         method: 'post',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -282,7 +294,7 @@ localStorage.setItem('loginrole',JSON.stringify(this.verified.role))
       var data ={
         mobileNo:this.mobileNo
       }
-        fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
+        fetch("https://trukapp2023.herokuapp.com/login/loginDetails", {
         method:'post',
         headers:{
                   "Access-Control-Allow-Origin": "*",

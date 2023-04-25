@@ -122,7 +122,7 @@ ionViewDidEnter(){
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/filterByVehicle/" + this.filter, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/filterByVehicle/" + this.filter, {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -158,7 +158,7 @@ ionViewDidEnter(){
 
     if (this.filter && this.trukpickupLocation && this.trukdropLocation) {
 
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/filterBytrukoperatingRoutes/" + this.filter + "/" + this.trukpickupLocation + "/" + this.trukdropLocation, {
+      fetch("https://trukapp2023.herokuapp.com/addTruk/filterBytrukoperatingRoutes/" + this.filter + "/" + this.trukpickupLocation + "/" + this.trukdropLocation, {
         method: 'GET',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -197,7 +197,7 @@ loading.dismiss()
         trukpickupLocation: this.trukpickupLocation
       }
 
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/vehicleSearch", {
+      fetch("https://trukapp2023.herokuapp.com/addTruk/vehicleSearch", {
         method: 'Post',
         headers: {
           "access-Control-Allow-Origin": "*",
@@ -223,7 +223,7 @@ loading.dismiss()
   }
 
   getAllvehicles(){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/allVehicles", {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/allVehicles", {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",

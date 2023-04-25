@@ -85,4 +85,12 @@ export class ReferralPage implements OnInit {
       this.router.navigate(['tab/tab2'])
     }
   }
+
+  autorefresh(event:any){
+    
+    setTimeout(() => {
+      event.target.complete()
+     window.location.reload()
+    }, 2000);
+  }
 }

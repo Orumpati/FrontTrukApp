@@ -31,7 +31,7 @@ this.allNotificatio =0
   }
 
   dackendImages(){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/truckinfo/gethome",{
+    fetch("https://trukapp2023.herokuapp.com/truckinfo/gethome",{
         
     method:'get',
     headers:{

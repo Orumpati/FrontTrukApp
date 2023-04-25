@@ -131,7 +131,7 @@ route(){
     mobileNo:this.phoneNumber
   }
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/login/loginDetails", {
+    fetch("https://trukapp2023.herokuapp.com/login/loginDetails", {
     method:'post',
     headers:{
               "Access-Control-Allow-Origin": "*",

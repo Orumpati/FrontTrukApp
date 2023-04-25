@@ -77,7 +77,7 @@ export class ContactUsPage implements OnInit {
       isActive:"Active"
     
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/contactusStatusAndNumber", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/contactusStatusAndNumber", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",

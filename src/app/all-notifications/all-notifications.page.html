@@ -10,7 +10,7 @@
 <ion-content >
  <div *ngIf="allNotificatio !=0" >
   <ion-list>
-    <ion-item *ngFor="let item of allNotifications">
+    <ion-item *ngFor="let item of allNotifications ">
       <img src="logo" style="width: 12px; height:12px;border-radius:5px;">
     
       <ion-label>
@@ -25,6 +25,6 @@
     </div>
     
     <div *ngIf="allNotificatio == 0">
-<h1>No Notifications</h1>
+<h1 style="text-align: center;margin-top:300px;">No Notifications</h1>
     </div>
 </ion-content>

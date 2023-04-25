@@ -20,9 +20,24 @@
     <div class="card-body p-0" >
       <!--avatar-->
       <div style="display: flex;">
-      <a  class="avatar xl bg-gray bg-opacity-10  position-relative  d-block mx-auto">
-        <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" class="avatar-img img-fluid rounded-circle" alt="">
-      </a>
+        <a *ngIf="real.trukname == 'LCV'" >
+          <img src="https://vamosys.com/wp-content/uploads/2021/05/top-6-lcv-vehicles-tata-ace-gold-petrol.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
+        <a *ngIf="real.trukname == 'Tanker'" >
+          <img src="https://sc04.alicdn.com/kf/HTB12f2keirpK1RjSZFhq6xSdXXa6.jpg" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
+        <a *ngIf="real.trukname == 'Hyva'" >
+          <img src="https://cms.eichertrucksandbuses.com/uploads/truck/exterior/d3a75f14ce8935f16998f318360966a0.jpg" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
+        <a *ngIf="real.trukname == 'Truk'" >
+          <img src="https://www.bharatbenz.com/uploads/truck_images/product_types/main_1661768896.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
+        <a *ngIf="real.trukname == 'Trailer'" >
+          <img src="https://tatatrucks.tatamotors.com/images/tata-heavy-medium-trucks/fully-built-solutions/tata-flat-bed-trailer/flatbedtrailer-overview.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
+        <a *ngIf="real.trukname == 'Container'" >
+          <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png" class="avatar-md rounded-circle img-thumbnail" alt="">
+        </a>
       <div style="margin-right: 30px;">
       <h5 class="mb-0 ">
         <a  class="text-reset"><strong>{{real.isTrukOpenOrClose}}{{real.typeOfHyva}}{{real.typeOfTrailer}}{{real.typeOfContainer}}{{real.typeofTanker}}--{{real.trukname}}</strong></a>
@@ -52,7 +67,7 @@
           <span class="text-muted small">Routes</span>
           <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{real.trukoperatingRoutes.length}} locations
 
-            <ul class = "dropdown-menu" role = "menu" style="height: max-height;overflow-y:scroll;">
+            <ul class = "dropdown-menu" role = "menu" style="height: 200px;overflow-y:scroll;">
               <li *ngFor="let route of real.trukoperatingRoutes index as i">&nbsp; &nbsp;&nbsp;&nbsp;<a>{{i+1}}.{{route}}</a></li>
            
                
@@ -77,25 +92,31 @@
 
   <div class="card"  >
     <div class="card-body" >
-      <div type="button" class="securepayment" >
+      
 
-        <div>
-        <span style="color: green;">Online Payment</span>
-     
+        <div type="button" class="securepayment"  *ngIf="TrukPost.typeOfPay == 'Online'"  >
+                  
+          <div>
+          <span style="color: green;">Online Payment</span>
+          </div>
         </div>
-      </div>
-      <br>
-       
-    
 
+        <div type="button" class="offlinepayment" *ngIf="TrukPost.typeOfPay == 'Offline'" style="width:95px;"  >
+          
+          <div>
+          <span style="color: rgb(248, 42, 24);">Cash Payment</span>
+      
+          </div>
+        </div>
+ 
         <div class="d-flex align-items-center">
             <div><img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg" alt="" class="avatar-md rounded-circle img-thumbnail" />
               
 
             </div>
-            <div class="flex-1 ms-3" style="margin-top: -25px;">
-                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{TrukPost.OriginLocation}}</a></span><br>
-                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="success"></ion-icon>{{TrukPost.DestinationLocation}}</a></span><br>
+            <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
+                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{TrukPost.OriginLocation}}</a></span><br>
+                <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="success"></ion-icon>{{TrukPost.DestinationLocation}}</a></span><br>
                 <span class="badge badge-soft-success mb-0"> Posted On {{TrukPost.date}}</span>
             </div>
         </div>

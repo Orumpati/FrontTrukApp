@@ -10,7 +10,7 @@
                           
   </ion-toolbar>
 </ion-header>
-
+<!-- 
 <ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
@@ -29,11 +29,11 @@
   
   </div>
 
-  </ion-card>
+  </ion-card> -->
 
+<br>
 
-
-  <br>
+  
   <div class="container">
     <ion-row>
       <ion-segment [scrollable]="true" value="home">
@@ -45,21 +45,22 @@
           </ion-segment-button>
         </ion-col>
         <ion-col>
-          <ion-segment-button value="star" (click)="deactive()">
-            <ion-label style="font-size: 10px;">Deactive</ion-label>
+          <ion-segment-button value="call" (click)="completedtog()">
+            <ion-label style="font-size: 10px;">Completed</ion-label>
           </ion-segment-button>
         </ion-col>
+      
         <ion-col>
           <ion-segment-button value="wars" (click)="inproge()">
             <ion-label style="font-size: 10px;">In-Progress</ion-label>
           </ion-segment-button>
         </ion-col>
-   
         <ion-col>
-          <ion-segment-button value="call" (click)="completedtog()">
-            <ion-label style="font-size: 10px;">Completed</ion-label>
+          <ion-segment-button value="star" (click)="deactive()">
+            <ion-label style="font-size: 10px;">Deactive</ion-label>
           </ion-segment-button>
         </ion-col>
+     
       </ion-segment>
     </ion-row>
   </div>
@@ -69,15 +70,15 @@
     <div class="card" *ngFor="let text of item.slice().reverse()" >
       <div class="card-body" >
 
-          <div class="dropdown" style="float: right;" *ngIf="text.trukisActive == 'Active'" >
+          <div class="dropdown" style="float: right;"  >
             <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               D
             </button>-->
             <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" ></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <!-- <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a> -->
-              <a class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
-              <a class="dropdown-item" (click)="reactive(text._id)">Reactivate</a>
+              <a [hidden]="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
+              <a *ngIf="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="reactive(text._id)">Reactivate</a>
               <a class="dropdown-item"  (click)="moredetails(text)" routerLink="/trukmore-details" >More Details</a>
             </div>
           </div>
@@ -104,17 +105,17 @@
                   <img src="https://www.icemakeindia.com/wp-content/uploads/2019/08/Refrigerated-Container-8-1024x1024.png" class="avatar-md rounded-circle img-thumbnail" alt="">
                 </a>
                 <br>
-              &nbsp;&nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span><span style="color: rgb(27, 237, 62); font-weight:bolder;" *ngIf="text.trukisActive == 'Completed'">{{text.trukisActive}}</span>
-              </div>
-              <div class="flex-1 ms-3">
+              &nbsp;<span style="color: black; font-weight:bolder;" *ngIf="text.trukisActive == 'Active'">{{text.trukisActive}}</span> <span style="color: rgb(237, 27, 27); font-weight:bolder;" *ngIf="text.trukisActive == 'Deactive'">{{text.trukisActive}}</span><span style="color: rgb(27, 237, 62); font-weight:bolder;" *ngIf="text.trukisActive == 'Completed'">{{text.trukisActive}}</span>
+              </div>&nbsp;&nbsp;
+              <div class="flex-1 " style="margin-top: -35px;">
                   <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder; text-transform:uppercase;"><a  class="text-dark">{{text.trukvehiclenumber}}</a></h5>
                   <span class="badge badge-soft-success mb-0"> Posted On {{text.trukdate}}</span>
               </div>
           </div>
           <div class="mt-1 pt-0">
-             &nbsp;&nbsp;&nbsp; <p  class="text-muted mb-0 mt-0"  ><i class="fa fa-location-arrow font-size-15 align-middle pe-2 " ></i> {{text.trukoperatingRoutes.length}} Routes</p>
-              <p  class="text-muted mb-0 mt-2">&nbsp;<i class=" fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}} --{{text.trukname}}</p>
-              <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-map-marker font-size-15 align-middle pe-2 "></i>  Avaliable in <span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
+              <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-location-arrow font-size-15 align-middle pe-2 " style="color:orange"></i> {{text.trukoperatingRoutes.length}} Routes</p>
+              <p  class="text-muted mb-0 mt-2"><i class=" fa fa-truck font-size-15 align-middle pe-2 " style="color: orange;"></i>&nbsp;{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}} --{{text.trukname}}</p>
+              <p class="text-muted mb-0 mt-2"><i class="fa fa-map-marker font-size-15 align-middle pe-2 " style="color: orange;"></i>  Avaliable in:<span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
           </div>
           <div style="display:inline-flex; display: flex;
           text-align: center;
@@ -155,7 +156,7 @@
 <ion-content *ngIf="itemlen ==0" class="noitem">
   <div>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYIDHG7JivZlXLJC27oeHti76eHrkkNdq_A&usqp=CAU" />
-    <h1>No truk vehicle!</h1>
+    <h3>Post Your Vehicle</h3>
   </div>
 </ion-content>
 

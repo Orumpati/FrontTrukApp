@@ -39,6 +39,7 @@ otp:any
  url: any;
   spin: boolean | undefined;
   image: any;
+  gstdata: any;
   constructor(private modal:ModalController,private router: Router,private actionsheet:ActionSheetController,
     private firestore: Firestore,
     private storage: Storage,private file:File,private crop:Crop,private domsanitize: DomSanitizer,public loadingController: LoadingController
@@ -254,10 +255,10 @@ alert('Enter Valid Aadhaar Number')
                 async result =>{
              console.log(result)
              if(result.success  == true){
-          
+          this.gstdata = result.data
               loading.dismiss()
               this.aadharverifystatus()
-              this.gstdetails(result.data)
+            
                    alert('GST Verified')    
      //const ele =await this.modal.getTop()
     //  if(ele){
@@ -268,7 +269,7 @@ alert('Enter Valid Aadhaar Number')
            
              }else{
              
-              alert('Please enable API request from Your GST profile')
+              alert('Please enter correct GST')
      
     }  
                 }
@@ -294,7 +295,7 @@ alert('Enter Valid Aadhaar Number')
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/" + this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/getprofiledetails/" + this.logindata.Authentication, {
       
       method:'get',
       headers:{
@@ -345,7 +346,7 @@ loading.dismiss()
     
     }
     console.log(data)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putroutes/" +this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/putroutes/" +this.logindata.Authentication, {
       
     method:'put',
     headers:{
@@ -431,10 +432,10 @@ loading.dismiss()
   }
   goback(){
     if(this.logindata.role == 'Shipper'){
-      this.router.navigate(['tab/tab1'])
+      window.location.href='/tab/tab1'
     }else{
       
-      this.router.navigate(['tab/tab2'])
+      window.location.href='/tab/tab2'
     }
   }
 
@@ -452,7 +453,7 @@ loading.dismiss()
     
     }
     console.log(data)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
       
     method:'put',
     headers:{
@@ -470,6 +471,7 @@ loading.dismiss()
       
 
        localStorage.setItem('regdata',JSON.stringify(this.logindata))
+       this.gstdetails()
       loading.dismiss()
       window.location.href='/profile'
       
@@ -490,22 +492,24 @@ loading.dismiss()
 
 
   
-  async gstdetails(data:any){
+  async gstdetails(){
     const loading = await this.loadingController.create({
-      message: 'Verifying...',
+      message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
-
+var body ={
+  gstDetails:this.gstdata
+}
     
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/gstDetails/" + this.logindata.Authentication, {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/gstDetails/" + this.logindata.Authentication, {
       
       method:'post',
       headers:{
                 "Access-Control-Allow-Origin": "*",
                   "Content-Type":'application/json'
               },
-      body:JSON.stringify(data)
+      body:JSON.stringify(body)
       }).then(res => res.json())
       
       .then(

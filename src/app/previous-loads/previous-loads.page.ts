@@ -30,7 +30,7 @@ export class PreviousLoadsPage implements OnInit {
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
   
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findloadbydrivers", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/findloadbydrivers", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",

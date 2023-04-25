@@ -12,12 +12,18 @@
 
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content  refreshingSpinner="circles" refreshingText="Refreshing..">
+
+    </ion-refresher-content>
+  </ion-refresher>
   <div style="text-align: center;">
     <h1 style="color: #f58e26;;">How it Works <ion-icon name="information-circle" id="click-trigger"></ion-icon></h1>
     <ion-popover trigger="click-trigger" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
-          ■ Share the Referral code with your friend. <br>
+■ Share the Referral code with your friend. <br>
 ■ Your friend should use the code to sign up into TrukApp.  <br>
 ■ The Coins will be credited ONLY when your friend verifies KYC.  <br>
 ■ You will receive 100 coins for each unique referral signup.    <br>
@@ -38,8 +44,8 @@
         
          <span align="center" style="text-align: center;font-size:15px;">{{url}}</span>&nbsp;&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; padding-top:5px;"  color="primary"  (click)="copyString()"></ion-icon>
-         <div  style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:220px;margin-left: 35px;" >
-         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referral Code: </span>{{logindata.referalCode}}</span>&nbsp;&nbsp;
+         <div  style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:230px;margin-left: 35px;" >
+         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referral Code: </span><span style="color: black;font-weight: bolder;">{{logindata.referalCode}}</span></span>&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; "  color="primary"  (click)="copycode()"></ion-icon>
         
         </div>

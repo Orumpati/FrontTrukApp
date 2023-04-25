@@ -32,7 +32,7 @@
   <div *ngIf="allbidslen != 0" >
   <ion-card class="allBids" *ngFor="let data of loadwithvehicle">
     <ion-card-header>
-      <ion-card-title>Their new price</ion-card-title>
+      <ion-card-title>Bid from :-{{data.UserName}}</ion-card-title>
       <ion-card-title>₹{{data.expectedPrice}}/- Fixed</ion-card-title>
       
       <!--<ion-chip style="float:right; margin-top: -59px;">

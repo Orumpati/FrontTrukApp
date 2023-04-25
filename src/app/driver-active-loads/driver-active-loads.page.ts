@@ -40,7 +40,7 @@ this.get()
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
   
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findloadbydrivers", {
+   fetch("https://trukapp2023.herokuapp.com/quotes/findloadbydrivers", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -89,7 +89,7 @@ this.get()
     console.log(data)
     //localStorage.setItem("newpostAdd", JSON.stringify(data));
   
-   fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/findtransporterbydrivers", {
+   fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/findtransporterbydrivers", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -143,7 +143,7 @@ this.get()
         Availability:false
       }
       console.log(body)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateAvailability", {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updateAvailability", {
           
       method:'post',
       headers:{
@@ -176,7 +176,7 @@ this.get()
           Availability:true
         }
         console.log(body)
-        fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateAvailability", {
+        fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updateAvailability", {
             
         method:'post',
         headers:{

@@ -27,8 +27,8 @@ config = {
 
   ngOnInit() {
     this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
-    console.log(this.logindata)
-    console.log(this.logindata['aadharVerify'])
+    console.log(this.logindata.signupReferalCode)
+    console.log(this.logindata.referalCode)
     var clientid = JSON.parse(localStorage.getItem("client_id") || '{}')
     console.log(clientid)
   }
@@ -86,7 +86,7 @@ config = {
          // this.router.navigate(['profile'])
         }else{
           loading.dismiss()
-          alert("Recharge Your Wallet")
+          alert("Enter Correct OTP")
         }
         
       
@@ -112,7 +112,7 @@ config = {
       
       }
       console.log(data)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
         
       method:'put',
       headers:{
@@ -130,10 +130,11 @@ config = {
         
 
          localStorage.setItem('regdata',JSON.stringify(this.logindata))
+         alert('Aadhaar verified')
          this.getdetailsofreffere()
         loading.dismiss()
-        window.location.href='/profile'
-        
+        //window.location.href='/profile'
+        this.router.navigate(['profile'])
       
         }
         ).catch(
@@ -151,7 +152,7 @@ getdetailsofreffere(){
   var ss={
     referalCode:this.logindata.signupReferalCode
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refferedBy", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/refferedBy", {
       
   method:'post',
   headers:{
@@ -163,23 +164,25 @@ getdetailsofreffere(){
   
   .then(
     async result =>{
+      this.referedusersigned(result._id)
+      alert('Added Referal Details')
 console.log(result)
 this.sai =result.ref
 this.docId=result._id 
-this.referedusersigned()
+
     })
 }
 
 
 
-    referedusersigned(){
+    referedusersigned(IdDoc:any){
       var data ={
-        _id:this.docId,
+        _id:IdDoc,
         firstName:this.logindata.firstName,
         lastName:this.logindata.lastName,
         mobileNo:this.logindata.mobileNo
       }
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refereduserdata", {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/refereduserdata", {
           
       method:'post',
       headers:{
@@ -192,7 +195,8 @@ this.referedusersigned()
       .then(
         result =>{
     console.log(result)
-      
+    this.addcoinstoRefered()
+      alert('Coins Added')
         }
         ).catch(
             error =>{
@@ -212,7 +216,7 @@ this.referedusersigned()
         referalCode:this.logindata.signupReferalCode
       
       }
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addcoinstoRefered", {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/addcoinstoRefered", {
           
       method:'post',
       headers:{
@@ -225,6 +229,7 @@ this.referedusersigned()
       .then(
         result =>{
           this.addcoinstorefer()
+          
     console.log(result)
       
         }
@@ -244,7 +249,7 @@ this.referedusersigned()
         referalCode:this.logindata.referalCode
       
       }
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addcoinstoRefered", {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/addcoinstoRefered", {
           
       method:'post',
       headers:{

@@ -19,11 +19,11 @@
   
   
   img{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 55px;
     border-radius: 50%;
     border: 7px solid #fdfdff;
-    margin-right: 14px;
+    margin-right: 7px;
   }
   h2{
     font-weight: 300px;
@@ -117,11 +117,12 @@ ion-label{
     
     
 }
-body{margin-top:20px;
+body{
+  margin-top:20px;
   background-color:#eee;
   }
   .card {
-      margin-bottom: 24px;
+      margin-bottom: 14px;
       //box-shadow: 0 2px 3px #e4e8f0;
       
   }
@@ -131,7 +132,7 @@ body{margin-top:20px;
       flex-direction: column;
       min-width: 0;
       
-      background-clip: border-box;
+      //background-clip: border-box;
       border: 1px solid #4e535f;
       border-radius: 1rem;
     
@@ -187,4 +188,21 @@ body{margin-top:20px;
     padding: 4px;
     font-size: 10px;
     border: 2px solid rgb(230, 77, 21);
+  }
+
+  ion-modal {
+    --height: 50%;
+    --width:80%;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  ion-modal::part(backdrop) {
+    background: rgb(139, 169, 213);
+    opacity: 1;
+  }
+  
+  ion-modal ion-toolbar {
+    // --background: rgb(252, 166, 7);
+    // --color: white;
   }

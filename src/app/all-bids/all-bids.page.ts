@@ -41,7 +41,7 @@ all(){
   var data ={
     "_id":this.singlearray._id
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/getsingleloadbids", {
+  fetch("https://trukapp2023.herokuapp.com/quotes/getsingleloadbids", {
     method: 'POST',
     headers: {
       "Access-Control-Allow-Origin": "*",

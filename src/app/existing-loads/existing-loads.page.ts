@@ -39,7 +39,7 @@ ionViewDidEnter(){
 
   // }
   get() {
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/allQuotes", {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",

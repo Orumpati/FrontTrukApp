@@ -9,6 +9,12 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
+    <ion-refresher-content  refreshingSpinner="circles" refreshingText="Refreshing..">
+
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card style="border-radius: 13px;">
     <div class="container">
       <div>
@@ -23,22 +29,19 @@
         </div>
       </div>
    
-       
-         <ion-card style="float: left;width:150px;text-align:center; border-radius:11px; ">
+       <div style="display: flex;">
+        <div>
+         <ion-card style="width:150px;text-align:center; border-radius:11px; ">
           <div >
             <span style="color: black; font-weight:bolder; font-size:18px;">Withdrawable</span><br>
             <span style="text-align: center;"><span style="color: #f58e26;font-size:18px;">{{Totalcoins}}</span><small style="color: black; font-weight:bolder;font-size:14px;">Coins</small></span>
           </div>
          </ion-card>
-    
-   
-      
-
-      <!-- <div style="text-align: center;">
-        .......................................................</div> -->
-
-      <!-- <ion-button style="float: left;" shape="round" class="attach" id="open-modal">View Histroy</ion-button> -->
-  <ion-button style="float: right;margin-top:-50px;" shape="round" class="attach" id="open-modal"  id="moodal">Withdraw</ion-button>
+</div>
+<div>
+  <ion-button  shape="round" class="attach" id="open-modal"  id="moodal">Withdraw</ion-button>
+  </div>
+  </div>
     </div>
   </ion-card>
 
@@ -92,7 +95,7 @@
 </ion-content>
 
 
-<ion-modal #modal trigger="moodal" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle" style="--border-radius:13px;">
+<ion-modal #modal trigger="moodal" [initialBreakpoint]="0.95" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle" style="--border-radius:13px;">
   <ng-template>
     <ion-content class="ion-padding">
 

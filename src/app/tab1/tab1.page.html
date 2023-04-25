@@ -13,7 +13,7 @@
 
   </ion-toolbar>
 </ion-header>
-<ion-card style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
+<div style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper'  || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
     <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
@@ -25,13 +25,13 @@
     <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
       &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
-        Looking for loads
+        Looking for Loads
       </label>
     </div>
   
   </div>
 
-  </ion-card>
+</div>
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
@@ -51,22 +51,22 @@
               <ion-label>Active</ion-label>
             </ion-segment-button>
             </ion-col>
-            
             <ion-col>
-            <ion-segment-button value="Deactive" (click)="toggles('Deactive')">
-              <ion-label>Deactivated</ion-label>
-            </ion-segment-button>
-            </ion-col>
+              <ion-segment-button value="Completed" (click)="toggless('Completed')">
+                <ion-label>Completed</ion-label>
+              </ion-segment-button>
+              </ion-col>
+         
              <ion-col>
             <ion-segment-button value="heat" (click)="inprogress()">
               <ion-label>In-Progress</ion-label>
             </ion-segment-button>
             </ion-col> 
             <ion-col>
-            <ion-segment-button value="Completed" (click)="toggless('Completed')">
-              <ion-label>Completed</ion-label>
-            </ion-segment-button>
-            </ion-col>
+              <ion-segment-button value="Deactive" (click)="toggles('Deactive')">
+                <ion-label>Deactivated</ion-label>
+              </ion-segment-button>
+              </ion-col>
           </ion-segment>
         </ion-row>
     
@@ -123,14 +123,14 @@
                         <div><img src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=" alt="" class="avatar-md rounded-circle img-thumbnail" />
                           
                           &nbsp;&nbsp;<span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span><span *ngIf="text.isActive === 'Deactive'"  style="color: rgb(245, 26, 26); font-weight:bolder;">{{text.isActive}}</span>
-                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:14px;">{{text.isActive}}</span>
+                          <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:13px;">{{text.isActive}}</span>
                           <!-- <span *ngIf="text.shipperAccept === true && text.shareContact == false"  style="color: orange; font-weight:bolder; font-size:14px;">In Progress</span> -->
                           <br>
                       
                         </div>
-                        <div class="flex-1 ms-3" style="margin-top: -25px;">
-                            <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.OriginLocation}}</a></span><br>
-                            <span class="font-size-16 mb-1" style=" font-weight:bolder;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{text.DestinationLocation}}</a></span><br>
+                        <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
+                            <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.OriginLocation}}</a></span><br>
+                            <span class="font-size-16 mb-1" style=" font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{text.DestinationLocation}}</a></span><br>
                             <span class="badge badge-soft-success mb-0"> PickUp Date&Time {{text.date}}</span>
                         </div>
                     </div>
@@ -164,104 +164,17 @@
             </div>
         
        
-          
     
-    
-  
-
-      <!--<ion-card style="  box-shadow:0 2.8px 2.2px rgba(0,0,0,0.034),
-                                     0 6.7px 5.3px rgba(0,0,0,0.034),
-                                     0 12.5px 10px rgba(0,0,0,0.06) ,
-                                     0 22.3px 17.9px rgba(0,0,0,0.072),
-                                     0 41.8px 33.4px rgba(0,0,0,0.086),
-                                     0 100px 80px rgba(0,0,0,0.12); width:320px; padding:10px;"  *ngFor="let text of item">
-
-      <div style="display:flex; margin-bottom:20px;">
-        <div>
-          <ion-img
-          src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og="
-          style="width:60px; height:60px;" ></ion-img>
-        </div>
-        <div style="  width:210px; margin-left:5px;">
-          <span style="font-size:15px; color:black;">{{text.pickupState}}</span>---
-          
-          <span style="font-size:15px; color:black;">{{text.dropupState}}</span><br>
-         <span style="font-size:14px;"> Posted On {{text.date}}</span>
-        </div>
-        <div>
-          <ion-icon name="ellipsis-vertical-outline" style="float: right; font-size: 28px;" id="dropbtn"></ion-icon>
-            <div class="dropdown-content " style="float: right;">
-
-
-              <a routerLink="/edit-page" (click)="sendData(text)">Edit</a>
-              <a (click)="Isactive(text)" >Deactive</a>
-              <a (click)="loadDetails(text)">More Details</a>
-            </div>
-        </div>
-
-      </div>
-      <hr>
-      <div style="display: flex;">
-    <div style="float:left;">
-      {{text.product}}<br>
-      {{text.Quantity}}tons--{{text.data}}<br>
-      Online
-    </div>
-     <div align="center" style="margin-left: 5px; margin-right:5px; ">
-      <ion-button fill="solid" class="place" (click)="bidById(text)">View Bids</ion-button>
-     </div>
-     <div style="float:right;">
-      Expected Price<br>
-      ₹ {{text.expectedPrice}}
-      <div style="width:100px; height:40px; border:1px solid green;">
-       <small></small>
-      </div>
-     </div>
-      </div>
-
-      </ion-card>-->
-      <!--<ion-card *ngFor="let text of item" style="border: 2px solid #F58E26; ">
-        <ion-card-header>
-          <div class="dropdown">
-            <ion-icon name="ellipsis-vertical-outline" style="float: right; font-size: 28px;" id="dropbtn"></ion-icon>
-            <div class="dropdown-content " style="float: right;">
-
-
-              <a routerLink="/edit-page" (click)="sendData(text)">Edit</a>
-              <a (click)="Isactive(text)" >Deactive</a>
-              <a (click)="loadDetails(text)">More Details</a>
-            </div>
-            <p style="font-size: 17px;">{{text.isActive}}</p>
-            <div>
-              <ion-img
-                src="https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og="
-                style="height: 20%; width: 20%;" float="left"></ion-img>
-              <div style="margin-top: -4rem; margin-left: 76px;">
-                <ion-card-title>{{text.OriginLocation}} -- {{text.DestinationLocation}}</ion-card-title>
-                <ion-card-subtitle>Posted On {{text.date}}</ion-card-subtitle>
-              </div>
-            </div>
-            <p>-----------------------------------------------------------------------</p>
-          </div>
-        </ion-card-header>
-     
-
-        <ion-card-content>
-          {{text.product}}
-        </ion-card-content>
-
-        <ion-card-content>
-          {{text.data}} -- {{text.Quantity}}
-        </ion-card-content>
-        <ion-button fill="solid" shape="round" class="place" (click)="bidById(text)">View Bids</ion-button>
-        <ion-card-title style="float: right; margin-top: -53px;">₹ {{text.expectedPrice}}</ion-card-title>
-      </ion-card>-->
     </div>
 
     
     <div *ngIf="item.length ==0" class="noitem">
       <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg"
-        style="height: 70px; width: 70px;" class="img">
+        style="height: 70px; width: 70px; display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 70%;
+      " class="img">
     
     <br>
     <h4 align="center" >Post your load to get suitable bids</h4>
@@ -270,6 +183,18 @@
   </div>
 
 
+
+  <ion-modal #modal [isOpen]="openbanner">
+    <ng-template>
+      <ion-content>
+
+       <div style="display: flex;justify-content:center;" >
+        <ion-button style="position: absolute; margin-left:200px;" (click)="modal.dismiss()"><ion-icon name="close"></ion-icon></ion-button>
+        <img src="assets/kyc.jpeg" style="width: 350px; height:371px;" routerLink="/profile">
+       </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
 <div class="postLoad" align="center">
 <ion-button   routerLink="/attach-new-load" color=""  >Post Load</ion-button>

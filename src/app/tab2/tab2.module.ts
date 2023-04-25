@@ -6,7 +6,7 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-
+//import { ChangelookforComponent } from '../changelookfor/changelookfor.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -14,7 +14,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    
   ],
   declarations: [Tab2Page]
 })

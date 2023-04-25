@@ -133,7 +133,7 @@ export class TrukEditPagePage implements OnInit {
     console.log(data)
     //console.log(this.description, this.image, this.price, this.description, this.name)
     console.log(this.real._id)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/addTruk/updateLoads/" + this.real._id, {
+    fetch("https://trukapp2023.herokuapp.com/addTruk/updateLoads/" + this.real._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { YourEarningsPageRoutingModule } from './your-earnings-routing.module';
-
+import { DatePipe } from '@angular/common';
 import { YourEarningsPage } from './your-earnings.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { YourEarningsPage } from './your-earnings.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    YourEarningsPageRoutingModule
+    YourEarningsPageRoutingModule,
+    DatePipe,
   ],
   declarations: [YourEarningsPage]
 })

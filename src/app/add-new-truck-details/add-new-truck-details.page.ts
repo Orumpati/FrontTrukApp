@@ -113,7 +113,7 @@ this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}')
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachVehicleToLoad", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/attachVehicleToLoad", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -151,7 +151,7 @@ this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}')
    // console.log(data)
 
     console.log(this.sub)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + this.sub, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + this.sub, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",

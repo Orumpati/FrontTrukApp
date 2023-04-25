@@ -45,7 +45,7 @@ export class ModalContactPage implements OnInit {
     console.log(data)
     localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/contact/addcontact", {
+    fetch("https://trukapp2023.herokuapp.com/contact/addcontact", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -95,14 +95,21 @@ export class ModalContactPage implements OnInit {
 
   email() {
     var data = {
-      text:`UserName:${this.Name},
-           MobileNo: ${this.PhoneNumber} ,
-           To: ${this.To} ,
-           Query:${this.Query}`  
+      text:`
+      A Query request for Load has been made. Please take action immediately
+           UserName:${this.Name}
+           MobileNo: ${this.PhoneNumber} 
+           To: ${this.To} 
+           Query:${this.Query}
+           
+           
+           Regards,
+           TrukApp Referrals
+           `  
   }
     console.log(data)
 
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/contact/emailnotification", {
+    fetch("https://trukapp2023.herokuapp.com/contact/emailnotification", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",

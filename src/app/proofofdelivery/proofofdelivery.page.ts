@@ -36,7 +36,7 @@ export class ProofofdeliveryPage implements OnInit {
       DriverStatus:"Completed"
     }
     
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/attachPod", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/attachPod", {
       method: 'post',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -66,7 +66,7 @@ export class ProofofdeliveryPage implements OnInit {
       DriverNumber:this.logindata.DriverNumber,
       Availability:true
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/updateAvailability", {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/updateAvailability", {
         
     method:'post',
     headers:{

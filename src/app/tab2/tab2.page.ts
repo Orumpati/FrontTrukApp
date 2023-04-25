@@ -5,7 +5,7 @@ import 'firebase/compat/auth';
 import  'firebase/auth';
 import 'firebase/compat/firestore';
 import  firebase from 'firebase/compat/app';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-tab2',
@@ -34,6 +34,7 @@ export class Tab2Page {
   loortr: any;
   itemActive: any;
   itemShare: any;
+  openbanner=false;
   
 
 
@@ -45,11 +46,21 @@ export class Tab2Page {
     console.log(this.getData)
   }
 
-  constructor(private router:Router,public loadingController: LoadingController) { }
+  constructor(private router:Router,public loadingController: LoadingController) {
+     this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+   }
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
+    // if(this.logindata.aadharVerify == 'notVerified' || this.logindata.gstVerify == 'notVerified'){
+    //   this.modalorp()
+    // }
+
+   
+   
+   this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+   
     this.post()
-    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+  
   }
   ionViewDidEnter(){
     this.post()
@@ -58,6 +69,7 @@ export class Tab2Page {
   toggle(){
     //this.isactive=isActive
     this.post()
+  
     //console.log(isActive)
    }
 
@@ -68,11 +80,12 @@ export class Tab2Page {
    }
 
    post() {
+    //window.location.reload()
     var body={
       mobileNo:this.logindata.mobileNo, //regter ayena vadi number
       isActive:"Active"
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadMarket", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/LoadMarket", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -96,7 +109,7 @@ export class Tab2Page {
       mobileNo:this.logindata.mobileNo,
      
         }
-        fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/transporteInprogress", {
+        fetch("https://trukapp2023.herokuapp.com/quotes/transporteInprogress", {
           method: 'POST',
           headers: {
             "Access-Control-Allow-Origin": "*",
@@ -129,7 +142,7 @@ console.log(this.itemActive)
       }
    async completedGet(){
     const loading = await this.loadingController.create({
-      message: 'Verifying...',
+      message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
@@ -137,7 +150,7 @@ console.log(this.itemActive)
       mobileNo:this.logindata.mobileNo,//regter ayena vadi number
       isActive:"Completed"
     }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/LoadMarket", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/LoadMarket", {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -162,14 +175,17 @@ console.log(this.itemActive)
       })
   }
   
-  
+  modalorp(){
+    this.openbanner =!this.openbanner;
+    
+   }
   async get() {
     const loading = await this.loadingController.create({
       message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/allQuotes", {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",

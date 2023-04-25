@@ -15,15 +15,20 @@
   </ion-refresher>
   <ion-card class="expecPrice">
     <ion-card-header>
-      <ion-card-subtitle>Expected Price:</ion-card-subtitle>
-      <ion-card-title>₹ {{objects.expectedPrice}} -/</ion-card-title>
-      <ion-card-title [hidden]="objects.advance == null" style="float: right;margin-top:-40px;" >Advance₹ {{objects.advance}}/-</ion-card-title>
-      <p>-----------------------------------------------------------------------</p>
+      <ion-card-subtitle style="font-size: 18px;">Expected Price:<span style="font-weight: bolder; color:black;">₹ {{objects.expectedPrice}}/-</span></ion-card-subtitle>
+      <!-- <ion-card-title>₹ {{objects.expectedPrice}}/-</ion-card-title> -->
+      <ion-card-title [hidden]="objects.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >Advance:<span style="font-weight: bolder; color:black;"> ₹ {{objects.advance}}/-</span></ion-card-title>
+
     </ion-card-header>
     <ion-card-content>
-      <p style="font-size: larger; font-weight: bolder; ">{{objects.OriginLocation}} -- {{objects.DestinationLocation}}
-      </p>
-      <p style="font-size: large; font-weight: bold; "> {{objects.data}} -- {{objects.Quantity}} </p>
+      <!-- <p style="font-size: larger; font-weight: bolder; ">{{objects.OriginLocation}} -- {{objects.DestinationLocation}}
+      </p> -->
+      <div class="flex-1" style="overflow-y: scroll;">
+      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{objects.OriginLocation}}</a></span><br>
+      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{objects.DestinationLocation}}</a></span><br>
+      </div>
+      <!-- <p style="font-size: large; font-weight: bold; "> {{objects.data}} -- {{objects.Quantity}} </p> -->
+      <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 " style="color: blue;"></i>{{objects.Quantity}}--{{objects.data}}</p>
     </ion-card-content>
   </ion-card>
 

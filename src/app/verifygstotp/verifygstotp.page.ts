@@ -106,7 +106,7 @@ otp:any
       
       }
       console.log(data)
-      fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
+      fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/putprofile/" +this.logindata.Authentication, {
         
       method:'put',
       headers:{

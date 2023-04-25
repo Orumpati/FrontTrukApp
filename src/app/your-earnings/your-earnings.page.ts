@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { AlertController ,LoadingController} from '@ionic/angular';
 @Component({
   selector: 'app-your-earnings',
@@ -24,12 +25,16 @@ export class YourEarningsPage implements OnInit {
   totslcoinDB: any;
   Totalcoins: any;
   PermanetCoins: any;
-  constructor(public alertController:AlertController,private loadingController:LoadingController,private router:Router) { }
+  OrderTime: any;
+  currenttime: any;
+  AccDetails: any;
+  constructor(public alertController:AlertController,private loadingController:LoadingController,private router:Router,private datepipe:DatePipe) { }
 
   ngOnInit() {
+    this.OrderTime =this.datepipe.transform((new Date), 'MM/dd/yyyy ');
+    this.currenttime =this.datepipe.transform((new Date), ' h:mm:ss');
     this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
-    //this.referals = this.logindata.referTo
-   // this.referlen=this.referals.length
+ this.AccDetails =JSON.parse(localStorage.getItem('AccDetails')||'{}')
    console.log(this.logindata.signupReferalCode )
     this.referal()
 //     if( this.logindata.signupReferalCode == undefined ||this.logindata.signupReferalCode ==null || this.logindata.signupReferalCode ==''){
@@ -97,8 +102,10 @@ async presentSecondAlert() {
 
  async NewPostAdd() {
 
-  if(Number(this.inputpoints) > Number(this.Totalcoins)){
+  if(Number(this.inputpoints) > Number(this.Totalcoins) ){
     alert("Don't have Sufficient Coins to withdraw")
+  }else if(Number(this.PermanetCoins) > 1000){
+    alert("You reached your maximum limit of withdrawal")
   }else{
   const loading = await this.loadingController.create({
     message: 'Loading...',
@@ -119,7 +126,7 @@ async presentSecondAlert() {
   console.log(data)
   //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/point/pointsPost", {
+  fetch("https://trukapp2023.herokuapp.com/point/pointsPost", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -145,19 +152,37 @@ window.location.reload()
       console.log(err)
      
     })
+  
+    
   }
 }
 
 email() {
 
   var data = {
-      text:`UserName:${this.logindata.firstName + this.logindata.lastName},
-           MobileNo: ${this.logindata.mobileNo} ,
-           RequestedPoints:${this.inputpoints}`  
+      // text:`UserName:${this.logindata.firstName + this.logindata.lastName},
+      //      MobileNo: ${this.logindata.mobileNo} ,
+      //      RequestedPoints:${this.inputpoints}`  
+      text:` Hello,
+      A withdrawal request for referral coins has been made. Please take action immediately
+      Withdrawal Information:-
+      User Name:${this.logindata.firstName + this.logindata.lastName}
+      Registered Mobile No: ${this.logindata.mobileNo}
+      Company Name: ${this.logindata.companyName}
+      Location: ${this.logindata.city}
+      Requested Amount: ${this.inputpoints}
+      Requested Date: ${this.OrderTime +this.currenttime}
+      Account Number: ${this.AccDetails.accountNum}
+      IFSC Code: ${this.AccDetails.ifscCode}
+      UPI ID: ${this.AccDetails.upiId}
+
+     Regards,
+     TrukApp Referrals
+      `
   }
   console.log(data)
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/point/emailPoints", {
+  fetch("https://trukapp2023.herokuapp.com/point/emailPoints", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -190,7 +215,7 @@ email() {
   console.log(data)
   //localStorage.setItem("newpostAdd", JSON.stringify(data));
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/point/reqestedHistory", {
+  fetch("https://trukapp2023.herokuapp.com/point/reqestedHistory", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -219,7 +244,7 @@ email() {
 referal() {
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/getprofiledetails/"+this.logindata.Authentication, {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/getprofiledetails/"+this.logindata.Authentication, {
     method: 'get',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -271,12 +296,12 @@ async addAccUPID() {
 
 
   }
-  let regex = new RegExp("/^[a-zA-Z0-9.-]{2, 256}@[a-zA-Z][a-zA-Z]{2, 64}$/")
-  if (regex.test(data.upiId) == true) {
+  // let regex = new RegExp("/^[a-zA-Z0-9.-]{2, 256}@[a-zA-Z][a-zA-Z]{2, 64}$/")
+  // if (regex.test(data.upiId) == true) {
     
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addAccDetails", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/addAccDetails", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -289,9 +314,9 @@ async addAccUPID() {
     .then(result => {
       console.log(result),
      
-        
+       
         loading.dismiss()
-        
+        localStorage.setItem('AccDetails',JSON.stringify(data))
       alert("Account details added Successfully")
 window.location.reload()
     }
@@ -301,11 +326,11 @@ window.location.reload()
       console.log(err)
      
     })
-  }
-  else {
-      alert('Enter Correct Upid')
-      loading.dismiss()
-  }
+  //}
+  // else {
+  //     alert('Enter Correct Upid')
+  //     loading.dismiss()
+  // }
 }
 
 
@@ -331,7 +356,7 @@ async addAccDetails() {
     
 
 
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addAccDetails", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/addAccDetails", {
     method: 'post',
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -346,7 +371,7 @@ async addAccDetails() {
      
         
         loading.dismiss()
-        
+        localStorage.setItem('AccDetails',JSON.stringify(data))
       alert("Account details added Successfully")
 window.location.reload()
     }
@@ -366,7 +391,7 @@ withdrawCoins(){
     withdrawCoins:this.inputpoints
   
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/withdrawCoins", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/withdrawCoins", {
       
   method:'post',
   headers:{
@@ -397,6 +422,15 @@ goback(){
     
     this.router.navigate(['tab/tab2'])
   }
+}
+
+
+autorefresh(event:any){
+    
+  setTimeout(() => {
+    event.target.complete()
+   window.location.reload()
+  }, 2000);
 }
 
 }

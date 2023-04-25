@@ -54,6 +54,7 @@ body={
   itemActive: any;
   itemShare: any;
   itemshi: any;
+  openbanner = false;
   constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
 
   
@@ -65,24 +66,33 @@ body={
 
 
   ngOnInit():void{
-    
+    this.logindata =JSON.parse(localStorage.getItem('regdata')||'{}')
+    console.log(this.logindata)
+    // if(this.logindata.aadharVerify == 'notVerified' || this.logindata.gstVerify == 'notVerified'){
+    //   this.modalorp()
+    // }
    this.toggle(this.isActive="Active")
    this.activeGet()
-   this.logindata =JSON.parse(localStorage.getItem('regdata')||'{}')
-   console.log(this.logindata)
+
    //this.driverdetails =JSON.parse(localStorage.getItem('driverdetails')||'{}')
    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   }
   ionViewDidEnter(){
     this.toggle(this.isActive="Active")
   }
+
+
+  modalorp(){
+    this.openbanner =!this.openbanner;
+    
+   }
   async get() {
     const loading = await this.loadingController.create({
       //message: '...',
       spinner: 'lines'
     });
     await loading.present();
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/allQuotes", {
+    fetch("https://trukapp2023.herokuapp.com/quotes/allQuotes", {
       method: 'GET',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -123,7 +133,7 @@ body={
    // console.log(data)
 
     console.log(docData)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + docData._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + docData._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -189,7 +199,7 @@ loading.dismiss()
         var body={
           Number:this.logindata.mobileNo , isActive:"Active" 
         }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
+    fetch("https://trukapp2023.herokuapp.com/quotes/loadsByStatusAndNumber" , {
       method: 'POST',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -235,7 +245,7 @@ loading.dismiss()
     var body={
       Number: this.logindata.mobileNo, isActive:"Deactive" 
     }
-fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
+fetch("https://trukapp2023.herokuapp.com/quotes/loadsByStatusAndNumber" , {
   method: 'POST',
   headers: {
     "Access-Control-Allow-Origin": "*",
@@ -268,7 +278,7 @@ fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" 
     Number: this.logindata.mobileNo, 
   
   }
-fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/findLoadsInProgress" , {
+fetch("https://trukapp2023.herokuapp.com/quotes/findLoadsInProgress" , {
 method: 'POST',
 headers: {
   "Access-Control-Allow-Origin": "*",
@@ -318,7 +328,7 @@ body: JSON.stringify(body),
     Number: this.logindata.mobileNo,
      isActive:"Completed" 
   }
-fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/loadsByStatusAndNumber" , {
+fetch("https://trukapp2023.herokuapp.com/quotes/loadsByStatusAndNumber" , {
 method: 'POST',
 headers: {
   "Access-Control-Allow-Origin": "*",
@@ -381,7 +391,7 @@ cancel() {
    // console.log(data)
 
     //console.log(docData)
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + text._id, {
+    fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + text._id, {
       method: 'PUT',
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -420,7 +430,7 @@ loading.dismiss()
  // console.log(data)
 
   //console.log(docData)
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/quotes/quoteDeactivate/" + text._id, {
+  fetch("https://trukapp2023.herokuapp.com/quotes/quoteDeactivate/" + text._id, {
     method: 'PUT',
     headers: {
       "Access-Control-Allow-Origin": "*",

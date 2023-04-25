@@ -27,7 +27,7 @@ export class SignupPage implements OnInit {
   
   dropdownSettings!: IDropdownSettings;
 
-
+  pattern="^[7-9][0-9]{9}$"
   @ViewChild('map', { static: false }) mapElement: any;
   
 
@@ -243,7 +243,7 @@ console.log(data)
  console.log(this.final)
 
 if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signupReferalCode == undefined){
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signup", {
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/signup", {
       
       method:'post',
       headers:{
@@ -288,7 +288,7 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
             var ss={
               referalCode:data.signupReferalCode
             }
-            fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refferedBy", {
+            fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/refferedBy", {
                 
             method:'post',
             headers:{
@@ -321,7 +321,7 @@ if(data.signupReferalCode == null || data.signupReferalCode == '' || data.signup
                //PermanetCoins:100
             }
 
-            fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/signup", {
+            fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/signup", {
       
             method:'post',
             headers:{
@@ -380,7 +380,7 @@ referedusersigned(firstName:any,lastName:any,mobileNo:any,docId:any){
     lastName:lastName,
     mobileNo:mobileNo
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/refereduserdata", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/refereduserdata", {
       
   method:'post',
   headers:{
@@ -413,7 +413,7 @@ addcoinstoRefered(signupReferalCode:any){
     referalCode:signupReferalCode
   
   }
-  fetch("https://amused-crow-cowboy-hat.cyclic.app/TruckAppUsers/addcoinstoRefered", {
+  fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/addcoinstoRefered", {
       
   method:'post',
   headers:{
@@ -441,6 +441,11 @@ console.log(result)
       console.log(response);
       this.location = response;
     })
+  }
+
+  get mobileNo():FormControl {
+   
+    return this.signupForm.get('mobileNo') as FormControl;
   }
 
 }

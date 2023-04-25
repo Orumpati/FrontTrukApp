@@ -31,7 +31,7 @@ export class StarRatingPage implements OnInit {
   var body = {
     staring:this.rating
   }
-    fetch("https://amused-crow-cowboy-hat.cyclic.app/staring/staring", {
+    fetch("https://trukapp2023.herokuapp.com/staring/staring", {
       method: 'post',
       headers: {
         "access-Control-Allow-Origin": "*",
