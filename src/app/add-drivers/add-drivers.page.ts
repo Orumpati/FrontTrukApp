@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-drivers',
   templateUrl: './add-drivers.page.html',
@@ -18,10 +20,18 @@ export class AddDriversPage implements OnInit {
   DriverNumber:any;
   images: any;
   logindata: any;
-  constructor(private loadingController :LoadingController) { }
+  language: any;
+  lang: any;
+  constructor(private loadingController :LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata')||'{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
   selectImage(event: any) {
     if (event.target.files.length > 0) {

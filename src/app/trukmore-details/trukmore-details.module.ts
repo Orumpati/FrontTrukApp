@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { TrukmoreDetailsPageRoutingModule } from './trukmore-details-routing.module';
 
 import { TrukmoreDetailsPage } from './trukmore-details.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TrukmoreDetailsPageRoutingModule
+    TrukmoreDetailsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TrukmoreDetailsPage]
 })

@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-truckviewbids',
   templateUrl: './truckviewbids.page.html',
@@ -54,12 +56,21 @@ export class TruckviewbidsPage implements OnInit {
   trukDocId: any;
   TohideNegoshit: any;
   shipperNo: any;
+  language: any;
+  lang: any;
   
-    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router) { }
+    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+  
+      this.translateConfigService.getDefaultLanguage();
+      this.language = this.translateConfigService.getCurrentLang();
+      
+     }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
     console.log(this.regdata)
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     this.loadDocId = JSON.parse(localStorage.getItem('totalloadTAll') || '{}')
       this.openedBid =JSON.parse(localStorage.getItem('openedBid') || '{}')
       this.trukDocId =JSON.parse(localStorage.getItem('loadDocId') || '{}')

@@ -155,12 +155,7 @@ const routes: Routes = [
    // canActivate:[LoggeduserGuard]
 
   },
-  {
-    path: 'lookingfor',
-    loadChildren: () => import('./lookingfor/lookingfor.module').then( m => m.LookingforPageModule),
-   // canActivate:[LoggeduserGuard]
 
-  },
   {
     path: 'attach-load',
     loadChildren: () => import('./attach-load/attach-load.module').then( m => m.AttachLoadPageModule),

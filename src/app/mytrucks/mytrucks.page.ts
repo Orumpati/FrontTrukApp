@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { interval } from 'rxjs';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-mytrucks',
   templateUrl:'./mytrucks.page.html' ,
@@ -28,16 +30,23 @@ export class MytrucksPage implements OnInit {
   truckshift: any;
   loortr: any;
   itemShare: any;
+  language: any;
+  lang: any;
 
 
-  constructor(public loadingController: LoadingController,private router:Router) {
+  constructor(public loadingController: LoadingController,private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
     //this.gettruckbidata()
     //this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
    }
 
 
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     this.get()
     //this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
   //this.active()

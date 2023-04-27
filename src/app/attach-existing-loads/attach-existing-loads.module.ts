@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AttachExistingLoadsPageRoutingModule } from './attach-existing-loads-routing.module';
 
 import { AttachExistingLoadsPage } from './attach-existing-loads.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AttachExistingLoadsPageRoutingModule
+    AttachExistingLoadsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [AttachExistingLoadsPage]
 })

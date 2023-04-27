@@ -4,6 +4,8 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { NavController, NavParams } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-new-truck-details',
   templateUrl: './add-new-truck-details.page.html',
@@ -33,7 +35,13 @@ export class AddNewTruckDetailsPage implements OnInit {
   city:any;
   regdata: any;
   subNum: any;
-  constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router) { }
+  language: any;
+  lang: any;
+  constructor(public loadingController: LoadingController,private route: ActivatedRoute,private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
 
   ngOnInit() {
     this.regdata =JSON.parse(localStorage.getItem("regdata") || '{}')
@@ -59,6 +67,9 @@ this.subNum =JSON.parse(localStorage.getItem("loadItemMobile") || '{}')
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
+
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
 
 

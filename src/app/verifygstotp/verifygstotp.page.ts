@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-verifygstotp',
   templateUrl: './verifygstotp.page.html',
@@ -9,10 +11,18 @@ import { LoadingController } from '@ionic/angular';
 export class VerifygstotpPage implements OnInit {
 otp:any
   logindata: any;
-  constructor(private router:Router,public loadingController: LoadingController) { }
+  language: any;
+  lang: any;
+  constructor(private router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
 
   config = {

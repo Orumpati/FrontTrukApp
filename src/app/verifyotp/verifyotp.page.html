@@ -18,9 +18,9 @@
 
 
  <div class="content">
-<h3 style="margin-top: 100px;">Verification</h3>
+<h3 style="margin-top: 100px;">{{"Verification"|translate}}</h3>
 <p>
-  Enter the One Time Password send to +91{{mobileNo}}
+  {{"Enter the One Time Password send to +91"|translate}}{{mobileNo}}
 </p>
 
 
@@ -53,10 +53,10 @@
 
 <br>
 <ion-note>
-  Didn't receive OTP?
+  {{"Didn't receive OTP?"|translate}}
  
-  <ion-text  style="font-weight: 600;" style="color: orange;" [hidden]="timer > 0" (click)="resendOTP()"> Resend OTP</ion-text>
-  <div *ngIf="timer > 0">Resend OTP in <span style="color:red;">{{ timer }}</span> seconds</div>
+  <ion-text  style="font-weight: 600;" style="color: orange;" [hidden]="timer > 0" (click)="resendOTP()"> {{"Resend OTP"|translate}}</ion-text>
+  <div *ngIf="timer > 0">{{"Resend OTP in"|translate}} <span style="color:red;">{{ timer }}</span> seconds</div>
 </ion-note>
 
 </div>
@@ -113,4 +113,4 @@
 
 
 </ion-content>
-<ion-button style="height:50px;"   (click)="handleClick()">Verify OTP</ion-button>
+<ion-button style="height:50px;"   (click)="handleClick()">{{"Verify OTP"|translate}}</ion-button>

@@ -18,13 +18,14 @@
     <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" >
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
-        Looking for Truks
+        
+        {{"Looking for Truks" | translate}}
       </label>
     </div>
     <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
       &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
-        Looking for loads
+        {{"Looking for loads"|translate}}
       </label>
     </div>
   
@@ -44,10 +45,10 @@
   <ion-card style=" height:60px; background:rgb(239, 202, 132); ">
  
   
-   <span *ngIf="logindata.aadharVerify === 'notVerified' || logindata.gstVerify == 'notVerified'" routerLink="/profile" style="border: 2px solid rgb(234, 10, 10); color:rgb(236, 35, 12); padding:7px; border-radius:8px;">KYC Pending</span>
-   <span *ngIf="logindata.aadharVerify === 'Verified' && logindata.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">KYC Verified</span>
+   <span *ngIf="logindata.aadharVerify === 'notVerified' || logindata.gstVerify == 'notVerified'" routerLink="/profile" style="border: 2px solid rgb(234, 10, 10); color:rgb(236, 35, 12); padding:7px; border-radius:8px;">{{"KYC Pending"|translate}}</span>
+   <span *ngIf="logindata.aadharVerify === 'Verified' && logindata.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">{{"KYC Verified"|translate}}</span>
    <div style="float:left;">
-    <span *ngIf="logindata.aadharVerify === 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">Aadhaar Verified</span>
+    <span *ngIf="logindata.aadharVerify === 'Verified'" style="border: 2px solid green; color:green; padding:7px; border-radius:8px;">{{"Aadhaar Verified"|translate}}</span>
   </div>
   </ion-card>
 
@@ -62,7 +63,7 @@
          
        
       </div>
-      <strong class="loadss">Active Loads</strong>
+      <strong class="loadss">{{"Active Loads"|translate}}</strong>
     
     </div>
 
@@ -87,7 +88,7 @@
          <p class="count">{{closedbids1}}</p>
        
       </div>
-      <strong class="loadss">Closed Bids</strong>
+      <strong class="loadss">{{"Closed Bids"|translate}}</strong>
     
     </div>
 
@@ -100,7 +101,7 @@
          <p class="count">{{activeloads1}}</p>
        
       </div>
-      <strong class="loadss">Active Loads</strong>
+      <strong class="loadss">{{"Active Loads"|translate}}</strong>
     
     </div>
     <div class="item"   *ngIf="logindata.role == 'Transporter' || logindata.role == 'Agent/Broker'|| logindata.role == 'Fleet Owner'" [hidden]="loortr == 'trucks'">
@@ -112,7 +113,7 @@
          <p class="count">{{activetrucks}}</p>
        
       </div>
-      <strong class="loadss">Active Truks</strong>
+      <strong class="loadss">{{"Active Truks"|translate}}</strong>
     
     </div>
     <!-- <div class="item"   *ngIf="logindata.role == 'Transporter' || logindata.role == 'Agent/Broker'|| logindata.role == 'Fleet Owner'" [hidden]="loortr == 'trucks'">
@@ -134,7 +135,7 @@
          <p class="count">{{closedbids1}}</p>
        
       </div>
-      <strong class="loadss">Closed Bids</strong>
+      <strong class="loadss">{{"Closed Bids"|translate}}</strong>
     
     </div>
     
@@ -145,13 +146,13 @@
   
 
   <ion-card-content>
-    <p style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:center">You can Add Trucks and Post Loads in your role. Please select
+    <p style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; text-align:center">{{"You can Add Trucks and Post Loads in your role. Please select
       “Looking for Trucks” if you have load to ship OR select “Looking for
-      Loads” if you have Trucks to attach </p>
+      Loads” if you have Trucks to attach"|translate}} </p>
   </ion-card-content>
 <div style="margin-top:-17px;" align="center">
-  <ion-button routerLink="/add-truck" >Add Truks</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <ion-button routerLink="/attach-new-load" [hidden]="logindata.role == 'Fleet Owner'">Post Load</ion-button>
+  <ion-button routerLink="/add-truck" >{{"Add Truks"|translate}}</ion-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ion-button routerLink="/attach-new-load" [hidden]="logindata.role == 'Fleet Owner'">{{"Post Load"|translate}}</ion-button>
   </div>
 </ion-card>
 
@@ -178,8 +179,8 @@
 </ion-slides>
 
 <div *ngIf="logindata.role == 'Shipper'">
-<h5 style="margin-left: 13px;">Top Recommendations</h5>
-&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">Near By Truks</button>
+<h5 style="margin-left: 13px;">{{"Top Recommendations"|translate}}</h5>
+&nbsp;&nbsp;&nbsp;<button style="border:2px; padding:10px;border-radius:8px;background-color:orange;">{{"Near By Truks"|translate}}</button>
 
 
 <ion-slides #slides autoplay="true" loop="true" pager="false" scrollbar="true" [options]="slideOpt">
@@ -190,7 +191,7 @@
         </div>
       
       <ion-card-content>
-        <p>LCV</p> 
+        <p>{{"LCV"|translate}}</p> 
         <p>3.5-7 Tonnes</p>
       </ion-card-content>
     </ion-card>
@@ -202,7 +203,7 @@
         </div>
       
       <ion-card-content>
-        <p>Open Truk</p> 
+        <p>{{"Open Truk"|translate}}</p> 
         <p>10-21 Tonnes</p>
       </ion-card-content>
       </ion-card>
@@ -214,7 +215,7 @@
         </div>
       
       <ion-card-content>
-        <p>Container</p> 
+        <p>{{"Container"|translate}}</p> 
         <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
@@ -226,7 +227,7 @@
         </div>
       
       <ion-card-content>
-        <p>Trailer</p> 
+        <p>{{"Trailer"|translate}}</p> 
         <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
@@ -238,19 +239,19 @@
         </div>
       
       <ion-card-content>
-        <p>LCV</p> 
+        <p>{{"LCV"|translate}}</p> 
         <p>1-6 Tonnes</p>
       </ion-card-content>
     </ion-card>
   </ion-slide>
 </ion-slides>
 </div>
-&nbsp;&nbsp;&nbsp;<h4>TruKApp Tutorials</h4>
+&nbsp;&nbsp;&nbsp;<h4>{{"TruKApp"|translate}} {{"Tutorials" |translate}}</h4>
 <div class="about">
   <div class="aboutimage">
 <img src="assets/trueTruk.png">
   </div>
-  <div>How to use Truk app</div>
+  <div>{{"How to use Truk app"|translate}}</div>
 
 </div>
 
@@ -266,3 +267,6 @@
   </ng-template>
 </ion-modal>
 </ion-content>
+
+
+

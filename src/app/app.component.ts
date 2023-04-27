@@ -57,7 +57,7 @@ this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
   // Uncomment to set OneSignal device logging to VERBOSE  
 
   // NOTE: Update the setAppId value below with your OneSignal AppId.
-  OneSignal.setAppId("79da642e-49a6-4af9-8e6e-252680709d15");
+  OneSignal.setAppId("8fda6cf4-bdbe-4f2e-a709-24f8990ad307");
 
   OneSignal.setNotificationWillShowInForegroundHandler( (jsonData) => {
 

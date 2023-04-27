@@ -9,6 +9,7 @@ import { Tab4PageRoutingModule } from './tab4-routing.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { Tab4Page } from './tab4.page';
 import {NgOtpInputModule} from 'ng-otp-input';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import {NgOtpInputModule} from 'ng-otp-input';
     IonicModule,
     Tab4PageRoutingModule,
     NgOtpInputModule,
+    TranslateModule,
     NgMultiSelectDropDownModule.forRoot()
     //MatButtonToggleModule
   ],

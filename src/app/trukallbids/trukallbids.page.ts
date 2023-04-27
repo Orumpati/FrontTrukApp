@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-trukallbids',
   templateUrl: './trukallbids.page.html',
@@ -27,11 +29,20 @@ export class TrukallbidsPage implements OnInit {
   totalloadTAll: any;
   AtleastOneBidisClosed=false
   shipper: any;
-  constructor(private router:Router,public navController : NavController,) { }
+  language: any;
+  lang: any;
+  username: any;
+  constructor(private router:Router,public navController : NavController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
   ionViewDidEnter(){
   this.all()
   }
   ngOnInit() {
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     /*this.singlearray =JSON.parse(localStorage.getItem("viewBid") || '{}')
     this.onlybids =this.singlearray.bids*/
    this.truckallbids =JSON.parse(localStorage.getItem('truckallBids')|| '{}')
@@ -79,6 +90,7 @@ all(){
             this.bidact = this.loadeddata[i].isAgentAccepted
             this.shipper = this.loadeddata[i].isShipperAccepted
             this.bidactlen = this.loadeddata[i].BidActivity.length
+            this.username = this.loadeddata[i].UserName
             if(this.bidact.BidStatus == 'closed') {
           
               this.AtleastOneBidisClosed = true

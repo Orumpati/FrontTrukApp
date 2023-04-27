@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-attach-load',
   templateUrl: './attach-load.page.html',
@@ -27,14 +28,21 @@ toggle!:boolean
   backgroundColor = 'orange';
   Color='black'
   slectindex: any;
-  constructor( private router:Router,public loadingController: LoadingController) { }
+  lang: any;
+  constructor( private router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
   ionViewDidEnter(){
     this.get()
   }
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata')|| '{}')
     this.get()
-
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
 
 

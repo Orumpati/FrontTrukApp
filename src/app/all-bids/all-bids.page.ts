@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-all-bids',
   templateUrl: './all-bids.page.html',
@@ -22,15 +24,23 @@ export class AllBidsPage implements OnInit {
 
   AtleastOneBidisClosed= false
   allbidsfor: any;
-  constructor(private router:Router,public navController : NavController,) { }
+  language: any;
+  lang: any;
+  constructor(private router:Router,public navController : NavController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { }
   ionViewDidEnter(){
   this.all()
+
+  
+  this.translateConfigService.getDefaultLanguage();
+  this.language = this.translateConfigService.getCurrentLang();
   }
   ngOnInit() {
     this.singlearray =JSON.parse(localStorage.getItem("viewBid") || '{}')
     this.onlybids =this.singlearray.bids
 
     console.log(this.onlybids)
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
 this.all()
    
 

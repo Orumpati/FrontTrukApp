@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package test.truk.app;
 
 import com.getcapacitor.BridgeActivity;
 

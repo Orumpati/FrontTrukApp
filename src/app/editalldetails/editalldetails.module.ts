@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { EditalldetailsPageRoutingModule } from './editalldetails-routing.module';
 
 import { EditalldetailsPage } from './editalldetails.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     EditalldetailsPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   declarations: [EditalldetailsPage]
 })

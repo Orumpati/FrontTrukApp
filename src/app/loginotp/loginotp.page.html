@@ -4,37 +4,37 @@
   <ion-toolbar>
     <div style="display: flex;">
       <!--<ion-icon name="arrow-back-sharp" (click)="gototype()" style="font-size: 30px;"></ion-icon>-->
-      <ion-title align="center"> SignUp/Login</ion-title>
+      <ion-title align="center"> {{"SignUp/Login"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   
-  <h1>Welcome,</h1>
+  <h1>{{"Welcome,"|translate}}</h1>
 
 
   <div>
     <ion-img src="assets/trueTruk.png"></ion-img>
    </div>
   <form>
-    &nbsp;&nbsp;<ion-label>Enter Your Mobile Number</ion-label><br>
+    &nbsp;&nbsp;<ion-label>{{"Enter Your Mobile Number"|translate}}</ion-label><br>
    
     <ion-item class="ion-margin">
       <small style="font-size: 15px;padding-right:3px;">+91</small>
-      <ion-input  type="number"   clearInput="true" placeholder="Enter Mobile Number" [(ngModel)]="phoneNumber" max="10" [ngModelOptions]="{standalone: true}" pattern="^((\\+91-?)|0)?[0-9]{10}$"></ion-input>
+      <ion-input  type="number"   clearInput="true" placeholder="{{'Enter Mobile Number'|translate}}" [(ngModel)]="phoneNumber" max="10" [ngModelOptions]="{standalone: true}" pattern="^((\\+91-?)|0)?[0-9]{10}$"></ion-input>
     </ion-item>
     <br>
-    <ion-label style="margin-left: 38px;"> Don't have an Account ? <span (click)="route()" style="font-size: 20px;color:rgb(245, 129, 75);"><u>Signup</u></span></ion-label>
+    <ion-label style="margin-left: 38px;"> {{"Don't have an Account ?"|translate}} <span (click)="route()" style="font-size: 20px;color:rgb(245, 129, 75);"><u>{{"Signup"|translate}}</u></span></ion-label>
  <br>
  <br>
     <div style="display: flex;position:absolute ;margin-top:60px;">
       <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
       
-      <span style="font-size: 14px;">By Signingup ,You are accepting <a href="http://trukapp.com/terms-and-conditions/"><u>T&C</u></a> and <a href="http://trukapp.com/privacy-policy/"><u>Privacy Policy</u></a></span>
+      <span style="font-size: 14px;">{{"By Signingup ,You are accepting"|translate}} <a href="http://trukapp.com/terms-and-conditions/"><u>{{"T&C"|translate}}</u></a> {{"and"|translate}} <a href="http://trukapp.com/privacy-policy/"><u>{{"Privacy Policy"|translate}}</u></a></span>
     </div>
 <div class="genotp">
-    <ion-button class="btn" color="#a13cd7;" [disabled]="phoneNumber == null || checkbox == false" (click)="getOTP()">Generate OTP</ion-button>
+    <ion-button class="btn" color="#a13cd7;" [disabled]="phoneNumber == null || checkbox == false" (click)="getOTP()">{{"Generate OTP"|translate}}</ion-button>
     </div>
     <div id="sign-in-button"></div>
     

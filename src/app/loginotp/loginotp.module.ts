@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { LoginotpPageRoutingModule } from './loginotp-routing.module';
 
 import { LoginotpPage } from './loginotp.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginotpPageRoutingModule
+    LoginotpPageRoutingModule,
+    TranslateModule
   ],
   declarations: [LoginotpPage]
 })

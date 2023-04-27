@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
-
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 @Component({
   selector: 'app-referral',
@@ -20,11 +21,19 @@ export class ReferralPage implements OnInit {
   CopyInputText:string = "http://trukapp.com/";
   
   logindata: any;
+  language:any;
+  lang: any;
 
-  constructor(private socialSharing:SocialSharing,private clipboard: Clipboard,private router:Router) { }
+  constructor(private socialSharing:SocialSharing,private clipboard: Clipboard,private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
 
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata')|| '{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
   sShare(){
     var options = {

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { YourEarningsPageRoutingModule } from './your-earnings-routing.module';
 import { DatePipe } from '@angular/common';
 import { YourEarningsPage } from './your-earnings.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +15,7 @@ import { YourEarningsPage } from './your-earnings.page';
     IonicModule,
     YourEarningsPageRoutingModule,
     DatePipe,
+    TranslateModule
   ],
   declarations: [YourEarningsPage]
 })

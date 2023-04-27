@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.page.html',
@@ -16,7 +18,13 @@ export class GetStartedPage implements OnInit {
      disableOnInteraction: false,
    }
  };
-  constructor(private router:Router) { }
+  language: any;
+  lang: any;
+  constructor(private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
   bannerImages = [
     {
       imgurl: 'assets/1.jpg',
@@ -33,6 +41,8 @@ export class GetStartedPage implements OnInit {
     }
   ];
   ngOnInit() {
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
 route(){
   this.router.navigate(['selectlanguage'])

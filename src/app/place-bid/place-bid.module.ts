@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { PlaceBidPageRoutingModule } from './place-bid-routing.module';
 
 import { PlaceBidPage } from './place-bid.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PlaceBidPageRoutingModule
+    PlaceBidPageRoutingModule,
+    TranslateModule
   ],
   declarations: [PlaceBidPage]
 })

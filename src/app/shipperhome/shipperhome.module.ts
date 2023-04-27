@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { ShipperhomePageRoutingModule } from './shipperhome-routing.module';
 //import { HttpClient } from '@angular/common/http';
 import { ShipperhomePage } from './shipperhome.page';
+import { TranslateModule } from '@ngx-translate/core';
+
+
 
 @NgModule({
   imports: [
@@ -14,7 +17,7 @@ import { ShipperhomePage } from './shipperhome.page';
     FormsModule,
     IonicModule,
     ShipperhomePageRoutingModule,
-    
+    TranslateModule
     //HttpClient
 
   ],

@@ -8,13 +8,15 @@ import { AddaddressPageRoutingModule } from './addaddress-routing.module';
 
 import { AddaddressPage } from './addaddress.page';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     AddaddressPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   declarations: [AddaddressPage]
 })

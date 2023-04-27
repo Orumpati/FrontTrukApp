@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
-      <ion-title style="text-align:center;">Rate Us</ion-title>
+      <ion-title style="text-align:center;">{{"Rate Us"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -27,15 +27,15 @@
 
 
 <ion-content class="ion-padding">
-  <ion-button id="open-modal" expand="block">Rate Us</ion-button>
+  <ion-button id="open-modal" expand="block">{{"Rate Us"|translate}}</ion-button>
 
   <ion-modal #modal trigger="open-modal">
     <ng-template>
       <ion-content>
         <ion-toolbar>
-          <ion-title>Staring</ion-title>
+          <ion-title>{{"Staring"|translate}}</ion-title>
           <ion-buttons slot="end">
-            <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+            <ion-button color="light" (click)="modal.dismiss()">{{"Close"|translate}}</ion-button>
           </ion-buttons>
         </ion-toolbar>
         <ion-list>
@@ -45,8 +45,8 @@
                 [ngClass]="{'active':i<=rating }"></i>
             </ng-container>
           </div><br>
-          <h4>You can submit the rating on play store</h4>
-          <ion-button>Rate us play Store</ion-button>
+          <h4>{{"You can submit the rating on play store"|translate}}</h4>
+          <ion-button>{{"Rate us play Store"|translate}}</ion-button>
 
         </ion-list>
       </ion-content>

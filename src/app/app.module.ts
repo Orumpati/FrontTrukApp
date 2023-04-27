@@ -37,11 +37,24 @@ import { ViewshipperconPipe } from './viewshippercon.pipe';
 
 // import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 // import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 @NgModule({
   declarations: [AppComponent, CapitalizeDirective, ViewshipperconPipe, 
    // HasRoleDirective
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,provideFirebaseApp(() => initializeApp(environment.firebase)), provideStorage(() => getStorage()), provideFirestore(() => getFirestore())],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,provideFirebaseApp(() => initializeApp(environment.firebase)), provideStorage(() => getStorage()), provideFirestore(() => getFirestore()),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
+  
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FormsModule,CommonModule,ReactiveFormsModule,HttpClient,SocialSharing,Clipboard,
     
   File,
@@ -52,8 +65,13 @@ import { ViewshipperconPipe } from './viewshippercon.pipe';
   LoggeduserGuard,
   DatePipe,
   
+
+  
   
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

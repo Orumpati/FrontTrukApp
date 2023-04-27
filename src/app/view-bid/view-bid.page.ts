@@ -5,6 +5,8 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { CommonServiceService } from '../common-service.service';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-view-bid',
   templateUrl: './view-bid.page.html',
@@ -50,15 +52,23 @@ export class ViewBidPage implements OnInit {
   mess:any="copied Successfully"
   data: any;
   truckOwnerNum: any;
-    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router,private commservice:CommonServiceService,private clipboard:Clipboard) {
+  language: any;
+  lang: any;
+    constructor(public loadingController: LoadingController,public navControl:NavController,private router:Router,private commservice:CommonServiceService,private clipboard:Clipboard,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
       this.commservice.listen().subscribe((m:any)=>{
         console.log(m);
         this.all();
       })
+
+      
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
      }
   
     ngOnInit() {
       this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
+      this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+      this.translateConfigService.setLanguage(this.lang);
       this.bids = JSON.parse(localStorage.getItem("viewBid") || '{}');
       //this.typepay =this.bids.typeOfPay
       console.log(this.bids)

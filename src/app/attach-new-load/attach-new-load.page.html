@@ -4,7 +4,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
-      <ion-title>Attach New Load</ion-title>
+      <ion-title>{{"Attach New Load"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -18,13 +18,13 @@
 
       <div class="container">
         <div class="title">
-         <h3 style="color:orange;">Load Details</h3> 
+         <h3 style="color:orange;">{{"Load Details"|translate}}</h3> 
         </div>
       
         <!--select origin Location-->
        <ion-card style="padding-left:5px; padding-right:5px; border-radius:9px;" >
        <ion-icon   name="location-outline"  style="font-size: 18px; color:blue;"></ion-icon>
-       <span style="font-size: 18px;">Pick-up Location</span>
+       <span style="font-size: 18px;">{{"Pick-up Location"|translate}}</span>
        
  
         <div class="form-group">
@@ -43,7 +43,7 @@
         <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="pickup == 'Invalid Pincode'"></ion-icon>
         <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'"></ion-icon>
        <span style="font-weight:bolder;font-size:17px;" *ngIf="pickup != null" [hidden]="pickup == 'Invalid Pincode'">{{pickupDis}}</span>
-       <span style="font-weight:bolder;font-size:17px;" *ngIf="pickup == 'Invalid Pincode'">Invalid</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="pickup == 'Invalid Pincode'">{{"Invalid"|translate}}</span>
        </ion-card>
 
        <ion-list [hidden]="autocompleteItems.length == 0 "  >
@@ -55,7 +55,7 @@
          <!--select destination Location-->
          <ion-card style="padding-top: 10px;padding-left:10px; padding-right:10px; border-radius:9px;">
           <ion-icon  name="location-outline" style="font-size: 18px; color:red;"></ion-icon>
-          <span style="font-size: 18px;">Drop Location</span>
+          <span style="font-size: 18px;">{{"Drop Location"|translate}}</span>
           
          <div class="form-group">
           <ion-input type="text" appCapitalize class="form-control" placeholder="Drop Location"
@@ -75,7 +75,7 @@
        <ion-icon name="close-circle" style="color:red; padding-top:5px;" *ngIf="dropup == 'Invalid Pincode'"></ion-icon>
        <ion-icon name="checkmark-circle" style="color: green; padding-top:5px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'"></ion-icon>
        <span style="font-weight:bolder;font-size:17px;" *ngIf="dropup != null" [hidden]="dropup == 'Invalid Pincode'">{{dropupDis}}</span>
-       <span style="font-weight:bolder;font-size:17px;" *ngIf="dropup == 'Invalid Pincode'">Invalid</span>
+       <span style="font-weight:bolder;font-size:17px;" *ngIf="dropup == 'Invalid Pincode'">{{"Invalid"|translate}}</span>
        </ion-card>
          <!--showing the list of address-->
          <ion-list [hidden]="autocompleteItems.length == 0 "    >
@@ -120,15 +120,16 @@
           <div class="form-control">
 
             <ion-select placeholder="Select Goods Type" [multiple]="true" [(ngModel)]="product">
-              <ion-select-option value="Bricks">Bricks</ion-select-option>
-              <ion-select-option value="Cement Products">Cement Products</ion-select-option>
-              <ion-select-option value="Clothes">Clothes</ion-select-option>
-              <ion-select-option value="E-Waste">E-Waste</ion-select-option>
-              <ion-select-option value="Electrical Equipment">Electrical Equipment</ion-select-option>
-              <ion-select-option value="Flowers">Flowers</ion-select-option>
-              <ion-select-option value="Fertilizer and Seeds">Fertilizer and Seeds</ion-select-option>
-              <ion-select-option value="Food">Food</ion-select-option>
+              <ion-select-option value="Bricks">{{"Bricks"|translate}}</ion-select-option>
+              <ion-select-option value="Cement Products">{{"Cement Products"|translate}}</ion-select-option>
+              <ion-select-option value="Clothes">{{"Clothes"|translate}}</ion-select-option>
+              <ion-select-option value="E-Waste">{{"E-Waste"|translate}}</ion-select-option>
+              <ion-select-option value="Electrical Equipment">{{"Electrical Equipment"|translate}}</ion-select-option>
+              <ion-select-option value="Flowers">{{"Flowers"|translate}}</ion-select-option>
+              <ion-select-option value="Fertilizer and Seeds">{{"Fertilizer and Seeds"|translate}}</ion-select-option>
+              <ion-select-option value="Food">{{"Food"|translate}}</ion-select-option>
 
+<<<<<<< HEAD
               <ion-select-option value="Furniture">Furniture</ion-select-option>
               <ion-select-option value="Household Items">Household Items</ion-select-option>
               <ion-select-option value="Vegetables">Vegetables</ion-select-option>
@@ -147,6 +148,26 @@
               <ion-select-option value="Bike">Bike</ion-select-option>
               <ion-select-option value="Car">Car</ion-select-option>
               <ion-select-option value="Others">Others</ion-select-option>
+=======
+              <ion-select-option value="Furniture">{{"Furniture"|translate}}</ion-select-option>
+              <ion-select-option value="Household Items">{{"Household Items"|translate}}</ion-select-option>
+              <ion-select-option value="Vegetables">{{"Vegetables"|translate}}</ion-select-option>
+              <ion-select-option value="Fruits">{{"Fruits"|translate}}</ion-select-option>
+              <ion-select-option value="Water">{{"Water"|translate}}</ion-select-option>
+              <ion-select-option value="Petrol/Desiel">{{"Petrol/Desiel"|translate}}</ion-select-option>
+              <ion-select-option value="Kerosene">{{"Kerosene"|translate}}</ion-select-option>
+              <ion-select-option value="Other Inflammables">{{"Other Inflammables"|translate}}</ion-select-option>
+              <ion-select-option value="Construction Materials">{{"Construction Materials"|translate}}</ion-select-option>
+              <ion-select-option value="Cotton">{{"Cotton"|translate}}</ion-select-option>
+              <ion-select-option value="Sand">{{"Sand"|translate}}</ion-select-option>
+              <ion-select-option value="Electronics Items">{{"Electronics Items"|translate}}</ion-select-option>
+              <ion-select-option value="Steel/Iron">{{"Steel/Iron"|translate}}</ion-select-option>
+              <ion-select-option value="Stones">{{"Stones"|translate}}</ion-select-option>
+              <ion-select-option value="Milk">{{"Milk"|translate}}</ion-select-option>
+              <ion-select-option value="Bike">{{"Bike"|translate}}</ion-select-option>
+              <ion-select-option value="Car">{{"Car"|translate}}</ion-select-option>
+              <ion-select-option value="Others">{{"Others"|translate}}</ion-select-option>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </ion-select>
           </div>
         </div>
@@ -157,7 +178,11 @@
 
         <div class="form-group">
           <div class="form-control" >
+<<<<<<< HEAD
             <ion-label position="floating">Pick-up Date & Time</ion-label>
+=======
+            <ion-label position="floating">{{"Pick-Up Date & Time"|translate}}</ion-label>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <ion-input type="datetime-local" placeholder="Pick-up Date" style="border: none; "
               [(ngModel)]="date"></ion-input>
           </div>
@@ -177,8 +202,13 @@
           box-shadow: 2px 2px 2px lightgray;">
             <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
+<<<<<<< HEAD
              <ion-select-option value="Tonnes">Tonnes</ion-select-option>
              <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
+=======
+             <ion-select-option value="Tonns">{{"Tonnes"|translate}}</ion-select-option>
+             <ion-select-option value="Kilo Liters">{{"Kilo Liters"|translate}}</ion-select-option>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
              </ion-select>
            </span>
           </div>
@@ -197,7 +227,7 @@
 
       <!-- <div class="ion-padding" slot="content"> -->
         <div >
-        <h1  style="color:orange;">Select Vehicle</h1>
+        <h1  style="color:orange;">{{"Select Vehicle"|translate}}</h1>
 
 
         
@@ -211,7 +241,7 @@
             </div>
       
             <div class="shipperdiv">
-              Tanker (1 to 35 KL)
+              {{"Tanker (1 to 35 KL)"|translate}}
             </div>
       
           </label>
@@ -227,7 +257,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
               Hyva (1 to 35 Tonnes)
+=======
+              {{"Hyva (1 to 35 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -244,7 +278,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
               LCV (1 to 6 Tonnes)
+=======
+              {{"LCV (1 to 6 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -258,7 +296,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
               Truk (1 to 14 Tonnes)
+=======
+              {{"Truk (1 to 14 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -272,7 +314,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
               Trailer (1 to 52 Tonnes)
+=======
+              {{"Trailer (1 to 52 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -286,18 +332,22 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
               Container (1 to 45 Tonnes)
+=======
+              {{"Container (1 to 45 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
           <ion-card style="height: auto;width:340px;" *ngIf="data =='Truk'">
-            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Truk type:</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Truk type:"|translate}}</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="isTrukOpenOrClose">
               <input type="radio" id="1" name="hyva" value="Open Body" class="typeOfVehicle" (change)="truk('Open Body')"/>
-              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Open Body</label>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Open Body"|translate}}</label>
               <input type="radio" id="2" name="hyva" value="Close Body" class="typeOfVehicle" (change)="truk('Close Body')"/>
-              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Close Body</label>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Close Body"|translate}}</label>
               
   
             </div>
@@ -306,7 +356,7 @@
           
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Hyva'">
-            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Hyva type:</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Hyva type:"|translate}}</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfHyva">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="HYVA('10 Tyre')"/>
@@ -321,15 +371,19 @@
           </ion-card>
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Trailer'">
+<<<<<<< HEAD
             <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type:</ion-card-title>
+=======
+            <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Trailer type"|translate}}</ion-card-title>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <br>
             <div class="flex" [(ngModel)]="typeOfTrailer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
-              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">High Bed</label>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"High Bed"|translate}}</label>
               <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="trailer('Semi Bed')"/>
-              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Semi Bed</label>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Semi Bed"|translate}}</label>
               <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="trailer('Low Bed')"/>
-              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Low Bed</label>
+              <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Low Bed"|translate}}</label>
     
     
             </div>
@@ -337,7 +391,7 @@
   
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Container'">
-            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Container type:</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Container type:"|translate}}</ion-card-title>
             <br>
             <div  [(ngModel)]="typeOfContainer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
@@ -362,13 +416,17 @@
             </div>
           </ion-card>
           <ion-card style="height: auto;width:340px;" *ngIf="data =='Tanker'">
+<<<<<<< HEAD
             <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type:</ion-card-title>
+=======
+            <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Tanker type"|translate}}</ion-card-title>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <br>
             <div  [(ngModel)]="typeofTanker">
               <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>
-              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium; ">Metal steel</label>
+              <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium; ">{{"Metal steel"|translate}}</label>
               <input type="radio" id="2" name="hyva" value="Stainless steel" class="typeOfVehicle" (change)="Tanker('Stainless steel')"/>
-              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">Stainless steel</label>
+              <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium; width: auto;">{{"Stainless steel"|translate}}</label>
             </div>
           </ion-card>
           <br>
@@ -383,12 +441,12 @@
       <div class="container">
       <!-- <div class="ion-padding" slot="content"> -->
         
-          <h1  style="color:orange;">Payment</h1>
+          <h1  style="color:orange;">{{"Payment"|translate}}</h1>
           <br>
           <!--Expected Bill-->
 
           <div class="form-group">
-            <ion-label>What is your expected price?</ion-label>
+            <ion-label>{{"What is your expected price?"|translate}}</ion-label>
             <ion-input type="number" class="form-control" placeholder="Expected Price(INR ₹)"
               [(ngModel)]="expectedPrice"></ion-input>
           </div>
@@ -401,7 +459,7 @@
             <div class="form-control">
               <ion-label></ion-label>
               <ion-select placeholder="How would you like to Pay?" [(ngModel)]="typeOfPay" (click)="gf()">
-                <ion-select-option value="Offline">Offline/Cash</ion-select-option>
+                <ion-select-option value="Offline">{{"Offline/Cash"|translate}}</ion-select-option>
                 <!--<ion-select-option value="Online" >Online</ion-select-option>-->
 
               </ion-select>
@@ -424,16 +482,16 @@
   
           <div class="form-group" style="display: flex;margin-bottom: 10px;" *ngIf="typeOfPay =='Offline' ">
             <div class="form-control">
-              <p>How do you like to pay ?</p>
+              <p>{{"How do you like to pay ?"|translate}}</p>
               <ion-radio-group [(ngModel)]="paymentTypeForOffline" >
   
               <div style="display: inline;float: left;display: flex;font-size: large;"  class="form-check-inline">
                 <ion-radio value="Advance"></ion-radio>&nbsp;
-                <ion-label >Advance</ion-label>
+                <ion-label >{{"Advance"|translate}}</ion-label>
                </div>
                 <div style="display: inline; float: right;display: flex; font-size: large;">
                 <ion-radio value="Full Payment"></ion-radio>&nbsp;
-                <ion-label>Full Payment</ion-label>
+                <ion-label>{{"Full Payment"|translate}}</ion-label>
               </div>
               </ion-radio-group>
             </div>
@@ -446,7 +504,7 @@
   
           <!--How much advance -->
           <div class="form-group" *ngIf="paymentTypeForOffline =='Advance'" [hidden]="typeOfPay == 'Online'" style="margin-bottom: 10px;">
-            <p>How much would you like to pay in advance ?</p>
+            <p>{{"How much would you like to pay in advance ?"|translate}}</p>
             <ion-input type="number" class="form-control" placeholder="INR ₹" [(ngModel)]="advance"></ion-input>
           </div>
   
@@ -464,7 +522,7 @@
           <div style="display: flex;position:absolute ;">
             <input type="checkbox" style="width:19px;height:19px;" [(ngModel)]="checkbox" [ngModelOptions]="{standalone: true}"/>&nbsp;&nbsp;
             
-            <span style="font-size: 14px;">By Submitting ,You Accept <a href="http://trukapp.com/terms-and-conditions/"><u>T&C</u></a> and <a href="http://trukapp.com/privacy-policy/"><u>Privacy Policy</u></a></span>
+            <span style="font-size: 14px;">{{"By Submitting ,You Accept"|translate}} <a href="http://trukapp.com/terms-and-conditions/"><u>{{"T&C"|translate}}</u></a> {{"and"|translate}} <a href="http://trukapp.com/privacy-policy/"><u>{{"Privacy Policy"|translate}}</u></a></span>
           </div>
         </div>
 
@@ -476,11 +534,11 @@
   </ion-slides>
   <div class="ion-padding">
     <ion-button (click)="slidePrev()" class="previous" shape="round">
-      <ion-icon name="arrow-back"></ion-icon> Previous
+      <ion-icon name="arrow-back"></ion-icon> {{"Previous"|translate}}
     </ion-button>
 
     <ion-button (click)="slideNext()" class="Next" shape="round">
-      Next <ion-icon name="arrow-forward"></ion-icon>
+      {{"Next"|translate}} <ion-icon name="arrow-forward"></ion-icon>
     </ion-button>
   </div>
   
@@ -496,16 +554,16 @@
 
 <ion-button [hidden]="typeOfPay == 'Offline' || paymentTypeForOffline == 'Advance' || paymentTypeForOffline == 'Full payment'" *ngIf="typeOfPay == 'Online'|| paymentTypeForOffline == null || advance == null" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null "
-  style="height: 50px; border-radius:10px;" >Submit</ion-button>
+  style="height: 50px; border-radius:10px;" >{{"Submit"|translate}}</ion-button>
 
 
   <ion-button *ngIf="typeOfPay == 'Offline'||paymentTypeForOffline == 'Full Payment'" [hidden]=" paymentTypeForOffline == 'Advance'" (click)="sendData()"  expand="full" class="next"
 [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null " 
-style="height: 50px;border-radius:10px;" >Submit</ion-button>
+style="height: 50px;border-radius:10px;" >{{"Submit"|translate}}</ion-button>
 
   <ion-button *ngIf=" paymentTypeForOffline == 'Advance'" [hidden]="paymentTypeForOffline == 'Full Payment' || typeOfPay == 'Online'"(click)="sendData()"  expand="full" class="next"
   [disabled]="OriginLocation == null|| checkbox == false || DestinationLocation == null || pickupPincode == null || dropupPincode == null || date == null || product == null || Quantity == null || data == null || expectedPrice == null ||typeOfPay== null ||paymentTypeForOffline == null || advance == null" 
-  style="height: 50px;border-radius:10px;"  >Submit</ion-button>
+  style="height: 50px;border-radius:10px;" >{{"Submit"|translate}}</ion-button>
 <!--Expansion panel-->
 
 <!-- 

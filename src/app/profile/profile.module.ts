@@ -9,6 +9,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {NgOtpInputModule} from 'ng-otp-input';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,8 @@ import {NgOtpInputModule} from 'ng-otp-input';
     IonicModule,
     ProfilePageRoutingModule,
     NgMultiSelectDropDownModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    TranslateModule
   ],
   declarations: [ProfilePage]
 })

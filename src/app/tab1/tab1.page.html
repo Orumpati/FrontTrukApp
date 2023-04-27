@@ -19,13 +19,13 @@
     <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
-        Looking for Truks
+        {{"Looking for Truks"|translate}}
       </label>
     </div>
     <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
       &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
-        Looking for Loads
+        {{"Looking for Loads"|translate}}
       </label>
     </div>
   
@@ -48,29 +48,29 @@
           <ion-segment value="Active" [scrollable]="true">
             <ion-col>
             <ion-segment-button value="Active" (click)="toggle('Active')" >
-              <ion-label>Active</ion-label>
+              <ion-label>{{"Active"|translate}}</ion-label>
             </ion-segment-button>
             </ion-col>
             <ion-col>
               <ion-segment-button value="Completed" (click)="toggless('Completed')">
-                <ion-label>Completed</ion-label>
+                <ion-label>{{"Completed"|translate}}</ion-label>
               </ion-segment-button>
               </ion-col>
          
              <ion-col>
             <ion-segment-button value="heat" (click)="inprogress()">
-              <ion-label>In-Progress</ion-label>
+              <ion-label>{{"In-Progress"|translate}}</ion-label>
             </ion-segment-button>
             </ion-col> 
             <ion-col>
               <ion-segment-button value="Deactive" (click)="toggles('Deactive')">
-                <ion-label>Deactivated</ion-label>
+                <ion-label>{{"Deactivated"|translate}}</ion-label>
               </ion-segment-button>
               </ion-col>
           </ion-segment>
         </ion-row>
     
-          <ion-searchbar animated="true" placeholder="Search" style="width: 101%; --border-radius: 20px; margin-left: -1px;"
+          <ion-searchbar animated="true" placeholder="{{'Search'|translate}}" style="width: 101%; --border-radius: 20px; margin-left: -1px;"
           align="centre" [(ngModel)]="searchtext"></ion-searchbar>
 
 
@@ -89,14 +89,14 @@
                   <div type="button" class="securepayment"  *ngIf="text.typeOfPay == 'Online'"  >
                   
                     <div>
-                    <span style="color: green;">Online Payment</span>
+                    <span style="color: green;">{{"Online Payment"|translate}}</span>
                     </div>
                   </div>
 
                   <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'" style="width:95px;"  >
                     
                     <div>
-                    <span style="color: rgb(248, 42, 24);">Cash Payment</span>
+                    <span style="color: rgb(248, 42, 24);">{{"Cash Payment"|translate}}</span>
                 
                     </div>
                   </div>
@@ -112,10 +112,10 @@
                       </button>-->
                       <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" [hidden]="text.isActive === 'Completed'"></i>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item"  (click)="repost(text)" *ngIf="text.isActive === 'Deactive'">Reactivate</a>
-                        <a class="dropdown-item"  (click)="delete(text)" *ngIf="text.isActive === 'Deactive'">Delete</a>
-                        <a class="dropdown-item" (click)="Isactive(text)" *ngIf="text.isActive === 'Active'">Deactive</a>
-                        <a class="dropdown-item" (click)="loadDetails(text)" *ngIf="text.isActive === 'Active'">More Details</a>
+                        <a class="dropdown-item"  (click)="repost(text)" *ngIf="text.isActive === 'Deactive'">{{"Reactivate"|translate}}</a>
+                        <a class="dropdown-item"  (click)="delete(text)" *ngIf="text.isActive === 'Deactive'">{{"Delete"|translate}}</a>
+                        <a class="dropdown-item" (click)="Isactive(text)" *ngIf="text.isActive === 'Active'">{{"Deactive"|translate}}</a>
+                        <a class="dropdown-item" (click)="loadDetails(text)" *ngIf="text.isActive === 'Active'">{{"More Details"|translate}}</a>
                       </div>
                     </div>
 
@@ -131,31 +131,37 @@
                         <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
                             <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.OriginLocation}}</a></span><br>
                             <span class="font-size-16 mb-1" style=" font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{text.DestinationLocation}}</a></span><br>
-                            <span class="badge badge-soft-success mb-0"> PickUp Date&Time {{text.date}}</span>
+                            <span class="badge badge-soft-success mb-0"> {{"PickUp Date&Time"|translate}} {{text.date}}</span>
                         </div>
                     </div>
                     <div class="mt-1 pt-1">
                         <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
+<<<<<<< HEAD
                         <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>  {{text.Quantity}}--{{text.data}}</p>
                         <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹<span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
                         <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
+=======
+                        <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
+                        <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i> {{"Expected Price"|translate}} ₹<span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
+                        <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Advance"|translate}}  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             
                     </div>
                     <div style="display:flex; " >
                     
                         <button type="button" class="viewbidbtn" (click)="bidById(text)"  *ngIf="text.isActive === 'Active'||text.isActive === 'Completed'" [hidden]="text.shipperAccept == true">
                         
-                          <span style="font-weight: bolder;" > View Bids</span>
+                          <span style="font-weight: bolder;" > {{"View Bids"|translate}}</span>
                           <!-- <span style="font-weight: bolder;" *ngIf="text.shipperAccept == true" [hidden]="text.shareContact == true"> Share Contact</span> -->
                           <span class="badge" [hidden]="text.isActive === 'Completed'||text.shipperAccept == true">{{text.bids.length}}</span>
                           </button>&nbsp;&nbsp;&nbsp;
 
                           <button type="button" class="viewbidbt"  (click)="vehdetails(text)" *ngIf="text.shareContact == true">
-                            <span style="font-weight: bolder;"> View Contact</span>
+                            <span style="font-weight: bolder;"> {{"View Contact"|translate}}</span>
                             
                             </button>
                             <button type="button" class="viewbidbt"  (click)="bidById(text)" *ngIf="text.shareContact == false && text.isActive == 'inprogress'">
-                              <span style="font-weight: bolder;"> View Bids</span>
+                              <span style="font-weight: bolder;"> {{"View Bids"|translate}}</span>
                               
                               </button>
                            
@@ -177,7 +183,7 @@
       " class="img">
     
     <br>
-    <h4 align="center" >Post your load to get suitable bids</h4>
+    <h4 align="center" >{{"Post your load to get suitable bids"|translate}}</h4>
     <br>
   </div>
   </div>
@@ -197,5 +203,5 @@
   </ion-modal>
 </ion-content>
 <div class="postLoad" align="center">
-<ion-button   routerLink="/attach-new-load" color=""  >Post Load</ion-button>
+<ion-button   routerLink="/attach-new-load" color=""  >{{"Post Load"|translate}}</ion-button>
 </div>

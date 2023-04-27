@@ -245,7 +245,12 @@
    "5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.":"5. भुगतान विवरण स्क्रीन में, अपनी बोली दर दर्ज करें, मात्रा लोड करें और उल्लेख करें कि क्या आपकी दर परक्राम्य है.",
    "6.Finally post the load.":"6. अंत में लोड पोस्ट करें।",
 
+<<<<<<< HEAD
 
+=======
+    
+       
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
    "Vehicle":"वाहन",
    "Load Quantity":"भार मात्रा",
    "Date":"तारीख",
@@ -613,6 +618,7 @@
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -621,4 +627,6 @@
 
 
 
+=======
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
 }

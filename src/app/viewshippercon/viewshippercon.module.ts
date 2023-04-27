@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ViewshipperconPageRoutingModule } from './viewshippercon-routing.module';
 
 import { ViewshipperconPage } from './viewshippercon.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewshipperconPageRoutingModule
+    ViewshipperconPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ViewshipperconPage]
 })

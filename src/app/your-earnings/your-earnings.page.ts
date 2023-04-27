@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { AlertController ,LoadingController} from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-your-earnings',
   templateUrl: './your-earnings.page.html',
@@ -28,12 +30,21 @@ export class YourEarningsPage implements OnInit {
   OrderTime: any;
   currenttime: any;
   AccDetails: any;
-  constructor(public alertController:AlertController,private loadingController:LoadingController,private router:Router,private datepipe:DatePipe) { }
+  language: any;
+  lang: any;
+  constructor(public alertController:AlertController,private loadingController:LoadingController,private router:Router,private datepipe:DatePipe,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.OrderTime =this.datepipe.transform((new Date), 'MM/dd/yyyy ');
     this.currenttime =this.datepipe.transform((new Date), ' h:mm:ss');
     this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
  this.AccDetails =JSON.parse(localStorage.getItem('AccDetails')||'{}')
    console.log(this.logindata.signupReferalCode )
     this.referal()

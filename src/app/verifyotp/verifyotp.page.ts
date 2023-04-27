@@ -8,6 +8,8 @@ import 'firebase/compat/firestore';
 import  firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 var config = {
   apiKey: "AIzaSyDM4C1YRZ14Lx_8NzbDnChklv9VInrgUmw",
   authDomain: "otplogin-c4da2.firebaseapp.com",
@@ -32,7 +34,14 @@ export class VerifyotpPage implements OnInit {
   verified:any
   UniqueDeviceID!:string;
   timer: any;
-    constructor(public loadingCtrl:LoadingController ,public toastCtrl:ToastController,private router: Router, private ngZone: NgZone,private uniqueDeviceID: UniqueDeviceID,private alert:AlertController) {}
+  language: any;
+  lang: any;
+    constructor(public loadingCtrl:LoadingController ,public toastCtrl:ToastController,private router: Router, private ngZone: NgZone,private uniqueDeviceID: UniqueDeviceID,private alert:AlertController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+      
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+    }
     config = {
       allowNumbersOnly: true,
       length: 6,
@@ -46,7 +55,8 @@ export class VerifyotpPage implements OnInit {
     };
     openbanner =false
     ngOnInit(){
-  
+      this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
       this.getUniqueDeviceID()
     
       this.verify = JSON.parse(localStorage.getItem('verificationId') || '{}');

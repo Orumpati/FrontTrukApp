@@ -3,22 +3,22 @@
     <div style="display: flex;">
       <ion-icon *ngIf="logindata.role == 'Shipper'" name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
       <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
-      <ion-title style="text-align:center;">Contact Us</ion-title>
+      <ion-title style="text-align:center;">{{"Contact Us"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 <br>
 <ion-content>
-  <h1 style="text-align: center;">Tell us your Query</h1>
+  <h1 style="text-align: center;">{{"Tell us your Query"|translate}}</h1>
   <div class="container">
     <ion-accordion-group>
       <ion-accordion value="first" class="my-accordion">
         <ion-item slot="header" color="light">
-          <ion-label>Have a query about previous loads</ion-label>
+          <ion-label>{{"Have a query about previous loads"|translate}}</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-button (click)="get()" color="success" style="float:left">YES</ion-button>
-          <ion-button color="danger" style="float: right;" routerLink="/contact-faq">NO</ion-button>
+          <ion-button (click)="get()" color="success" style="float:left">{{"YES"|translate}}</ion-button>
+          <ion-button color="danger" style="float: right;" routerLink="/contact-faq">{{"NO"|translate}}</ion-button>
         </div>
       </ion-accordion>
     </ion-accordion-group>
@@ -66,12 +66,12 @@
   <div class="card" *ngFor="let card of item" (click)="typeofPay(card.typeOfPay)">
     <div class="card-body" >
       <div type="button" class="securepayment" *ngIf="card.typeOfPay == 'Online'" >
-        <span style="color: green;">Online Payment</span>
+        <span style="color: green;">{{"Online Payment"|translate}}</span>
       </div>
 
       <div type="button" class="handpayment" *ngIf="card.typeOfPay == 'Offline'" >
       
-        <span style="color: rgb(241, 64, 15);">Cash payment </span>
+        <span style="color: rgb(241, 64, 15);">{{"Cash payment"|translate}} </span>
         
   
       </div>
@@ -94,18 +94,18 @@
             <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
               <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{card.OriginLocation}}</a></span><br>
               <span class="font-size-16 mb-1" style=" font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{card.DestinationLocation}}</a></span><br>
-              <span class="badge badge-soft-success mb-0"> PickUp Date&Time {{card.date}}</span>
+              <span class="badge badge-soft-success mb-0"> {{"PickUp Date&Time"|translate}} {{card.date}}</span>
           </div>
         </div>
         <div class="mt-1 pt-1">
             <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{card.product}}</p>
             <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{card.Quantity}}tons--{{card.data}}</p>
-            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{card.expectedPrice}}/Ton </span></p>
+            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Expected Price"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{card.expectedPrice}}/Ton </span></p>
         </div>
         <div style="display:inline-flex;"  >
         
             <button type="button" class="viewbidbtn" (click)="contactLoad(card)">
-              <span>Select Load</span>
+              <span>{{"Select Load"|translate}}</span>
               
               </button>
              
@@ -115,31 +115,30 @@
 </div>
 <div *ngIf="itemlen === 0 && logindata.role == 'Shipper'" class="noitem" style="display: flex;justify-content:center;margin-top:350px;">
   
-  <h1 >No Loads!</h1>
+  <h1 >{{"No Loads!"|translate}}</h1>
 </div>
 
 <div *ngIf="itemlen === 0" [hidden]="logindata.role == 'Shipper'" class="noitem" style="display: flex;justify-content:center;margin-top:350px;">
   
-  <h1 >No Loads!</h1>
+  <h1 >{{"No Loads!"|translate}}</h1>
 </div>
 
 <ion-modal #modal trigger="narayana">
   <ng-template>
     <ion-content>
       <ion-toolbar>
-        <ion-title>Select your Query</ion-title>
+        <ion-title>{{"Select your Query"|translate}}</ion-title>
         <ion-buttons slot="end">
           <ion-button color="light" (click)="modal.dismiss()"><ion-icon name="close-sharp"></ion-icon></ion-button>
         </ion-buttons>
       </ion-toolbar>
       <ion-list>
         <div class="container">
-          <p class="round2" (click)="showConfirmAlert('How I get truk and drive details')">How I get truk and drive
-            details</p><br>
-          <p class="round2" (click)="showConfirmAlert('Payment')">Payment</p><br>
-          <p class="round2" (click)="showConfirmAlert('How I see the load tracking')">How I see the load tracking</p>
+          <p class="round2" (click)="showConfirmAlert('How I get truk and drive details')">{{"How I get truk and drive details"|translate}}</p><br>
+          <p class="round2" (click)="showConfirmAlert('Payment')">{{"Payment"|translate}}</p><br>
+          <p class="round2" (click)="showConfirmAlert('How I see the load tracking')">{{"How I see the load tracking"|translate}}</p>
           <br>
-          <p class="round2" (click)="showConfirmAlert('Other Reason')"> Other Reason</p>
+          <p class="round2" (click)="showConfirmAlert('Other Reason')"> {{"Other Reason"|translate}}</p>
         </div>
       </ion-list>
     </ion-content>

@@ -4,7 +4,7 @@
       <div style="display: flex;">
         <ion-icon *ngIf="logindata.role == 'Shipper'" name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
         <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
-        <ion-title style="text-align:center;">Help & Guide</ion-title>
+        <ion-title style="text-align:center;">{{"Help & Guide"|translate}}</ion-title>
       </div>
     
     </ion-title>
@@ -16,43 +16,43 @@
     <ion-accordion-group>
       <ion-accordion value="first">
         <ion-item slot="header">
-          <p>How to post the load on the truk?</p>
+          <p>{{"How to post the load on the truk?"|translate}}</p>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-label style="align-items: center;">STEP:</ion-label>
           <br><br>
-          <p>1.Go to My Loads tab
+          <p>{{"1.Go to My Loads tab
             press the Post Load button
             Now fill out your Load Details
             Go to My Loads tab
             press the Post Load button
-            Now fill out your Load Details</p>
+            Now fill out your Load Details"|translate}}</p>
           <br>
-          <p>2.Enter the pick up location, drop up
+          <p>{{"2.Enter the pick up location, drop up
             location on your load, Goods type
             like ( iron, steel, Bricks) and the
             quantity of loads in tonnes
             Next select the truk type,and
-            truk capacity</p>
+            truk capacity"|translate}}</p>
           <br>
-          <p> 3.If your load is taller or wider than the
+          <p> {{"3.If your load is taller or wider than the
             truk dimensions, please enable ODC
             and add the length, breadth and
-            height of your load</p>
+            height of your load"|translate}}</p>
           <br>
-          <p>4.In the payment details section,
+          <p>{{"4.In the payment details section,
             enter your expected price, select the
             payment mode and select Next
             If you have comments regarding the
             load or want to communicate any
             details ,kindly add them in the
-            comments section.</p>
+            comments section."|translate}}</p>
           <br>
-          <p>5.Now , press Post Load.
+          <p>{{"5.Now , press Post Load.
             Congratulations, your load is now
             posted you will start getting bids
             from transporter within 20-25
-            minutes.</p>
+            minutes."|translate}}</p>
           <br>
        
         </div>
@@ -60,60 +60,60 @@
       <br>
       <ion-accordion value="second">
         <ion-item slot="header">
-          <p>How to verify Aadhar and GST on Truk App?</p>
+          <p>{{"How to verify Aadhar and GST on Truk App?"|translate}}</p>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-label style="text-align: center;">STEPS::</ion-label>
           <br><br>
-          <p>1.Click on your profile picture on the top right corner</p>
+          <p>{{"1.Click on your profile picture on the top right corner"|translate}}</p>
           <br>
-          <p> 2.Here, you will see the profile section</p>
+          <p> {{"2.Here, you will see the profile section"|translate}}</p>
 
           <br>
-          <p>3.you will see KYC banner in profile
-            section , click on that. </p>
+          <p>{{"3.you will see KYC banner in profile
+            section , click on that."|translate}} </p>
           <br>
-          <p> 4.First let’s get your Aadhar Verified
+          <p> {{"4.First let’s get your Aadhar Verified"|translate}}
 
             <br>
-            ---> Enter your 12-digit Aadhar number
-            and click on get OTP.
+            ---> {{"Enter your 12-digit Aadhar number
+            and click on get OTP."|translate}}
             <br>
-            --->You will get an OTP on the mobile
-            number linked to your Aadhar.
+            --->{{"You will get an OTP on the mobile
+            number linked to your Aadhar."|translate}}
             <br>
-            --->Submit your OTP and get Aadhar
-            verified!
+            --->{{"Submit your OTP and get Aadhar
+            verified!"|translate}}
           </p>
 
-          <p> 5.Next finish the GST verification.
+          <p>{{"5.Next finish the GST verification."|translate}}
             <br>
-            --->Enter your 15-digit GST Number.<br>
+            --->{{"Enter your 15-digit GST Number."|translate}}<br>
 
-            --->After that submit the details.<br>
-            --->If your GST is valid it will be verified.
+            --->{{"After that submit the details."|translate}}<br>
+            --->{{"If your GST is valid it will be verified."|translate}}
           </p>
           <br>
-          <p>6.Congratulations, you are now a
+          <p>{{"6.Congratulations, you are now a
             verified shipper with a verified
-            badge on truk</p>
+            badge on truk"|translate}}</p>
         </div>
       </ion-accordion>
       <br>
       <ion-accordion value="third">
         <ion-item slot="header">
-          <p>How to attach load in truk on the Truk App?</p>
+          <p>{{"How to attach load in truk on the Truk App?"|translate}}</p>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-label style="text-align: center;">STEPS::</ion-label>
           <br><br>
-          <p>1.Go to the truk market tab on the bottom.</p>
-          <p>2.In the truk market tab you will find a list of live truks.</p>
-          <p>3.Use the advanced search to filters loads based on your requirements like vehicle type.</p>
-          <p>4.Choose the truk you want to attach the load.</p>
-          <p>5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.
+          <p>{{"1.Go to the truk market tab on the bottom."|translate}}</p>
+          <p>{{"2.In the truk market tab you will find a list of live truks."|translate}}</p>
+          <p>{{"3.Use the advanced search to filters loads based on your requirements like vehicle type."|translate}}</p>
+          <p>{{"4.Choose the truk you want to attach the load."|translate}}</p>
+          <p>{{"5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable."|translate}}
           </p>
-          <p>6.Finally post the load.</p>
+          <p>{{"6.Finally post the load."|translate}}</p>
         </div>
       </ion-accordion>
     </ion-accordion-group>

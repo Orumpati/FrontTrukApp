@@ -8,7 +8,7 @@ import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
 
-
+import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     IonicModule,
     SignupPageRoutingModule,
     DatePipe,
+    TranslateModule,
     ReactiveFormsModule,NgMultiSelectDropDownModule.forRoot()
     
   ],

@@ -18,13 +18,13 @@
     <div class="form-check  form-check-inline " (click)="looking()" style=" margin-left:10px;" [hidden]="logindata.role === 'Fleet Owner'" >
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"  [checked]="loortr == 'trucks'" style="width: 20px; height:20px;" >
       <label class="form-check-label" for="exampleRadios1" style="font-size: 15px; font-weight:bolder;color:black;">
-        Looking for Truks
+        {{"Looking for Truks"|translate}}
       </label>
     </div>
     <div class="form-check form-check-inline" slot="end" class="load" (click)="lookingload()"  style="margin-left: 40px;">
       <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" [checked]="loortr == 'loads'"  style="width: 20px; height:20px;" >
       &nbsp;&nbsp;<label class="form-check-label" for="exampleRadios2" style="font-size: 15px; font-weight:bolder;color:black; margin-top:6px;">
-        Looking for Loads
+        {{"Looking for Loads"|translate}}
       </label>
     </div>
   
@@ -38,7 +38,7 @@
     
       <ion-list style="margin-left: 10px; margin-right:10px;"> 
         <ion-item style="border-bottom:2px solid black;margin-left: 10px; margin-right:10px;">
-          <ion-label position="floating" >Select Pick-up Location</ion-label>
+          <ion-label position="floating" >{{"Select Pick-up Location"|translate}}</ion-label>
   
           
             <ion-select interface="popover" [(ngModel)]="trukpickupLocation">
@@ -76,7 +76,7 @@
   
         </ion-item>
         <ion-item style="border-bottom:2px solid black;margin-left: 10px; margin-right:10px;">
-          <ion-label position="floating">Select Drop Loaction</ion-label>
+          <ion-label position="floating">{{"Select Drop Location"|translate}}</ion-label>
         
           
             <ion-select interface="popover" [(ngModel)]="trukdropLocation">
@@ -120,7 +120,7 @@
   
   <h3 style="display: flex;
   justify-content: center;
-  font-size: 20px;" >Filter by Vehicle Type</h3>
+  font-size: 20px;" >{{"Filter by Vehicle Type"|translate}}</h3>
 
   
   <div >
@@ -129,45 +129,45 @@
         <ion-col>
           <ion-segment-button value="heart" (click)="vehicleSearch()">
             <ion-icon name="filter" style="font-size: 20px;"></ion-icon>
-            <p>All Vehicles</p>
+            <p>{{"All Vehicles"|translate}}</p>
           </ion-segment-button>
         </ion-col>
 
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('LCV')" >
-            <ion-label>LCV</ion-label>
+            <ion-label>{{"LCV"|translate}}</ion-label>
             <p>1-8 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Truk')" >
-            <ion-label>Truk</ion-label>
+            <ion-label>{{"Truk"|translate}}</ion-label>
             <p>1-42 Tonnes</p>
           </ion-segment-button>
         </ion-col>
 
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Hyva')">
-            <ion-label>Hyva</ion-label>
+            <ion-label>{{"Hyva"|translate}}</ion-label>
             <p>1-35 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Container')" >
-            <ion-label>container</ion-label>
+            <ion-label>{{"container"|translate}}</ion-label>
             <p>1-18 Tonnes</p>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Trailer')" >
-            <ion-label>Trailer</ion-label>
+            <ion-label>{{"Trailer"|translate}}</ion-label>
             <p>1-100 Tonnes</p>
           </ion-segment-button>
         </ion-col>
 
         <ion-col>
           <ion-segment-button (click)="getOperatingroutes('Tanker')" >
-            <ion-label>Tanker</ion-label>
+            <ion-label>{{"Tanker"|translate}}</ion-label>
             <p>1-35 Tonnes</p>
           </ion-segment-button>
         </ion-col>
@@ -213,16 +213,16 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
-          <span class="text-muted small">Current Location</span>
+          <span class="text-muted small">{{"Current Location"|translate}}</span>
           <strong style="width: 150px;">{{text.OriginLocation}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
-          <span class="text-muted small">Vehicle Number</span>
+          <span class="text-muted small">{{"Vehicle Number"|translate}}</span>
           <strong style="text-transform:uppercase;">{{text.trukvehiclenumber}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between"  >
-          <span class="text-muted small">Routes</span>
-          <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{text.trukoperatingRoutes.length}} locations
+          <span class="text-muted small">{{"Routes"|translate}}</span>
+          <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{text.trukoperatingRoutes.length}} {{"locations"|translate}}
 
 
             <ul class = "dropdown-menu" role = "menu" style="height: 200px;overflow-y:scroll;">
@@ -240,9 +240,9 @@
       
       </ul>
       <ion-button style="float: right;" shape="round" class="attach" 
-       (click)="AttachNewLoad(text)">Attach Load</ion-button>
+       (click)="AttachNewLoad(text)">{{"Attach Load"|translate}}</ion-button>
     <ion-button style="float: left;" shape="round" class="attach"  
-      (click)="SendData(text)">Existing Load</ion-button>
+      (click)="SendData(text)">{{"Existing Load"|translate}}</ion-button>
     </div>
   </div>
 </div>
@@ -250,7 +250,7 @@
 
 <div *ngIf="itemlen === 0" class="noitem">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYIDHG7JivZlXLJC27oeHti76eHrkkNdq_A&usqp=CAU" />
-  <h1>No Truks Avaliable!</h1>
+  <h1>{{"No Truks Avaliable!"|translate}}</h1>
 </div>
 
 

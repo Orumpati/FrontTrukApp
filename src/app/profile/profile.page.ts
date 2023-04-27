@@ -8,7 +8,8 @@ import { Crop } from '@ionic-native/crop/ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 
-
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
 import { Storage, getDownloadURL, ref, uploadBytes } from '@angular/fire/storage';
@@ -40,10 +41,17 @@ otp:any
   spin: boolean | undefined;
   image: any;
   gstdata: any;
+  language: any;
+  lang: any;
   constructor(private modal:ModalController,private router: Router,private actionsheet:ActionSheetController,
     private firestore: Firestore,
-    private storage: Storage,private file:File,private crop:Crop,private domsanitize: DomSanitizer,public loadingController: LoadingController
-    ) { }
+    private storage: Storage,private file:File,private crop:Crop,private domsanitize: DomSanitizer,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,
+    ) {
+
+      
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+     }
   config = {
     allowNumbersOnly: true,
     length: 6,
@@ -58,6 +66,8 @@ otp:any
   ngOnInit() {
     this.spin=false
   this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
+  this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+  this.translateConfigService.setLanguage(this.lang);
   console.log(this.logindata)
   console.log(this.logindata.Authentication)
   this.hide()

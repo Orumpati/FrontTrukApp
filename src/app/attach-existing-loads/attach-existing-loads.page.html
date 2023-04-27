@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/attach-load" style="font-size: 30px;"></ion-icon>
-      <ion-title>Attach existing Load</ion-title>
+      <ion-title>{{"Attach existing Load"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header> 
@@ -10,7 +10,7 @@
 
  <ion-content>
   
-  <h4 style="text-align: center;">Your Perferred Vehicle</h4>
+  <h4 style="text-align: center;">{{"Your Perferred Vehicle"|translate}}</h4>
 
   
   <div class="card  text-center"    >
@@ -49,23 +49,23 @@
           <ion-avatar>
             <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
           </ion-avatar>
-          <ion-label>Transpoter</ion-label>
+          <ion-label>{{"Transpoter"|translate}}</ion-label>
         </ion-chip>
       </span>
       </div>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
-          <span class="text-muted small">Current Location</span>
+          <span class="text-muted small">{{"Current Location"|translate}}</span>
           <strong>{{real.OriginLocation}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
-          <span class="text-muted small">Vehicle Number</span>
+          <span class="text-muted small">{{"Vehicle Number"|translate}}</span>
           <strong>{{real.trukvehiclenumber}}</strong>
         </li>
         <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
-          <span class="text-muted small">Routes</span>
-          <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{real.trukoperatingRoutes.length}} locations
+          <span class="text-muted small">{{"Routes"|translate}}</span>
+          <strong id="open-custom-dialog" style="color: blue;" data-toggle = "dropdown">{{real.trukoperatingRoutes.length}} {{"locations"|translate}}
 
             <ul class = "dropdown-menu" role = "menu" style="height: 200px;overflow-y:scroll;">
               <li *ngFor="let route of real.trukoperatingRoutes index as i">&nbsp; &nbsp;&nbsp;&nbsp;<a>{{i+1}}.{{route}}</a></li>
@@ -87,7 +87,7 @@
   
 
 
- <h4 style="text-align: center;">Your Perferred Load Information</h4>
+ <h4 style="text-align: center;">{{"Your Perferred Load Information"|translate}}</h4>
 
 
   <div class="card"  >
@@ -96,17 +96,17 @@
 
         <div type="button" class="securepayment"  *ngIf="TrukPost.typeOfPay == 'Online'"  >
                   
-          <div>
-          <span style="color: green;">Online Payment</span>
-          </div>
+          
+          <span style="color: green;">{{"Online Payment"|translate}}</span>
+          
         </div>
 
         <div type="button" class="offlinepayment" *ngIf="TrukPost.typeOfPay == 'Offline'" style="width:95px;"  >
           
-          <div>
-          <span style="color: rgb(248, 42, 24);">Cash Payment</span>
+          
+          <span style="color: rgb(248, 42, 24);">{{"Cash Payment"|translate}}</span>
       
-          </div>
+          
         </div>
  
         <div class="d-flex align-items-center">
@@ -117,18 +117,18 @@
             <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
                 <span class="font-size-16 mb-1" style="color:black; font-weight:bolder; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{TrukPost.OriginLocation}}</a></span><br>
                 <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="success"></ion-icon>{{TrukPost.DestinationLocation}}</a></span><br>
-                <span class="badge badge-soft-success mb-0"> Posted On {{TrukPost.date}}</span>
+                <span class="badge badge-soft-success mb-0"> {{"Posted On"|translate}} {{TrukPost.date}}</span>
             </div>
         </div>
         <div class="mt-3 pt-1">
             <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{TrukPost.product}}</p>
             <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{TrukPost.Quantity}}tons--{{TrukPost.data}}</p>
-            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{TrukPost.expectedPrice}}/Ton </span></p>
+            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Expected Price"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{TrukPost.expectedPrice}}/Ton </span></p>
         </div>
     
     </div>
 </div>
  </ion-content>  
 
- <ion-button shape="round" class="sendData" (click)="SendExistingload()" Sendloadtovehicle>Post</ion-button>
+ <ion-button shape="round" class="sendData" (click)="SendExistingload()" >{{"Post"|translate}}</ion-button>
  

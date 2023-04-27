@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-all-notifications',
   templateUrl: './all-notifications.page.html',
@@ -12,19 +14,23 @@ date:any;
   logindata: any;
   logo: any;
   allNotificatio =0
-  constructor( private location:Location,private router:Router) {
+  language: any;
+  lang: any;
+  constructor( private location:Location,private router:Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
 
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+
+    this.allNotifications = JSON.parse(localStorage.getItem('InappNotifictions') ||'null')
    }
 
   ngOnInit() {
  
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
-    this.allNotifications = localStorage.getItem('InappNotifictions') 
-if(this.allNotifications){
-  this.allNotificatio =1
-}else{
-this.allNotificatio =0
-}
+    
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
+
     this.date = new Date().getTime()
     this.dackendImages()
 

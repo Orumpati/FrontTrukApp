@@ -5,7 +5,10 @@ import  'firebase/auth';
 import 'firebase/compat/firestore';
 import  firebase from 'firebase/compat/app';
 import { LoadingController,ToastController } from '@ionic/angular';
+
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-load-otp',
   templateUrl: './load-otp.page.html',
@@ -16,7 +19,12 @@ export class LoadOtpPage implements OnInit {
   verify:any
   reCaptchaVerifier!: any;
   Number: any;
-  constructor(public loadingCtrl:LoadingController ,public toastCtrl:ToastController,private router: Router,private ngZone: NgZone) { }
+  language: any;
+  constructor(public loadingCtrl:LoadingController ,public toastCtrl:ToastController,private router: Router,private ngZone: NgZone,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
   config = {
     allowNumbersOnly: true,
     length: 6,
@@ -27,6 +35,9 @@ export class LoadOtpPage implements OnInit {
       width: '45px',
       height: '45px',
     },
+
+    
+
   };
   ngOnInit() {
     this.Number = JSON.parse(localStorage.getItem('Number') || '{}')

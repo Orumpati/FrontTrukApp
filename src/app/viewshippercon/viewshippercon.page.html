@@ -4,28 +4,28 @@
     <div style="display: flex;">
       <ion-icon  name="arrow-back-sharp" routerLink="/tab/tab1" style="font-size: 30px;"></ion-icon>
     
-      <ion-title style="text-align:center;">Contact Details</ion-title>
+      <ion-title style="text-align:center;">{{"Contact Details"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-label position="stacked">Transporter Name</ion-label>
+    <ion-label position="stacked">{{"Transporter Name"|translate}}</ion-label>
     <ion-input type="text"  [(ngModel)]="sdf.transporterName" readonly></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Transporter Number</ion-label>
+    <ion-label position="stacked">{{"Transporter Number"|translate}}</ion-label>
     <!-- <ion-input type="text"  [(ngModel)]="driverdetails.mobileNumber" readonly></ion-input> -->
     <ion-input><a href="tel:{{sdf.mobileNumber}}">{{sdf.mobileNumber}}</a></ion-input>
     <ion-icon name="copy-outline" style="float: right;margin-top:25px;" slot="end" color="primary"  (click)="copy()"></ion-icon>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Company Name</ion-label>
+    <ion-label position="stacked">{{"Company Name"|translate}}</ion-label>
     <ion-input type="text"  [(ngModel)]="sdf.companyName" readonly></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">City</ion-label>
+    <ion-label position="stacked">{{"City"|translate}}</ion-label>
     <ion-input type="text"  [(ngModel)]="sdf.city" readonly></ion-input>
   </ion-item>
 </ion-content>

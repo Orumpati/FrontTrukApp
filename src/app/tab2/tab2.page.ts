@@ -7,6 +7,8 @@ import 'firebase/compat/firestore';
 import  firebase from 'firebase/compat/app';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -35,6 +37,8 @@ export class Tab2Page {
   itemActive: any;
   itemShare: any;
   openbanner=false;
+  language: any;
+  lang: any;
   
 
 
@@ -46,8 +50,12 @@ export class Tab2Page {
     console.log(this.getData)
   }
 
-  constructor(private router:Router,public loadingController: LoadingController) {
+  constructor(private router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
      this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
+
+     
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
    }
   ngOnInit(): void {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
@@ -55,7 +63,8 @@ export class Tab2Page {
     //   this.modalorp()
     // }
 
-   
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
    
    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
    

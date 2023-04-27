@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { threadId } from 'worker_threads';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-editalldetails',
   templateUrl: './editalldetails.page.html',
@@ -13,7 +15,13 @@ export class EditalldetailsPage implements OnInit {
   routeDetails:any
   logindata: any;
   profile: any;
-  constructor(private route: ActivatedRoute, private fb : FormBuilder,private router:Router,public loadingController: LoadingController) { }
+  language: any;
+  lang: any;
+  constructor(private route: ActivatedRoute, private fb : FormBuilder,private router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
   mobileNo:any
   
   firstName :any
@@ -38,7 +46,8 @@ export class EditalldetailsPage implements OnInit {
    this.logindata=JSON.parse( localStorage.getItem('regdata') || "{}")
    //console.log(this.logindata)
    this.get()
- 
+   this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+   this.translateConfigService.setLanguage(this.lang);
   }
   updatedFormed = new FormGroup({
     mobileNo :new FormControl(''),
