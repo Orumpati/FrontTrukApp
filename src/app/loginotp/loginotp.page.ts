@@ -13,7 +13,8 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 //import {OneSignal }from 'onesignal-cordova-plugin';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
-
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 var config = {
   apiKey: "AIzaSyDM4C1YRZ14Lx_8NzbDnChklv9VInrgUmw",
   authDomain: "otplogin-c4da2.firebaseapp.com",
@@ -42,6 +43,8 @@ regData:any
 
   darkMode = false;
   number: any;
+  language:any;
+  lang: any;
 
   toggleDarkMode() {
     console.log('hfg')
@@ -54,16 +57,19 @@ regData:any
   //private OneSignal:OneSignal,
     private androidPermissions: AndroidPermissions,
     
-     private ngZone: NgZone,public loadingCtrl:LoadingController,public toastCtrl:ToastController,private alert:AlertController) {
+     private ngZone: NgZone,public loadingCtrl:LoadingController,public toastCtrl:ToastController,private alert:AlertController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
 
       
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
      }
 
 
   ngOnInit() {
     firebase.initializeApp(config);
 this.number =localStorage.getItem('Number')
-
+this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+this.translateConfigService.setLanguage(this.lang);
 
   }
 

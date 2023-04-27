@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { YourTruckPostedPageRoutingModule } from './your-truck-posted-routing.module';
 
 import { YourTruckPostedPage } from './your-truck-posted.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    YourTruckPostedPageRoutingModule
+    YourTruckPostedPageRoutingModule,
+    TranslateModule
   ],
   declarations: [YourTruckPostedPage]
 })

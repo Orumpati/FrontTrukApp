@@ -43,17 +43,17 @@
       <ion-segment [scrollable]="true" value="home">
         <ion-col>
         <ion-segment-button value="home" (click)="toggle()">
-          <ion-label>Active Loads</ion-label>
+          <ion-label>{{"Active Loads"|translate}}</ion-label>
         </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button value="sandeep" (click)="toggless('Completed')">
-            <ion-label>Completed</ion-label>
+            <ion-label>{{"Completed"|translate}}</ion-label>
           </ion-segment-button>
         </ion-col>
         <ion-col>
         <ion-segment-button value="pin" (click)="AcceptedbyShipper()">
-          <ion-label>InProgress</ion-label>
+          <ion-label>{{"InProgress"|translate}}</ion-label>
         </ion-segment-button>
        
       </ion-col> 
@@ -64,7 +64,7 @@
       
       
         <div class="container">
-          <ion-searchbar animated="true" placeholder="Search" style="width: 101%; --border-radius: 20px; margin-left: -1px;"
+          <ion-searchbar animated="true" placeholder="{{'Search'|translate}}" style="width: 101%; --border-radius: 20px; margin-left: -1px;"
             align="centre" [(ngModel)]="searchtext"></ion-searchbar>
       
         
@@ -76,7 +76,7 @@
                 <div type="button" class="securepayment" *ngIf="text.typeOfPay == 'Online'" >
                  
                   <div>
-                  <span style="color: green;">Online Payment</span>
+                  <span style="color: green;">{{"Online Payment"|translate}}</span>
             
                   </div>
                 </div>
@@ -84,7 +84,7 @@
                 <div type="button" class="offlinepayment" *ngIf="text.typeOfPay == 'Offline'"  >
                   
                   
-                  <span style="color: rgb(248, 42, 24);">Cash Payment</span><br>
+                  <span style="color: rgb(248, 42, 24);">{{"Cash Payment"|translate}}</span><br>
                 
                   
                 </div>
@@ -105,20 +105,20 @@
                       <div class="flex-1" style="margin-top: -17px; overflow-y: scroll;">
                        <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{text.OriginLocation}}</a></span><br>
                         <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.DestinationLocation}}</a></span><br>
-                          <span class="badge badge-soft-success mb-0"> Posted On {{text.date}}</span>
+                          <span class="badge badge-soft-success mb-0"> {{"Posted On"|translate}} {{text.date}}</span>
                       </div>
                   </div>
                 
                       <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
-                      <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
-                      <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
+                      <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Expected Price"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
+                      <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Advance"|translate}}  ₹ <span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
                   
                   <div align="center" [hidden]="text.isActive == 'Completed'">
                   
                       <button type="button" class="viewbidbtn" (click)="loadById(text)">
-                        <span [hidden]="text.isActive == 'inprogress'"> Place Bid</span>
-                        <span *ngIf="text.isActive == 'inprogress'"> Place Bid</span>
+                        <span [hidden]="text.isActive == 'inprogress'"> {{"Place Bid"|translate}}</span>
+                        <span *ngIf="text.isActive == 'inprogress'"> {{"Place Bid"|translate}}</span>
                         
                         </button>
                        
@@ -130,7 +130,7 @@
                  
                  
                     <button type="button" class="viewbidbtn"  (click)="loadById(text)">
-                      <span> View Contact</span>
+                      <span> {{"View Contact"|translate}}</span>
                       
                       </button>
                      
@@ -157,8 +157,12 @@
           <div *ngIf="item.length ==0" style="text-align: center;">
            
             <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg"
-              style="height: 70px; width: 70px;">
-            <h3 style="text-align: center;">No loads have been posted yet...!</h3>
+            style="height: 70px; width: 70px; display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 70%;
+          " >
+            <h3 style="text-align: center;">{{"No loads have been posted yet...!"|translate}}</h3>
           </div>
           <!-- <br>
           <h3 align="center">Post load to book live loads and use directory</h3>

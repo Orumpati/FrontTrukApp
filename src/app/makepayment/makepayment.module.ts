@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MakepaymentPageRoutingModule } from './makepayment-routing.module';
 
 import { MakepaymentPage } from './makepayment.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MakepaymentPageRoutingModule
+    MakepaymentPageRoutingModule,
+    TranslateModule
   ],
   declarations: [MakepaymentPage]
 })

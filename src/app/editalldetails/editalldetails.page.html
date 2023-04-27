@@ -2,7 +2,7 @@
   <ion-toolbar >
     <div style="display: flex; ">
       <ion-icon name="arrow-back-sharp" (click)="goback()" style="font-size: 30px;"></ion-icon>
-      <ion-title align="center"> Edit Your Details</ion-title>
+      <ion-title align="center"> {{"Edit Your Details"|translate}}</ion-title>
     </div>
     
   </ion-toolbar>
@@ -14,58 +14,58 @@
    
  
     <form [formGroup]="updatedFormed" (ngSubmit)="saveDetails(userpost.value)" #userpost="ngForm">
-      <ion-label>Edit Your Person Details</ion-label>
+      <ion-label>{{"Edit Your Person Details"|translate}}</ion-label>
       <ion-item class="ion-margin">
-        <ion-input appCapitalize placeholder="Enter First Name" type="text"  clearInput="true" formControlName="firstName" ></ion-input>
+        <ion-input appCapitalize placeholder="{{'Enter First Name'|translate}}" type="text"  clearInput="true" formControlName="firstName" ></ion-input>
       </ion-item>
       <ion-item class="ion-margin">
-        <ion-input appCapitalize placeholder="Enter Last Name" type="text"   clearInput="true" formControlName="lastName" ></ion-input>
+        <ion-input appCapitalize placeholder="{{'Enter Last Name'|translate}}" type="text"   clearInput="true" formControlName="lastName" ></ion-input>
       </ion-item>
       <!--<ion-item class="ion-margin">
         <ion-input placeholder="Enter role" type="text"   clearInput="true" formControlName="role"></ion-input>
       </ion-item>-->
       <ion-list class="ion-margin" *ngIf="logindata.role == 'Shipper'">
         <ion-item>
-          <ion-select interface="popover" placeholder="Select Role" formControlName="role">
-            <ion-select-option value="Shipper">Shipper</ion-select-option>
-            <ion-select-option value="Transporter">Transporter</ion-select-option>
-            <ion-select-option value="Agent/Broker">Agent/Broker</ion-select-option>
-            <ion-select-option value="Fleet Owner">Fleet Owner</ion-select-option>
+          <ion-select interface="popover" placeholder="{{'Select Role'|translate}}" formControlName="role">
+            <ion-select-option value="Shipper">{{"Shipper"|translate}}</ion-select-option>
+            <ion-select-option value="Transporter">{{"Transporter"|translate}}</ion-select-option>
+            <ion-select-option value="Agent/Broker">{{"Agent/Broker"|translate}}</ion-select-option>
+            <ion-select-option value="Fleet Owner">{{"Fleet Owner"|translate}}</ion-select-option>
           </ion-select>
         </ion-item> 
       </ion-list>
 
       <ion-list class="ion-margin" *ngIf="logindata.role == 'Fleet Owner'">
         <ion-item>
-          <ion-select interface="popover" placeholder="Select Role" formControlName="role">
+          <ion-select interface="popover" placeholder="{{'Select Role'|translate}}" formControlName="role">
         
-            <ion-select-option value="Transporter">Transporter</ion-select-option>
-            <ion-select-option value="Agent/Broker">Agent/Broker</ion-select-option>
+            <ion-select-option value="Transporter">{{"Transporter"|translate}}</ion-select-option>
+            <ion-select-option value="Agent/Broker">{{"Agent/Broker"|translate}}</ion-select-option>
            
           </ion-select>
         </ion-item> 
       </ion-list>
       <ion-item class="ion-margin" *ngIf="logindata.role == 'Transporter'|| logindata.role == 'Agent/Broker'">
-        <ion-input  placeholder="Enter role" type="text"   clearInput="true" formControlName="role" readonly></ion-input>
+        <ion-input  placeholder="{{'Enter role'|translate}}" type="text"   clearInput="true" formControlName="role" readonly></ion-input>
       </ion-item>
       <ion-item class="ion-margin">
-        <ion-input  placeholder="Enter mobileNo" type="text"  clearInput="true" formControlName="mobileNo"></ion-input>
+        <ion-input  placeholder="{{'Enter mobileNo'|translate}}" type="text"  clearInput="true" formControlName="mobileNo"></ion-input>
       </ion-item>
     
       <ion-item class="ion-margin">
-        <ion-input appCapitalize placeholder="Enter companyName" type="text"   clearInput="true" formControlName="companyName"></ion-input>
+        <ion-input appCapitalize placeholder="{{'Enter companyName'|translate}}" type="text"   clearInput="true" formControlName="companyName"></ion-input>
       </ion-item>
       
 
-    <ion-label>Edit Your Address Deatails</ion-label>
+    <ion-label>{{"Edit Your Address Deatails"|translate}}</ion-label>
       <ion-radio-group value="strawberries"   style="display: flex; margin-left:27px;" [allowEmptySelection]="true"  formControlName="addressType">
         <ion-item style="margin-right: 5px;">
-          <ion-label>Home</ion-label>
+          <ion-label>{{"Home"|translate}}</ion-label>
           <ion-radio slot="end" value="home" ></ion-radio>
         </ion-item>
     
         <ion-item>
-          <ion-label>Office</ion-label>
+          <ion-label>{{"Office"|translate}}</ion-label>
           <ion-radio slot="end" value="office" ></ion-radio>
         </ion-item>
     
@@ -73,28 +73,28 @@
       </ion-radio-group>
 
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter DoorNo/Building No" type="text"   clearInput="true" formControlName="doorNo"></ion-input>
+      <ion-input placeholder="{{'Enter DoorNo/Building No'|translate}}" type="text"   clearInput="true" formControlName="doorNo"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter Street/Area" type="text"    clearInput="true" formControlName="areaName"></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter Street/Area'|translate}}" type="text"    clearInput="true" formControlName="areaName"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter LandMark" type="text"  clearInput="true" formControlName="landMark"></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter LandMark'|translate}}" type="text"  clearInput="true" formControlName="landMark"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input  appCapitalize placeholder="Enter City" type="text"    clearInput="true" formControlName="city"></ion-input>
+      <ion-input  appCapitalize placeholder="{{'Enter City'|translate}}" type="text"    clearInput="true" formControlName="city"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter Pincode" type="text"   clearInput="true" formControlName="pincode"></ion-input>
+      <ion-input placeholder="{{'Enter Pincode'|translate}}" type="text"   clearInput="true" formControlName="pincode"></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter routes" type="text"   clearInput="true" formControlName="routes"></ion-input>
+      <ion-input placeholder="{{'Enter routes'|translate}}" type="text"   clearInput="true" formControlName="routes"></ion-input>
     </ion-item>
     
   
       <ion-button shape="round" expand="full" strong="true" (click)="saveDetails(userpost.value)" >
-        Save
+       {{'Save'|translate}}
     
       </ion-button>
     

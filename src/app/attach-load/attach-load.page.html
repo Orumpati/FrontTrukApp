@@ -3,14 +3,14 @@
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/tab4" router-direction="forward"
         style="font-size: 30px;"></ion-icon>
-      <ion-title>Existing Loads</ion-title>
+      <ion-title>{{"Existing Loads"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
 
 
  <ion-content *ngIf="item.length!=0">
-  <h1 style="text-align: center;">Choose Your Load</h1>
+  <h1 style="text-align: center;">{{"Choose Your Load"|translate}}</h1>
 
 
 
@@ -20,14 +20,14 @@
       <div type="button" class="securepayment"  *ngIf="card.typeOfPay == 'Online'">
       
         <div>
-        <span style="color: green;">Online Payment</span>
+        <span style="color: green;">{{"Online Payment"|translate}}</span>
         
         </div>
       </div>
       
       <div type="button" class="handpayment" *ngIf="card.typeOfPay == 'Offline'" >
         <div>
-        <span style="color: rgb(241, 64, 15);">Cash Payment</span>
+        <span style="color: rgb(241, 64, 15);">{{"Cash Payment"|translate}}</span>
         
         </div>
       </div>
@@ -43,7 +43,7 @@
             <div class="flex-1" style="margin-top: -17px; overflow-y: scroll;">
               <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{card.OriginLocation}}</a></span><br>
                <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{card.DestinationLocation}}</a></span><br>
-                 <span class="badge badge-soft-success mb-0"> Posted On {{card.date}}</span>
+                 <span class="badge badge-soft-success mb-0"> {{"Posted On"|translate}} {{card.date}}</span>
              </div>
             <!-- <div class="flex-1 ms-3" style="margin-top: -25px;">
                 <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder;"><a style="font-size: small; color:black; font-weight:bold;" class="text-dark">{{card.OriginLocation}}--{{card.DestinationLocation}}</a></h5>
@@ -53,13 +53,13 @@
       
             <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{card.product}}</p>
             <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{card.Quantity}}--{{card.data}}</p>
-            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹ <span style="color:black; font-weight:bolder;">{{card.expectedPrice}} </span></p>
-            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance ₹ <span style="color:black; font-weight:bolder;">{{card.advance}} </span></p>
+            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Expected Price"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{card.expectedPrice}} </span></p>
+            <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i> {{"Advance"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{card.advance}} </span></p>
         
         <div style="display:inline-flex;"  >
         
              <button type="button" class="viewbidbtn"  (click)="sendData(card,i)"><!-- [ngStyle]="{'background-color':toggle? 'red':'grey'}"-->
-              <span>Select Load</span>
+              <span>{{"Select Load"|translate}}</span>
               
               </button> 
   
@@ -70,9 +70,9 @@
 </ion-content>
 <ion-content *ngIf="item.length==0">
 <div style="display:flex; justify-content:center; margin-top:300px;font-weight:bolder;" >
-  <h4  > No Loads Avaliable!</h4>
+  <h4  > {{"No Loads Avaliable!"|translate}}</h4>
 </div>
 
 </ion-content>
-<ion-button  *ngIf="item.length!=0" slot="end" (click)="proceed()" class="button" [disabled]="language == null" shape="round">proceed</ion-button>  
+<ion-button  *ngIf="item.length!=0" slot="end" (click)="proceed()" class="button" [disabled]="language == null" shape="round">{{"proceed"|translate}}</ion-button>  
  <!-- <ion-button slot="end" routerLink="/existing-load">proceed</ion-button>  --> 

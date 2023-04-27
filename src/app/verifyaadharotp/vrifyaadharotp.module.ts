@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { VrifyaadharotpPageRoutingModule } from './vrifyaadharotp-routing.module';
 import {NgOtpInputModule} from 'ng-otp-input';
 import { VrifyaadharotpPage } from './vrifyaadharotp.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     VrifyaadharotpPageRoutingModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    TranslateModule
   ],
   declarations: [VrifyaadharotpPage]
 })

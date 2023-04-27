@@ -3,6 +3,8 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { LoadingController, ToastController } from '@ionic/angular';
 import {  ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-tab4',
   templateUrl: './tab4.page.html',
@@ -35,11 +37,20 @@ export class Tab4Page implements OnInit {
   truckshift: any;
   loortr: any;
   logindata: any;
+  language:any;
+  lang: any;
 
-  constructor(private router:Router, private toastController: ToastController,public loadingController: LoadingController) { }
+  constructor(private router:Router, private toastController: ToastController,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     //this.getAllvehicle()
    // this.vehicleSearch()
    this.getAllvehicles()

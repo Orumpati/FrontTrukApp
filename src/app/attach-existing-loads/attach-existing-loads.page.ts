@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 declare var google: any;
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router'
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-attach-existing-loads',
   templateUrl: './attach-existing-loads.page.html',
@@ -24,15 +26,22 @@ export class AttachExistingLoadsPage implements OnInit {
   trukvehiclenumber:any;
   router: any;
   trukOwnerNumber:any;
+  language: any;
+  lang: any;
 
 
   
-  constructor(private alertController: AlertController, router:Router,public loadingController: LoadingController) {  }
+  constructor(private alertController: AlertController, router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService) { 
+
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
   ngOnInit(): void {
     this.objects = localStorage.getItem("selectedTruk");  //use the localstorage we getdata from savedData
     //The localStorage object allows you to save key/value pairs in the browser.
     this.real = JSON.parse(this.objects)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
-
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     console.log(this.real)
 
     this.truk = localStorage.getItem("attachload");  
@@ -40,6 +49,8 @@ export class AttachExistingLoadsPage implements OnInit {
     this.TrukPost = JSON.parse(this.truk)  //parse() The JSON. parse() method parses a JSON string, constructing the JavaScript value or object described by the string.
 
     console.log(this.TrukPost)
+
+    
   }
 
   async SendExistingload() {

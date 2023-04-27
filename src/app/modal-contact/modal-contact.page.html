@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon>
-      <ion-title style="text-align:center;">Contact Details</ion-title>
+      <ion-title style="text-align:center;">{{"Contact Details"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -10,18 +10,18 @@
 <ion-content>
   <ion-card>
     <br>
-    <h2 style="text-align: center; color: #f58e26;">Contact Details</h2>
+    <h2 style="text-align: center; color: #f58e26;">{{"Contact Details"|translate}}</h2>
     <div class="container">
       <ion-item fill="outline">
-        <ion-label position="floating">Enter Your Name</ion-label>
+        <ion-label position="floating">{{"Enter Your Name"|translate}}</ion-label>
         <ion-input placeholder="Enter name" [(ngModel)]="Name"></ion-input>
       </ion-item><br>
       <ion-item fill="outline">
-        <ion-label position="floating">Enter Your Email Address</ion-label>
+        <ion-label position="floating">{{"Enter Your Email Address"|translate}}</ion-label>
         <ion-input placeholder="Enter Email" [(ngModel)]="To"></ion-input>
       </ion-item><br>
       <ion-item fill="outline">
-        <ion-label position="floating">Enter your Mobile Number</ion-label>
+        <ion-label position="floating">{{"Enter your Mobile Number"|translate}}</ion-label>
         <ion-input placeholder="Enter phone Number" [(ngModel)]="PhoneNumber"></ion-input>
       </ion-item><br>
       <ion-item [hidden]="hide.hideQuery == false">
@@ -30,11 +30,11 @@
       </ion-item>
 
       <ion-item *ngIf="hide.hideQuery == false">
-        <ion-textarea placeholder='Please Enter Your Query' [autoGrow]="true" [(ngModel)]="Query">
+        <ion-textarea placeholder="{{'Please Enter Your Query'|translate}}" [autoGrow]="true" [(ngModel)]="Query">
         </ion-textarea>
       </ion-item>
       <br>
-      <ion-button style="float: right;" (click)="addContact()" class="summit" [disabled]="Name == ''||Name == null|| To ==''||To ==null||PhoneNumber==''||PhoneNumber==null||Query ==''||Query ==null">Submit</ion-button>
+      <ion-button style="float: right;" (click)="addContact()" class="summit" [disabled]="Name == ''||Name == null|| To ==''||To ==null||PhoneNumber==''||PhoneNumber==null||Query ==''||Query ==null">{{"Submit"|translate}}</ion-button>
     </div>
   </ion-card>
 </ion-content>

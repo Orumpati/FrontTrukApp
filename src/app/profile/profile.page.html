@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <ion-icon  name="arrow-back-sharp"  (click)="goback()" style="font-size: 30px;"></ion-icon>
 
-      <ion-title>Profile</ion-title>
+      <ion-title>{{"Profile"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -59,7 +59,7 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-card-title (click)="passData()">Edit Profile</ion-card-title>
+    <ion-card-title (click)="passData()">{{"Edit Profile"|translate}}</ion-card-title>
    
   </ion-card-header>
 
@@ -83,8 +83,8 @@
     </div>
 
     <div class="kyc">
-    <h2 *ngIf="routes.aadharVerify === 'notVerified' ||routes.gstVerify === 'notVerified'" style="border: 2px solid red; color:red; padding:4px; border-radius:8px;" >KYC Pending</h2>
-    <h2 *ngIf="routes.aadharVerify === 'Verified' && routes.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:4px; border-radius:8px;">KYC Verified</h2>
+    <h2 *ngIf="routes.aadharVerify === 'notVerified' ||routes.gstVerify === 'notVerified'" style="border: 2px solid red; color:red; padding:4px; border-radius:8px;" >{{"KYC Pending"|translate}}</h2>
+    <h2 *ngIf="routes.aadharVerify === 'Verified' && routes.gstVerify == 'Verified'" style="border: 2px solid green; color:green; padding:4px; border-radius:8px;">{{"KYC Verified"|translate}}</h2>
     <br>
     <!--<h2 style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:4px; border-radius:8px;"> Add Company Bio </h2>-->
     </div>
@@ -103,8 +103,8 @@
       </div>
 
       <div class="verifybutton" *ngIf="routes.aadharVerify == 'notVerified'">
-      <h3 style=" margin-left:20px; padding-top:20px;" >Verify Aadhar</h3>
-      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;"  id="open-aadhar" >Verify </button>
+      <h3 style=" margin-left:20px; padding-top:20px;" >{{"Verify Aadhar"|translate}}</h3>
+      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;"  id="open-aadhar" >{{"Verify"|translate}} </button>
 
       <ion-modal #modal trigger="open-aadhar" [initialBreakpoint]="0.55" [breakpoints]="[0, 0.25, 0.5, 0.75]"  style="--border-radius:13px;">
         <ng-template>
@@ -116,7 +116,7 @@
               </div>
             
               <ion-card-content>
-                <ion-label> AadharNumber</ion-label>
+                <ion-label> {{"AadharNumber"|translate}}</ion-label>
                 <ion-item class="ion-margin">
                   <ion-input placeholder="Enter Aadhar" type="text" clearInput="true" [(ngModel)]="AadharNumber" [ngModelOptions]="{standalone: true}"></ion-input>
                 </ion-item>
@@ -124,7 +124,7 @@
             </ion-card>
       
             <ion-button shape="round" expand="full" strong="true" type="submit" (click)="verifyAadhar()"  id="open-custom-dialog">
-              Get OTP
+              {{"Get OTP"|translate}}
               <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
             </ion-button>
             
@@ -134,7 +134,7 @@
       </div>
 
       <div class="verifybutton" *ngIf="routes.aadharVerify == 'Verified'">
-        <h3 style=" margin-left:20px; padding-top:20px; color:green;"  > Aaadhar Verified</h3>
+        <h3 style=" margin-left:20px; padding-top:20px; color:green;"  > {{"Aaadhar Verified"|translate}}</h3>
         
         </div>
 
@@ -148,8 +148,8 @@
       </div>
 
       <div class="verifybutton" *ngIf="routes.gstVerify == 'notVerified'">
-      <h3 style=" margin-left:20px; padding-top:20px;" >Verify GSTIN</h3>
-      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;" id="open-gst">Verify </button>
+      <h3 style=" margin-left:20px; padding-top:20px;" >{{"Verify GSTIN"|translate}}</h3>
+      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:100px; margin-left:35px; margin-bottom:15px;" id="open-gst">{{"Verify"|translate}} </button>
       <ion-modal #modal trigger="open-gst" [initialBreakpoint]="0.67" [breakpoints]="[0, 0.25, 0.5, 0.75]" style="--border-radius:13px;" >
         <ng-template>
           <ion-content>
@@ -160,7 +160,7 @@
               </div>
             
               <ion-card-content>
-                <ion-label> GST Number</ion-label>
+                <ion-label> {{"GST Number"|translate}}</ion-label>
                 <ion-item class="ion-margin">
                   <ion-input placeholder="Enter GST Number" type="text" clearInput="true"  [(ngModel)]="gstinNumber"  [ngModelOptions]="{standalone: true}" ></ion-input>
                 </ion-item>
@@ -173,7 +173,7 @@
             </ion-card>
       
             <ion-button shape="round" expand="full" strong="true" type="submit" (click)="verifygstin()" >
-              Submit
+              {{"Submit"|translate}}
               <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
             </ion-button>
             
@@ -184,7 +184,7 @@
 
 
       <div class="verifybutton" *ngIf="routes.gstVerify == 'Verified'">
-        <h3 style=" margin-left:20px; padding-top:20px; color:green;" > GSTIN Verified</h3>
+        <h3 style=" margin-left:20px; padding-top:20px; color:green;" > {{"GSTIN Verified"|translate}}</h3>
         
         </div>
     </div>
@@ -193,7 +193,7 @@
 <ion-card style="height: 130px;"  *ngIf="!routes.addressType">
       <div class="addaddress">
       
-      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:130px;  " routerLink="/addaddress">+ Add Address </button>
+      <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:130px;  " routerLink="/addaddress">{{"+ Add Address"|translate}} </button>
       </div>
     
 </ion-card>
@@ -204,19 +204,19 @@
   margin-left: auto;
   margin-right: auto;
   width: 50%; font-size:22px; font-weight: 600px; color:black; padding:5px;">
-    Address Details
+    {{"Address Details"|translate}}
   </div>
     
   
   <ion-card-content>
     <div class="address-card">
       <div>
-      <p>Address Type</p>
-      <p>Door No/Building No</p>
-      <p>Street/Area</p>
-      <p>LandMark</p>
-      <p>City</p>
-      <P>Pincode</P>
+      <p>{{"Address Type"|translate}}</p>
+      <p>{{"Door No/Building No"|translate}}</p>
+      <p>{{"Street/Area"|translate}}</p>
+      <p>{{"LandMark"|translate}}</p>
+      <p>{{"City"|translate}}</p>
+      <P>{{"Pincode"|translate}}</P>
       </div>
       <div style="padding-left: 10pxpx; padding-right:10px;">
         <p>:</p>
@@ -243,7 +243,7 @@
 <ion-card style="height: 130px;" [hidden]="logindata.role == 'Shipper'" *ngIf="!routes.routes">
 
   <div class="addaddress">
-    <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:130px; " id="open-addroutes"  >Add Routes </button>
+    <button style="border: 2px solid rgb(20, 19, 19); color:rgb(15, 15, 15); padding:8px; border-radius:8px; width:130px; " id="open-addroutes"  >{{"Add Routes"|translate}} </button>
  
   </div>
 
@@ -267,7 +267,7 @@
         
   
         <ion-button shape="round" expand="full" strong="true" (click)="addroutes()" >
-          Add Routes
+          {{"Add Routes"|translate}}
           
         </ion-button>
         
@@ -282,7 +282,7 @@
   margin-left: auto;
   margin-right: auto;
   width: 55%; font-size:22px; font-weight: 600px; color:black; padding:5px;">
-    Available Routes
+    {{"Available Routes"|translate}}
   </div>
 
   <div>
@@ -309,7 +309,7 @@
         
   
         <ion-button shape="round" expand="full" strong="true" (click)="addroutes()" >
-          Add Routes
+          {{"Add Routes"|translate}}
           
         </ion-button>
         

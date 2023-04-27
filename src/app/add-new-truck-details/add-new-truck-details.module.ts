@@ -8,14 +8,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddNewTruckDetailsPageRoutingModule } from './add-new-truck-details-routing.module';
 
 import { AddNewTruckDetailsPage } from './add-new-truck-details.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     AddNewTruckDetailsPageRoutingModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    TranslateModule
   ],
   declarations: [AddNewTruckDetailsPage]
 })

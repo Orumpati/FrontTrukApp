@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AllNotificationsPageRoutingModule } from './all-notifications-routing.module';
 
 import { AllNotificationsPage } from './all-notifications.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AllNotificationsPageRoutingModule
+    AllNotificationsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [AllNotificationsPage]
 })

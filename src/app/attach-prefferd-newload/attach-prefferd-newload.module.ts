@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AttachPrefferdNewloadPageRoutingModule } from './attach-prefferd-newload-routing.module';
 
 import { AttachPrefferdNewloadPage } from './attach-prefferd-newload.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AttachPrefferdNewloadPageRoutingModule
+    AttachPrefferdNewloadPageRoutingModule,
+    TranslateModule
   ],
   declarations: [AttachPrefferdNewloadPage]
 })

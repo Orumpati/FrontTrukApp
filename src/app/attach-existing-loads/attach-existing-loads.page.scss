@@ -25,7 +25,17 @@ ion-card{
     font-size: 10px;
     border: 2px solid green;
   }
-  
+  .offlinepayment{
+    width: 125px;
+    height: min-content;
+    float:inline-start;
+    display: flex;
+    margin-top: 10px;
+    border-radius: 16px;
+    padding: 4px;
+    font-size: 10px;
+    border: 2px solid rgb(249, 21, 1);
+  }
   
   
   body{margin-top:20px;

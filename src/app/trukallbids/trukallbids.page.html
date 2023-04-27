@@ -1,15 +1,10 @@
 
 
-
-
-
-
-
 <ion-header>
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/mytrucks" (click)="route" style="font-size: 30px;"></ion-icon>
-      <ion-title>Truck all bids</ion-title>
+      <ion-title>{{"Truck all bids"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -18,7 +13,7 @@
 
   <ion-card-header>
 
-    <ion-card-subtitle style="font-size:larger; font-weight: bold; color: white;">Loads</ion-card-subtitle>
+    <ion-card-subtitle style="font-size:larger; font-weight: bold; color: white;">{{"Loads"|translate}}</ion-card-subtitle>
 
   </ion-card-header>
 </ion-card>
@@ -32,7 +27,7 @@
   <div *ngIf="allbidslen != 0" >
   <ion-card class="allBids" *ngFor="let data of loadwithvehicle">
     <ion-card-header>
-      <ion-card-title>Bid from :-{{data.UserName}}</ion-card-title>
+      <ion-card-title>{{"Bid from"|translate}} :-{{username}}</ion-card-title>
       <ion-card-title>₹{{data.expectedPrice}}/- Fixed</ion-card-title>
       
       <!--<ion-chip style="float:right; margin-top: -59px;">
@@ -50,13 +45,13 @@
   
 
 
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)"  [hidden] ="(bidact  == true && shipper ==true) ||bidactlen >= 1" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == false">Open</ion-button>
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen >= 1" [hidden] ="bidact == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed ==false">InProgress</ion-button>
-    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidact  == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == false" >Finilised</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)"  [hidden] ="(bidact  == true && shipper ==true) ||bidactlen >= 1" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == false">{{"Open"|translate}}</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidactlen >= 1" [hidden] ="bidact == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed ==false">{{"InProgress"|translate}}</ion-button>
+    <ion-button style="margin-top: -22px;margin-left: 21px;" fill="outline" shape="round"   (click)="openbid(data)" *ngIf ="bidact  == true && shipper ==true" [disabled]="data.BidStatus == 'open' && AtleastOneBidisClosed == false" >{{"Finilised"|translate}}</ion-button>
   </ion-card>
 </div>
 
   <div *ngIf="allbidslen == 0" style="display: flex; justify-content:center; margin-top:250px;font-size:20px; font-weight:bolder;">
-    No Bids
+    {{"No Bids"|translate}}
   </div>
 </ion-content>

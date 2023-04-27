@@ -4,6 +4,15 @@ import { reload } from 'firebase/auth';
 import { LoadingController } from '@ionic/angular';
 import { NavigationEnd, Router } from '@angular/router';
 //import { TranslateService } from '@ngx-translate/core';
+
+
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
+
+
+
+
+import { ActionSheetController } from '@ionic/angular';
 @Component({
   selector: 'app-shipperhome',
   templateUrl: './shipperhome.page.html',
@@ -61,7 +70,20 @@ option = {
   referbanner: any;
   trukbanner: any;
   truklogo: any;
-  constructor(public loadingController: LoadingController,private router:Router) { 
+  language: any;
+  constructor(public loadingController: LoadingController,private router:Router  ,  
+    
+    private translateConfigService: TranslateConfigService, private translate: TranslateService,
+    
+    
+    public actionSheetController: ActionSheetController
+    ) { 
+
+
+      this.translateConfigService.getDefaultLanguage();
+      this.language = this.translateConfigService.getCurrentLang();
+
+      
    this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
 
 
@@ -72,19 +94,21 @@ option = {
 
   ngOnInit() {
     this.logindata =  JSON.parse(localStorage.getItem('regdata')|| '{}')
+
     if(this.logindata.aadharVerify == 'notVerified' || this.logindata.gstVerify == 'notVerified'){
       this.modalorp()
     }
-    this.lang = localStorage.getItem('language')
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
      this.loortr =JSON.parse(localStorage.getItem('lookingfor') || '{}')
-     
+     console.log(this.lang)
     console.log(this.logindata)
     this.get()
     this.gettrucks()
 
 
 
-    this. databaseimgs()    
+    this. databaseimgs()
+    this.changeLanguage()    
   }
  
   modalorp(){
@@ -215,6 +239,41 @@ window.location.reload()
   }
 
 
+  // async changeLanguage() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     header: 'Languages',
+  //     buttons: [{
+  //       text: 'English',
+  //       icon: 'language-outline',
+  //       handler: () => {
+  //         this.language = 'en';
+  //         this.translateConfigService.setLanguage('en');
+  //       }
+  //     }, {
+  //       text: 'Spanish',
+  //       icon: 'language-outline',
+  //       handler: () => {
+  //         this.language = 'hi';
+  //         this.translateConfigService.setLanguage('hi');
+  //       }
+  //     }, {
+  //       text: 'Cancel',
+  //       icon: 'close',
+  //       role: 'cancel',
+  //       handler: () => {
+  //         console.log('Cancel clicked');
+  //       }
+  //     }]
+  //   });
+  //   await actionSheet.present();
+
+  //   const { role, data } = await actionSheet.onDidDismiss();
+  //   console.log('onDidDismiss resolved with role and data', role, data);
+  // }
+
+  changeLanguage(){
+    this.translateConfigService.setLanguage(this.lang);
+  }
   autorefresh(event:any){
     
     setTimeout(() => {

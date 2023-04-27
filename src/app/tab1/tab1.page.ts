@@ -4,6 +4,8 @@ import { IonModal, LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -55,7 +57,14 @@ body={
   itemShare: any;
   itemshi: any;
   openbanner = false;
-  constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard) {}
+  language:any;
+  lang: any;
+  constructor(private router:Router,public loadingController: LoadingController,public nav:NavController,private clipboard:Clipboard,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
 
   
 
@@ -68,6 +77,8 @@ body={
   ngOnInit():void{
     this.logindata =JSON.parse(localStorage.getItem('regdata')||'{}')
     console.log(this.logindata)
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     // if(this.logindata.aadharVerify == 'notVerified' || this.logindata.gstVerify == 'notVerified'){
     //   this.modalorp()
     // }

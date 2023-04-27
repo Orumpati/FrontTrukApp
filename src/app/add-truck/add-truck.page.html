@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/mytrucks" style="font-size: 30px;"></ion-icon>
-      <ion-title>AddTruks</ion-title>
+      <ion-title>{{"AddTruks"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -11,18 +11,17 @@
   <br>
   <div class="container">
     <div>
-      <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Add New Truk
-      </h2>
+      <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">{{"Add New Truk"|translate}}</h2>
       <div class="form-group">
-        <ion-label position="floating">Enter Vechile number</ion-label>
+        <ion-label position="floating">{{"Enter Vechile number"|translate}}</ion-label>
         <input placeholder="K.A 10 5555" [(ngModel)]="trukvehiclenumber" class="form-control"
           style="text-transform:uppercase">
       </div>
       
 
       <div class="form-group">
-        <ion-label position="floating">Current Location</ion-label>
-        <ion-input type="text" class="form-control" placeholder="Current vechile Location" [(ngModel)]="OriginLocation"
+        <ion-label position="floating">{{"Current Location"|translate}}</ion-label>
+        <ion-input type="text" class="form-control" placeholder="{{'Current vechile Location'|translate}}" [(ngModel)]="OriginLocation"
           class="form-control" (ionInput)="GetOriginLocation(OriginLocation)"
           (ionClear)="ClearAutocomplete()"></ion-input>
           
@@ -38,7 +37,7 @@
       </ion-list>
     
       <div>
-        <ion-label position="floating">Add Your Vechile Routes</ion-label>
+        <ion-label position="floating">{{"Add Your Vechile Routes"|translate}}</ion-label>
         <ng-multiselect-dropdown [placeholder]="'Add Your Vechile Routes (States)'" [settings]="dropdownSettings"
           [data]="dropdownList" [(ngModel)]="trukoperatingRoutes" (onSelect)="onItemSelect($event)"
           (onSelectAll)="onSelectAll($event)">
@@ -48,15 +47,14 @@
       <div class="form-group">
         
         <div class="form-control">
-          <ion-input type="datetime-local" style="border: none; " [(ngModel)]="trukdate" placeholder="Date & Time"> Date & Time</ion-input>
+          <ion-input type="datetime-local" style="border: none; " [(ngModel)]="trukdate" placeholder="{{'Date & Time'|translate}}"> {{"Date & Time"|translate}}</ion-input>
         </div>
       </div>
     </div>
 
 
     <div>
-      <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Choose One
-        TrukVehicle</h2>
+      <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">{{"Choose One TrukVehicle"|translate}}</h2>
       <div>
         <div>
           <input type="radio" name="payment" id="card" (change)="out('Tanker')" class="vehicle">
@@ -68,7 +66,7 @@
             </div>
 
             <div class="shipperdiv">
-              Tanker (1 to 35 KL)
+             {{"Tanker (1 to 35 KL)"|translate}}
             </div>
 
           </label>
@@ -84,7 +82,7 @@
             </div>
 
             <div class="shipperdiv">
-              Hyva (1 to 35 Tons)
+              {{"Hyva (1 to 35 Tons)"|translate}}
             </div>
           </label>
         </div>
@@ -100,7 +98,7 @@
             </div>
 
             <div class="shipperdiv">
-              LCV (1 to 6 Tons)
+              {{"LCV (1 to 6 Tons)"|translate}}
             </div>
           </label>
         </div>
@@ -114,7 +112,7 @@
             </div>
 
             <div class="shipperdiv">
-              Truk (1 to 14 Tons)
+              {{"Truk (1 to 14 Tons)"|translate}}
             </div>
           </label>
         </div>
@@ -129,7 +127,7 @@
             </div>
 
             <div class="shipperdiv">
-              Trailer (1 to 52 Tons)
+              {{"Trailer (1 to 52 Tons)"|translate}}
             </div>
           </label>
         </div>
@@ -143,22 +141,22 @@
             </div>
 
             <div class="shipperdiv">
-              Container (1 to 45 Tons)
+              {{"Container (1 to 45 Tons)"|translate}}
             </div>
           </label>
         </div>
 
         <ion-card style="height: auto;" *ngIf="trukname =='Truk'">
-          <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Truk type</ion-card-title>
+          <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Truk type"|translate}}</ion-card-title>
           <br>
           <div style="display: flex; flex-direction:coloumn; justify-content:center" [(ngModel)]="isTrukOpenOrClose">
             <div>
             <input type="radio" id="1" name="hyva" value="Open Body" class="typeOfVehicle" (change)="truk('Open Body')"/>
-            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Open Body</label>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Open Body"|translate}}</label>
             </div>
             <div>
             <input type="radio" id="2" name="hyva" value="Close Body" class="typeOfVehicle" (change)="truk('Close Body')"/>
-            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">Close Body</label>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"Close Body"|translate}}</label>
             </div>
           </div>
 
@@ -169,19 +167,19 @@
         
 
         <ion-card style="height: auto;" *ngIf="trukname =='Hyva'">
-          <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Hyva type</ion-card-title>
+          <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Hyva type"|translate}}</ion-card-title>
           
           <div style="display: flex; flex-direction:coloumn; justify-content:center;" [(ngModel)]="typeOfHyva">
 
 
 <div>
   <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="HYVA('10 Tyre')"/>
-  <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">10 Tyre</label>
+  <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"10 Tyre"|translate}}</label>
 </div>
 
       <div>
         <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="HYVA('12 Tyre')"/>
-        <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">12 Tyre</label>
+        <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"12 Tyre"|translate}}</label>
       </div>
 
      
@@ -190,21 +188,21 @@
           </div>
           <div style="display: flex; flex-direction:coloumn; justify-content:center;" [(ngModel)]="typeOfHyva" >
             <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="HYVA('14 Tyre')"/>
-            <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">14 Tyre</label>
+            <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: medium;">{{"14 Tyre"|translate}}</label>
           </div>
         </ion-card>
 
         <ion-card style="height: auto;" *ngIf="trukname =='Trailer'">
-          <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type</ion-card-title>
+          <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Trailer type"|translate}}</ion-card-title>
           
           <div style="display: flex; flex-direction:coloumn; justify-content:center;"  [(ngModel)]="typeOfTrailer">
            <div>
             <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
-            <label for="1" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">High Bed</label>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">{{"High Bed"|translate}}</label>
            </div>
            <div>
             <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="trailer('Semi Bed')"/>
-            <label for="2" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">Semi Bed</label>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">{{"Semi Bed"|translate}}</label>
            </div>
 
   
@@ -212,70 +210,70 @@
           </div>
           <div style="display: flex; flex-direction:coloumn; justify-content:center;"   [(ngModel)]="typeOfTrailer">
             <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="trailer('Low Bed')"/>
-            <label for="3" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">Low Bed</label>
+            <label for="3" class="vehiclelabel" style="padding-top: 10px;padding-left: 13px;font-size: medium;">{{"Low Bed"|translate}}</label>
           </div>
         </ion-card>
 
 
         <ion-card style="height: auto;" *ngIf="trukname =='Container'">
-          <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Container type:</ion-card-title>
+          <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Container type:"|translate}}</ion-card-title>
           <br>
           <div style="display: flex; flex-direction:coloumn; justify-content:center;"  [(ngModel)]="typeOfContainer">
        <div>
         <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl')"/>
-        <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32 ft sxl</label>
+        <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"32 ft sxl"|translate}}</label>
        </div>
            <div>
             <input type="radio" id="2" name="hyva" class="typeOfVehicle" (change)="container('32 ft sxl HQ')"/>
-            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32 ft sxl HQ</label>
+            <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"32 ft sxl HQ"|translate}}</label>
            </div>
        <div>
         <input type="radio" id="3" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl')"/>
-        <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32ft mxl</label>
+        <label for="3" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"32ft mxl"|translate}}</label>
        </div>
        </div>
        <div  style="display: flex; flex-direction:coloumn; justify-content:center;"  [(ngModel)]="typeOfContainer">
         <div>
             <input type="radio" id="5" name="hyva" class="typeOfVehicle" (change)="container('32ft mxl HQ')"/>
-            <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">32ft mxl HQ</label>
+            <label for="5" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"32ft mxl HQ"|translate}}</label>
             </div>
          <div>
           <input type="radio" id="6" name="hyva" class="typeOfVehicle" (change)="container('19ft Sxl')"/>
-          <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">19ft Sxl</label>
+          <label for="6" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"19ft Sxl"|translate}}</label>
          </div>
          <div>
           <input type="radio" id="7" name="hyva" class="typeOfVehicle" (change)="container('20ft Sxl')"/>
-          <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">20ft Sxl</label>
+          <label for="7" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"20ft Sxl"|translate}}</label>
          </div>
         </div>
         <div style="display: flex; flex-direction:coloumn; justify-content:center;"  [(ngModel)]="typeOfContainer">
           <div>
             <input type="radio" id="8" name="hyva" class="typeOfVehicle" (change)="container('21ft Sxl')"/>
-            <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">21ft Sxl</label>
+            <label for="8" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"21ft Sxl"|translate}}</label>
           </div>
        <div>
              <input type="radio" id="9" name="hyva" class="typeOfVehicle" (change)="container('23ft Sxl')"/>
-            <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">23ft Sxl</label>
+            <label for="9" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"23ft Sxl"|translate}}</label>
        </div>
        <div>
         <input type="radio" id="10" name="hyva" class="typeOfVehicle" (change)="container('24ft Sxl')"/>
-        <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">24ft Sxl</label>
+        <label for="10" class="vehiclelabel" style="padding-top: 10px;font-size: 12px;">{{"24ft Sxl"|translate}}</label>
        </div>
   
           </div>
         </ion-card>
 
         <ion-card style="height: auto;" *ngIf="trukname =='Tanker'">
-          <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type</ion-card-title>
+          <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Tanker type"|translate}}</ion-card-title>
           <br>
           <div style="font-size: 19px;margin-top:6px;" style="display: flex; flex-direction:coloumn; justify-content:center;" [(ngModel)]="typeofTanker">
             <div>
             <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>
-            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size:12px; ">Metal steel</label>
+            <label for="1" class="vehiclelabel" style="padding-top: 10px;font-size:12px; ">{{"Metal steel"|translate}}</label>
             </div>
    <div>
     <input type="radio" id="2" name="hyva" value="Stainless steel" class="typeOfVehicle" (change)="Tanker('Stainless steel')"/>
-    <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: 12px; width: auto;">Stainless steel</label>
+    <label for="2" class="vehiclelabel" style="padding-top: 10px;font-size: 12px; width: auto;">{{"Stainless steel"|translate}}</label>
    </div>
           </div>
         </ion-card>
@@ -291,4 +289,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" (click)="postVehile()" [disabled]="trukvehiclenumber == null || OriginLocation== null ||trukoperatingRoutes == '' || trukdate == null || trukname == null">Post Truk</ion-button>
+<ion-button expand="full" shape="round" class="back" (click)="postVehile()" [disabled]="trukvehiclenumber == null || OriginLocation== null ||trukoperatingRoutes == '' || trukdate == null || trukname == null">{{"Post Truk"|translate}}</ion-button>

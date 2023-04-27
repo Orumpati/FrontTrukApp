@@ -4,7 +4,7 @@
 
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" (click)="routetotrukviewbid()" style="font-size: 30px;"></ion-icon>
-      <ion-title>Add Your Address</ion-title>
+      <ion-title>{{"Add Your Address"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -19,12 +19,12 @@
     <form   #userPost="ngForm" [formGroup]="signupForm">
       <ion-radio-group value="strawberries"  formControlName="addressType" style="display: flex; margin-left:27px;">
         <ion-item style="margin-right: 5px;">
-          <ion-label>Home</ion-label>
+          <ion-label>{{"Home"|translate}}</ion-label>
           <ion-radio slot="end" value="home"></ion-radio>
         </ion-item>
     
         <ion-item>
-          <ion-label>Office</ion-label>
+          <ion-label>{{"Office"|translate}}</ion-label>
           <ion-radio slot="end" value="office"></ion-radio>
         </ion-item>
     
@@ -32,25 +32,25 @@
       </ion-radio-group>
 
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter DoorNo/Building No" type="text"  formControlName="doorNo" clearInput="true" ></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter DoorNo/Building No'|translate}}" type="text"  formControlName="doorNo" clearInput="true" ></ion-input>
     </ion-item>
 
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter Street/Area" type="text"  formControlName="areaName" clearInput="true" ></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter Street/Area'|translate}}" type="text"  formControlName="areaName" clearInput="true" ></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter LandMark" type="text"  formControlName="landMark" clearInput="true" ></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter LandMark'|translate}}" type="text"  formControlName="landMark" clearInput="true" ></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter City" type="text"  formControlName="city" clearInput="true" ></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter City'|translate}}" type="text"  formControlName="city" clearInput="true" ></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter Pincode" type="text"  formControlName="pincode" clearInput="true" ></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter Pincode'|translate}}" type="text"  formControlName="pincode" clearInput="true" ></ion-input>
     </ion-item>
     
   
       <ion-button  expand="full" strong="true" type="submit" [disabled]="userPost.invalid" (click)="Addaddress(userPost.value)" >
-        Save
+        {{"Save"|translate}}
       
       </ion-button>
     

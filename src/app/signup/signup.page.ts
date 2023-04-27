@@ -7,6 +7,8 @@ import { CommonServiceService } from '../common-service.service';
 import { DatePipe } from '@angular/common';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 declare var google :any
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -54,16 +56,24 @@ export class SignupPage implements OnInit {
   OrderTime: any;
   currenttime:any;
   finals: any;
+  language: any;
+  lang: any;
 
-  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService,public zone:NgZone,private datepipe:DatePipe) {
+  constructor(private router:Router,private uniqueDeviceID: UniqueDeviceID,public loadingController: LoadingController,public navController:NavController,private commonService:CommonServiceService,public zone:NgZone,private datepipe:DatePipe,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = [];
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
    }
 
   ngOnInit() {
     this.OrderTime =this.datepipe.transform((new Date), 'MM/dd/yyyy ');
     this.currenttime =this.datepipe.transform((new Date), ' h:mm:ss');
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     this.getUniqueDeviceID();
    this.role = JSON.parse(localStorage.getItem('selectType') || '{}')
    var lang= JSON.parse(localStorage.getItem('language') || '{}') 

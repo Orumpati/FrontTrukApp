@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SelecttypePageRoutingModule } from './selecttype-routing.module';
 
 import { SelecttypePage } from './selecttype.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelecttypePageRoutingModule
+    SelecttypePageRoutingModule,
+    TranslateModule
   ],
   declarations: [SelecttypePage]
 })

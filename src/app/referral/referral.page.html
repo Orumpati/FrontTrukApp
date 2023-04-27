@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <ion-icon  name="arrow-back-sharp"  (click)="goback()" style="font-size: 30px;"></ion-icon>
       <!-- <ion-icon *ngIf="logindata.role == 'Transporter'||logindata.role == 'Fleet Owner'||logindata.role == 'Agent/Broker'" name="arrow-back-sharp" routerLink="/tab/tab2" style="font-size: 30px;"></ion-icon> -->
-      <ion-title style="text-align:center;">TrukApp Referral</ion-title>
+      <ion-title style="text-align:center;">{{"TrukApp Referral"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -19,18 +19,18 @@
     </ion-refresher-content>
   </ion-refresher>
   <div style="text-align: center;">
-    <h1 style="color: #f58e26;;">How it Works <ion-icon name="information-circle" id="click-trigger"></ion-icon></h1>
+    <h1 style="color: #f58e26;;">{{"How it Works"|translate}} <ion-icon name="information-circle" id="click-trigger"></ion-icon></h1>
     <ion-popover trigger="click-trigger" triggerAction="click">
       <ng-template>
         <ion-content class="ion-padding">
-■ Share the Referral code with your friend. <br>
-■ Your friend should use the code to sign up into TrukApp.  <br>
-■ The Coins will be credited ONLY when your friend verifies KYC.  <br>
-■ You will receive 100 coins for each unique referral signup.    <br>
-■ You can withdraw referral coins by raising a withdrawal request.    <br>
-■ Withdrawal requests should be in denominations of 100.    <br>
-■ Maximum coins one can withdraw at once is 500.   <br>
-■ Maximum Referral Money one can earn is 1000 INR.    
+■ {{"Share the Referral code with your friend."|translate}} <br>
+■ {{"Your friend should use the code to sign up into TrukApp."|translate }} <br>
+■ {{"The Coins will be credited ONLY when your friend verifies KYC."|translate}}  <br>
+■ {{"You will receive 100 coins for each unique referral signup."|translate}}    <br>
+■ {{"You can withdraw referral coins by raising a withdrawal request."|translate}}    <br>
+■ {{"Withdrawal requests should be in denominations of 100."|translate}}    <br>
+■ {{"Maximum coins one can withdraw at once is 500."|translate}}   <br>
+■ {{"Maximum Referral Money one can earn is 1000 INR."|translate}}    
         </ion-content>
       </ng-template>
     </ion-popover>
@@ -38,14 +38,14 @@
   <div class="container">
     <ion-card style="border-radius: 10px; width:auto;">
 
-      <ion-card-title style="text-align: center;font-size:19px;margin-top:10px;">Invite your friends</ion-card-title>
+      <ion-card-title style="text-align: center;font-size:19px;margin-top:10px;">{{"Invite your friends"|translate}}</ion-card-title>
     
       <div style=" padding:13px;">
         
          <span align="center" style="text-align: center;font-size:15px;">{{url}}</span>&nbsp;&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; padding-top:5px;"  color="primary"  (click)="copyString()"></ion-icon>
          <div  style="border: 2px solid rgb(225, 150, 1); border-radius:7px;padding:4px;width:230px;margin-left: 35px;" >
-         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">Referral Code: </span><span style="color: black;font-weight: bolder;">{{logindata.referalCode}}</span></span>&nbsp;
+         <span style="text-align: center;font-size:15px;"><span style="font-weight: bolder;">{{"Referral Code:"|translate}} </span><span style="color: black;font-weight: bolder;">{{logindata.referalCode}}</span></span>&nbsp;
          <ion-icon name="copy-outline" style="font-size:20px; "  color="primary"  (click)="copycode()"></ion-icon>
         
         </div>
@@ -56,7 +56,7 @@
 
       <div style="text-align: center; margin:5px;">
         
-          <ion-button (click)="sShare()" shape="round" class="share">Share Now</ion-button>
+          <ion-button (click)="sShare()" shape="round" class="share">{{"Share Now"|translate}}</ion-button>
        
       </div>
 
@@ -73,7 +73,7 @@
   <div style="text-align: center;">
     <img src="assets/image 28.png">
     <br><br><br>
-    <ion-button class="earn" routerLink="/your-earnings"> Go To your Earnings</ion-button>
+    <ion-button class="earn" routerLink="/your-earnings"> {{"Go To your Earnings"|translate}}</ion-button>
   </div>
  
 

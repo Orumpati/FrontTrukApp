@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-viewshippercon',
   templateUrl: './viewshippercon.page.html',
@@ -9,7 +11,12 @@ export class ViewshipperconPage implements OnInit {
   vehdetails: any;
   sdf: any;
   mess:any="copied Successfully"
-  constructor(private clipboard:Clipboard) { }
+  language: any;
+  constructor(private clipboard:Clipboard,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.vehdetails=JSON.parse(localStorage.getItem('vehdetails')|| '{}')

@@ -9,6 +9,8 @@ import { ModalController } from '@ionic/angular';
 
 import { AlertController } from '@ionic/angular';
 import Swal from 'sweetalert2'
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-makepayment',
   templateUrl: './makepayment.page.html',
@@ -26,7 +28,13 @@ export class MakepaymentPage implements OnInit {
   paymentId: any;
   docid: any;
   viewbidDocId: any;
-  constructor(private auth:AuthpaymentService,private modal:ModalController,private alert:AlertController) { }
+  language: any;
+  lang: any;
+  constructor(private auth:AuthpaymentService,private modal:ModalController,private alert:AlertController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
   async presentAlert() {
     const alert = await this.alert.create({
       header: 'Alert',
@@ -42,6 +50,8 @@ export class MakepaymentPage implements OnInit {
     this.bid =JSON.parse(localStorage.getItem('filteredBid') || '{}')
     this.viewbidDocId =JSON.parse(localStorage.getItem('DocId') || '{}')
     console.log(this.bid)
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     for(let i=0;i<this.bid.length;i++){
       this.docid = this.bid[i]._id
       this.tenPrice  =this.bid[i].tentativefinalPrice

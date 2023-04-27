@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.page.html',
@@ -32,20 +34,28 @@ export class ContactUsPage implements OnInit {
   selectedItem: any;
   logindata: any;
   itemlen: any;
+  language: any;
+  lang: any;
 
 
-  constructor(private alertController: AlertController, public atrCtrl: AlertController, private router: Router) { }
+  constructor(private alertController: AlertController, public atrCtrl: AlertController, private router: Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.logindata = JSON.parse(localStorage.getItem('regdata') || '{}')
     this.type = JSON.parse(localStorage.getItem('typeofpay') || '{}')
     console.log(this.type)
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Important message',
-      message: 'You will receive a call from our customer care with in 24 hours',
+      message: 'Query Submitted Successfully.Our Team will reach out to you within 24 hours',
       buttons: [
         {
           text: 'Okay',

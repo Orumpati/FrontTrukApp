@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { VerifyotpPageRoutingModule } from './verifyotp-routing.module';
 import {NgOtpInputModule} from 'ng-otp-input';
 import { VerifyotpPage } from './verifyotp.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     VerifyotpPageRoutingModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    TranslateModule
   ],
   declarations: [VerifyotpPage]
 })

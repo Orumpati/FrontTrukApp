@@ -2,6 +2,8 @@ import { AfterViewInit, Component, NgZone, OnInit, ViewChild } from '@angular/co
 import { AlertController, IonSlides, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 declare var google :any;
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-attach-prefferd-newload',
   templateUrl: './attach-prefferd-newload.page.html',
@@ -74,14 +76,19 @@ export class AttachPrefferdNewloadPage implements OnInit {
   objId: any;
   pickupDis: any;
   dropupDis: any;
+  language: any;
+  lang: any;
 
 
   constructor(
-    public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController,private router :Router,
+    public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController,private router :Router,private translateConfigService: TranslateConfigService, private translate: TranslateService,
   ) {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = [];
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
   }
   ngOnInit(): void {
     this.regdata =JSON.parse(localStorage.getItem('regdata') || '{}')
@@ -95,6 +102,8 @@ export class AttachPrefferdNewloadPage implements OnInit {
   /* for(let i=0;i<this.post.selectedItems.length;i++){
     this.veh = this.post.selectedItems[i]
    }*/
+   this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+   this.translateConfigService.setLanguage(this.lang);
     console.log(this.post)
   }
 

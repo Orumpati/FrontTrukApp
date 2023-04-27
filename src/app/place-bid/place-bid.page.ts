@@ -6,6 +6,8 @@ import { Subject, interval } from 'rxjs';
 import { CommonServiceService } from '../common-service.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-place-bid',
   templateUrl: './place-bid.page.html',
@@ -66,10 +68,14 @@ id:any
   isPaymentCompleted: any;
   TohideNegoshit: any;
   bidslength: any;
+  language: any;
+  lang: any;
   
   constructor(private router:Router,public loadingController: LoadingController,public navController:NavController,
-    private location:Location,private commservice :CommonServiceService) { 
+    private location:Location,private commservice :CommonServiceService,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
   
+      this.translateConfigService.getDefaultLanguage();
+      this.language = this.translateConfigService.getCurrentLang();
       this.placebidID= this.location.getState()
       
       console.log(this.placebidID.profile)
@@ -90,7 +96,8 @@ id:any
 
   ngOnInit():void{
 
-
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
 
   }
 

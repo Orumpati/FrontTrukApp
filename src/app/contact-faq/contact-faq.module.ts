@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ContactFaqPageRoutingModule } from './contact-faq-routing.module';
 
 import { ContactFaqPage } from './contact-faq.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ContactFaqPageRoutingModule
+    ContactFaqPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ContactFaqPage]
 })

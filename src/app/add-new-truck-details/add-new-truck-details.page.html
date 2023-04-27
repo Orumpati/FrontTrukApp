@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" (click)="goback()" style="font-size: 30px;"></ion-icon>
-      <ion-title>Add new truck Details</ion-title>
+      <ion-title>{{"Add new truck Details"|translate}}</ion-title>
     </div>
 
  
@@ -13,27 +13,26 @@
 <ion-content>
 
   <div class="container">
-    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">Transporter Details
-    </h2>
+    <h2 style="text-align: center; color:black; border-bottom:5px solid  #f58e26 ; border-radius: 3px;">{{"Transporter Details" | translate}}</h2>
 
-    <p style="background-color:#e5e5e5 ;">Please share your contact details with the shipper for further communication outside the platform </p>
+    <p style="background-color:#e5e5e5 ;">{{"Please share your contact details with the shipper for further communication outside the platform"|translate }}</p>
     <div class="mb-3">
-    <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Transporter Name"
+    <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="{{'Transporter Name'|translate}}"
     [(ngModel)]="regdata.firstName+regdata.lastName">
   </div>
 
     <div class="mb-3">
-      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Company Name"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="{{'Company Name'|translate}}"
       [(ngModel)]="regdata.companyName">
     </div>
 
     <div class="mb-3">
-      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="{{'Mobile Number'|translate}}"
       [(ngModel)]="regdata.mobileNo">
     </div>
 
     <div class="mb-3">
-      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="City"
+      <input type="text" appCapitalize class="form-control" id="exampleFormControlInput1" placeholder="{{'City'|translate}}"
     [(ngModel)]="regdata.city">
     </div>
     
@@ -43,4 +42,4 @@
 </ion-content>
 
 
-<ion-button expand="full" shape="round" class="back" [disabled]="regdata.firstName == null  || regdata.companyName == null || regdata.mobileNo ==null || regdata.city == null" (click)="NewPostAdd()">Post</ion-button>
+<ion-button expand="full" shape="round" class="back" [disabled]="regdata.firstName == null  || regdata.companyName == null || regdata.mobileNo ==null || regdata.city == null" (click)="NewPostAdd()">{{"Post"|translate}}</ion-button>

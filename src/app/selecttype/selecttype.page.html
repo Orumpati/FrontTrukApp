@@ -3,7 +3,7 @@
    
     <div style="display: flex; ">
       <ion-icon name="arrow-back-sharp" routerLink="/loginotp" style="font-size: 30px;"></ion-icon>
-      <ion-title align="center">Sign Up</ion-title>
+      <ion-title align="center">{{"Sign Up"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -20,7 +20,7 @@
   </div>
   <!--<ion-card-title style="text-align: center;">We just want few informtion to get yourself Registered  </ion-card-title>-->
 <div style="margin-bottom:-5px; margin-top:20px;">
-  <span style="margin-left: 20px; font-size:25px;">Choose Your Role:</span>
+  <span style="margin-left: 20px; font-size:25px;">{{"Choose Your Role:"|translate}}</span>
 </div>
  <!--<ion-card>
     <div class="imgdiv">
@@ -75,7 +75,7 @@
         </div>
       
         <div class="shipperdiv">
-          SHIPPER
+          {{"SHIPPER"|translate}}
         </div>
       
     </label>
@@ -89,7 +89,7 @@
       </div>
     
       <div class="shipperdiv">
-      FLEET OWNER
+      {{"FLEET OWNER"|translate}}
       </div>
     </label>
     
@@ -104,7 +104,7 @@
             </div>
           
             <div class="shipperdiv">
-              TRANSPORTER
+              {{"TRANSPORTER"|translate}}
             </div>
           </label>
           
@@ -117,17 +117,17 @@
               </div>
             
               <div class="shipperdiv">
-                AGENT/BROKER
+                {{"AGENT/BROKER"|translate}}
               </div>
             </label>
             </div>
     
-            <p *ngIf="type === 'Shipper'" style="font-size: 13px; text-align:center;padding:9px;">I have loads and looking for Truks/Lorries to attach the load.</p>
-              <p *ngIf="type === 'Fleet Owner'" style="font-size: 13px; text-align:center;padding:9px;">I own Truks/Lorries and looking for Loads</p>
-              <p *ngIf="type === 'Transporter'" style="font-size: 13px; text-align:center;padding:9px;">I provide transportation service and looking for both Loads and Truks in the market.</p>
-              <p *ngIf="type === 'Agent/Broker'" style="font-size: 13px; text-align:center;padding:9px;">i am an intermediary between shipper and transporter service and looking for both Loads as well as Truks in the market.</p>
+            <p *ngIf="type === 'Shipper'" style="font-size: 13px; text-align:center;padding:9px;">{{"I have loads and looking for Truks/Lorries to attach the load."|translate}}</p>
+              <p *ngIf="type === 'Fleet Owner'" style="font-size: 13px; text-align:center;padding:9px;">{{"I own Truks/Lorries and looking for Loads"|translate}}</p>
+              <p *ngIf="type === 'Transporter'" style="font-size: 13px; text-align:center;padding:9px;">{{"I provide transportation service and looking for both Loads and Truks in the market."|translate}}</p>
+              <p *ngIf="type === 'Agent/Broker'" style="font-size: 13px; text-align:center;padding:9px;">{{"i am an intermediary between shipper and transporter service and looking for both Loads as well as Truks in the market."|translate}}</p>
 
 </ion-content>
 
-<ion-button color="#a13cd7;"  [disabled]="type == null" (click)="selectType()" >Continue</ion-button>
+<ion-button color="#a13cd7;"  [disabled]="type == null" (click)="selectType()" >{{"Continue"|translate}}</ion-button>
 

@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { GetStartedPageRoutingModule } from './get-started-routing.module';
 
 import { GetStartedPage } from './get-started.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GetStartedPageRoutingModule
+    GetStartedPageRoutingModule,
+    TranslateModule
   ],
   declarations: [GetStartedPage]
 })

@@ -41,23 +41,23 @@
      
         <ion-col>
           <ion-segment-button value="home" (click)="toggles()">
-            <ion-label style="font-size: 10px;">Active</ion-label>
+            <ion-label style="font-size: 10px;">{{"Active"|translate}}</ion-label>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button value="call" (click)="completedtog()">
-            <ion-label style="font-size: 10px;">Completed</ion-label>
+            <ion-label style="font-size: 10px;">{{"Completed"|translate}}</ion-label>
           </ion-segment-button>
         </ion-col>
       
         <ion-col>
           <ion-segment-button value="wars" (click)="inproge()">
-            <ion-label style="font-size: 10px;">In-Progress</ion-label>
+            <ion-label style="font-size: 10px;">{{"In-Progress"|translate}}</ion-label>
           </ion-segment-button>
         </ion-col>
         <ion-col>
           <ion-segment-button value="star" (click)="deactive()">
-            <ion-label style="font-size: 10px;">Deactive</ion-label>
+            <ion-label style="font-size: 10px;">{{"Deactive"|translate}}</ion-label>
           </ion-segment-button>
         </ion-col>
      
@@ -77,9 +77,9 @@
             <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" ></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <!-- <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a> -->
-              <a [hidden]="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="isactive(text)">Deactive</a><a class="dropdown-item" (click)="deleteTruk(text._id)">Delete</a>
-              <a *ngIf="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="reactive(text._id)">Reactivate</a>
-              <a class="dropdown-item"  (click)="moredetails(text)" routerLink="/trukmore-details" >More Details</a>
+              <a [hidden]="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="isactive(text)">{{"Deactive"|translate}}</a><a class="dropdown-item" (click)="deleteTruk(text._id)">{{"Delete"|translate}}</a>
+              <a *ngIf="text.trukisActive == 'Deactive'" class="dropdown-item" (click)="reactive(text._id)">{{"Reactivate"|translate}}</a>
+              <a class="dropdown-item"  (click)="moredetails(text)" routerLink="/trukmore-details" >{{"More Details"|translate}}</a>
             </div>
           </div>
      
@@ -109,20 +109,20 @@
               </div>&nbsp;&nbsp;
               <div class="flex-1 " style="margin-top: -35px;">
                   <h5 class="font-size-16 mb-1" style="color:black; font-weight:bolder; text-transform:uppercase;"><a  class="text-dark">{{text.trukvehiclenumber}}</a></h5>
-                  <span class="badge badge-soft-success mb-0"> Posted On {{text.trukdate}}</span>
+                  <span class="badge badge-soft-success mb-0"> {{"Posted On"|translate}} {{text.trukdate}}</span>
               </div>
           </div>
           <div class="mt-1 pt-0">
-              <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-location-arrow font-size-15 align-middle pe-2 " style="color:orange"></i> {{text.trukoperatingRoutes.length}} Routes</p>
+              <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-location-arrow font-size-15 align-middle pe-2 " style="color:orange"></i> {{text.trukoperatingRoutes.length}} {{"Routes"|translate}}</p>
               <p  class="text-muted mb-0 mt-2"><i class=" fa fa-truck font-size-15 align-middle pe-2 " style="color: orange;"></i>&nbsp;{{text.isTrukOpenOrClose}}{{text.typeOfHyva}}{{text.typeOfTrailer}}{{text.typeOfContainer}}{{text.typeofTanker}} --{{text.trukname}}</p>
-              <p class="text-muted mb-0 mt-2"><i class="fa fa-map-marker font-size-15 align-middle pe-2 " style="color: orange;"></i>  Avaliable in:<span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
+              <p class="text-muted mb-0 mt-2"><i class="fa fa-map-marker font-size-15 align-middle pe-2 " style="color: orange;"></i>  {{"Avaliable in:"|translate}}<span style="color:black; font-weight:bolder;"> {{text.OriginLocation}}</span></p>
           </div>
           <div style="display:inline-flex; display: flex;
           text-align: center;
           justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'Active'">
           
               <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
-                <span> View Bids</span>
+                <span> {{"View Bids"|translate}}</span>
                 <span class="badge">{{text.attachedLoadIds.length}}</span>
         
                 </button>
@@ -131,7 +131,7 @@
           <div style="display:inline-flex; display: flex; text-align: center; justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'Completed'">
           
               <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
-                <span style="white-space: nowrap;"> View Contact</span>
+                <span style="white-space: nowrap;"> {{"View Contact"|translate}}</span>
           
         
                 </button>
@@ -141,7 +141,7 @@
           <div style="display:inline-flex; display: flex; text-align: center; justify-content: center; margin-top:6px;"  *ngIf="text.trukisActive == 'In-Progress'">
           
             <button type="button" class="viewbidbtn" class="notification"  (click)="bidbyId(text)">
-              <span style="white-space: nowrap;"> View Bids</span>
+              <span style="white-space: nowrap;"> {{"View Bids"|translate}}</span>
         
       
               </button>
@@ -156,12 +156,12 @@
 <ion-content *ngIf="itemlen ==0" class="noitem">
   <div>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYIDHG7JivZlXLJC27oeHti76eHrkkNdq_A&usqp=CAU" />
-    <h3>Post Your Vehicle</h3>
+    <h3>{{"Post Your Vehicle"|translate}}</h3>
   </div>
 </ion-content>
 
 <div class="center">
-  <ion-button routerLink="/add-truck" class="bb" expand="full" >Add Truk</ion-button>
+  <ion-button routerLink="/add-truck" class="bb" expand="full" >{{"Add Truk"|translate}}</ion-button>
 
 
 </div> 

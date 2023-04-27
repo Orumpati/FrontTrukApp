@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'test.truk.app',
   appName: 'TruKApp',
   webDir: 'www',
   bundledWebRuntime: false

@@ -4,7 +4,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/selecttype" style="font-size: 30px;"></ion-icon>
-      <ion-title align="center"> SignUp</ion-title>
+      <ion-title align="center"> {{"SignUp"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -16,11 +16,11 @@
   </div>
 
   <div align="center" style="margin-top: 1rem;font-size:23px;margin-bottom:14px;">
-    Registering As:
+    {{"Registering As:"|translate}}
   </div>
 
 <div align="center" style="margin-top: -4rem;">
-    <ion-button  class="company">Company</ion-button>
+    <ion-button  class="company">{{"Company"|translate}}</ion-button>
 </div>
 
   <ion-list lines="none" class="ion-margin">
@@ -30,10 +30,10 @@
       
     <ion-item class="ion-margin">
  
-      <ion-input appCapitalize placeholder="Enter FirstName" type="text" clearInput="true" formControlName="firstName"></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter FirstName'|translate}}" type="text" clearInput="true" formControlName="firstName"></ion-input>
     </ion-item>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter LastName" type="text" clearInput="true" formControlName="lastName"></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter LastName'|translate}}" type="text" clearInput="true" formControlName="lastName"></ion-input>
     </ion-item>
 
     <div style=" width: 305px;
@@ -47,7 +47,7 @@
 </div>
     <div class="ion-margin">
       <ion-item>
-      <ion-input appCapitalize type="text"  placeholder="Enter Company Address" [(ngModel)]="OriginLocation" formControlName="city"
+      <ion-input appCapitalize type="text"  placeholder="{{'Enter Company Address'|translate}}" [(ngModel)]="OriginLocation" formControlName="city"
         (ionInput)="GetOriginLocation(OriginLocation)" 
         (ionClear)="ClearAutocomplete()"></ion-input>
         
@@ -61,13 +61,13 @@
   </ion-list>
 </ion-list>
     <ion-item class="ion-margin">
-      <ion-input appCapitalize placeholder="Enter company Name" type="text" clearInput="true" formControlName="companyName"></ion-input>
+      <ion-input appCapitalize placeholder="{{'Enter company Name'|translate}}" type="text" clearInput="true" formControlName="companyName"></ion-input>
     </ion-item>
   
  
    
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter MobileNumber" type="number" clearInput="true" formControlName="mobileNo" ></ion-input>
+      <ion-input placeholder="{{'Enter MobileNumber'|translate}}" type="number" clearInput="true" formControlName="mobileNo" ></ion-input>
     </ion-item>
 
   
@@ -113,26 +113,26 @@
 
   
     <ion-item class="ion-margin">
-      <ion-input placeholder="Enter Referal Code(Optional)" type="string" clearInput="true" formControlName="signupReferalCode" ></ion-input>
+      <ion-input placeholder="{{'Enter Referal Code(Optional)'|translate}}" type="string" clearInput="true" formControlName="signupReferalCode" ></ion-input>
     </ion-item>
     
   
     <ion-item class="ion-margin" >
       <ion-textarea
-        placeholder="About Your Company(Optional)" [(ngModel)]="aboutCompany"
+        placeholder="{{'About Your Company(Optional)'|translate}}" [(ngModel)]="aboutCompany"
         [clearOnEdit]="true" formControlName="aboutCompany"></ion-textarea>
         </ion-item>
     
     
   
       <ion-button *ngIf="role == 'Shipper'" style=" --border-radius: 10px; height: 50px;    margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == ''"   (click)="onSubmit(userPost.value)" >
-        SIGN UP
+       {{"SIGN UP"|translate}}
         <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
       </ion-button>
      
      
       <ion-button  *ngIf="role == 'Fleet Owner' || role == 'Transporter' || role == 'Agent/Broker'" style=" --border-radius: 10px; height: 50px;  margin-top:20px;" expand="full" strong="true" type="submit" [disabled]="userPost.value.firstName == '' || userPost.value.lastName == '' || !userPost.value.mobileNo || userPost.value.city == '' || userPost.value.companyName == '' || userPost.value.routes == ''"      (click)="onSubmit(userPost.value)" >
-        SIGN UP
+        {{"SIGN UP"|translate}}
         <!--<ion-icon name="log-in" slot="end"></ion-icon>-->
       </ion-button>
 

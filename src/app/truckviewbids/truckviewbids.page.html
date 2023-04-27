@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/trukallbids" style="font-size: 30px;"></ion-icon>
-      <ion-title>Truck View Bid</ion-title>
+      <ion-title>{{"Truck View Bid"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -17,14 +17,14 @@
 
   <ion-card class="expecPrice">
     <ion-card-header>
-      <ion-card-subtitle style="color: black;">Expected Price:-<span style="font-weight: bolder; color:black;">₹ {{openedBid.expectedPrice}}/-</span></ion-card-subtitle>
+      <ion-card-subtitle style="color: black;">{{"Expected Price:-"|translate}}<span style="font-weight: bolder; color:black;">₹ {{openedBid.expectedPrice}}/-</span></ion-card-subtitle>
       <!-- <ion-card-title>₹ {{openedBid.expectedPrice}}/-</ion-card-title> -->
-      <ion-card-title [hidden]="openedBid.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >Advance:<span style="font-weight: bolder; color:black;"> ₹ {{openedBid.advance}}/-</span></ion-card-title>
+      <ion-card-title [hidden]="openedBid.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >{{"Advance:"|translate}}<span style="font-weight: bolder; color:black;"> ₹ {{openedBid.advance}}/-</span></ion-card-title>
       
     </ion-card-header>
     
     <ion-card-content>
-      <ion-card-subtitle style="color: black;font-size:18px;">Details:-</ion-card-subtitle>
+      <ion-card-subtitle style="color: black;font-size:18px;">{{"Details:-"|translate}}</ion-card-subtitle>
       <!-- <p style="font-size: larger; font-weight: bolder; ">{{openedBid.OriginLocation}} -- {{openedBid.DestinationLocation}}
       </p>
       <p style="font-size: large; font-weight: bold; "> {{openedBid.data}} -- {{openedBid.Quantity}}</p> -->
@@ -41,7 +41,7 @@
 
     <ion-card-header>
 
-      <ion-card-subtitle style="font-size:larger; font-weight: bold; color: white;">Bids</ion-card-subtitle>
+      <ion-card-subtitle style="font-size:larger; font-weight: bold; color: white;">{{"Bids"|translate}}</ion-card-subtitle>
 
     </ion-card-header>
   </ion-card>
@@ -71,11 +71,11 @@
 
       <ion-col size="8" *ngIf="text.userNo!== regdata.mobileNo" class=" other-message">
 <div *ngIf="text.initialAccept === 'Accepted'">
-      <h3>Bid accepted for : {{text.price}}</h3>
+      <h3>{{"Bid accepted for :"|translate}} {{text.price}}</h3>
     </div>
     <div [hidden]="text.initialAccept === 'Accepted'" >
       <b style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-      <span style="font-size: 15px;">Price:₹{{text.price}}</span>
+      <span style="font-size: 15px;">{{"Price:"|translate}}₹{{text.price}}</span>
      <!-- <b>PHno -{{text.userNo}}</b>-->
       <div class="time" text-right><br>
         {{text.time | date:'short'}}
@@ -123,13 +123,13 @@
       <ion-card  class="agentAccept"  *ngIf="conditions == true">
         <div align="center">
         
-        You Approved for:{{tentativefinalPrice}}
+        {{"You Approved for:"|translate}}{{tentativefinalPrice}}
         </div>
         </ion-card>
         <ion-card  class="shipperAccept" *ngIf="agentconditions == true">
           <div align="center">
           
-            Shipper Accepted for:{{tentativefinalPrice}}
+            {{"Shipper Accepted for:"|translate}}{{tentativefinalPrice}}
           </div>
           </ion-card>
 
@@ -144,15 +144,15 @@
   
       <ion-card-header>
         <ion-card-title  style="color:white; font-weight:bolder;">
-          Share Contact Details
+          {{"Share Contact Details"|translate}}
         </ion-card-title>
     
       </ion-card-header>
   
     <ion-card-content style="color:white; font-size:18;">
-      Bid is accepted, please Share Your Contact Details
+      {{"Bid is accepted, please Share Your Contact Details"|translate}}
     </ion-card-content>
-    <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="posttruck()">Share Contact</ion-button><br>
+    <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="posttruck()">{{"Share Contact"|translate}}</ion-button><br>
   
   </ion-card>
 
@@ -161,28 +161,28 @@
   
     <ion-card-header>
       <ion-card-title  style="color:white; font-weight:bolder;">
-        Share Contact Details
+        {{"Share Contact Details"|translate}}
       </ion-card-title>
   
     </ion-card-header>
 
   <ion-card-content style="color:white; font-size:18;">
-    Bid is accepted, please Share Your Contact Details
+    {{"Bid is accepted, please Share Your Contact Details"|translate}}
   </ion-card-content>
-  <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="ContactOnline()">Add Driver Details</ion-button><br>
+  <ion-button fill="clear" style="float:right; color:orange; width:140px;background-color:white; border-radius:9px;"  (click)="ContactOnline()">{{"Add Driver Details"|translate}}</ion-button><br>
 
 </ion-card>
 
 <div [hidden]="agentconditions == true && conditions == true" [hidden] ="initialaccepted === 'Accepted'">
 <!--<ion-button fill="clear" style="float: right; color: green;" (click)="acceptBid()" [hidden]="">Accept</ion-button>-->
-<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" *ngIf="show">Accept</ion-button>
-<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px; " (click)="acceptBidForFinal()" *ngIf="hide"  [hidden]="tohideAccBtn === true" >Accept</ion-button>
+<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px;" (click)="acceptBid()" *ngIf="show">{{"Accept"|translate}}</ion-button>
+<ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px; " (click)="acceptBidForFinal()" *ngIf="hide"  [hidden]="tohideAccBtn === true" >{{"Accept"|translate}}</ion-button>
 
 
-<ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">InitialBid</ion-button>
+<ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">{{"InitialBid"|translate}}</ion-button>
 </div>
 <div>
-<ion-button id="deepu" shape="round" style="width: 120px;" class="next"    [hidden]="agentconditions == true || initialaccepted === 'Accepted' || conditions == true || bidActivity == null" [disabled]="tohideAccBtn === true">Negotiate</ion-button>
+<ion-button id="deepu" shape="round" style="width: 120px;" class="next"    [hidden]="agentconditions == true || initialaccepted === 'Accepted' || conditions == true || bidActivity == null" [disabled]="tohideAccBtn === true">{{"Negotiate"|translate}}</ion-button>
 <ion-modal #moodal trigger="deepu" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]" handleBehavior="cycle">
   <ng-template>
     <ion-content class="ion-padding">
@@ -201,7 +201,7 @@
         <ion-row>
           <ion-col size="10">
           
-              <input autosize maxRowx="3" type="number" placeholder="Enter your price" [(ngModel)]="NegoPrice" class="input">
+              <input autosize maxRowx="3" type="number" placeholder="{{'Enter your price}'|translate}" [(ngModel)]="NegoPrice" class="input">
           
 
           </ion-col>
@@ -264,26 +264,26 @@
             <!--<ion-button (click)="cancel()">Back</ion-button>-->
             <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
           </ion-buttons>
-          <ion-title>Contact Details</ion-title>
+          <ion-title>{{"Contact Details"|translate}}</ion-title>
       
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
       
         <ion-item>
-          <ion-label position="stacked">Transporter Name</ion-label>
+          <ion-label position="stacked">{{"Transporter Name"|translate}}</ion-label>
           <ion-input type="text"  [(ngModel)]="driverdetails.transporterName" readonly></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Transporter Number</ion-label>
+          <ion-label position="stacked">{{"Transporter Number"|translate}}</ion-label>
           <ion-input type="text"  [(ngModel)]="driverdetails.mobileNumber" readonly></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">Company Name</ion-label>
+          <ion-label position="stacked">{{"Company Name"|translate}}</ion-label>
           <ion-input type="text"  [(ngModel)]="driverdetails.companyName" readonly></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">City</ion-label>
+          <ion-label position="stacked">{{"City"|translate}}</ion-label>
           <ion-input type="text"  [(ngModel)]="driverdetails.city" readonly></ion-input>
         </ion-item>
         
@@ -293,7 +293,7 @@
   </div>
 
   <div *ngIf="sharecontact == true && paymentdone == true" align="center" style="margin-top:5px;" >
-    <ion-button  shape="round" class="next" expand="block"id="opensModal">View Contact</ion-button>
+    <ion-button  shape="round" class="next" expand="block"id="opensModal">{{"View Contact"|translate}}</ion-button>
     <ion-modal trigger="opensModal" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-header>
@@ -302,26 +302,26 @@
               <!--<ion-button (click)="cancel()">Back</ion-button>-->
               <ion-icon name="arrow-back-sharp" (click)="cancel()" style="font-size: 30px;"></ion-icon>
             </ion-buttons>
-            <ion-title>Contact Details</ion-title>
+            <ion-title>{{"Contact Details"|translate}}</ion-title>
         
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
         
           <ion-item>
-            <ion-label position="stacked">DriverName</ion-label>
+            <ion-label position="stacked">{{"DriverName"|translate}}</ion-label>
             <ion-input type="text"  [(ngModel)]="driverdetails.DriverName" readonly></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked">DriverNumber</ion-label>
+            <ion-label position="stacked">{{"DriverNumber"|translate}}</ion-label>
             <ion-input type="text"  [(ngModel)]="driverdetails.DriverNumber" readonly></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked">vehicleType</ion-label>
+            <ion-label position="stacked">{{"vehicleType"|translate}}</ion-label>
             <ion-input type="text"  [(ngModel)]="driverdetails.vehicleType" readonly></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked">vehicleNo</ion-label>
+            <ion-label position="stacked">{{"vehicleNo"|translate}}</ion-label>
             <ion-input type="text"  [(ngModel)]="driverdetails.vehicleNo" readonly></ion-input>
           </ion-item>
           

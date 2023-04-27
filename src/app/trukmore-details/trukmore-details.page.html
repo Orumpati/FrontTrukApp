@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/tab/mytrucks" style="font-size: 30px;"></ion-icon>
-    <ion-title>TrukMoreDetails</ion-title>
+    <ion-title>{{"TrukMoreDetails"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,7 @@
 
     </ion-refresher-content>
   </ion-refresher>
-  <h2 style="text-align: center; color: #F58E26;">Truk More Details</h2>
+  <h2 style="text-align: center; color: #F58E26;">{{"Truk More Details"|translate}}</h2>
   <ion-card class="card">
     <img
       src="https://img.freepik.com/premium-vector/delivery-truck-with-many-box-flat-cartoon-illustration_133260-794.jpg" />
@@ -23,18 +23,18 @@
       <ion-card-subtitle></ion-card-subtitle>
     </ion-card-header>
     <div class="container">
-      <h5>Vechile Number          :{{moreDetails.trukvehiclenumber}}</h5>
-      <h5>Current Vehile Location :{{moreDetails.OriginLocation}}</h5>
-      <h5>Truk Posted Date        :{{moreDetails.trukdate}}</h5>
-      <h5>Tuck Routes             :{{moreDetails.trukoperatingRoutes}}</h5>
-      <h5>Truk Type               :{{moreDetails.trukname}}</h5>
+      <h5>{{"Vechile Number"|translate}}          :{{moreDetails.trukvehiclenumber}}</h5>
+      <h5>{{"Current Vehile Location"|translate}} :{{moreDetails.OriginLocation}}</h5>
+      <h5>{{"Truk Posted Date"|translate}}        :{{moreDetails.trukdate}}</h5>
+      <h5>{{"Tuck Routes"|translate}}             :{{moreDetails.trukoperatingRoutes}}</h5>
+      <h5>{{"Truk Type"|translate}}               :{{moreDetails.trukname}}</h5>
       <!-- <h5>Truk Capacity           :{{moreDetails.trukcapacity}}</h5> -->
       
       <p>------------------------------------------------------------------</p>
     </div>
     
     <ion-card-content>
-     check your truk details carefully
+     {{"check your truk details carefully"|translate}}
     </ion-card-content>
   </ion-card>
 

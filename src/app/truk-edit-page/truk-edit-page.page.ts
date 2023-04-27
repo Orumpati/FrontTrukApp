@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-truk-edit-page',
   templateUrl: './truk-edit-page.page.html',
@@ -25,11 +27,19 @@ export class TrukEditPagePage implements OnInit {
   updateproductForm!: FormGroup;
   objects: any;
   products: any;
+  language: any;
+  lang: any;
 
-  constructor(private fb: FormBuilder,public loadingController: LoadingController) { }
+  constructor(private fb: FormBuilder,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
-
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
 
 
 

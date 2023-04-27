@@ -2,6 +2,8 @@ import { AfterViewInit, Component, NgZone, OnInit, ViewChild } from '@angular/co
 import { AlertController, LoadingController } from '@ionic/angular';
 declare var google :any;
 import { IonSlides } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-attach-new-load',
   templateUrl: './attach-new-load.page.html',
@@ -78,12 +80,18 @@ export class AttachNewLoadPage implements OnInit {
   randomNumber: any;
   pickupDis: any;
   dropupDis: any;
+  language:any;
+  lang: any;
   constructor(
-    public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController
+    public zone: NgZone, private alertController: AlertController,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,
   ) {
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = [];
+
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
   }
   ngOnInit(): void {
 
@@ -98,6 +106,8 @@ export class AttachNewLoadPage implements OnInit {
 console.log(this.typeOfPay)
 this.randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
 console.log(this.randomNumber)
+this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+this.translateConfigService.setLanguage(this.lang);
   }
 
  /* ngAfterViewInit(): void {

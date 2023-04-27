@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, Platform } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-selecttype',
   templateUrl: './selecttype.page.html',
@@ -8,12 +10,20 @@ import { NavController, Platform } from '@ionic/angular';
 })
 export class SelecttypePage implements OnInit {
 type:any
+  language: any;
+  lang: any;
   constructor(private router:Router, private navCtrl: NavController,
-    private platform: Platform) { 
+    private platform: Platform,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
       //window.location.reload()
+
+      
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
     }
 
   ngOnInit() {
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
   }
   ionViewDidEnter() {
     this.platform.backButton.subscribeWithPriority(10, () => {

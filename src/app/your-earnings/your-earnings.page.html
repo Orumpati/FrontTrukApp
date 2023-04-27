@@ -3,7 +3,7 @@
     <div style="display: flex;">
       <ion-icon  name="arrow-back-sharp" (click)="goback()" style="font-size: 30px;"></ion-icon>
       
-      <ion-title style="text-align:center;">Your Referral Earning</ion-title>
+      <ion-title style="text-align:center;">{{"Your Referral Earning"|translate}}</ion-title>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -22,7 +22,7 @@
           <img style="float: right; margin-top: 1rem; margin-left:60px;"
             src="https://img.freepik.com/premium-vector/rupee-great-design-any-purposes-financial-investment_194782-1520.jpg?w=740"
             width="20%"><br>
-          <p style="font-size: 19px;font-weight:bolder;color:black;">Total Coins Earned:</p>
+          <p style="font-size: 19px;font-weight:bolder;color:black;">{{"Total Coins Earned:"|translate}}</p>
           <span style="color:#f58e26 ;font-size:22px;">{{PermanetCoins}}<small>Coins</small></span>
           
           <p style="color: black; font-weight:bolder;"><span style="color: red;">*</span>Note: 1 Coin = ₹ 1</p>
@@ -33,13 +33,13 @@
         <div>
          <ion-card style="width:150px;text-align:center; border-radius:11px; ">
           <div >
-            <span style="color: black; font-weight:bolder; font-size:18px;">Withdrawable</span><br>
+            <span style="color: black; font-weight:bolder; font-size:18px;">{{"Withdrawable"|translate}}</span><br>
             <span style="text-align: center;"><span style="color: #f58e26;font-size:18px;">{{Totalcoins}}</span><small style="color: black; font-weight:bolder;font-size:14px;">Coins</small></span>
           </div>
          </ion-card>
 </div>
 <div>
-  <ion-button  shape="round" class="attach" id="open-modal"  id="moodal">Withdraw</ion-button>
+  <ion-button  shape="round" class="attach" id="open-modal"  id="moodal">{{"Withdraw"|translate}}</ion-button>
   </div>
   </div>
     </div>
@@ -49,20 +49,20 @@
 
   <ion-segment value="custom" class="container">
     <ion-segment-button  value="custom" (click)="toggle()">
-      <ion-label>Your Refferals</ion-label>
+      <ion-label>{{"Your Refferals"|translate}}</ion-label>
     </ion-segment-button>
     <ion-segment-button (click)="toggle1()"  (click)="deepu()" value="segment">
-      <ion-label>Withdrawl History</ion-label>
+      <ion-label>{{"Withdrawl History"|translate}}</ion-label>
     </ion-segment-button>
   </ion-segment>
 
 <div *ngIf="dat">
   <ion-grid  [fixed]="true">
     <ion-row>
-      <ion-col size="2">S.No</ion-col>
-      <ion-col >Name</ion-col>
-      <ion-col>Phone Number</ion-col>
-      <ion-col>Coins Earned</ion-col>
+      <ion-col size="2">{{"S.No"|translate}}</ion-col>
+      <ion-col >{{"Name"|translate}}</ion-col>
+      <ion-col>{{"Phone Number"|translate}}</ion-col>
+      <ion-col>{{"Coins Earned"|translate}}</ion-col>
       <!-- <ion-col>status</ion-col> -->
     </ion-row>
     <ion-row *ngFor="let student of referals; index as i">
@@ -77,10 +77,10 @@
 <div *ngIf="data1">
   <ion-grid [fixed]="true">
     <ion-row>
-      <ion-col size="2" >S.No</ion-col>
+      <ion-col size="2" >{{"S.No"|translate}}</ion-col>
 
-      <ion-col size="5" >Coins Requested</ion-col>
-      <ion-col size="5">Date</ion-col>
+      <ion-col size="5" >{{"Coins Requested"|translate}}</ion-col>
+      <ion-col size="5">{{"Date"|translate}}</ion-col>
       <!-- <ion-col size="3" >status</ion-col> -->
     </ion-row>
     <ion-row *ngFor="let student of Items; index as i">
@@ -121,22 +121,22 @@
         <div *ngIf="acc == 0 || acc == undefined || acc == ''">
         <div style="display: flex;">
       
-          <ion-title style="text-align:center;"><u>Add Account Details</u></ion-title>
+          <ion-title style="text-align:center;"><u>{{"Add Account Details"|translate}}</u></ion-title>
         </div>
 
         <form  >
       
           <ion-item class="ion-margin">
        
-            <ion-input appCapitalize placeholder="Enter Account Number" type="text" clearInput="true" [(ngModel)]="accountNum" [ngModelOptions]="{standalone:true}" ></ion-input>
+            <ion-input appCapitalize placeholder="{{'Enter Account Number'|translate}}" type="text" clearInput="true" [(ngModel)]="accountNum" [ngModelOptions]="{standalone:true}" ></ion-input>
           </ion-item>
           <ion-item class="ion-margin">
        
-            <ion-input appCapitalize placeholder="Enter IFSC Code" type="text" clearInput="true" [(ngModel)]="ifscCode" [ngModelOptions]="{standalone:true}"></ion-input>
+            <ion-input appCapitalize placeholder="{{'Enter IFSC Code'|translate}}" type="text" clearInput="true" [(ngModel)]="ifscCode" [ngModelOptions]="{standalone:true}"></ion-input>
           </ion-item>
           <ion-item class="ion-margin">
        
-            <ion-input appCapitalize placeholder="Enter Acc HolderName" type="text" clearInput="true" [(ngModel)]="accHolderName" [ngModelOptions]="{standalone:true}"></ion-input>
+            <ion-input appCapitalize placeholder="{{'Enter Acc HolderName'|translate}}" type="text" clearInput="true" [(ngModel)]="accHolderName" [ngModelOptions]="{standalone:true}"></ion-input>
           </ion-item>
           <!-- <ion-item class="ion-margin">
        
@@ -144,7 +144,7 @@
           </ion-item> -->
 
           <ion-button   expand="full" strong="true" type="submit" [disabled]="  accHolderName== null||accHolderName== '' || ifscCode == null||ifscCode == '' || accountNum == null||accountNum == '' "      (click)="addAccDetails()" >
-            Add Account
+            {{"Add Account"|translate}}
       
           </ion-button>
         </form>
@@ -154,11 +154,11 @@
         <form>
           <ion-item class="ion-margin">
        
-            <ion-input appCapitalize placeholder="Enter UPID" type="text" clearInput="true" [(ngModel)]="upiId" [ngModelOptions]="{standalone:true}" regex="^[a-zA-Z0-9.-]{2, 256}@[a-zA-Z][a-zA-Z]{2, 64}$"></ion-input>
+            <ion-input appCapitalize placeholder="{{'Enter UPID'|translate}}" type="text" clearInput="true" [(ngModel)]="upiId" [ngModelOptions]="{standalone:true}" regex="^[a-zA-Z0-9.-]{2, 256}@[a-zA-Z][a-zA-Z]{2, 64}$"></ion-input>
           </ion-item>
 
           <ion-button   expand="full" strong="true" type="submit" [disabled]="upiId == null ||upiId == '' "      (click)="addAccUPID()" >
-            Add Account
+            {{"Add Account"|translate}}
       
           </ion-button>
         </form>

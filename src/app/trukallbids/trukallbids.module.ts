@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { TrukallbidsPageRoutingModule } from './trukallbids-routing.module';
 
 import { TrukallbidsPage } from './trukallbids.page';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TrukallbidsPageRoutingModule
+    TrukallbidsPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TrukallbidsPage]
 })

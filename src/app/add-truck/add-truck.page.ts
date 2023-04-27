@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild,NgZone } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-add-truck',
   templateUrl: './add-truck.page.html',
@@ -45,10 +47,14 @@ export class AddTruckPage implements OnInit {
   typeOfTrailer: any;
   typeOfContainer: any;
   typeofTanker:any;
+  language: any;
+  lang: any;
   
 
-  constructor(private alertController: AlertController,public loadingController: LoadingController,public zone:NgZone) { 
+  constructor(private alertController: AlertController,public loadingController: LoadingController,public zone:NgZone,private translateConfigService: TranslateConfigService, private translate: TranslateService,) { 
 
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
     this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     this.autocomplete = { input: '' };
     this.autocompleteItems = [];
@@ -98,6 +104,9 @@ export class AddTruckPage implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
+
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
 
   }
 

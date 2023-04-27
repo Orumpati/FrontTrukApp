@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl,NgControl } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-addaddress',
   templateUrl: './addaddress.page.html',
@@ -10,11 +12,20 @@ import { LoadingController } from '@ionic/angular';
 export class AddaddressPage implements OnInit {
   signupForm!:FormGroup
   logindata:any 
-  constructor(private router:Router,public loadingController: LoadingController) { }
+  language: any;
+  lang: any;
+  constructor(private router:Router,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+   }
 
   ngOnInit() {
     this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
     console.log(this.logindata.Authentication)
+
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     this.signupForm= new FormGroup ({
     
       'addressType': new FormControl('', [Validators.required]),
