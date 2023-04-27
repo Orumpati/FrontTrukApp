@@ -179,7 +179,7 @@ getdetailsofreffere(){
   .then(
     async result =>{
       this.referedusersigned(result._id)
-      alert('Added Referal Details')
+      alert('Added Referral Details')
 console.log(result)
 this.sai =result.ref
 this.docId=result._id 

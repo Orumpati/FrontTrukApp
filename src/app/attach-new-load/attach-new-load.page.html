@@ -129,6 +129,26 @@
               <ion-select-option value="Fertilizer and Seeds">{{"Fertilizer and Seeds"|translate}}</ion-select-option>
               <ion-select-option value="Food">{{"Food"|translate}}</ion-select-option>
 
+<<<<<<< HEAD
+              <ion-select-option value="Furniture">Furniture</ion-select-option>
+              <ion-select-option value="Household Items">Household Items</ion-select-option>
+              <ion-select-option value="Vegetables">Vegetables</ion-select-option>
+              <ion-select-option value="Fruits">Fruits</ion-select-option>
+              <ion-select-option value="Water">Water</ion-select-option>
+              <ion-select-option value="Petrol/Desiel">Petrol/Diesel</ion-select-option>
+              <ion-select-option value="Kerosene">Kerosene</ion-select-option>
+              <ion-select-option value="Other Inflammables">Other Inflammables</ion-select-option>
+              <ion-select-option value="Construction Materials">Construction Materials</ion-select-option>
+              <ion-select-option value="Cotton">Cotton</ion-select-option>
+              <ion-select-option value="Sand">Sand</ion-select-option>
+              <ion-select-option value="Electronics Items">Electronics Items</ion-select-option>
+              <ion-select-option value="Steel/Iron">Steel/Iron</ion-select-option>
+              <ion-select-option value="Stones">Stones</ion-select-option>
+              <ion-select-option value="Milk">Milk</ion-select-option>
+              <ion-select-option value="Bike">Bike</ion-select-option>
+              <ion-select-option value="Car">Car</ion-select-option>
+              <ion-select-option value="Others">Others</ion-select-option>
+=======
               <ion-select-option value="Furniture">{{"Furniture"|translate}}</ion-select-option>
               <ion-select-option value="Household Items">{{"Household Items"|translate}}</ion-select-option>
               <ion-select-option value="Vegetables">{{"Vegetables"|translate}}</ion-select-option>
@@ -147,6 +167,7 @@
               <ion-select-option value="Bike">{{"Bike"|translate}}</ion-select-option>
               <ion-select-option value="Car">{{"Car"|translate}}</ion-select-option>
               <ion-select-option value="Others">{{"Others"|translate}}</ion-select-option>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </ion-select>
           </div>
         </div>
@@ -157,7 +178,11 @@
 
         <div class="form-group">
           <div class="form-control" >
+<<<<<<< HEAD
+            <ion-label position="floating">Pick-up Date & Time</ion-label>
+=======
             <ion-label position="floating">{{"Pick-Up Date & Time"|translate}}</ion-label>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <ion-input type="datetime-local" placeholder="Pick-up Date" style="border: none; "
               [(ngModel)]="date"></ion-input>
           </div>
@@ -177,8 +202,13 @@
           box-shadow: 2px 2px 2px lightgray;">
             <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
+<<<<<<< HEAD
+             <ion-select-option value="Tonnes">Tonnes</ion-select-option>
+             <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
+=======
              <ion-select-option value="Tonns">{{"Tonnes"|translate}}</ion-select-option>
              <ion-select-option value="Kilo Liters">{{"Kilo Liters"|translate}}</ion-select-option>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
              </ion-select>
            </span>
           </div>
@@ -227,7 +257,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
+              Hyva (1 to 35 Tonnes)
+=======
               {{"Hyva (1 to 35 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -244,7 +278,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
+              LCV (1 to 6 Tonnes)
+=======
               {{"LCV (1 to 6 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -258,7 +296,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
+              Truk (1 to 14 Tonnes)
+=======
               {{"Truk (1 to 14 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -272,7 +314,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
+              Trailer (1 to 52 Tonnes)
+=======
               {{"Trailer (1 to 52 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -286,7 +332,11 @@
             </div>
       
             <div class="shipperdiv">
+<<<<<<< HEAD
+              Container (1 to 45 Tonnes)
+=======
               {{"Container (1 to 45 Tons)"|translate}}
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             </div>
           </label>
         
@@ -321,7 +371,11 @@
           </ion-card>
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Trailer'">
+<<<<<<< HEAD
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type:</ion-card-title>
+=======
             <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Trailer type"|translate}}</ion-card-title>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <br>
             <div class="flex" [(ngModel)]="typeOfTrailer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
@@ -362,7 +416,11 @@
             </div>
           </ion-card>
           <ion-card style="height: auto;width:340px;" *ngIf="data =='Tanker'">
+<<<<<<< HEAD
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type:</ion-card-title>
+=======
             <ion-card-title style="font-size: 19px;margin-top:6px;">{{"Select the Tanker type"|translate}}</ion-card-title>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             <br>
             <div  [(ngModel)]="typeofTanker">
               <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>

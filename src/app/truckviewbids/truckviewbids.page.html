@@ -2,7 +2,11 @@
   <ion-toolbar>
     <div style="display: flex;">
       <ion-icon name="arrow-back-sharp" routerLink="/trukallbids" style="font-size: 30px;"></ion-icon>
+<<<<<<< HEAD
+      <ion-title>View Bid</ion-title>
+=======
       <ion-title>{{"Truck View Bid"|translate}}</ion-title>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
     </div>
   </ion-toolbar>
 </ion-header>
@@ -17,7 +21,11 @@
 
   <ion-card class="expecPrice">
     <ion-card-header>
+<<<<<<< HEAD
+      <ion-card-subtitle style="color: black;">Expected Price:-<span style="font-weight: bolder; color:black;"> ₹{{openedBid.expectedPrice}}/-</span></ion-card-subtitle>
+=======
       <ion-card-subtitle style="color: black;">{{"Expected Price:-"|translate}}<span style="font-weight: bolder; color:black;">₹ {{openedBid.expectedPrice}}/-</span></ion-card-subtitle>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
       <!-- <ion-card-title>₹ {{openedBid.expectedPrice}}/-</ion-card-title> -->
       <ion-card-title [hidden]="openedBid.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >{{"Advance:"|translate}}<span style="font-weight: bolder; color:black;"> ₹ {{openedBid.advance}}/-</span></ion-card-title>
       
@@ -33,7 +41,7 @@
         <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{openedBid.DestinationLocation}}</a></span><br>
         </div>
       <!-- <p style="font-size: large; font-weight: bold; "> {{bids.data}} -- {{bids.Quantity}}</p> -->
-      <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 " style="color: blue;"></i>{{openedBid.Quantity}}--{{openedBid.data}}</p>
+      <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 " style="color: blue;"></i> {{openedBid.Quantity}}--{{openedBid.data}}</p>
     </ion-card-content>
   </ion-card>
 
@@ -58,7 +66,7 @@
        
 
         <b text-left style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-        <b text-left style="font-size: 15px;">Price:₹ {{text.price}}</b>
+        <b text-left style="font-size: 15px;">Price: ₹{{text.price}}</b>
         <div class="time" style="color: black;" text-right><br>
           {{text.time | date:'short'}}
         </div>
@@ -75,7 +83,11 @@
     </div>
     <div [hidden]="text.initialAccept === 'Accepted'" >
       <b style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
+<<<<<<< HEAD
+      <span style="font-size: 15px;">Price: ₹{{text.price}}</span>
+=======
       <span style="font-size: 15px;">{{"Price:"|translate}}₹{{text.price}}</span>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
      <!-- <b>PHno -{{text.userNo}}</b>-->
       <div class="time" text-right><br>
         {{text.time | date:'short'}}
@@ -179,7 +191,11 @@
 <ion-button fill="clear" style="float: right; color: rgb(239, 244, 239); background-color:orange; border-radius:9px; " (click)="acceptBidForFinal()" *ngIf="hide"  [hidden]="tohideAccBtn === true" >{{"Accept"|translate}}</ion-button>
 
 
+<<<<<<< HEAD
+<ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">Initial Bid</ion-button>
+=======
 <ion-button id="nara" shape="round" [hidden]="initialagentBid == true" class="next">{{"InitialBid"|translate}}</ion-button>
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
 </div>
 <div>
 <ion-button id="deepu" shape="round" style="width: 120px;" class="next"    [hidden]="agentconditions == true || initialaccepted === 'Accepted' || conditions == true || bidActivity == null" [disabled]="tohideAccBtn === true">{{"Negotiate"|translate}}</ion-button>

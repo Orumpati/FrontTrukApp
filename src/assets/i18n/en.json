@@ -1,4 +1,246 @@
 {
+<<<<<<< HEAD
+    "About Us":"About Us",
+    "TruKApp is an AI enabled technology platform, wholly owned by En Forti Global Logistics Private Limited. TrukApp enables shippers to access the Live Truck Market for their loads and also enables transporting companies/Fleet Owners to get loads for their trucks from the Live Load Market." : "TruKApp is an AI enabled technology platform, wholly owned by En Forti Global Logistics Private Limited. TrukApp enables shippers to access the Live Truck Market for their loads and also enables transporting companies/Fleet Owners to get loads for their trucks from the Live Load Market.",
+    "It was founded in June 2022 by a team of passionate entrepreneurs from the NIT Warangal Almamater.":"It was founded in June 2022 by a team of passionate entrepreneurs from the NIT Warangal Almamater.",
+    "TrukApp is here to simplify truck booking experience by providing access to live markets and helping to build trust in transactions by connecting shippers to verified transporters/fleet owners. Both the parties can connect and negotiate on TrukApp for the loads posted or Trucks attached.":"TrukApp is here to simplify truck booking experience by providing access to live markets and helping to build trust in transactions by connecting shippers to verified transporters/fleet owners. Both the parties can connect and negotiate on TrukApp for the loads posted or Trucks attached.",
+    "With the help of Technology, TrukApp aims to provide world class support from the beginning to the end of the cargo delivery life cycle. Our vision is to become an end to end logistics technology platform helping both Shippers and Transport providers to avail services of their choice in a hassle free and cost effective way.":"With the help of Technology, TrukApp aims to provide world class support from the beginning to the end of the cargo delivery life cycle. Our vision is to become an end to end logistics technology platform helping both Shippers and Transport providers to avail services of their choice in a hassle free and cost effective way.",
+    "This is what we are, TrukApp - Trucking Simplified!":"This is what we are, TrukApp - Trucking Simplified!",
+
+
+    "AddNewTruk":"AddNewTruk",
+    "Add New Truk":"Add New Truk",
+
+
+    "Add new truck Details":"Add new truck Details",
+    "Transporter Details":"Transporter Details",
+    "Please share your contact details with the shipper for further communication outside the platform":"Please share your contact details with the shipper for further communication outside the platform",
+    "Transporter Name":"Transporter Name",
+    "Company Name":"Company Name",
+    "Mobile Number":"Mobile Number",
+    "City":"City",
+    "Post":"Post",
+
+
+    "AddTruks":"AddTruks",
+    "Enter Vechile number":"Enter Vechile number",
+    "Current Location":"Current Location",
+    "Current vechile Location":"Current vechile Location",
+    "Add Your Vechile Routes":"Add Your Vechile Routes",
+    "Add Your Vechile Routes (States)":"Add Your Vechile Routes (States)",
+    "Date & Time":"Date & Time",
+    "Choose One TrukVehicle":"Choose One TrukVehicle",
+    "Tanker (1 to 35 KL)":"Tanker (1 to 35 KL)",
+    "Hyva (1 to 35 Tons)":"Hyva (1 to 35 Tons)",
+    "LCV (1 to 6 Tons)":"LCV (1 to 6 Tons)",
+    "Truk (1 to 14 Tons)":"Truk (1 to 14 Tons)",
+    "Trailer (1 to 52 Tons)":"Trailer (1 to 52 Tons)",
+    "Container (1 to 45 Tons)":"Container (1 to 45 Tons)",
+    "Select the Truk type":"Select the Truk type",
+    "Open Body":"Open Body",
+    "Close Body":"Close Body",
+    "Select the Hyva type":"Select the Hyva type",
+    "10 Tyre":"10 Tyre",
+    "12 Tyre":"12 Tyre",
+    "14 Tyre":"14 Tyre",
+    "Select the Trailer type":"Select the Trailer type",
+    "High Bed":"High Bed",
+    "Semi Bed":"Semi Bed",
+    "Low Bed":"Low Bed",
+    "Select the Container type":"Select the Container type",
+    "Select the Tanker type":"Select the Tanker type",
+    "Metal steel":"Metal steel",
+    "Stainless steel":"Stainless steel",
+
+
+    "Add Your Address":"Add Your Address",
+    "Home":"Home",
+    "Office":"Office",
+    "Enter DoorNo/Building No":"Enter DoorNo/Building No",
+    "Enter Street/Area":"Enter Street/Area",
+    "Enter LandMark":"Enter LandMark",
+    "Enter City":"Enter City",
+    "Enter Pincode":"Enter Pincode",
+    "Save":"Save",
+
+    "All Bids":"All Bids",
+    "Bids":"Bids",
+    "Bid from":"Bid from",
+    "Fixed":"Fixed",
+    "Open":"Open",
+    "InProgress":"InProgress",
+    "Finalised":"Finalised",
+    "No Bids":"No Bids",
+
+    "All Notifications":"All Notifications",
+    "New message":"New message",
+    "No Notifications":"No Notifications",
+
+    "Attach existing Load":"Attach existing Load",
+    "Your Perferred Vehicle":"Your Perferred Vehicle",
+    "Transpoter":"Transpoter",
+    "Vehicle Number":"Vehicle Number",
+    "Routes":"Routes",
+    "locations":"locations",
+    "Your Perferred Load Information":"Your Perferred Load Information",
+    "Online Payment":"Online Payment",
+    "Cash Payment":"Cash Payment",
+    "Posted On":"Posted On",
+    "Expected Price":"Expected Price",
+    "Ton":"Ton",
+
+
+    "Existing Loads":"Existing Loads",
+    "Choose Your Load":"Choose Your Load",
+    "Advance":"Advance",
+    "Select Load":"Select Load",
+    "No Loads Avaliable!":"No Loads Avaliable!",
+    "proceed":"proceed",
+
+
+    "Attach New Load":"Attach New Load",
+    "Load Details":"Load Details",
+    "Pick-up Location":"Pick-up Location",
+    "Invalid":"Invalid",
+    "Drop Location":"Drop Location",
+    "Bricks":"Bricks",
+    "Cement Products":"Cement Products",
+    "Clothes":"Clothes",
+    "E-Waste":"E-Waste",
+    "Electrical Equipment":"Electrical Equipment",
+    "Flowers":"Flowers",
+    "Fertilizer and Seeds":"Fertilizer and Seeds",
+    "Food":"Food",
+    "Furniture":"Furniture",
+    "Household Items":"Household Items",
+    "Vegetables":"Vegetables",
+    "Fruits":"Fruits",
+    "Water":"Water",
+    "Petrol/Desiel":"Petrol/Desiel",
+    "Kerosene":"Kerosene",
+    "Other Inflammables":"Other Inflammables",
+    "Construction Materials":"Construction Materials",
+    "Cotton":"Cotton",
+    "Sand":"Sand",
+    "Electronics Items":"Electronics Items",
+    "Steel/Iron":"Steel/Iron",
+    "Stones":"Stones",
+    "Milk":"Milk",
+    "Bike":"Bike",
+    "Car":"Car",
+    "Others":"Others",
+    "Pick-Up Date & Time":"Pick-Up Date & Time",
+    "Quantity":"Quantity",
+    "Tonnes":"Tonnes",
+    "Kilo Liters":"Kilo Liters",
+    "Select Vehicle":"Select Vehicle",
+    "Payment":"Payment",
+    "What is your expected price?":"What is your expected price?",
+    "Expected Price(INR ₹)":"Expected Price(INR ₹)",
+    "How would you like to Pay?":"How would you like to Pay?",
+    "Offline/Cash":"Offline/Cash",
+    "How do you like to pay ?":"How do you like to pay ?",
+    "Full Payment":"Full Payment",
+    "How much would you like to pay in advance ?":"How much would you like to pay in advance ?",
+    "By Submitting ,You Accept":"By Submitting ,You Accept",
+    "T&C":"T&C",
+    "and":"and",
+    "Privacy Policy":"Privacy Policy",
+    "Previous":"Previous",
+    "Next": "Next",
+    "Submit":"Submit",
+
+
+
+   "Attach Your Preferred New Load":"Attach Your Preferred New Load",
+   "Your Preferred Vechile":"Your Preferred Vechile",
+   "Selected vehicle":"Selected vehicle",
+   "VehicleNo":"VehicleNo",
+   "CurrentLocation":"CurrentLocation",
+   "TrukoperatingRoutes":"TrukoperatingRoutes",
+   "Pick-up State":"Pick-up State",
+   "Drop State":"Drop State",
+
+
+
+   "Enter FirstName":"Enter FirstName",
+   "Enter LastName":"Enter LastName",
+   "Enter CompanyName":"Enter CompanyName",
+   "Referal Code(optional)":"Referal Code(optional)",
+   "Enter mobileNo":"Enter mobileNo",
+
+
+   "Contact Faq's" :"Contact Faqs",
+   "How do I get started on the Truk App Market Place?":"How do I get started on the Truk App Market Place?",
+   "Join Truk App, India’s most trusted community of Transporters, Truck owners & Consignors. Follow these simple steps to get started" : "Join Truk App, India’s most trusted community of Transporters, Truck owners & Consignors. Follow these simple steps to get started",
+   "Sign-up using your mobile number & choose your role:Truk provider or Load provider.":"Sign-up using your mobile number & choose your role:Truk provider or Load provider.",
+   "Attach your truck(s) or post your loads to get bids within 20 minutes. Approve the bids to complete deals.":"Attach your truck(s) or post your loads to get bids within 20 minutes. Approve the bids to complete deals.",
+   "Use the ‘Load Market’ or ‘Truk Market’ for quick bookings." : "Use the ‘Load Market’ or ‘Truk Market’ for quick bookings.",
+   "Who can register on Truk App? what are the charges?":"Who can register on Truk App? what are the charges?",
+   "Truk App is a completely free platform to find and book loads and Truks online. Users can register & choose their role as either “Truk Provider” or “Load Provider”.":"Truk App is a completely free platform to find and book loads and Truks online. Users can register & choose their role as either “Truk Provider” or “Load Provider”.",
+   "Lorry/Truck Provider: Transporters, Transportation Service Providers, Logistic Companies, Truck & Fleet Owners, Truck Brokers.":" Lorry/Truck Provider: Transporters, Transportation Service Providers, Logistic Companies, Truck & Fleet Owners, Truck Brokers.",
+   "Load Provider: Consignors & Factory Owners, Dispatch Departments, Freight Booking & Commission Agents, Transporters, Traders & Trading agents, Small & Medium Business Owners.":"Load Provider: Consignors & Factory Owners, Dispatch Departments, Freight Booking & Commission Agents, Transporters, Traders & Trading agents, Small & Medium Business Owners." ,
+   "What are the Benefits of ‘connections’ on Truk App":"What are the Benefits of ‘connections’ on Truk App",
+   "The transport business in India is highly network-dependent. Truk App helps users connect and develop a trusted personal network. This network of ‘Connections’ can be leveraged for business growth.":"The transport business in India is highly network-dependent. Truk App helps users connect and develop a trusted personal network. This network of ‘Connections’ can be leveraged for business growth.",
+   "If you can't find the answer you 're looking for":"If you can't find the answer you 're looking for",
+   "click here":"click here",
+
+
+
+   "Contact Us":"Contact Us",
+   "Tell us your Query":"Tell us your Query",
+   "Have a query about previous loads":"Have a query about previous loads",
+   "YES":"YES",
+   "NO":"NO",
+   "Select your Query":"Select your Query",
+   "How I get truk and drive details":"How I get truk and drive details",
+   "How I see the load tracking" : "How I see the load tracking",
+   "Other Reason":"Other Reason",
+   
+   
+   "Edit Your Details":"Edit Your Details",
+   "Edit Your Person Details":"Edit Your Person Details",
+   "Shipper":"Shipper",
+   "Transporter":"Transporter",
+   "Agent/Broker":"Agent/Broker",
+   "Fleet Owner":"Fleet Owner",
+   "Enter role":"Enter role",
+   "Enter companyName":"Enter companyName",
+   "Edit Your Address Deatails":"Edit Your Address Deatails",
+   
+
+   "Get Started":"Get Started",
+
+
+
+   "Help & Guide":"Help & Guide",
+   "How to post the load on the truk?":"How to post the load on the truk?",
+   "1.Go to My Loads tab press the Post Load button Now fill out your Load Details Go to My Loads tab press the Post Load button Now fill out your Load Details" : "1.Go to My Loads tab press the Post Load button Now fill out your Load Details  Go to My Loads tab press the Post Load button Now fill out your Load Details",
+   "2.Enter the pick up location, drop up location on your load, Goods type like ( iron, steel, Bricks) and the quantity of loads in tonnesNext select the truk type,and truk capacity" : "2.Enter the pick up location, drop uplocation on your load, Goods type like ( iron, steel, Bricks) and the quantity of loads in tonnes Next select the truk type,and truk capacity",
+   "3.If your load is taller or wider than the truk dimensions, please enable ODC and add the length, breadth and height of your load" : "3.If your load is taller or wider than the truk dimensions, please enable ODC and add the length, breadth and height of your load",
+   "4.In the payment details section, enter your expected price, select the payment mode and select Next If you have comments regarding the load or want to communicate any details ,kindly add them in the comments section." : "4.In the payment details section, enter your expected price, select the payment mode and select Next If you have comments regarding the load or want to communicate any details ,kindly add them in the comments section.",
+   "5.Now , press Post Load. Congratulations, your load is now posted you will start getting bids from transporter within 20-25 minutes" : "5.Now , press Post Load. Congratulations, your load is now posted you will start getting bids from transporter within 20-25 minutes",
+   "How to verify Aadhar and GST on Truk App?":"How to verify Aadhar and GST on Truk App?",
+   "1.Click on your profile picture on the top right corner":"1.Click on your profile picture on the top right corner",
+   "2.Here, you will see the profile section":"2.Here, you will see the profile section",
+   "3.you will see KYC banner in profile section , click on that." : "3.you will see KYC banner in profile section , click on that. ",
+   "4.First let’s get your Aadhar Verified" : "4.First let’s get your Aadhar Verified",
+   "Enter your 12-digit Aadhar number and click on get OTP":"Enter your 12-digit Aadhar number and click on get OTP",
+   "You will get an OTP on the mobile number linked to your Aadhar." : "You will get an OTP on the mobile number linked to your Aadhar.",
+   "Submit your OTP and get Aadhar verified!" :"Submit your OTP and get Aadhar verified!",
+   "5.Next finish the GST verification." : " 5.Next finish the GST verification.",
+   "Enter your 15-digit GST Number.":"Enter your 15-digit GST Number.",
+   "After that submit the details.":"After that submit the details.",
+   "If your GST is valid it will be verified.":"If your GST is valid it will be verified.",
+   "6.Congratulations, you are now a verified shipper with a verified badge on truk" : "6.Congratulations, you are now a verified shipper with a verified badge on truk",
+   "How to attach load in truk on the Truk App?":"How to attach load in truk on the Truk App?",
+   "1.Go to the truk market tab on the bottom.":"1.Go to the truk market tab on the bottom.",
+   "2.In the truk market tab you will find a list of live truks.":"2.In the truk market tab you will find a list of live truks.",
+   "3.Use the advanced search to filters loads based on your requirements like vehicle type.":"3.Use the advanced search to filters loads based on your requirements like vehicle type.",
+   "4.Choose the truk you want to attach the load":"4.Choose the truk you want to attach the load",
+   "5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.":"5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.",
+   "6.Finally post the load.":"6.Finally post the load.",
+=======
   "About Us":"About Us",
   "TruKApp is an AI enabled technology platform, wholly owned by En Forti Global Logistics Private Limited. TrukApp enables shippers to access the Live Truck Market for their loads and also enables transporting companies/Fleet Owners to get loads for their trucks from the Live Load Market." : "TruKApp is an AI enabled technology platform, wholly owned by En Forti Global Logistics Private Limited. TrukApp enables shippers to access the Live Truck Market for their loads and also enables transporting companies/Fleet Owners to get loads for their trucks from the Live Load Market.",
   "It was founded in June 2022 by a team of passionate entrepreneurs from the NIT Warangal Almamater.":"It was founded in June 2022 by a team of passionate entrepreneurs from the NIT Warangal Almamater.",
@@ -243,7 +485,13 @@
 
  "You can Add Trucks and Post Loads in your role. Please select“Looking for Trucks” if you have load to ship OR select “Looking forLoads” if you have Trucks to attach":"You can Add Trucks and Post Loads in your role. Please select“Looking for Trucks” if you have load to ship OR select “Looking forLoads” if you have Trucks to attach",
 
+<<<<<<< HEAD
 "Tutorials":"Tutorials",
+=======
+
+
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
+>>>>>>> 8014f8be6a860d89e95e3588a2de286daa812791
 
    "Vehicle":"Vehicle",
    "Load Quantity":"Load Quantity",
@@ -601,4 +849,11 @@
     "Terms & Conditions":"Terms & Conditions", 
     "Log-out":"Log-out"
 
+<<<<<<< HEAD
+
+
+
+
+=======
+>>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
 }

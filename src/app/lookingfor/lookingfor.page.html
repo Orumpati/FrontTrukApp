@@ -1,0 +1,21 @@
+
+
+<ion-content>
+  <ion-card style="height:60px;">
+    <div style="display: flex; margin-top:22px;">
+
+      <div class="form-check  form-check-inline " (click)="looking('trucks')" style="margin-right: 100px;">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="trucks" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Looking for Truks
+        </label>
+      </div>
+      <div class="form-check form-check-inline" slot="end" class="load" (click)="looking('loads')">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Looking for Loads
+        </label>
+      </div>
+    </div>
+    </ion-card>
+    </ion-content>

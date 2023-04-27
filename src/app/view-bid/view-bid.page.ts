@@ -241,7 +241,7 @@ export class ViewBidPage implements OnInit {
          "Name":this.regdata.firstName+this.regdata.lastName,
          "Bidprice":this.tenprice,
          Number:this.bidnumber, //transporte
-         "mess":"Accepted your bid for"
+         "mess":"accepted your bid for ₹"
       
        }
        console.log(this.bids._id)

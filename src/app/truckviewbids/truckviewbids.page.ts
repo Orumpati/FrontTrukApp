@@ -191,7 +191,7 @@ console.log(this.tohideAccBtn)
         "TohideAcceptBtn":true,
         "Name":this.regdata.firstName+this.regdata.lastName,//for notifi 
         Number:this.shipperNo, //fornotifca
-        "mess":"Placed a Bid for amount"
+        "mess":"Placed a Bid for amount ₹"
       
        }
       
@@ -229,7 +229,7 @@ console.log(this.tohideAccBtn)
         alert("Verify Aadhar to Accept")
   window.location.href='/profile'
       }else{
-        if(confirm("Once you accept the bid, You cant negotiate")){
+        if(confirm("Once you accept the bid, you cannot negotiate")){
      // confirm("Are You Sure, To accept")
       const loading = await this.loadingController.create({
         message: 'Loading...',
@@ -251,7 +251,7 @@ console.log(this.tohideAccBtn)
         "contactSharedNum":this.regdata.mobileNo,//for inprogress
         "bidAcceptedTo":this.openedBid.mobileNo,
          "Name":this.regdata.firstName+this.regdata.lastName,
-         "mess":"Accepted your bid for",
+         "mess":"accepted your bid for ₹",
 
          Number:this.loadDocId.Number,//for notification who posted the load(Shipper)
 
@@ -382,7 +382,7 @@ console.log(this.tohideAccBtn)
       alert("Verify Aadhar to Accept")
 
     }else{
-      if(confirm("Once you accept the bid, You cant negotiate")){
+      if(confirm("Once you accept the bid, you cannot negotiate")){
       //confirm("Are you Sure To Accept")*/
     
   const loading = await this.loadingController.create({

@@ -100,7 +100,7 @@ export class AddTruckPage implements OnInit {
       idField: 'item_id',
       textField: 'item_text',
       selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
+      unSelectAllText: 'Unselect All',
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
@@ -245,7 +245,7 @@ export class AddTruckPage implements OnInit {
         this.Items = result
         loading.dismiss()
         const alert = await this.alertController.create({
-          header: 'Successfull',
+          //header: 'Successfull',
           // subHeader: 'Important message',
           message: 'Truk Posted Successfully',
           buttons: [
