@@ -245,8 +245,8 @@
    "5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.":"5. भुगतान विवरण स्क्रीन में, अपनी बोली दर दर्ज करें, मात्रा लोड करें और उल्लेख करें कि क्या आपकी दर परक्राम्य है.",
    "6.Finally post the load.":"6. अंत में लोड पोस्ट करें।",
 
-    
-       
+   "You can Add Trucks and Post Loads in your role. Please select “Looking for Trucks” if you have load to ship OR select “Looking for Loads” if you have Trucks to attach":"आप अपनी भूमिका में ट्रक और पोस्ट लोड जोड़ सकते हैं.यदि आपके पास शिप करने के लिए लोड है तो कृपया ट्रकों की तलाश चुनें या यदि आपके पास संलग्न करने के लिए ट्रक हैं तो लोड की तलाश चुनें",
+      "Tutorials":"ट्यूटोरियल", 
    "Vehicle":"वाहन",
    "Load Quantity":"भार मात्रा",
    "Date":"तारीख",
