@@ -15,17 +15,17 @@
   </ion-refresher>
   <ion-card class="expecPrice">
     <ion-card-header>
-      <ion-card-subtitle style="font-size: 18px;">Expected Price:<span style="font-weight: bolder; color:black;">₹ {{objects.expectedPrice}}/-</span></ion-card-subtitle>
+      <ion-card-subtitle style="font-size: 18px;">Expected Price:<span style="font-weight: bolder; color:black;"> ₹{{objects.expectedPrice}}/-</span></ion-card-subtitle>
       <!-- <ion-card-title>₹ {{objects.expectedPrice}}/-</ion-card-title> -->
-      <ion-card-title [hidden]="objects.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >Advance:<span style="font-weight: bolder; color:black;"> ₹ {{objects.advance}}/-</span></ion-card-title>
+      <ion-card-title [hidden]="objects.advance == null" style="float: right;margin-top:-5px;font-size:15px;" >Advance:<span style="font-weight: bolder; color:black;"> ₹{{objects.advance}}/-</span></ion-card-title>
 
     </ion-card-header>
     <ion-card-content>
       <!-- <p style="font-size: larger; font-weight: bolder; ">{{objects.OriginLocation}} -- {{objects.DestinationLocation}}
       </p> -->
       <div class="flex-1" style="overflow-y: scroll;">
-      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon>{{objects.OriginLocation}}</a></span><br>
-      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{objects.DestinationLocation}}</a></span><br>
+      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px; white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"> <ion-icon name="location-sharp" color="success "></ion-icon> {{objects.OriginLocation}}</a></span><br>
+      <span class="font-size-12 mb-1" style="color:black; font-weight:bolder; width:100px;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon> {{objects.DestinationLocation}}</a></span><br>
       </div>
       <!-- <p style="font-size: large; font-weight: bold; "> {{objects.data}} -- {{objects.Quantity}} </p> -->
       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 " style="color: blue;"></i>{{objects.Quantity}}--{{objects.data}}</p>
@@ -40,7 +40,7 @@
 
     <div [hidden]="text.initialAccept === 'Accepted'"  class="my-message" >
       <b  style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-      <span>₹ {{text.price}}/-</span>
+      <span>₹{{text.price}}/-</span>
       <!--<b>PHno -{{text.userNo}}</b>-->
       <div class="time" text-right><br>
         {{text.time | date:'short'}}
@@ -55,7 +55,7 @@
     <ion-col size="8" *ngIf="text.userNo!== regdata.mobileNo" class="message other-message">
 
       <b text-left style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-      <b text-left>₹ {{text.price}}/-</b>
+      <b text-left>₹{{text.price}}/-</b>
 
        <div class="time" text-right><br>
        {{text.time | date:'short' }}
@@ -82,7 +82,7 @@
 <ion-card class="shipperAccept" *ngIf="item.initialAccept === 'Accepted'">
 <div align="center">
 
-You Accepted the bid for {{item.tentativefinalPrice}}
+You Accepted the bid for: ₹{{item.tentativefinalPrice}}/-
 </div>
 </ion-card>
 
@@ -91,13 +91,13 @@ You Accepted the bid for {{item.tentativefinalPrice}}
 <ion-card  class="shipperAccept" *ngIf="item.isAgentAccepted == true" >
   <div align="center">
   
-  you accepted the bid for:{{item.tentativefinalPrice}}
+  You accepted the bid for: ₹{{item.tentativefinalPrice}}/-
   </div >
   </ion-card>
   <ion-card class="shipperAccept" *ngIf="item.isShipperAccepted == true" >
     <div align="center">
     
-    Shipper Approved  for:{{item.tentativefinalPrice}}
+    Shipper Approved for: ₹{{item.tentativefinalPrice}}/-
     </div >
     </ion-card>
     <ion-card class="shipperAccept" *ngIf="isPaymentCompleted == true" [hidden]="sharecontact == true" >
@@ -184,7 +184,7 @@ You Accepted the bid for {{item.tentativefinalPrice}}
         <ion-row>
           <ion-col size="10">
       
-            <input autosize maxRowx="3" type="number" placeholder="enter your price" [(ngModel)]="NegoPrice" class="input">
+            <input autosize maxRowx="3" type="number" placeholder="Enter your price" [(ngModel)]="NegoPrice" class="input">
           </ion-col>
     
           <ion-col size="2">
@@ -239,7 +239,7 @@ You Accepted the bid for {{item.tentativefinalPrice}}
         <ion-row>
           <ion-col size="10">
           
-            <input autosize maxRowx="3" type="number" placeholder="enter your price" [(ngModel)]="newMsg" class="input">
+            <input autosize maxRowx="3" type="number" placeholder="Enter your price" [(ngModel)]="newMsg" class="input">
           </ion-col>
     
           <ion-col size="2">

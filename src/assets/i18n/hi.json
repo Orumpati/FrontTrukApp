@@ -1,0 +1,624 @@
+{
+
+
+    "About Us":"About Us",
+    "TruKApp is an AI enabled technology platform, wholly owned by En Forti Global Logistics Private Limited. TrukApp enables shippers to access the Live Truck Market for their loads and also enables transporting companies/Fleet Owners to get loads for their trucks from the Live Load Market." : "TruKApp एक AI सक्षम प्रौद्योगिकी मंच है, जिसका पूर्ण स्वामित्व En Forti Global Logistics Private Limited के पास है। TrukApp शिपर्स को उनके लोड के लिए लाइव ट्रक मार्केट तक पहुंचने में सक्षम बनाता है और ट्रांसपोर्टिंग कंपनियों/फ्लीट मालिकों को लाइव लोड मार्केट से अपने ट्रकों के लिए लोड प्राप्त करने में भी सक्षम बनाता है।",
+    "It was founded in June 2022 by a team of passionate entrepreneurs from the NIT Warangal Almamater.":"इसकी स्थापना जून 2022 में NIT वारंगल अल्मामाटर के भावुक उद्यमियों की एक टीम द्वारा की गई थी।",
+    "TrukApp is here to simplify truck booking experience by providing access to live markets and helping to build trust in transactions by connecting shippers to verified transporters/fleet owners. Both the parties can connect and negotiate on TrukApp for the loads posted or Trucks attached.":"TrukApp लाइव बाजारों तक पहुंच प्रदान करके और सत्यापित ट्रांसपोर्टरों/बेड़े के मालिकों से शिपर्स को जोड़कर लेनदेन में विश्वास बनाने में मदद करके ट्रक बुकिंग अनुभव को आसान बनाने के लिए यहां है। पोस्ट किए गए लोड या संलग्न ट्रकों के लिए दोनों पक्ष TrukApp पर जुड़ सकते हैं और बातचीत कर सकते हैं।",
+    "With the help of Technology, TrukApp aims to provide world class support from the beginning to the end of the cargo delivery life cycle. Our vision is to become an end to end logistics technology platform helping both Shippers and Transport providers to avail services of their choice in a hassle free and cost effective way.":"प्रौद्योगिकी की मदद से, TrukApp का उद्देश्य कार्गो वितरण जीवन चक्र की शुरुआत से अंत तक विश्व स्तरीय सहायता प्रदान करना है। हमारी दृष्टि शिपर्स और ट्रांसपोर्ट प्रदाताओं दोनों को परेशानी मुक्त और लागत प्रभावी तरीके से अपनी पसंद की सेवाओं का लाभ उठाने में मदद करने के लिए लॉजिस्टिक टेक्नोलॉजी प्लेटफॉर्म बनने की है।",
+    "This is what we are, TrukApp - Trucking Simplified!":"हम यही हैं, TrukApp - ट्रकिंग सरलीकृत!",
+
+
+    "AddNewTruk":"नया ट्रक जोड़ें",
+    "Add New Truk":"नया ट्रक जोड़ें",
+
+    "Add new truck Details":"नया ट्रक विवरण जोड़ें",
+    "Transporter Details":"ट्रांसपोर्टर विवरण",
+    "Please share your contact details with the shipper for further communication outside the platform":"कृपया प्लेटफॉर्म के बाहर आगे संचार के लिए शिपर के साथ अपना संपर्क विवरण साझा करें",
+    "Transporter Name":"ट्रांसपोर्टर का नाम",
+    "Company Name":"कंपनी का नाम",
+    "Mobile Number":"मोबाइल नंबर",
+    "City":"शहर",
+    "Post":"डाक",
+
+
+    "AddTruks":"ट्रक्स जोड़ें",
+    "Enter Vechile number":"वाहन संख्या दर्ज करें",
+    "Current Location":"वर्तमान स्थान",
+    "Current vechile Location":"वर्तमान वाहन स्थान",
+    "Add Your Vechile Routes":"अपने वाहन मार्ग जोड़ें",
+    "Add Your Vechile Routes (States)":"अपने वाहन मार्गों (राज्यों) को जोड़ें",
+    "Date & Time":"दिनांक समय",
+    "Choose One TrukVehicle":"एक TrukVehicle चुनें",
+    "Tanker (1 to 35 KL)":"टैंकर (1 से 35 केएल)",
+    "Hyva (1 to 35 Tons)":"हाइवा (1 से 35 टन)",
+    "LCV (1 to 6 Tons)":"एलसीवी (1 से 6 टन)",
+    "Truk (1 to 14 Tons)":"ट्रक (1 से 14 टन)",
+    "Trailer (1 to 52 Tons)":"ट्रेलर (1 से 52 टन)",
+    "Container (1 to 45 Tons)":"कंटेनर (1 से 45 टन)",
+    "Select the Truk type":"ट्रुक प्रकार का चयन करें",
+    "Open Body":"खुला शरीर",
+    "Close Body":"बंद शरीर",
+    "Select the Hyva type":"हाइवा प्रकार का चयन करें",
+    "10 Tyre":"10 टायर",
+    "12 Tyre":"12 टायर",
+    "14 Tyre":"14 टायर",
+    "Select the Trailer type":"ट्रेलर प्रकार का चयन करें",
+    "High Bed":"ऊँचा बिस्तर",
+    "Semi Bed":"अर्ध बिस्तर",
+    "Low Bed":"कम ऊंचाई वाला बिस्तर",
+    "Select the Container type":"कंटेनर प्रकार का चयन करें",
+    "Select the Tanker type":"टैंकर प्रकार का चयन करें",
+    "Metal steel":"धातु स्टील",
+    "Stainless steel":"स्टेनलेस स्टील",
+
+
+    "Add Your Address":"अपना पता जोड़ें",
+    "Home":"घर",
+    "Office":"कार्यालय",
+    "Enter DoorNo/Building No":"द्वार संख्या/भवन संख्या दर्ज करें",
+    "Enter Street/Area":"गली/क्षेत्र दर्ज करें",
+    "Enter LandMark":"लैंडमार्क दर्ज करें",
+    "Enter City":"शहर का नाम दर्ज करें",
+    "Enter Pincode":"पिनकोड दर्ज करें",
+    "Save":"बचाना",
+
+
+    "All Bids":"सभी बोलियाँ",
+    "Bids":"बोलियां",
+    "Bid from":"से बोली",
+    "Fixed":"हल किया गया",
+    "Open":"खुला",
+    "InProgress":"चालू",
+    "Finalised":"अंतिम रूप दिया",
+    "No Bids":"कोई बोली नहीं",
+
+
+    "All Notifications":"सभी अधिसूचनाएं",
+    "New message":"नया सन्देश",
+    "No Notifications":"कोई सूचनाएं नहीं",
+
+    "Attach existing Load":"मौजूदा लोड संलग्न करें",
+    "Your Perferred Vehicle":"आपका पसंदीदा वाहन",
+    "Transpoter":"ट्रांसपोर्टर",
+    "Vehicle Number":"गाडी नंबर",
+    "Routes":"मार्गों",
+    "locations":"स्थानों",
+    "Your Perferred Load Information":"आपकी पसंदीदा लोड जानकारी",
+    "Online Payment":"ऑनलाइन भुगतान",
+    "Cash Payment":"नकद भुगतान",
+    "Posted On":"प्रकाशित किया गया",
+    "Expected Price":"अपेक्षित मूल्य",
+    "Ton":"टन",
+
+
+    "Existing Loads":"मौजूदा भार",
+    "Choose Your Load":"अपना भार चुनें",
+    "Advance":"अग्रिम",
+    "Select Load":"लोड का चयन करें",
+    "No Loads Avaliable!":"कोई भार उपलब्ध नहीं!",
+    "proceed":"आगे बढ़ना",
+
+
+    "Attach New Load":"नया भार संलग्न करें",
+    "Load Details":"लोड विवरण",
+    "Pick-up Location":"लेने की जगह",
+    "Invalid":"अमान्य",
+    "Drop Location":"ड्रॉप स्थान",
+    "Bricks":"ईंटों",
+    "Cement Products":"सीमेंट उत्पाद",
+    "Clothes":"कपड़े",
+    "E-Waste":"ई - कचरा",
+    "Electrical Equipment":"विद्युत उपकरण",
+    "Flowers":"पुष्प",
+    "Fertilizer and Seeds":"खाद और बीज",
+    "Food":"खाना",
+    "Furniture":"फर्नीचर",
+    "Household Items":"घरेलू सामान",
+    "Vegetables":"सब्ज़ियाँ",
+    "Fruits":"फल",
+    "Water":"पानी",
+    "Petrol/Desiel":"पेट्रोल/डीजल",
+    "Kerosene":"मिटटी तेल",
+    "Other Inflammables":"अन्य ज्वलनशील",
+    "Construction Materials":"निर्माण सामग्री",
+    "Cotton":"कपास",
+    "Sand":"रेत",
+    "Electronics Items":"इलेक्ट्रॉनिक्स आइटम",
+    "Steel/Iron":"इस्पात लोहे",
+    "Stones":"पत्थर",
+    "Milk":"दूध",
+    "Bike":"बाइक",
+    "Car":"कार",
+    "Others":"अन्य",
+    "Pick-Up Date & Time":"पिक-अप दिनांक और समय",
+    "Quantity":"मात्रा",
+    "Tonnes":"टन",
+    "Kilo Liters":"किलो लीटर",
+    "Select Vehicle":"वाहन का चयन करें",
+    "Payment":"भुगतान",
+    "What is your expected price?":"आपकी अपेक्षित कीमत क्या है?",
+    "Expected Price(INR ₹)":"अपेक्षित मूल्य (INR ₹)",
+    "How would you like to Pay?":"आप किस तरह से भुगतान करना चाहेंगे?",
+    "Offline/Cash":"ऑफलाइन/कैश",
+    "How do you like to pay ?":"आप कैसे भुगतान करना पसंद करते हैं?",
+    "Full Payment":"पूर्ण भुगतान",
+    "How much would you like to pay in advance ?":"आप कितना अग्रिम भुगतान करना चाहेंगे?",
+    "By Submitting ,You Accept":"सबमिट करके, आप स्वीकार करते हैं",
+    "T&C":"टी एंड सी",
+    "and":"और",
+    "Privacy Policy":"गोपनीयता नीति",
+    "Previous":"पहले का",
+    "Next": "अगला",
+    "Submit":"जमा करना",
+
+
+    "Attach Your Preferred New Load":"अपना पसंदीदा नया भार संलग्न करें",
+    "Your Preferred Vechile":"आपका पसंदीदा वाहन",
+    "Selected vehicle":"चयनित वाहन",
+    "VehicleNo":"वाहन संख्या",
+    "CurrentLocation":"वर्तमान स्थान",
+    "TrukoperatingRoutes":"ट्रक परिचालन मार्ग",
+    "Pick-up State":"पिक-अप राज्य",
+    "Drop State":"ड्रॉप स्टेट",
+
+
+
+
+    "Enter FirstName":"प्रथम नाम दर्ज करें",
+   "Enter LastName":"अंतिम नाम दर्ज करो",
+   "Enter CompanyName":"कंपनी का नाम दर्ज करें",
+   "Referal Code(optional)":"रेफ़रल कोड (वैकल्पिक)",
+   "Enter mobileNo":"मोबाइल नंबर दर्ज करें",
+      
+
+
+   "Contact Faq's" :"संपर्क करें",
+   "How do I get started on the Truk App Market Place?":"मैं Truk ऐप मार्केट प्लेस पर कैसे शुरुआत करूं?",
+   "Join Truk App, India’s most trusted community of Transporters, Truck owners & Consignors. Follow these simple steps to get started" : "ट्रांसपोर्टर्स, ट्रक मालिकों और कंसाइनर्स के भारत के सबसे भरोसेमंद समुदाय Truk ऐप से जुड़ें। आरंभ करने के लिए इन सरल चरणों का पालन करें",
+   "Sign-up using your mobile number & choose your role:Truk provider or Load provider.":"अपने मोबाइल नंबर का उपयोग करके साइन-अप करें और अपनी भूमिका चुनें: ट्रक प्रदाता या लोड प्रदाता।",
+   "Attach your truck(s) or post your loads to get bids within 20 minutes. Approve the bids to complete deals.":"20 मिनट के भीतर बोलियां प्राप्त करने के लिए अपने ट्रक संलग्न करें या अपना लोड पोस्ट करें। सौदों को पूरा करने के लिए बोलियों को मंजूरी दें।",
+   "Use the ‘Load Market’ or ‘Truk Market’ for quick bookings." : "त्वरित बुकिंग के लिए 'लोड मार्केट' या 'ट्रक मार्केट' का उपयोग करें।",
+   "Who can register on Truk App? what are the charges?":"Truk ऐप पर कौन रजिस्टर कर सकता है? आरोप क्या हैं?",
+   "Truk App is a completely free platform to find and book loads and Truks online. Users can register & choose their role as either “Truk Provider” or “Load Provider”.":"ट्रूक ऐप लोड और ट्रूक्स को ऑनलाइन खोजने और बुक करने के लिए एक पूरी तरह से मुफ्त प्लेटफॉर्म है। उपयोगकर्ता 'Truk प्रदाता' या 'लोड प्रदाता' के रूप में अपनी भूमिका को पंजीकृत और चुन सकते हैं।",
+   "Lorry/Truck Provider: Transporters, Transportation Service Providers, Logistic Companies, Truck & Fleet Owners, Truck Brokers.":"लॉरी/ट्रक प्रदाता: ट्रांसपोर्टर, परिवहन सेवा प्रदाता, रसद कंपनियां, ट्रक और फ्लीट मालिक, ट्रक दलाल।",
+   "Load Provider: Consignors & Factory Owners, Dispatch Departments, Freight Booking & Commission Agents, Transporters, Traders & Trading agents, Small & Medium Business Owners.":"लोड प्रदाता: कंसाइनर्स एंड फैक्ट्री ओनर्स, डिस्पैच डिपार्टमेंट्स, फ्रेट बुकिंग एंड कमीशन एजेंट्स, ट्रांसपोर्टर्स, ट्रेडर्स एंड ट्रेडिंग एजेंट्स, स्मॉल एंड मीडियम बिजनेस ओनर्स।" ,
+   "What are the Benefits of ‘connections’ on Truk App":"Truk ऐप पर 'कनेक्शन' के क्या फायदे हैं",
+   "The transport business in India is highly network-dependent. Truk App helps users connect and develop a trusted personal network. This network of ‘Connections’ can be leveraged for business growth.":"भारत में परिवहन व्यवसाय अत्यधिक नेटवर्क-निर्भर है। Truk ऐप उपयोगकर्ताओं को एक भरोसेमंद निजी नेटवर्क से जुड़ने और विकसित करने में मदद करता है। व्यवसाय वृद्धि के लिए 'कनेक्शन' के इस नेटवर्क का लाभ उठाया जा सकता है।",
+   "If you can't find the answer you 're looking for":"यदि आपको वह उत्तर नहीं मिल रहा है जिसकी आप तलाश कर रहे हैं",
+   "click here":"यहाँ क्लिक करें",
+
+
+
+   "Contact Us":"संपर्क करें",
+   "Tell us your Query":"हमें अपनी क्वेरी बताएं",
+   "Have a query about previous loads":"पिछले भार के बारे में एक प्रश्न है",
+   "YES":"हाँ",
+   "NO":"नहीं",
+   "Select your Query":"अपनी क्वेरी का चयन करें",
+   "How I get truk and drive details":"मुझे ट्रक और ड्राइव की जानकारी कैसे मिलती है",
+   "How I see the load tracking" : "मैं लोड ट्रैकिंग कैसे देखता हूं",
+   "Other Reason":"कोई और वजह",
+
+
+   "Edit Your Details":"अपना विवरण संपादित करें",
+   "Edit Your Person Details":"अपने व्यक्ति विवरण संपादित करें",
+   "Shipper":"शिपर",
+   "Transporter":"ट्रांसपोर्टर",
+   "Agent/Broker":"एजेंट/दलाल",
+   "Fleet Owner":"बेड़ा मालिक",
+   "Enter role":"भूमिका दर्ज करें",
+   "Enter companyName":"कंपनी का नाम दर्ज करें",
+   "Edit Your Address Deatails":"अपना पता विवरण संपादित करें",
+
+
+
+   "Get Started":"शुरू हो जाओ",
+     
+
+
+   "Help & Guide":"सहायता और मार्गदर्शन",
+   "How to post the load on the truk?":"ट्रुक पर लोड कैसे पोस्ट करें?",
+   "1.Go to My Loads tab press the Post Load button Now fill out your Load Details Go to My Loads tab press the Post Load button Now fill out your Load Details" : "1. माई लोड टैब पर जाएं पोस्ट लोड बटन दबाएं अब अपना लोड विवरण भरें मेरे लोड टैब पर जाएं पोस्ट लोड बटन दबाएं अब अपना लोड विवरण भरें",
+   "2.Enter the pick up location, drop up location on your load, Goods type like ( iron, steel, Bricks) and the quantity of loads in tonnesNext select the truk type,and truk capacity" : "2. पिकअप स्थान दर्ज करें, अपने लोड पर अपलोकेशन ड्रॉप करें, सामान प्रकार जैसे (लोहा, स्टील, ईंटें) और टन में लोड की मात्रा अगला ट्रक प्रकार और ट्रक क्षमता का चयन करें",
+   "3.If your load is taller or wider than the truk dimensions, please enable ODC and add the length, breadth and height of your load" : "3. यदि आपका लोड ट्रक के आयामों से लंबा या चौड़ा है, तो कृपया ODC को सक्षम करें और अपने लोड की लंबाई, चौड़ाई और ऊंचाई जोड़ें",
+   "4.In the payment details section, enter your expected price, select the payment mode and select Next If you have comments regarding the load or want to communicate any details ,kindly add them in the comments section." : "4. भुगतान विवरण अनुभाग में, अपनी अपेक्षित कीमत दर्ज करें, भुगतान मोड का चयन करें और अगला चुनें।.",
+   "5.Now , press Post Load. Congratulations, your load is now posted you will start getting bids from transporter within 20-25 minutes" : "5. अब, पोस्ट लोड दबाएं। बधाई हो, आपका लोड अब पोस्ट हो गया है, आपको 20-25 मिनट के भीतर ट्रांसपोर्टर से बोली मिलनी शुरू हो जाएगी",
+   "How to verify Aadhar and GST on Truk App?":"Truk ऐप पर आधार और जीएसटी को कैसे सत्यापित करें?",
+   "1.Click on your profile picture on the top right corner":"1. ऊपरी दाएं कोने पर अपने प्रोफ़ाइल चित्र पर क्लिक करें",
+   "2.Here, you will see the profile section":"2. यहां आपको प्रोफाइल सेक्शन दिखाई देगा",
+   "3.you will see KYC banner in profile section , click on that." : "3. आपको प्रोफाइल सेक्शन में केवाईसी बैनर दिखाई देगा, उस पर क्लिक करें।",
+   "4.First let’s get your Aadhar Verified" : "4. सबसे पहले अपना आधार सत्यापित करवाएं",
+   "Enter your 12-digit Aadhar number and click on get OTP":"अपना 12 अंकों का आधार नंबर दर्ज करें और Get OTP पर क्लिक करें",
+   "You will get an OTP on the mobile number linked to your Aadhar." : "आपको अपने आधार से जुड़े मोबाइल नंबर पर एक ओटीपी मिलेगा.",
+   "Submit your OTP and get Aadhar verified!" :"अपना ओटीपी सबमिट करें और आधार सत्यापित करवाएं!",
+   "5.Next finish the GST verification." : "5. अगला जीएसटी सत्यापन समाप्त करें.",
+   "Enter your 15-digit GST Number.":"अपना 15 अंकों का जीएसटी नंबर दर्ज करें.",
+   "After that submit the details.":"इसके बाद विवरण सबमिट करें.",
+   "If your GST is valid it will be verified.":"यदि आपका जीएसटी वैध है तो इसे सत्यापित किया जाएगा.",
+   "6.Congratulations, you are now a verified shipper with a verified badge on truk" : "6.बधाई हो, अब आप ट्रुक पर सत्यापित बैज के साथ एक सत्यापित शिपर हैं",
+   "How to attach load in truk on the Truk App?":"ट्रक ऐप पर ट्रक में लोड कैसे अटैच करें?",
+   "1.Go to the truk market tab on the bottom.":"1. सबसे नीचे ट्रुक मार्केट टैब पर जाएं।",
+   "2.In the truk market tab you will find a list of live truks.":"2. ट्रक मार्केट टैब में आपको लाइव ट्रक्स की एक सूची मिलेगी।",
+   "3.Use the advanced search to filters loads based on your requirements like vehicle type.":"3. वाहन के प्रकार जैसी अपनी आवश्यकताओं के आधार पर लोड को फ़िल्टर करने के लिए उन्नत खोज का उपयोग करें।",
+   "4.Choose the truk you want to attach the load":"4. उस ट्रुक को चुनें जिसे आप लोड करना चाहते हैं",
+   "5.In the payment details screen, enter your bid rate ,load quantity and mention if your rate is negotiable.":"5. भुगतान विवरण स्क्रीन में, अपनी बोली दर दर्ज करें, मात्रा लोड करें और उल्लेख करें कि क्या आपकी दर परक्राम्य है.",
+   "6.Finally post the load.":"6. अंत में लोड पोस्ट करें।",
+
+
+   "Vehicle":"वाहन",
+   "Load Quantity":"भार मात्रा",
+   "Date":"तारीख",
+   "Type Of Pay":"वेतन का प्रकार",
+   "Your load will be handled carefully":"आपका भार सावधानी से संभाला जाएगा",
+
+
+   "Verify":"सत्यापित करना",
+   "Verification":"सत्यापन",
+   "Enter the One Time Password send to +91":"+91 पर भेजा गया वन टाइम पासवर्ड दर्ज करें",
+   "Verify OTP":"ओटीपी सत्यापित करें",
+
+
+   "SignUp/Login":"साइन अप या लॉग इन करें",
+   "Welcome":"स्वागत",
+   "Enter Your Mobile Number":"अपना मोबाइल संख्या दर्ज करे",
+   "Enter Mobile Number":"मोबाइल नंबर दर्ज करें",
+   "Don't have an Account ?":"खाता नहीं है?",
+   "Signup":"साइन अप करें",
+   "By Signingup ,You are accepting":"साइनअप करके, आप स्वीकार कर रहे हैं",
+   "Generate OTP":"ओटीपी जनरेट करें",
+
+
+   "Looking for Loads":"भार खोज रहे हैं",
+   "Looking for Truks":"ट्रक की तलाश की जा रही है",
+
+   "Make Payment":"भुगतान करें",
+   "Paying":"पेइंग",
+   "By Signup ,You Accept":"साइनअप द्वारा, आप स्वीकार करते हैं",
+   "and Privacy":"और गोपनीयता",
+   "Pay Now":"अब भुगतान करें",
+
+
+   "Contact Details":"सम्पर्क करने का विवरण",
+   "Enter Your Name":"अपना नाम दर्ज करें",
+   "Enter name":"नाम दर्ज करें",
+   "Enter Your Email Address":"अपना ईमेल पता दर्ज करें",
+   "Enter Email":"ईमेल दर्ज करें",
+   "Enter your Mobile Number":"अपना मोबाइल संख्या दर्ज करे",
+   "Enter phone Number":"फोन नंबर दर्ज",
+   "Please Enter Your Query":"कृपया अपनी क्वेरी दर्ज करें",
+
+
+   "Active":"सक्रिय",
+   "Completed":"पुरा होना।",
+   "In-Progress":"चालू",
+   "Deactive":"अक्रिय",
+   "Delete":"मिटाना",
+   "Reactivate":"पुन: सक्रिय",
+   "More Details":"अधिक जानकारी",
+   "Avaliable in":"में उपलब्ध",
+   "View Bids":"बोलियां देखें",
+   "View Contact":"संपर्क देखें",
+   "Post Your Vehicle":"अपना वाहन पोस्ट करें",
+   "Add Truk":"ट्रुक जोड़ें",
+
+   "onlineshare-Contact":"onlineshare-संपर्क",
+   "vehicleType":"वाहन का प्रकार",
+   "vehicleNo":"वाहन सं",
+   "Driver Name":"चालक का नाम",
+   "DriverNumber":"चालक संख्या",
+   "Share Contact":"संपर्क साझा करें",
+
+
+   "You don't have Access":"आपके पास एक्सेस नहीं है",
+   "Oops!":"उफ़!",
+   "The page you are looking for might not access for you, had its name changed or is temporarily unavailable.":"आप जिस पृष्ठ की तलाश कर रहे हैं, यदि उसका नाम बदल दिया गया होता या वह अस्थायी रूप से अनुपलब्ध होता, तो वह आपके लिए एक्सेस नहीं कर पाता",
+   "Go Login Page":"लॉग इन पेज पर जाएं",
+
+
+   "Place Bid":"बोली लगाना",
+   "You Accepted the bid for":"आपने इसके लिए बोली स्वीकार कर ली है",
+   "you accepted the bid for":"you accepted the bid for",
+   "Shipper Approved for":"आपने के लिए बोली स्वीकार कर ली",
+   "Shipper Payment is done(Share Contact)":"शिपर भुगतान किया जाता है (संपर्क साझा करें)",
+   "Bidding actions":"बोली लगाने की क्रियाएं",
+   "Negotiate the bid rate or accept and proceed with the transaction":"बोली दर पर बातचीत करें या स्वीकार करें और लेनदेन के साथ आगे बढ़ें",
+   "Accept":"स्वीकार करना",
+   "Initial Bid":"प्रारंभिक बोली",
+   "Share Contact Details":"संपर्क विवरण साझा करें",
+   "Bid is accepted, please share contact details":"बोली स्वीकार की जाती है, कृपया संपर्क विवरण साझा करें",
+   "Add Driver Details":"ड्राइवर विवरण जोड़ें",
+   "Negotiate":"मोल-भाव करना",
+   "enter your price":"अपनी कीमत दर्ज करें",
+   "Back":"पीछे",
+   "Transporter Number":"ट्रांसपोर्टर संख्या",
+   "DriverName":"चालक का नाम",
+
+
+   "Profile":"प्रोफ़ाइल",
+   "Edit Profile":"प्रोफ़ाइल संपादित करें",
+   "KYC Pending":"केवाईसी लंबित",
+   "KYC Verified":"केवाईसी सत्यापित",
+   "Verify Aadhar":"आधार सत्यापित करें",
+   "AadharNumber":"आधार संख्या",
+   "Get OTP":"ओटीपी प्राप्त करें",
+   "Aaadhar Verified":"आधार सत्यापित",
+   "Verify GSTIN":"जीएसटीआईएन सत्यापित करें",
+   "GST Number":"जीएसटी संख्या",
+   "GSTIN Verified":"जीएसटीआईएन सत्यापित",
+   "+ Add Address":"+ पता जोड़ें",
+   "Address Details":"पते का विवरण",
+   "Address Type":"पता मुद्रलेख",
+   "Door No/Building No":"द्वार सं./भवन सं",
+   "Street/Area":"गली/क्षेत्र",
+   "LandMark":"सीमाचिह्न",
+   "Pincode":"पिन कोड",
+   "Add Routes":"मार्ग जोड़ें",
+   "Available Routes":"उपलब्ध मार्ग",
+
+
+   "POD":"पॉड",
+   "Proofs of Delivery":"सुपुर्दगी के प्रमाण",
+   "Way bill":"रास्ता बिल",
+   "Order Id":"आदेश कामतत्व",
+   "Consignee name":"प्रेषिती का नाम",
+   "Address":"पता",
+   "Delivered on":"सौंप दिया",
+   "Final Status":"अंतिम स्थिति",
+   "sumbit":"सुम्बित",
+
+   "TrukApp Referral":"TrukApp रेफरल",
+   "How it Works":"यह काम किस प्रकार करता है",
+   "Share the Referral code with your friend.":"अपने दोस्त के साथ रेफरल कोड शेयर करें।",
+   "Your friend should use the code to sign up into TrukApp. ":"आपके मित्र को TrukApp में साइन अप करने के लिए कोड का उपयोग करना चाहिए। ",
+   "The Coins will be credited ONLY when your friend verifies KYC.":"कॉइन तभी क्रेडिट किए जाएंगे जब आपका मित्र केवाईसी सत्यापित करेगा।",
+   "You will receive 100 coins for each unique referral signup.":"प्रत्येक विशिष्ट रेफरल साइनअप के लिए आपको 100 सिक्के प्राप्त होंगे।",
+   "You can withdraw referral coins by raising a withdrawal request.":"आप निकासी अनुरोध करके रेफरल सिक्कों को वापस ले सकते हैं।",
+   "Withdrawal requests should be in denominations of 100.":"निकासी अनुरोध 100 के मूल्यवर्ग में होना चाहिए।",
+   "Maximum coins one can withdraw at once is 500.":"एक बार में अधिकतम 500 सिक्के निकाले जा सकते हैं।",
+   "Maximum Referral Money one can earn is 1000 INR.":"अधिकतम रेफ़रल मनी एक कमा सकता है 1000 INR।",
+   "Invite your friends":"अपने दोस्तों को आमंत्रित करो",
+   "Referral Code":"रेफरल कोड",
+   "Share Now":"अब साझा करें",
+   "Go To your Earnings":"अपनी कमाई पर जाएं",
+
+
+   
+   "Sign Up":"साइन अप करें",
+   "Choose Your Role":"अपनी भूमिका चुनें",
+   "SHIPPER":"शिपर",
+   "FLEET OWNER":"बेड़ा मालिक",
+   "TRANSPORTER":"ट्रांसपोर्टर",
+   "AGENT/BROKER":"एजेंट/दलाल",
+   "I have loads and looking for Truks/Lorries to attach the load":"मेरे पास लोड है और लोड अटैच करने के लिए ट्रक/लॉरी ढूंढ रहा हूं",
+   "I own Truks/Lorries and looking for Loads":"मैं ट्रक/लॉरी का मालिक हूं और लोड ढूंढ रहा हूं",
+   "I provide transportation service and looking for both Loads and Truks in the market.":"मैं परिवहन सेवा प्रदान करता हूं और बाजार में लोड और ट्रक दोनों की तलाश करता हूं।",
+   "i am an intermediary between shipper and transporter service and looking for both Loads as well as Truks in the market.":"मैं शिपर और ट्रांसपोर्टर सेवा के बीच एक मध्यस्थ हूं और बाजार में लोड और ट्रक दोनों की तलाश कर रहा हूं।",
+   "Continue":"जारी रखना",
+
+   "Looking for loads":"भार खोज रहे हैं",
+   "Aadhaar Verified":"आधार सत्यापित",
+   "Active Loads":"सक्रिय भार",
+   "Closed Bids":"बंद बोली",
+   "Active Truks":"सक्रिय ट्रक",
+   "You can Add Trucks and Post Loads in your role. Please select 'Looking for Trucks' if you have load to ship OR select 'Looking for Loads' if you have Trucks to attach " : "आप अपनी भूमिका में ट्रक और पोस्ट लोड जोड़ सकते हैं। यदि आपके पास शिप करने के लिए लोड है तो कृपया 'ट्रकों की तलाश' चुनें या यदि आपके पास संलग्न करने के लिए ट्रक हैं तो 'लोड्स की तलाश करें' चुनें",
+   "Add Truks" : "प्रयुक्त ट्रक",
+   "Post Load":"पोस्ट लोड",
+   "Near By Truks":"ट्रकों के पास",
+   "LCV":"एलसीवी",
+   "3.5-7 Tonnes":"3.5-7 टन",
+   "Open Truk":"ट्रुक खोलें",
+   "10-21 Tonnes":"10-21 टन",
+   "Container":"पात्र",
+   "1-6 Tonnes":"1-6 टन",
+   "Trailer":"ट्रेलर",
+   "How to use Truk app":"ट्रूक ऐप का इस्तेमाल कैसे करें",
+
+
+
+   "Shipper Place Bid":"शिपर प्लेस बोली",
+   "Bid accepted for":"के लिए बोली स्वीकार की गई",
+   "Negotiate the bid rate or accept and proceed with the transactiom":"बोली दर पर बातचीत करें या स्वीकार करें और लेन-देन के साथ आगे बढ़ें",
+
+
+
+
+   "SignUp":"साइन अप करें",
+   "Registering As" : "के रूप में पंजीकरण",
+   "Company":"कंपनी",
+   "Add Your Vehicle Routes (States)":"अपने वाहन मार्ग जोड़ें (राज्य)",
+   "Enter Company Address":"कंपनी का पता दर्ज करें",
+   "Enter company Name":"कंपनी का नाम दर्ज करें",
+   "Enter MobileNumber":"मोबाइल नंबर दर्ज करें",
+   "Enter Referal Code(Optional)":"रेफरल कोड दर्ज करें (वैकल्पिक)",
+   "About Your Company(Optional)":"आपकी कंपनी के बारे में (वैकल्पिक)",
+   "SIGN UP" : "SIGN UP",
+
+
+
+   "Rate Us":"हमें रेटिंग दें",
+   "Staring":"घूर",
+   "Close":"बंद करना",
+   "You can submit the rating on play store":"आप प्ले स्टोर पर रेटिंग सबमिट कर सकते हैं",
+   "Rate us play Store":"हमें प्ले स्टोर रेट करें",
+
+
+   "Deactivated":"निष्क्रिय",
+   "Search" :"खोज",
+   "Post your load to get suitable bids":"उपयुक्त बोली प्राप्त करने के लिए अपना लोड पोस्ट करें",
+
+
+
+
+   "No loads have been posted yet...!":"अभी तक कोई लोड पोस्ट नहीं किया गया है...!" ,
+
+
+
+
+   "Pay":"भुगतान करना",
+   "Click Me":"मुझे क्लिक करें",
+   "Latitude":"अक्षांश",
+   "Longitude":"देशान्तर",
+   "Enter city name":"शहर का नाम दर्ज करें",
+   "popup":"पॉप अप",
+
+
+   "Select Pick-up Location":"पिक-अप स्थान का चयन करें",
+   "Andhra Pradesh":"आंध्र प्रदेश",
+   "Arunachal Pradesh":"अरुणाचल प्रदेश",
+   "Assam":"असम",
+   "Bihar":"बिहार",
+   "Chhattisgarh":"छत्तीसगढ",
+   "Goa":"गोवा",
+   "Gujarat":"गुजरात",
+   "Haryana":"हरयाणा",
+   "Himachal Pradesh":"हिमाचल प्रदेश",
+   "Jharkhand":"झारखंड",
+   "Karnataka":"कर्नाटक",
+   "Kerala":"केरल",
+   "Madhya Pradesh":"मध्य प्रदेश",
+   "Maharashtra":"महाराष्ट्र",
+   "Manipur":"मणिपुर",
+   "Meghalaya":"मेघालय",
+   "Mizoram":"मिजोरम",
+   "Nagaland":"नगालैंड",
+   "Odisha":"ओडिशा",
+   "Punjab":"पंजाब",
+   "Rajasthan":"राजस्थान",
+   "Sikkim":"सिक्किम",
+   "Tamil Nadu":"तमिलनाडु",
+   "Telangana":"तेलंगाना",
+   "Tripura":"त्रिपुरा",
+   "Uttar Pradesh":"उतार प्रदेश",
+   "Uttarakhand":"उत्तराखंड",
+   "West Bengal":"पश्चिम बंगाल",
+   "Select Drop Loaction":"ड्रॉप लोएक्शन का चयन करें",
+   "Filter by Vehicle Type":"वाहन के प्रकार द्वारा फ़िल्टर करें",
+   "All Vehicles":"सभी वाहन",
+   "1-8 Tonnes":"1-8 टन",
+   "Truk":"ट्रुक",
+   "1-42 Tonnes":"1-42 टन",
+   "Hyva":"हाइवा",
+   "1-35 Tonnes":"1-35 टन",
+   "1-18 Tonnes":"1-18 टन",
+   "1-100 Tonnes":"1-100 टन",
+   "Tanker":"टैंकर",
+   "Attach Load":"भार संलग्न करें",
+   "Existing Load":"मौजूदा भार",
+   "No Truks Avaliable!":"कोई ट्रक उपलब्ध नहीं है!",
+
+
+
+
+   "My Loads":"मेरा भार",
+   "Load Market":"लोड मार्केट",
+   "My Truks":"मेरा ट्रक",
+   "Truk Market":"ट्रुक मार्केट",
+   "Previous Loads":"पिछला भार",
+
+
+
+   
+   "Truck View Bid":"ट्रक देखें बोली",
+   "Details":"विवरण",
+   "Price":"कीमत",
+   "You Approved for":"आपने इसके लिए स्वीकृति दी",
+   "Shipper Accepted for":"शिपर के लिए स्वीकृत",
+   "Bid is accepted, please Share Your Contact Details":"बोली स्वीकार की जाती है, कृपया अपना संपर्क विवरण साझा करें",
+   "InitialBid":"प्रारंभिक बोली",
+
+
+
+   "EditTruk":"ट्रूक संपादित करें",
+   "choose one TrukVehicle":"एक ट्रक वाहन चुनें",
+   "1 to 35 KL":"1 से 35 के.एल",
+   "1 to 35 Tonnes":"1 से 35 टन",
+   "1 to 6 Tonnes":"1 से 6 टन",
+   "Open Truck":"खुला ट्रक",
+   "1 to 14 tonnes":"1 से 14 टन",
+   "1 to 100 Tonnes":"1 से 100 टन",
+   "1 to 18 Tonnes":"1 से 18 टन",
+   "Enter the LCV Capacity":"एलसीवी क्षमता दर्ज करें",
+
+
+
+   
+   "Truck all bids":"सभी बोलियों को ट्रक करें",
+   "Finilised":"समाप्त",
+
+
+   "Truk More Details":"ट्रक अधिक जानकारी",
+   "Truk Posted Date":"ट्रक पोस्ट की तारीख",
+   "Truck Routes":"ट्रक मार्ग",
+   "Truk Type":"ट्रक प्रकार",
+   "check your truk details carefully":"अपने ट्रुक विवरण को ध्यान से देखें",
+
+
+
+
+   "Enter the One Time Password send to mobile No linked to":"मोबाइल नंबर से जुड़ा वन टाइम पासवर्ड दर्ज करें",
+
+
+
+
+
+   "Didn't receive OTP?": "ओटीपी नहीं मिला?",
+   "Resend OTP":"ओटीपी पुनः भेजें",
+   "Resend OTP in":"में ओटीपी फिर से भेजें",
+   "seconds":"सेकंड",
+
+
+   "View Bid":"बोली देखें",
+   "Agent/Transporter/Fleet accepted for" : "एजेंट/ट्रांसपोर्टर/बेड़े के लिए स्वीकृत",
+   "You approved for":"आपने के लिए मंजूरी दे दी है",
+   "PAY NOW":"अब भुगतान करें",
+
+
+   "Your Referral Earning":"आपकी रेफ़रल कमाई",
+   "Total Coins Earned":"कुल अर्जित सिक्के",
+   "Coins":"सिक्के",
+   "Note: 1 Coin = ₹ 1":"नोट: 1 सिक्का = ₹ 1",
+   "Withdrawable":"निकासी योग्य",
+   "Withdraw":"निकालना",
+   "Your Refferals":"आपके सिफ़ारिशें",
+   "Withdrawl History":"निकासी इतिहास",
+   "S.No":"क्र.सं",
+   "Name":"नाम",
+   "Phone Number":"फ़ोन नंबर",
+   "Coins Earned":"अर्जित सिक्के",
+   "Coins Requested":"सिक्कों की मांग की",
+   "Add Account Details":"खाता विवरण जोड़ें",
+   "Add Account":"खाता जोड़ें",
+   "OR":"या",
+
+
+
+
+
+   "Your Truck Posted":"आपका ट्रक पोस्ट किया गया",
+   "Add Another Truck":"एक और ट्रक जोड़ें",
+   "Truck Details":"ट्रक विवरण",
+
+
+   "My Profile":"मेरी प्रोफाइल",
+   "Refer & Earn":"देखें और कमाएँ",
+   "Rate-Us":"हमें रेटिंग दें",
+   "Contact-Us":"संपर्क करें",
+   "Terms & Conditions":"नियम एवं शर्तें", 
+   "Log-out":"लॉग आउट"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

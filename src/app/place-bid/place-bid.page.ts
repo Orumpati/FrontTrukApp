@@ -230,7 +230,7 @@ window.location.href='/profile'
     "contactSharedNum":this.regdata.mobileNo,//for inprogress
     Number:this.objects.Number,//for notification who posted the load(Shipper)
     "Name":this.regdata.firstName+this.regdata.lastName,//for notification
-    "mess":"Accepted your Bid for amount"
+    "mess":"Accepted your Bid for amount ₹"
    }
 console.log(body)
   fetch("https://trukapp2023.herokuapp.com/quotes/placeBid", {
@@ -281,7 +281,7 @@ console.log(body)
     "agentInitialBidSend":true,
     "TohideAcceptBtn":true,
     
-    "mess":"placed a Bid To Your Load ,Price:" 
+    "mess":"placed a Bid To Your Load ,Price: ₹" 
   
    }
 
@@ -361,7 +361,7 @@ var data ={
     "TohideAcceptBtn":true,
     Number:this.objects.Number,//for notification
     "Name":this.regdata.firstName+this.regdata.lastName, //for notification
-    "mess":"placed a Bid To Your Load ,Price:" //for notification
+    "mess":"placed a Bid To Your Load ,Price: ₹" //for notification
   
    }
 
@@ -417,7 +417,7 @@ window.location.href='/profile'
     Number:this.objects.Number, // for send notifi
     "Name":this.regdata.firstName + this.regdata.lastName, // for send notifi
     "Bidprice":this.item.tentativefinalPrice, // for send notifi
-    "mess":"Accepted a bid for"
+    "mess":"accepted a bid for ₹"
   
    }
    console.log(body)

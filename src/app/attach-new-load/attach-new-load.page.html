@@ -134,7 +134,7 @@
               <ion-select-option value="Vegetables">Vegetables</ion-select-option>
               <ion-select-option value="Fruits">Fruits</ion-select-option>
               <ion-select-option value="Water">Water</ion-select-option>
-              <ion-select-option value="Petrol/Desiel">Petrol/Desiel</ion-select-option>
+              <ion-select-option value="Petrol/Desiel">Petrol/Diesel</ion-select-option>
               <ion-select-option value="Kerosene">Kerosene</ion-select-option>
               <ion-select-option value="Other Inflammables">Other Inflammables</ion-select-option>
               <ion-select-option value="Construction Materials">Construction Materials</ion-select-option>
@@ -157,7 +157,7 @@
 
         <div class="form-group">
           <div class="form-control" >
-            <ion-label position="floating">Pick-Up Date & Time</ion-label>
+            <ion-label position="floating">Pick-up Date & Time</ion-label>
             <ion-input type="datetime-local" placeholder="Pick-up Date" style="border: none; "
               [(ngModel)]="date"></ion-input>
           </div>
@@ -177,7 +177,7 @@
           box-shadow: 2px 2px 2px lightgray;">
             <span >
               <ion-select placeholder="Type" [(ngModel)]="QuantityType">
-             <ion-select-option value="Tonns">Tonnes</ion-select-option>
+             <ion-select-option value="Tonnes">Tonnes</ion-select-option>
              <ion-select-option value="Kilo Liters">Kilo Liters</ion-select-option>
              </ion-select>
            </span>
@@ -227,7 +227,7 @@
             </div>
       
             <div class="shipperdiv">
-              Hyva (1 to 35 Tons)
+              Hyva (1 to 35 Tonnes)
             </div>
           </label>
         
@@ -244,7 +244,7 @@
             </div>
       
             <div class="shipperdiv">
-              LCV (1 to 6 Tons)
+              LCV (1 to 6 Tonnes)
             </div>
           </label>
         
@@ -258,7 +258,7 @@
             </div>
       
             <div class="shipperdiv">
-              Truk (1 to 14 Tons)
+              Truk (1 to 14 Tonnes)
             </div>
           </label>
         
@@ -272,7 +272,7 @@
             </div>
       
             <div class="shipperdiv">
-              Trailer (1 to 52 Tons)
+              Trailer (1 to 52 Tonnes)
             </div>
           </label>
         
@@ -286,7 +286,7 @@
             </div>
       
             <div class="shipperdiv">
-              Container (1 to 45 Tons)
+              Container (1 to 45 Tonnes)
             </div>
           </label>
         
@@ -321,7 +321,7 @@
           </ion-card>
   
           <ion-card style="height: auto; width:340px;" *ngIf="data =='Trailer'">
-            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Trailer type:</ion-card-title>
             <br>
             <div class="flex" [(ngModel)]="typeOfTrailer">
               <input type="radio" id="1" name="hyva" class="typeOfVehicle" (change)="trailer('High Bed')"/>
@@ -362,7 +362,7 @@
             </div>
           </ion-card>
           <ion-card style="height: auto;width:340px;" *ngIf="data =='Tanker'">
-            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type</ion-card-title>
+            <ion-card-title style="font-size: 19px;margin-top:6px;">Select the Tanker type:</ion-card-title>
             <br>
             <div  [(ngModel)]="typeofTanker">
               <input type="radio" id="1" name="hyva" value="Metal steel" class="typeOfVehicle" (change)="Tanker('Metal steel')"/>

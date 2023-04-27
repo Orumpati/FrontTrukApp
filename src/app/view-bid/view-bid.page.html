@@ -51,7 +51,7 @@
        <ion-col size="8" offset="3" *ngIf="text.userNo==regdata.mobileNo" class=" my-message">
 
         <b text-left style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-        <b text-left style="font-size: 15px;">Price:₹{{text.price}}</b>
+        <b text-left style="font-size: 15px;">Price: ₹{{text.price}}</b>
         <div class="time" style="color: black;" text-right><br>
           {{text.time | date:'short'}}
         </div>
@@ -60,11 +60,11 @@
 
       <ion-col size="8" *ngIf="text.userNo!== regdata.mobileNo" class=" other-message">
 <div *ngIf="text.initialAccept === 'Accepted'">
-      <h3>Bid accepted for : {{text.price}}</h3>
+      <h3>Bid accepted for : ₹{{text.price}}</h3>
     </div>
     <div [hidden]="text.initialAccept === 'Accepted'" >
       <b style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>
-      <b style="font-size: 15px;">Price:₹{{text.price}}</b>
+      <b style="font-size: 15px;">Price: ₹{{text.price}}</b>
       <div class="time" text-right><br>
         {{text.time | date:'short'}}
       </div>
