@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
     GetStartedPageRoutingModule,
     TranslateModule
   ],
-  declarations: [GetStartedPage]
+  declarations: [GetStartedPage],
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GetStartedPageModule {}

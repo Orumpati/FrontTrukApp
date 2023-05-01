@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateConfigService } from 'src/app/translate-config.service';
 import { TranslateService } from '@ngx-translate/core';
+import { IonicSlides } from '@ionic/angular';
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.page.html',
   styleUrls: ['./get-started.page.scss'],
 })
 export class GetStartedPage implements OnInit {
+  @ViewChild(IonicSlides)
+  slides!: typeof IonicSlides;
   // set app banner slides
   slideOpts = {
    initialSlide: 0,

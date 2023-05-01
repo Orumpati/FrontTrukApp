@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonicSlides } from '@ionic/angular';
 import { reload } from 'firebase/auth';
 import { LoadingController } from '@ionic/angular';
 import { NavigationEnd, Router } from '@angular/router';
@@ -22,6 +22,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./shipperhome.page.scss'],
 })
 export class ShipperhomePage implements OnInit {
+  @ViewChild(IonicSlides)
+  slides!: typeof IonicSlides;
   @ViewChild("videoPlayer", { static: false }) videoplayer!: ElementRef;
   isPlay: boolean = false;
 

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonSlides } from '@ionic/angular';
+
 import { IonicModule } from '@ionic/angular';
 //import { ChangelookforComponent } from '../changelookfor/changelookfor.component';
 import { ShipperhomePageRoutingModule } from './shipperhome-routing.module';
@@ -21,6 +21,7 @@ import { TranslateModule } from '@ngx-translate/core';
     //HttpClient
 
   ],
-  declarations: [ShipperhomePage]
+  declarations: [ShipperhomePage],
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ShipperhomePageModule {}

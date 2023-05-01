@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import  {FormsModule} from '@angular/forms';
@@ -49,6 +49,7 @@ import { ViewvideoPage } from './viewvideo/viewvideo.page';
   declarations: [AppComponent, CapitalizeDirective, ViewshipperconPipe, 
    // HasRoleDirective
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [ViewvideoPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,provideFirebaseApp(() => initializeApp(environment.firebase)), provideStorage(() => getStorage()), provideFirestore(() => getFirestore()),
     TranslateModule.forRoot({

@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { IonSlides, LoadingController } from '@ionic/angular';
+import { IonicSlides, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.page.html',
@@ -12,8 +12,8 @@ import { IonSlides, LoadingController } from '@ionic/angular';
 export class EditPagePage implements OnInit {
 
  
-  @ViewChild(IonSlides)
-  slides!: IonSlides;
+  @ViewChild(IonicSlides)
+  slides!: typeof IonicSlides;
   data: any;
   item: any = [];
 
@@ -126,13 +126,13 @@ export class EditPagePage implements OnInit {
   }
   
 
-  slidePrev() {
-    this.slides.slidePrev();
-  }
+  // slidePrev() {
+  //   this.slides.slidePrev();
+  // }
 
-  slideNext() {
-    this.slides.slideNext();
-  }
+  // slideNext() {
+  //   this.slides.slideNext();
+  // }
 
 
  

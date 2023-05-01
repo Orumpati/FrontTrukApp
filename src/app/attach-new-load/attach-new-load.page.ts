@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 declare var google :any;
-import { IonSlides } from '@ionic/angular';
+import { IonicSlides,IonSlides } from '@ionic/angular';
 import { TranslateConfigService } from 'src/app/translate-config.service';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
@@ -11,7 +11,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AttachNewLoadPage implements OnInit {
   @ViewChild(IonSlides)
-  slides!: IonSlides;
+  //slides!: typeof IonicSlides;
+  //@ViewChild('slides', { static: false })
+   slides!:  IonSlides;
   @ViewChild('map', { static: false }) mapElement: any;
   tonnes: any;
   product: any;

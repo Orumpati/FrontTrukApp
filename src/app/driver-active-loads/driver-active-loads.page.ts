@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, IonSlides, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-driver-active-loads',
   templateUrl: './driver-active-loads.page.html',

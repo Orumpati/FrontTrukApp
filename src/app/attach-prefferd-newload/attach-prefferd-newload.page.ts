@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 declare var google :any;
 import { TranslateConfigService } from 'src/app/translate-config.service';
 import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-attach-prefferd-newload',
   templateUrl: './attach-prefferd-newload.page.html',
@@ -11,8 +12,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AttachPrefferdNewloadPage implements OnInit {
 
+  // @ViewChild(IonSlides)
+  // slides!: typeof IonSlides;
+
   @ViewChild(IonSlides)
-  slides!: IonSlides;
+  //slides!: typeof IonicSlides;
+  //@ViewChild('slides', { static: false })
+   slides!:  IonSlides;
   @ViewChild('map', { static: false }) mapElement: any;
   tonnes: any;
   product: any;
