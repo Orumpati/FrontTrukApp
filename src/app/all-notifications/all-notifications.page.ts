@@ -72,4 +72,8 @@ goback(){
     this.router.navigate(['tab/tab2'])
   }
 }
+clearNotifications(){
+  localStorage.removeItem('InappNotifictions')
+  this.allNotifications = JSON.parse(localStorage.getItem('InappNotifictions') ||'null')
+}
 }

@@ -41,10 +41,15 @@ import { ViewshipperconPipe } from './viewshippercon.pipe';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
+import { ViewvideoPage } from './viewvideo/viewvideo.page';
 @NgModule({
   declarations: [AppComponent, CapitalizeDirective, ViewshipperconPipe, 
    // HasRoleDirective
   ],
+  entryComponents: [ViewvideoPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,Ng2SearchPipeModule,HttpClientModule,provideFirebaseApp(() => initializeApp(environment.firebase)), provideStorage(() => getStorage()), provideFirestore(() => getFirestore()),
     TranslateModule.forRoot({
       loader: {
@@ -56,8 +61,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FormsModule,CommonModule,ReactiveFormsModule,HttpClient,SocialSharing,Clipboard,
-    
+    VideoPlayer,
   File,
+  InAppBrowser,
   Camera,
   UniqueDeviceID,
   AndroidPermissions,

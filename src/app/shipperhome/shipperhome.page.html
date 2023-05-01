@@ -9,9 +9,27 @@
         <ion-img src="assets/trueTruk.png"></ion-img>
        </div>
        </div>
+    
+  
+
+    
        <ion-icon name="notifications-outline" style=" margin-top: 7px; font-size: 30px; margin-left: -3px;" slot="end" routerLink="/all-notifications"></ion-icon>
   </ion-toolbar>
 </ion-header>
+<!-- <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  language
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" (click)="languages('en')">English</a></li>
+    <li><a class="dropdown-item" (click)="languages('hi')">Hindi</a></li>
+    
+  </ul>
+</div>  -->
+
+
+
+ 
  <div style="height:60px; border-radius:11px;" [hidden]="logindata.role === 'Shipper' || logindata.role === 'Fleet Owner' || logindata.userRole == 'Driver'">
   <div style="display: flex; margin-top:19px;" align="center">
 
@@ -33,8 +51,23 @@
 
 </div> 
  
-<ion-content>
-
+<ion-content><br>
+  <div style="display: flex; margin-left:100px;">
+  <ion-label>Change Language</ion-label>:&nbsp;
+  <div class="dropdown"   >
+    <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      D
+    </button>-->
+    <!-- <i class="bx bx-dots-horizontal-rounded" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;" ></i> -->
+    <i name="language-outline"  class="fa fa-language"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 20px;"></i>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <!-- <a class="dropdown-item" routerLink="/truk-edit-page" (click)="SendData(text)" >Edit</a> -->
+      <a class="dropdown-item" (click)="languages('en')" >English</a>
+      <a class="dropdown-item"  (click)="languages('hi')">Hindi</a>
+    </div>
+  </div>
+</div>
+ 
   
   
   <ion-refresher slot="fixed" (ionRefresh)="autorefresh($event)">
@@ -165,11 +198,15 @@
     <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
   </ion-slide>
   <ion-slide >  
-    <img class="banner-image" src={{trukbanner}}/>
+    <img class="banner-image" routerLink="/add-truck" [hidden]="logindata.role == 'shipper'" src={{trukroad}}/>
     <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
   </ion-slide>
   <ion-slide >  
-    <img class="banner-image" src={{trukbanner}}/>
+    <img class="banner-image" *ngIf="logindata.aadharVerify =='notVerified' || logindata.gstVerify == 'notVerified'" routerLink="/profile" src={{kycbanner}}/>
+    <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
+  </ion-slide>
+  <ion-slide >  
+    <img class="banner-image" src={{goodsbanner}}/>
     <!-- <button style="position:absolute; margin-top:125px; padding:7px;border-radius:10px; background-color:orange;" routerLink="/attach-new-load">Post Load</button> -->
   </ion-slide>
   <ion-slide >  
@@ -246,15 +283,53 @@
   </ion-slide>
 </ion-slides>
 </div>
-&nbsp;&nbsp;&nbsp;<h4>{{"TruKApp"|translate}} {{"Tutorials" |translate}}</h4>
-<div class="about">
-  <div class="aboutimage">
-<img src="assets/trueTruk.png">
+<h4 style="margin-left: 10px;" >{{"TruKApp"|translate}} {{"Tutorials" |translate}}</h4>
+
+<div class="about" (click)=" postaload()">
+  <div class="aboutimage" >
+<img src="assets/trueTruk.png" >
   </div>
-  <div>{{"How to use Truk app"|translate}}</div>
+  <div style="margin-top: 15px;" class="blink">{{"How to post load in TruKApp"|translate}}</div>
+
+</div>
+<div class="about" (click)="playVideo()">
+  <div class="aboutimage" >
+<img src="assets/trueTruk.png" >
+  </div>
+  <div style="margin-top: 15px;" class="blink">{{"How to Place Bid in TruKApp"|translate}}</div>
+
+</div>
+<div class="about" (click)="addtruk()">
+  <div class="aboutimage" >
+<img src="assets/trueTruk.png" >
+  </div>
+  <div style="margin-top: 15px;" class="blink">{{"How to add Truck in TruKApp"|translate}}</div>
 
 </div>
 
+ <!--<p style="font-size: 18px;font-weight:bolder;color:orange;"><u (click)=" postaload()">How to post load in TruKApp</u>:-</p>
+ <div class="video" style="margin-bottom: 140px;">
+	<video controls (click)="toggleVideo()" #videoPlayer width="390px" height="167px">
+		<source src="/assets/how to post a load.mp4" type="video/mp4" />
+		Browser not supported
+	</video>
+</div> -->
+
+<!--<p style="font-size: 18px;font-weight:bolder;color:orange;"><u (click)="playVideo()">How to Place Bid in TruKApp</u>:-</p>
+<!-- <div class="video" style="margin-bottom: 140px;">
+	<video controls (click)="toggleVideo()" #videoPlayer width="390px" height="167px">
+		<source src="/assets/how to place bid.mp4" type="video/mp4" />
+		Browser not supported
+	</video>
+</div><br> -->
+
+<!--<p style="font-size: 18px;font-weight:bolder;color:orange;"><u (click)="addtruk()" >How to add Truck in TruKApp</u>:-</p>
+<!-- <div class="video">
+	<video controls (click)="toggleVideo()" #videoPlayer width="390px" height="167px">
+		<source src="/assets/how to add truk.mp4" type="video/mp4" />
+		Browser not supported
+	</video>
+</div> -->
 <ion-modal #modal [isOpen]="openbanner">
   <ng-template>
     <ion-content>

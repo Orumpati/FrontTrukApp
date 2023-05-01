@@ -5,6 +5,8 @@ import OneSignal from 'onesignal-cordova-plugin';
 //import {OneSignal} from '@ionic-native/onesignal'
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +19,12 @@ export class AppComponent {
   AllNotifications: any[] = [];
   Items: any;
   logindata: any;
-  constructor(private platform: Platform,private uniqueDeviceID: UniqueDeviceID) {
+  language: any;
+  lang: any;
+  constructor(private platform: Platform,private uniqueDeviceID: UniqueDeviceID, private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+    
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
 this. getUniqueDeviceID()
     platform.ready().then(() => {
       this.OneSignalInit();
@@ -33,6 +40,8 @@ this. getUniqueDeviceID()
 this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
   }
   ngOnInit(): void {
+    this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+    this.translateConfigService.setLanguage(this.lang);
     this.logindata =JSON.parse(localStorage.getItem('regdata') || '{}')
     console.log(this.logindata)
   }

@@ -39,6 +39,7 @@ export class Tab4Page implements OnInit {
   logindata: any;
   language:any;
   lang: any;
+  activeVeh: any;
 
   constructor(private router:Router, private toastController: ToastController,public loadingController: LoadingController,private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
 
@@ -244,8 +245,12 @@ loading.dismiss()
       .then(response => response.json())
       .then(result => {
         console.log(result),
-        this.itemlen =result.TotalProducts
-          this.item = result.Load
+       
+          this.activeVeh = result.Load
+          this.item = this.activeVeh.filter((data: { trukisActive: any; }) =>{
+            return data.trukisActive == 'Active'
+          })
+          this.itemlen =result.item.length
         console.log(this.item)
       }
 

@@ -108,7 +108,7 @@
                           <span class="badge badge-soft-success mb-0"> {{"Posted On"|translate}} {{text.date}}</span>
                       </div>
                   </div>
-                
+                  <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.LoadId}}</p>
                       <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
                       <p  class="text-muted mb-0 mt-2 mr-3">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                       <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Expected Price"|translate}} ₹ <span style="color:black; font-weight:bolder;">{{text.expectedPrice}}/-</span></p>
@@ -157,17 +157,12 @@
           <div *ngIf="item.length ==0" style="text-align: center;">
            
             <img src="https://5.imimg.com/data5/SF/YX/MY-2496828/carton-corrugated-box-500x500.jpg"
-<<<<<<< HEAD
-              style="height: 70px; width: 70px;margin-top: 200px;">
-            <h3 style="text-align: center;">No loads have been posted yet...!</h3>
-=======
-            style="height: 70px; width: 70px; display: block;
+            style="height: 70px; width: 70px; display: block;margin-top:200px;
             margin-left: auto;
             margin-right: auto;
             border-radius: 70%;
           " >
             <h3 style="text-align: center;">{{"No loads have been posted yet...!"|translate}}</h3>
->>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
           </div>
           <!-- <br>
           <h3 align="center">Post load to book live loads and use directory</h3>

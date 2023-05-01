@@ -60,11 +60,7 @@
 
       <ion-col size="8" *ngIf="text.userNo!== regdata.mobileNo" class=" other-message">
 <div *ngIf="text.initialAccept === 'Accepted'">
-<<<<<<< HEAD
-      <h3>Bid accepted for : ₹{{text.price}}</h3>
-=======
-      <h3>{{"Bid accepted for :"|translate}} {{text.price}}</h3>
->>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
+      <h3>{{"Bid accepted for :"|translate}} ₹{{text.price}}</h3>
     </div>
     <div [hidden]="text.initialAccept === 'Accepted'" >
       <b style="font-size: 12px;">{{text.UserName}}({{text.userType}})</b><br>

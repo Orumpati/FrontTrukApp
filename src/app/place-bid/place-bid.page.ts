@@ -203,7 +203,12 @@ saicode(){
         console.log(err))
   }
   
+  truckUser(index:any){
+    console.log(index)
+//this.truckUser = this.final.quoteBid.truckUser
+return index
 
+  }
 
 
 

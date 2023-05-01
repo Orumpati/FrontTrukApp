@@ -64,8 +64,9 @@ otp:any
     },
   };
   ngOnInit() {
-    this.spin=false
+   
   this.logindata=  JSON.parse(localStorage.getItem('regdata')|| '{}')
+  this.spin=false
   this.lang = JSON.parse(localStorage.getItem('language')||'{}')
   this.translateConfigService.setLanguage(this.lang);
   console.log(this.logindata)
@@ -125,9 +126,7 @@ otp:any
     };
     
   }
-  ionViewDidEnter(){
-    this.getaddressdetails()
-  }
+
   onOtpChange(otp: string) {
     this.otp = otp;
   }
@@ -265,7 +264,7 @@ alert('Enter Valid Aadhaar Number')
                 async result =>{
              console.log(result)
              if(result.success  == true){
-          this.gstdata = result.data
+        this.gstdata = result.data
               loading.dismiss()
               this.aadharverifystatus()
             
@@ -301,7 +300,7 @@ alert('Enter Valid Aadhaar Number')
 
   async getaddressdetails(){
     const loading = await this.loadingController.create({
-      message: 'Verifying...',
+      message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
@@ -346,7 +345,7 @@ loading.dismiss()
   //addroutes
   async addroutes(){
     const loading = await this.loadingController.create({
-      message: 'Verifying...',
+      message: 'Loading...',
       spinner: 'crescent'
     });
     await loading.present();
@@ -483,7 +482,7 @@ loading.dismiss()
        localStorage.setItem('regdata',JSON.stringify(this.logindata))
        this.gstdetails()
       loading.dismiss()
-      window.location.href='/profile'
+      //window.location.href='/profile'
       
     
       }
@@ -509,10 +508,11 @@ loading.dismiss()
     });
     await loading.present();
 var body ={
-  gstDetails:this.gstdata
+  gstDetails:this.gstdata,
+  _id:this.logindata.Authentication
 }
-    
-    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/gstDetails/" + this.logindata.Authentication, {
+    console.log(body)
+    fetch("https://trukapp2023.herokuapp.com/TruckAppUsers/gstDetails", {
       
       method:'post',
       headers:{
@@ -527,7 +527,7 @@ var body ={
      
          console.log(result)
          loading.dismiss()
-
+window.location.href='/profile'
 
      
         }

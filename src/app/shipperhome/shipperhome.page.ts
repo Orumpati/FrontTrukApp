@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { reload } from 'firebase/auth';
 import { LoadingController } from '@ionic/angular';
@@ -9,16 +9,22 @@ import { NavigationEnd, Router } from '@angular/router';
 import { TranslateConfigService } from 'src/app/translate-config.service';
 import { TranslateService } from '@ngx-translate/core';
 
-
-
-
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
+import { ModalController } from '@ionic/angular';
+import { ViewvideoPage } from '../viewvideo/viewvideo.page';
 import { ActionSheetController } from '@ionic/angular';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @Component({
   selector: 'app-shipperhome',
   templateUrl: './shipperhome.page.html',
   styleUrls: ['./shipperhome.page.scss'],
 })
 export class ShipperhomePage implements OnInit {
+  @ViewChild("videoPlayer", { static: false }) videoplayer!: ElementRef;
+  isPlay: boolean = false;
+
   bannerImages:any
   slide:any
   adsarray:any=[]
@@ -31,7 +37,7 @@ export class ShipperhomePage implements OnInit {
     slidesPerView: 5
   }
    verticalSlide = {
-    initialSlide: 0,
+    initialSlide: 1,
     direction: 'vertical',
     slidesPerView: 1.5,
   }
@@ -44,7 +50,8 @@ slideOpts = {
   
   autoplay: {
     delay: 1900,
-    disableOnInteraction: false,
+    disableOnInteraction:false,
+    
   }
 };
 
@@ -71,12 +78,18 @@ option = {
   trukbanner: any;
   truklogo: any;
   language: any;
+  kycbanner: any;
+  goodsbanner: any;
+  trukroad: any;
+  videoUrl = 'https://drive.google.com/file/d/1IIjLukVaLGmlY3_OMvNXZbQFRB70NS8m/view?usp=drivesdk/preview';
+  postload ='https://drive.google.com/file/d/1HSL5XgNk_6NRs5GLXilQ6EeB7Yh3YT9V/view?usp=drivesdk/preview'
+  addyourtruk ='https://drive.google.com/file/d/1I4EaZ6i-HS9fTWYkHqXx6oNL3EJkNOZ_/view?usp=drivesdk/preview'
   constructor(public loadingController: LoadingController,private router:Router  ,  
     
-    private translateConfigService: TranslateConfigService, private translate: TranslateService,
+    private translateConfigService: TranslateConfigService, private translate: TranslateService,private inAppBrowser: InAppBrowser,
     
     
-    public actionSheetController: ActionSheetController
+    public actionSheetController: ActionSheetController,private videoPlayer: VideoPlayer, public modalCtrl: ModalController
     ) { 
 
 
@@ -110,7 +123,27 @@ option = {
     this. databaseimgs()
     this.changeLanguage()    
   }
- 
+  toggleVideo() {
+    this.videoplayer.nativeElement.play();
+  }
+
+  
+  playVideo() {
+    this.inAppBrowser.create(this.videoUrl, '_system');
+  }
+  postaload() {
+    this.inAppBrowser.create(this.postload, '_system');
+  }
+  addtruk() {
+    this.inAppBrowser.create(this.addyourtruk, '_system');
+  }
+  playVideoHosted() {
+    this.videoPlayer.play('https://youtu.be/UT4WF5ajiVs').then(() => {
+      console.log('video completed');
+    }).catch(err => {
+      console.log(err);
+    });
+  }
   modalorp(){
     this.openbanner =!this.openbanner;
     
@@ -141,6 +174,9 @@ option = {
         this.referbanner=result.data[i].Referbanner
         this.trukbanner=result.data[i].Trukbanner
         this.truklogo=result.data[i].truklogo
+        this.kycbanner=result.data[i].kycbanner
+        this.goodsbanner =result.data[i].goodsbanner
+        this.trukroad =result.data[i].trukroad
         this.adsarray=result.data[i]
         console.log(this.adsarray)
        }
@@ -204,7 +240,19 @@ window.location.reload()
     window.location.reload()
 //this.router.navigate('shipperhome')
   }
+  languages(language:any){
+    if(language == 'en'){
+      alert("Language will change to English")
+    
+      localStorage.setItem('language',JSON.stringify(language))
+      window.location.reload()
+    }else{
+      alert("language will change to Hindi")
+      localStorage.setItem('language',JSON.stringify(language))
+      window.location.reload()
+    }
 
+  }
   gettrucks() {
     fetch("https://trukapp2023.herokuapp.com/addTruk/allVehicles/" +this.logindata.mobileNo, {
       method: 'GET',

@@ -9,7 +9,9 @@
         border-radius: 9px;
         margin-right: 4px;
     }
-
+.video{
+    height: 50px;
+}
 
 .lower-box{
     margin-bottom: 13px;
@@ -89,21 +91,35 @@ ion-slides{
 .swiper-slide {
     transition: 400ms all ease-in-out;
 }*/
-
+.slider-pager { display:none; }
 .about{
-    width: 200px;
+    display: flex;
+    width: auto;
     height: 60px;
+
     border-radius: 9px;
     border: 2px solid green;
-    display: flex;
+   
+    margin: 10px;
 }
 .aboutimage{
     width: 100px;
     height: 50px;
     //border: 2px solid red;
     margin-right: 14px;
-    margin-top: 17px;
+    margin-top: 15px;
 }
+
+// .blink {
+//     animation: blinker 8.5s linear infinite;
+//     color:orange;
+//     font-family: sans-serif;
+// }
+// @keyframes blinker {
+//     50% {
+//         opacity: 0;
+//     }
+// }
 ion-button{
     
     --background: orange;
@@ -111,7 +127,7 @@ ion-button{
 }
 
 ion-modal {
-    --height: 55%;
+    --height: 56%;
     --width:80%;
     --border-radius: 16px;
     --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

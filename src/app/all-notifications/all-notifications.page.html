@@ -8,23 +8,25 @@
 </ion-header>
 
 <ion-content >
+  <ion-button style="float: right;" class="button" (click)="clearNotifications()">ClearAll</ion-button>
  <div *ngIf="allNotifications" >
   <ion-list>
     <ion-item *ngFor="let item of allNotifications ">
-      <img src="{{logo}}" style="width: 20px; height:20px;border-radius:5px;">
+      <!-- <img src="{{logo}}" style="width: 20px; height:20px;border-radius:5px;"> -->
+      <ion-icon slot="start" name="notifications-outline"></ion-icon>
     
       <ion-label>
         <h2>{{"New message"|translate}}</h2>
         <p> {{ item }} </p>
-        <div class="time" text-right>
+        <!-- <div class="time" text-right>
           {{getTimeStamp()}}
-        </div>
+        </div> -->
       </ion-label>
     </ion-item>
     </ion-list>
     </div>
     
     <div *ngIf="!allNotifications">
-<h1 style="text-align: center;margin-top:300px;">{{"No Notifications"|translate}}</h1>
+    <h1 style="text-align: center;margin-top:300px;">{{"No Notifications"|translate}}</h1>
     </div>
 </ion-content>

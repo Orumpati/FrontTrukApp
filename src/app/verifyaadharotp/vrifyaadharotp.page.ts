@@ -143,9 +143,13 @@ config = {
          alert('Aadhaar verified')
 
 
-       if(this.logindata.signupReferalCode !=null || this.logindata.signupReferalCode !=''){
+       if(this.logindata.signupReferalCode ==null || this.logindata.signupReferalCode ==''){
+        alert('You dont not have refferal code')
+        window.location.href='/profile'
+       }else{
         this.getdetailsofreffere()
        }
+      
         loading.dismiss()
         //window.location.href='/profile'
         this.router.navigate(['profile'])

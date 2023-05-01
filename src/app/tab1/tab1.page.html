@@ -4,7 +4,7 @@
       <ion-menu-button  menu="main-menu"></ion-menu-button>
     </ion-buttons>
    
-    <div align="center">
+    <div align="center">  
     <div style=" display:flex; justify-content:center;align-items:center;text-align:center; width:150px; height:60px;">
       <ion-img src="assets/trueTruk.png"></ion-img>
      </div>
@@ -125,26 +125,21 @@
                           &nbsp;&nbsp;<span *ngIf="text.isActive === 'Active'" style="color: black; font-weight:bolder;">{{text.isActive}}</span><span *ngIf="text.isActive === 'Deactive'"  style="color: rgb(245, 26, 26); font-weight:bolder;">{{text.isActive}}</span>
                           <span *ngIf="text.isActive === 'Completed'"  style="color: rgb(14, 232, 101); font-weight:bolder; font-size:13px;">{{text.isActive}}</span>
                           <!-- <span *ngIf="text.shipperAccept === true && text.shareContact == false"  style="color: orange; font-weight:bolder; font-size:14px;">In Progress</span> -->
-                          <br>
+                          
                       
-                        </div>
-                        <div class="flex-1 ms-3" style="margin-top: -25px;overflow-y: scroll;">
+                        </div>&nbsp;
+                        <div class="flex-1" style="margin-top: -25px;overflow-y: scroll;">
                             <span class="font-size-16 mb-1" style="color:black; font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small; color:black; font-weight:bold;"><ion-icon name="location-sharp" color="danger"></ion-icon>{{text.OriginLocation}}</a></span><br>
                             <span class="font-size-16 mb-1" style=" font-weight:bolder;white-space: nowrap;"><a  class="text-dark" style="font-size: small;  font-weight:bold;"><ion-icon name="location-sharp"  style="color: green;"></ion-icon>{{text.DestinationLocation}}</a></span><br>
                             <span class="badge badge-soft-success mb-0"> {{"PickUp Date&Time"|translate}} {{text.date}}</span>
                         </div>
                     </div>
                     <div class="mt-1 pt-1">
+                      <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.LoadId}}</p>
                         <p  class="text-muted mb-0 mt-2"  ><i class="fa fa-cubes font-size-15 align-middle pe-2 " ></i> {{text.product}}</p>
-<<<<<<< HEAD
                         <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>  {{text.Quantity}}--{{text.data}}</p>
-                        <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Expected Price ₹<span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
-                        <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  Advance  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
-=======
-                        <p  class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-truck font-size-15 align-middle pe-2 "></i>{{text.Quantity}}--{{text.data}}</p>
                         <p class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i> {{"Expected Price"|translate}} ₹<span style="color:black; font-weight:bolder;">{{text.expectedPrice}}</span></p>
                         <p [hidden]="text.advance == null" class="text-muted mb-0 mt-2">&nbsp;<i class="fa fa-money font-size-15 align-middle pe-2 "></i>  {{"Advance"|translate}}  ₹<span style="color:black; font-weight:bolder;">{{text.advance}}</span></p>
->>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
             
                     </div>
                     <div style="display:flex; " >

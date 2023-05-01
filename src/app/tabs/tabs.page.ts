@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TranslateConfigService } from 'src/app/translate-config.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -15,9 +17,19 @@ loads:any
 fleet:any
   agents: any;
   type: any;
-  constructor() {}
+  language: any;
+  lang: any;
+  constructor(   private translateConfigService: TranslateConfigService, private translate: TranslateService,) {
+
+    
+
+    this.translateConfigService.getDefaultLanguage();
+    this.language = this.translateConfigService.getCurrentLang();
+  }
   ngOnInit(): void {
   var role=  JSON.parse( localStorage.getItem('regdata') || "{}")
+  this.lang = JSON.parse(localStorage.getItem('language')||'{}')
+  this.translateConfigService.setLanguage(this.lang);
   this.role =role.role
   this.type =role.userRole
   this.lookingfor =  JSON.parse( localStorage.getItem('lookingfor') || "{}")

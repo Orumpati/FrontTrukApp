@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-menu-button  menu="main-menu"></ion-menu-button>
+    </ion-buttons>
     <div align="center">
       <div style=" display:flex; justify-content:center;align-items:center;text-align:center;  width:150px; height:60px;">
         <ion-img  src="assets/trueTruk.png"></ion-img>
@@ -155,13 +158,9 @@
 
 <ion-content *ngIf="itemlen ==0" class="noitem">
   <div>
-<<<<<<< HEAD
-    <img src="/assets/notruks.png"  class="ddd"/>
-    <h3>Post Your Vehicle</h3>
-=======
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROYIDHG7JivZlXLJC27oeHti76eHrkkNdq_A&usqp=CAU" />
+    
+    <img src="/assets/notruks.png" width="150px" height="100px" style="margin-top: 200px;"/>
     <h3>{{"Post Your Vehicle"|translate}}</h3>
->>>>>>> d0a23f4048a8347c48cd290119f91d23c3112d94
   </div>
 </ion-content>
 
