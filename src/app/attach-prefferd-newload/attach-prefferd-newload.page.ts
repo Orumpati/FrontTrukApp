@@ -289,6 +289,7 @@ export class AttachPrefferdNewloadPage implements OnInit {
       trukoperatingRoutes:this.post.trukoperatingRoutes,
       trukvehiclenumber:this.post.trukvehiclenumber,
       trukOwnerNumber:this.post.mobileNo,
+      LoadPosterName:this.regdata.firstName + this.regdata.lastName,
     }
     console.log(body)
    // if(this.regdata.aadharVerify === 'Verified' || this.regdata.gstVerify === 'Verified'){
